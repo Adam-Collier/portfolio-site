@@ -1,6 +1,10 @@
 @font-face {
   font-family: "Inter";
-  src: url("../../static/fonts/InterDisplay.woff2") format("woff2");
+  src: url("../../../static/fonts/InterDisplay.woff2") format("woff2");
+}
+
+:root {
+  font-size: 16px;
 }
 
 html {

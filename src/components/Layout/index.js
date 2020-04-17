@@ -11,10 +11,11 @@ import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "../Header"
 import Footer from "../Footer"
+import styles from "./layout.module.scss"
 import "./layout.scss"
 import "../../styles/colours.scss"
 
-const Layout = ({ children, location }) => {
+const Layout = ({ children, location, className, container }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -29,13 +30,11 @@ const Layout = ({ children, location }) => {
     <>
       <Header siteTitle={data.site.siteMetadata.title} location={location} />
       <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
+        className={
+          container === "fluid" ? styles.containerFluid : styles.container
+        }
       >
-        <main>{children}</main>
+        <main className={className}>{children}</main>
         <Footer />
       </div>
     </>

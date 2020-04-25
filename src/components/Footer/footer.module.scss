@@ -6,6 +6,7 @@
   left: 0;
   display: flex;
   justify-content: space-between;
+  pointer-events: none;
 
   img {
     width: 2rem;

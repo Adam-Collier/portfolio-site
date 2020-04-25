@@ -12,7 +12,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Header from "../Header"
 import Footer from "../Footer"
 import styles from "./layout.module.scss"
-import "./layout.scss"
+import "./global.scss"
 import "../../styles/colours.scss"
 
 const Layout = ({ children, location, className, container }) => {
@@ -29,14 +29,16 @@ const Layout = ({ children, location, className, container }) => {
   return (
     <>
       <Header siteTitle={data.site.siteMetadata.title} location={location} />
-      <div
-        className={
-          container === "fluid" ? styles.containerFluid : styles.container
-        }
-      >
-        <main className={className}>{children}</main>
-        <Footer />
+      <div>
+        <main
+          className={`${
+            container === "fluid" ? styles.containerFluid : styles.container
+          } ${className}`}
+        >
+          {children}
+        </main>
       </div>
+      <Footer />
     </>
   )
 }

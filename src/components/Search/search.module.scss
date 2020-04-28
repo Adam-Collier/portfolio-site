@@ -1,0 +1,18 @@
+.search {
+  background: url("../../icons/search_icon.svg");
+  padding-left: 1.25rem;
+  background-repeat: no-repeat;
+  background-position: left center;
+  border: none;
+  box-shadow: 0px 1px 0px 5px var(--primary-white);
+  width: 1.25rem;
+  height: 1.75rem;
+  cursor: pointer;
+  transition: all 200ms ease-in-out, border 500ms ease-out;
+  font-size: 0.875rem;
+
+  &:focus {
+    width: 9rem;
+    box-shadow: 0px 1px 0px 0px var(--primary-accent);
+  }
+}

@@ -1,20 +1,26 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link, graphql } from "gatsby"
 import Image from "gatsby-image"
 
 import Layout from "../components/Layout"
 import SEO from "../components/seo"
 import Blogpost from "../components/Blogpost"
+import Search from "../components/Search"
 
 import styles from "./blog-post.module.scss"
-import searchIcon from "../icons/search_icon.svg"
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata.title
   const { previous, next } = pageContext
 
+  const [searchPosts, setSearchPosts] = useState(data.allMarkdownRemark.edges)
+
   const allPosts = data.allMarkdownRemark.edges
+
+  const searchedPosts = posts => {
+    setSearchPosts(posts)
+  }
 
   return (
     <Layout
@@ -31,10 +37,10 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         <div>
           <div className={styles.bar}>
             <h4>Articles</h4>
-            <img src={searchIcon} alt="" />
+            <Search allPosts={allPosts} searchedPosts={searchedPosts} />
           </div>
           <section className={styles.posts}>
-            {allPosts.map(({ node }, i) => (
+            {searchPosts.map(({ node }, i) => (
               <Blogpost post={node} key={i} noThumbnail />
             ))}
           </section>
@@ -112,8 +118,10 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { fileAbsolutePath: { regex: "/blog/" } }
-      limit: 3
+      filter: {
+        fileAbsolutePath: { regex: "/blog/" }
+        fields: { slug: { ne: $slug } }
+      }
     ) {
       edges {
         node {

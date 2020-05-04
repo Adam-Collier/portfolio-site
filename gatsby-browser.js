@@ -3,5 +3,11 @@
  *
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
+import React from "react"
+import { StateProvider } from "./src/context"
 
-require("./src/styles/prism-one-dark.css")
+import "./src/styles/prism-one-dark.css"
+
+export const wrapRootElement = ({ element }) => {
+  return <StateProvider>{element}</StateProvider>
+}

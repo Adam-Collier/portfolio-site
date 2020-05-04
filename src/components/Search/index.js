@@ -9,6 +9,8 @@ const Index = ({ allPosts, searchedPosts }) => {
     const posts = allPosts.filter(({ node }) => {
       if (node.frontmatter.title.toLowerCase().includes(searchValue))
         return node
+
+      return false
     })
 
     searchedPosts(posts)

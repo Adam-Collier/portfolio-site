@@ -6,7 +6,6 @@
   left: 0;
   display: flex;
   justify-content: space-between;
-  pointer-events: none;
 
   img {
     width: 2rem;
@@ -14,6 +13,7 @@
     padding: 0.5rem;
     border-radius: 50%;
     background: var(--primary-black);
+    cursor: pointer;
   }
 
   p {

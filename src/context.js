@@ -6,8 +6,8 @@ const DispatchContext = React.createContext()
 // handle the reducer
 const stateReducer = (state, action) => {
   switch (action.type) {
-    case "increment": {
-      return { count: state.count + 1 }
+    case "isMenuVisible": {
+      return { isMenuVisible: !state.isMenuVisible }
     }
 
     case "decrement": {
@@ -20,8 +20,12 @@ const stateReducer = (state, action) => {
   }
 }
 
+const initialState = {
+  isMenuVisible: false,
+}
+
 function StateProvider({ children }) {
-  const [state, dispatch] = React.useReducer(stateReducer, {})
+  const [state, dispatch] = React.useReducer(stateReducer, initialState)
 
   return (
     <StateContext.Provider value={state}>
@@ -48,4 +52,8 @@ function useAppDispatch() {
   return context
 }
 
-export { StateProvider, useAppState, useAppDispatch }
+function useContext() {
+  return [useAppState(), useAppDispatch()]
+}
+
+export { StateProvider, useContext }

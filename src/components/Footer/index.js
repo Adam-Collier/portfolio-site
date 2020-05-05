@@ -11,7 +11,7 @@ const Index = () => {
 
   return (
     <footer className={styles.footer}>
-      <p>Hit cmd shift ? to see the shortcut menu</p>
+      <p>Hit cmd ? to see the shortcut menu</p>
       <img
         role="presentation"
         src={helpIcon}

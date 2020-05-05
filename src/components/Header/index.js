@@ -29,6 +29,7 @@ const Header = () => {
             <span>&#183;</span>
             <div>
               <img src={commandIcon} alt="command icon" />
+              {path.includes("now") ? <h4>&#8679; </h4> : ""}
               <h4>{path.slice(0, 1).toUpperCase()}</h4>
             </div>
           </>

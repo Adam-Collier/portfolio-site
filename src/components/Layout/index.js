@@ -7,7 +7,9 @@
 
 import React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, navigate } from "gatsby"
+import { useHotkeys } from "react-hotkeys-hook"
+import { useContext } from "../../context"
 
 import Header from "../Header"
 import Footer from "../Footer"
@@ -25,6 +27,29 @@ const Layout = ({ children, location, className, container }) => {
       }
     }
   `)
+
+  const dispatch = useContext()[1]
+  useHotkeys("cmd+/", () => dispatch({ type: "isMenuVisible" }))
+  useHotkeys("cmd+h", e => {
+    e.preventDefault()
+    navigate("/")
+  })
+  useHotkeys("cmd+shift+n", e => {
+    e.preventDefault()
+    navigate("/now")
+  })
+  useHotkeys("cmd+p", e => {
+    e.preventDefault()
+    navigate("/playground")
+  })
+  useHotkeys("cmd+s", e => {
+    e.preventDefault()
+    navigate("/side-projects")
+  })
+  useHotkeys("cmd+b", e => {
+    e.preventDefault()
+    navigate("/blog")
+  })
 
   return (
     <>

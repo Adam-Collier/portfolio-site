@@ -1,22 +1,25 @@
-import React, { useState } from "react"
+import React from "react"
 
 import CommandMenu from "../CommandMenu"
+import { useContext } from "../../context"
 
 import helpIcon from "../../icons/help_icon.svg"
 import styles from "./footer.module.scss"
 
 const Index = () => {
-  const [isShowingMenu, setShowingMenu] = useState(false)
+  const [{ isMenuVisible }, dispatch] = useContext()
 
   return (
     <footer className={styles.footer}>
       <p>Hit cmd shift ? to see the shortcut menu</p>
       <img
+        role="presentation"
         src={helpIcon}
         alt="help icon"
-        onClick={() => setShowingMenu(!isShowingMenu)}
+        onClick={() => dispatch({ type: "isMenuVisible" })}
+        onKeyDown={() => dispatch({ type: "isMenuVisible" })}
       />
-      {isShowingMenu && <CommandMenu />}
+      {isMenuVisible && <CommandMenu />}
     </footer>
   )
 }

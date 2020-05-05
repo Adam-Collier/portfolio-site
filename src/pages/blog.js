@@ -29,7 +29,7 @@ const Blog = ({ data }) => {
     let filteredPosts = allPosts.filter(({ node }) => {
       let { tags } = node.frontmatter
       // if post doesnt have any tags return
-      if (!tags) return
+      if (!tags) return false
       // if there are no active tags return all posts
       if (selectedTags.length === 0) return node
       // if selectedTags include a post tag return the tag

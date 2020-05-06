@@ -19,7 +19,7 @@ const Index = () => {
         onClick={() => dispatch({ type: "isMenuVisible" })}
         onKeyDown={() => dispatch({ type: "isMenuVisible" })}
       />
-      {isMenuVisible && <CommandMenu />}
+      <CommandMenu isMenuVisible={isMenuVisible} />
     </footer>
   )
 }

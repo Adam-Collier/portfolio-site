@@ -8,8 +8,9 @@
   padding: 0.8rem 2rem 2rem;
   z-index: 9999999999;
   user-select: all;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  right: 0;
+  margin: 5% auto;
   border-radius: var(--border-radius);
 
   th,

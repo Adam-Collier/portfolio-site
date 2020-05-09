@@ -4,6 +4,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import SEO from "../components/seo"
 import Blogpost from "../components/Blogpost"
+import Sidebar from "../components/Sidebar"
 
 import styles from "./blog.module.scss"
 
@@ -44,7 +45,7 @@ const Blog = ({ data }) => {
   return (
     <Layout container="fluid" className={styles.blog}>
       <SEO title="Blog page" />
-      <div className={styles.sidebar}>
+      <Sidebar>
         <p>
           A collection of writing which can range from talking about code,
           design or life in general. Enjoy this eclectic collection of writings
@@ -61,10 +62,10 @@ const Blog = ({ data }) => {
             </button>
           ))}
         </div>
-      </div>
+      </Sidebar>
       <div className={styles.blogposts}>
         {posts.map(({ node }, i) => (
-          <Blogpost post={node} key={i} />
+          <Blogpost node={node} key={i} />
         ))}
       </div>
     </Layout>

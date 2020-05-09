@@ -2,11 +2,11 @@ import React from "react"
 import Layout from "../components/Layout"
 import SEO from "../components/seo"
 
-const SideProjects = () => (
+const Resources = () => (
   <Layout>
-    <SEO title="Playground page" />
-    <h1>Playground Page</h1>
+    <SEO title="resources page" />
+    <h1>resources Page</h1>
   </Layout>
 )
 
-export default SideProjects
+export default Resources

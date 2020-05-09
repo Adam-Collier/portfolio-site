@@ -38,8 +38,8 @@ const Header = () => {
       <div className={styles.navigation}>
         <Link to="/now">Now</Link>
         <Link to="/blog">Blog</Link>
-        <Link to="/side-projects">Side Projects</Link>
-        <Link to="/playground">Playground</Link>
+        <Link to="/snippets">Snippets</Link>
+        <Link to="/resources">Resources</Link>
       </div>
     </header>
   )

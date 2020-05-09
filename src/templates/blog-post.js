@@ -1,11 +1,11 @@
-import React, { useState } from "react"
+import React from "react"
 import { Link, graphql } from "gatsby"
 import Image from "gatsby-image"
 
 import Layout from "../components/Layout"
 import SEO from "../components/seo"
 import Blogpost from "../components/Blogpost"
-import Search from "../components/Search"
+import Sidebar from "../components/Sidebar"
 
 import styles from "./blog-post.module.scss"
 
@@ -13,14 +13,6 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata.title
   const { previous, next } = pageContext
-
-  const [searchPosts, setSearchPosts] = useState(data.allMarkdownRemark.edges)
-
-  const allPosts = data.allMarkdownRemark.edges
-
-  const searchedPosts = posts => {
-    setSearchPosts(posts)
-  }
 
   return (
     <Layout
@@ -33,19 +25,13 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
-      <div className={styles.sidebar}>
-        <div>
-          <div className={styles.bar}>
-            <h4>Articles</h4>
-            <Search allPosts={allPosts} searchedPosts={searchedPosts} />
-          </div>
-          <section className={styles.posts}>
-            {searchPosts.map(({ node }, i) => (
-              <Blogpost post={node} key={i} noThumbnail />
-            ))}
-          </section>
-        </div>
-      </div>
+      <Sidebar title="Resources" data={data}>
+        {({ searchPosts }) =>
+          searchPosts.map(({ node }, i) => (
+            <Blogpost node={node} key={i} noThumbnail />
+          ))
+        }
+      </Sidebar>
       <article className={styles.content}>
         <header>
           <h1>{post.frontmatter.title}</h1>

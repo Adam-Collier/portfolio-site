@@ -1,0 +1,31 @@
+.sidebar {
+  > div {
+    position: sticky;
+    top: 72px;
+
+    > section {
+      display: grid;
+      grid-gap: 1rem;
+      cursor: pointer;
+    }
+  }
+
+  grid-area: sidebar;
+  position: relative;
+
+  h4 {
+    margin: 0;
+    color: var(--primary-accent);
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+}

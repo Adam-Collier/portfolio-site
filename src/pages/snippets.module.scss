@@ -1,0 +1,15 @@
+.snippets {
+  width: 100%;
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+  grid-template-areas:
+    "sidebar content"
+    "sidebar nav";
+}
+
+.content {
+  grid-area: content;
+  width: 80%;
+  margin-left: 7.5%;
+}

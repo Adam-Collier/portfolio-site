@@ -14,10 +14,26 @@ exports.createPages = async ({ graphql, actions }) => {
   const result = await graphql(
     `
       {
-        allMarkdownRemark(
+        blog: allMarkdownRemark(
           sort: { fields: [frontmatter___date], order: DESC }
           limit: 1000
           filter: { fileAbsolutePath: { regex: "/blog/" } }
+        ) {
+          edges {
+            node {
+              fields {
+                slug
+              }
+              frontmatter {
+                title
+              }
+            }
+          }
+        }
+        resources: allMarkdownRemark(
+          sort: { fields: [frontmatter___title], order: ASC }
+          limit: 1000
+          filter: { fileAbsolutePath: { regex: "/resources/" } }
         ) {
           edges {
             node {
@@ -39,7 +55,7 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   // Create blog posts pages.
-  const posts = result.data.allMarkdownRemark.edges
+  const posts = result.data.blog.edges
 
   posts.forEach((post, index) => {
     const previous = index === posts.length - 1 ? null : posts[index + 1].node
@@ -52,6 +68,17 @@ exports.createPages = async ({ graphql, actions }) => {
         slug: post.node.fields.slug,
         previous,
         next,
+      },
+    })
+  })
+
+  // Create resource pages
+  result.data.resources.edges.forEach(({ node }) => {
+    createPage({
+      path: node.fields.slug,
+      component: path.resolve(`./src/templates/resource.js`),
+      context: {
+        slug: node.fields.slug,
       },
     })
   })

@@ -38,13 +38,13 @@ const Layout = ({ children, location, className, container }) => {
     e.preventDefault()
     navigate("/now")
   })
-  useHotkeys("cmd+p", e => {
-    e.preventDefault()
-    navigate("/playground")
-  })
   useHotkeys("cmd+s", e => {
     e.preventDefault()
-    navigate("/side-projects")
+    navigate("/snippets")
+  })
+  useHotkeys("cmd+r", e => {
+    e.preventDefault()
+    navigate("/resources")
   })
   useHotkeys("cmd+b", e => {
     e.preventDefault()

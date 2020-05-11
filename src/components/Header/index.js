@@ -2,6 +2,9 @@ import PropTypes from "prop-types"
 import React from "react"
 import { Link } from "gatsby"
 import { globalHistory } from "@reach/router"
+
+import NavLink from "../NavLink"
+
 import styles from "./header.module.scss"
 import commandIcon from "../../icons/command_icon.svg"
 
@@ -36,10 +39,10 @@ const Header = () => {
         )}
       </div>
       <div className={styles.navigation}>
-        <Link to="/now">Now</Link>
-        <Link to="/blog">Blog</Link>
-        <Link to="/snippets">Snippets</Link>
-        <Link to="/resources">Resources</Link>
+        <NavLink to="/now">Now</NavLink>
+        <NavLink to="/blog">Blog</NavLink>
+        <NavLink to="/snippets">Snippets</NavLink>
+        <NavLink to="/resources">Resources</NavLink>
       </div>
     </header>
   )

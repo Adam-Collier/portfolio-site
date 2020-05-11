@@ -3,7 +3,7 @@ import Search from "../Search"
 
 import styles from "./sidebar.module.scss"
 
-const Index = ({ children, title, data = "" }) => {
+const Index = ({ children, title, data = "", className }) => {
   const allPosts = data ? data.allMarkdownRemark.edges : ""
   const [searchPosts, setSearchPosts] = useState(allPosts)
   const searchedPosts = posts => {
@@ -11,7 +11,7 @@ const Index = ({ children, title, data = "" }) => {
   }
 
   return (
-    <div className={styles.sidebar}>
+    <div className={`${className ? className : ""} ${styles.sidebar}`}>
       <div>
         {data && (
           <div className={styles.bar}>

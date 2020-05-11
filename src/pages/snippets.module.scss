@@ -8,8 +8,27 @@
     "sidebar nav";
 }
 
+ul {
+  list-style-type: none;
+}
+
 .content {
   grid-area: content;
   width: 80%;
   margin-left: 7.5%;
+}
+
+.tableOfContents {
+  height: calc(90vh - 200px);
+  overflow-y: scroll;
+  a {
+    text-decoration: none;
+    color: var(--primary-accent);
+  }
+  ul {
+    list-style-type: none;
+  }
+  > ul {
+    margin: 0;
+  }
 }

@@ -14,8 +14,42 @@ ul {
 
 .content {
   grid-area: content;
-  width: 80%;
-  margin-left: 7.5%;
+  width: var(--content-width);
+  margin-left: 10%;
+
+  --anchor-padding: 80px;
+
+  h2,
+  h3 {
+    position: relative;
+
+    &:before {
+      display: block;
+      content: " ";
+      margin-top: calc(-1 * var(--anchor-padding));
+      height: var(--anchor-padding);
+      visibility: hidden;
+      pointer-events: none;
+      position: relative;
+    }
+
+    a {
+      top: var(--anchor-padding) !important;
+    }
+  }
+
+  > div {
+    position: relative;
+    z-index: 2;
+  }
+
+  h2 {
+    z-index: 1;
+  }
+
+  h3 {
+    z-index: 0;
+  }
 }
 
 .tableOfContents {

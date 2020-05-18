@@ -8,7 +8,24 @@ import Sidebar from "../components/Sidebar"
 import styles from "./snippets.module.scss"
 
 const Snippets = ({ data }) => {
-  const { html, tableOfContents } = data.markdownRemark
+  let { edges } = data.allMarkdownRemark
+
+  let html = edges
+    .map(({ node }) => {
+      let { html } = node
+      return html
+    })
+    .join("")
+
+  let tableOfContents = edges
+    .map(({ node }) => {
+      let { tableOfContents, fields } = node
+      let { slug } = fields
+
+      return tableOfContents.replace(new RegExp(slug, "g"), "/snippets/")
+    })
+    .join("")
+
   return (
     <Layout container="fluid" className={styles.snippets}>
       <SEO title="Snippets page" />
@@ -34,9 +51,19 @@ const Snippets = ({ data }) => {
 
 export const query = graphql`
   query {
-    markdownRemark(fileAbsolutePath: { regex: "/snippets/" }) {
-      html
-      tableOfContents
+    allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/snippets/" } }
+      sort: { fields: fields___slug }
+    ) {
+      edges {
+        node {
+          html
+          tableOfContents
+          fields {
+            slug
+          }
+        }
+      }
     }
   }
 `

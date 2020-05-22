@@ -54,6 +54,7 @@ template {
 a {
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
+  color: var(--primary-accent);
 }
 a:active,
 a:hover {

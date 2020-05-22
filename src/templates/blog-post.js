@@ -7,7 +7,7 @@ import SEO from "../components/seo"
 import Blogpost from "../components/Blogpost"
 import Sidebar from "../components/Sidebar"
 
-import styles from "./blog-post.module.scss"
+import styles from "./template.module.scss"
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark

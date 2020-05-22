@@ -15,3 +15,22 @@ Refreshes the tracking of your files. Super useful for adding new things to your
 ```bash
 $ git rm -r --cached .
 ```
+
+### Git stash
+
+```bash
+# to save changes in a stash
+$ git stash save "optional message for yourself"
+
+# view stash list
+$ git stash list
+
+# apply the stash
+$ git stash apply
+
+# apply the stash and remove the files from the stash
+$ git stash pop
+
+# clear the entire stash
+$ git stash clear
+```

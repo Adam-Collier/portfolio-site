@@ -1,5 +1,42 @@
 ## CSS
 
+### Responsive CSS grid
+
+```css
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  /* This is better for small screens, once min() is better supported */
+  /* grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr)); */
+  grid-gap: 1rem;
+  /* This is the standardized property now, but has slightly less support */
+  /* gap: 1rem */
+}
+```
+
+### Full width in restricted container
+
+```css
+.full-width {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+```
+
+### Max width in restricted container
+
+```css
+.not-full-but-bigger {
+  margin: auto calc(50% - 50vw);
+  width: 60vw;
+  transform: translateX(calc(50vw - 50%));
+}
+```
+
 ### Line Clamp
 
 ```css
@@ -58,5 +95,38 @@
   scrollbar-width: none;
   /* IE */
   ms-overflow-style: none;
+}
+```
+
+### Background shorthand
+
+```css
+/* image, position, size and repeat */
+body {
+  background: url(sweettexture.jpg) top center / 200px 200px no-repeat;
+}
+```
+
+### Underline styles
+
+```css
+li {
+  // for the underline to "skip" the descenders
+  text-shadow: 1px 1px var(--primary-white), 1px -1px var(--primary-white),
+    -1px 1px var(--primary-white), -1px -1px var(--primary-white);
+}
+
+.current-menu-item {
+  position: relative;
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1.5px;
+    bottom: 1px;
+    background: var(--primary-black);
+    z-index: -1;
+  }
 }
 ```

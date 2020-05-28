@@ -1,0 +1,49 @@
+.header {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  right: 0;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+
+  h4 {
+    margin-bottom: 0;
+    margin-right: 0.25rem;
+    font-size: 1rem;
+    text-transform: capitalize;
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+
+    img {
+      margin: 0 0.25rem 0 0;
+    }
+
+    span {
+      font-size: 2rem;
+      line-height: 0.5;
+      padding: 0 0.5rem;
+    }
+  }
+}
+
+.navigation {
+  a {
+    margin-left: 1rem;
+    color: var(--primary-black);
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 1rem;
+  }
+}
+
+.home {
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--primary-black);
+  margin-right: 1rem;
+}

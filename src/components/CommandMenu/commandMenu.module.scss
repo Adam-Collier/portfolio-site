@@ -1,0 +1,20 @@
+.commandMenu {
+  position: absolute;
+  bottom: 5rem;
+  width: 80%;
+  max-width: 800px;
+  background: var(--primary-black);
+  color: var(--primary-white);
+  padding: 0.8rem 2rem 2rem;
+  z-index: 9999999999;
+  user-select: all;
+  left: 0;
+  right: 0;
+  margin: 5% auto;
+  border-radius: var(--border-radius);
+
+  th,
+  td {
+    border-color: var(--primary-black);
+  }
+}

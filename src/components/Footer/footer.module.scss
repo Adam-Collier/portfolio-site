@@ -1,0 +1,27 @@
+.footer {
+  padding: 1.5rem;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+
+  img {
+    width: 2rem;
+    height: 2rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    background: var(--primary-black);
+    cursor: pointer;
+  }
+
+  p {
+    font-weight: 500;
+    color: var(--primary-dark-grey);
+  }
+
+  * {
+    margin-bottom: 0;
+  }
+}

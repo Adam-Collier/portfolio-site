@@ -1,6 +1,7 @@
 import React from "react"
 import Layout from "../components/Layout"
 import SEO from "../components/seo"
+import { graphql } from "gatsby"
 
 import styles from "./now.module.scss"
 

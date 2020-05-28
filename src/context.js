@@ -10,10 +10,6 @@ const stateReducer = (state, action) => {
       return { isMenuVisible: !state.isMenuVisible }
     }
 
-    case "decrement": {
-      return { count: state.count - 1 }
-    }
-
     default: {
       throw new Error(`Unhandled action type: ${action.type}`)
     }
@@ -39,7 +35,7 @@ function StateProvider({ children }) {
 function useAppState() {
   const context = React.useContext(StateContext)
   if (context === undefined) {
-    throw new Error("useCountState must be used within a StateProvider")
+    throw new Error("useContext must be used within a StateProvider")
   }
   return context
 }
@@ -47,7 +43,7 @@ function useAppState() {
 function useAppDispatch() {
   const context = React.useContext(DispatchContext)
   if (context === undefined) {
-    throw new Error("useCountDispatch must be used within a StateProvider")
+    throw new Error("useContext must be used within a StateProvider")
   }
   return context
 }

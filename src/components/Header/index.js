@@ -9,16 +9,21 @@ import styles from "./header.module.scss"
 import commandIcon from "../../icons/command_icon.svg"
 
 const Header = () => {
-  let path
-
-  if ((globalHistory.location.pathname.match(/\//g) || []).length === 1) {
-    path =
-      globalHistory.location.pathname === "/"
-        ? "Home"
-        : globalHistory.location.pathname.slice(1).replace(/-/g, " ")
-  } else {
-    path = "Blogpost"
+  const getPath = relativePath => {
+    let pathMappings = {
+      "/": "Home",
+      "/blog/": "Blogpost",
+      "/resources/": "Resource",
+      default: relativePath.slice(1).replace(/-/g, " "),
+    }
+    return pathMappings[relativePath] || pathMappings["default"]
   }
+
+  let url = globalHistory.location.pathname.split("/")
+  // remove the end of the url so it is easier to match
+  const shortenedUrl = url.filter((x, i) => i !== 2).join("/")
+
+  let path = getPath(shortenedUrl)
 
   return (
     <header className={styles.header}>
@@ -27,7 +32,7 @@ const Header = () => {
           Adam Collier
         </Link>
         <h4>{path}</h4>
-        {path !== "Blogpost" && (
+        {(shortenedUrl.match(/\//g) || []).length !== 2 && (
           <>
             <span>&#183;</span>
             <div>

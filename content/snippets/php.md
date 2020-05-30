@@ -45,3 +45,10 @@ function load_template_part($template_name, $part_name=null) {
   return $var;
 }
 ```
+
+### Name all blocks on the page
+
+```php
+  $blocks = parse_blocks($post->post_content);
+  var_dump($blocks);
+```

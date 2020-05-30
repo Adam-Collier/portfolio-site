@@ -4,6 +4,7 @@ date: 2019-05-26
 featuredImage: ./featured-image.png
 thumbnail: ./thumbnail.jpg
 tags: ["CSS", "CSS grid"]
+published: true
 ---
 
 In a recent project I came across a nifty way to create a masonry grid layout using CSS grid and a smidge of javascript . Initially I thought about using something like Masonry.js or Isotope but it kinda felt a little bit overkill. Whats cool about this approach its super flexible and it’s not relying on any frameworks! I’m going to try and keep this post short and sweet so you can get up and running and enjoy this trick yourselves.

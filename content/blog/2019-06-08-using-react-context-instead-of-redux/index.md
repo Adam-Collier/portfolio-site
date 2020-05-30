@@ -4,6 +4,7 @@ featuredImage: ./featured-image.jpg
 thumbnail: ./thumbnail.jpg
 title: Using React Context instead of Redux
 tags: ["react", "javascript"]
+published: true
 ---
 
 Whilst learning react I have heard a lot of talk about Redux and that being the go to solution for state management in a web application. But as I've done a little bit of exploring and read countless articles there has also been a lot of people leaning on React Context instead since it's already included as an API in React.

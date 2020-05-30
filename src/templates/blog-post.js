@@ -107,6 +107,7 @@ export const pageQuery = graphql`
       filter: {
         fileAbsolutePath: { regex: "/blog/" }
         fields: { slug: { ne: $slug } }
+        frontmatter: { published: { eq: true } }
       }
     ) {
       edges {

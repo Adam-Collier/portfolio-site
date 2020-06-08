@@ -74,3 +74,9 @@ document.addEventListener("DOMContentLoaded", function() {
   // Handler when the DOM is fully loaded
 })
 ```
+
+### Get a single value from an array of objects via id
+
+```js
+myArray.find(x => x.id === "45").author
+```

@@ -6,10 +6,15 @@
 
 .container-fluid {
   width: 100%;
-  padding: 0 1.5rem;
+  padding: 0 var(--content-x-padding);
 }
 
 .container,
 .container-fluid {
-  padding-top: 4.5rem;
+  --container-padding: 4.5rem;
+  @media (max-width: 768px) {
+    --container-padding: 6rem;
+  }
+
+  padding-top: var(--container-padding);
 }

@@ -31,16 +31,16 @@ const Header = () => {
         <Link className={styles.home} to="/">
           Adam Collier
         </Link>
-        <h4>{path}</h4>
+        <h4 className={styles.breadcrumbs}>{path}</h4>
         {(shortenedUrl.match(/\//g) || []).length !== 2 && (
-          <>
+          <div className={styles.shortcut}>
             <span>&#183;</span>
             <div>
               <img src={commandIcon} alt="command icon" />
               {path.includes("now") ? <h4>&#8679; </h4> : ""}
               <h4>{path.slice(0, 1).toUpperCase()}</h4>
             </div>
-          </>
+          </div>
         )}
       </div>
       <div className={styles.navigation}>

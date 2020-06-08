@@ -9,5 +9,18 @@
   --border-radius: 3px;
 
   --sidebar-width: 300px;
+
   --content-width: 70%;
+  --content-grid-template: "sidebar content";
+  --content-grid-columns: 300px minmax(0, 0.95fr);
+  --content-x-padding: 1.5rem;
+  --content-spacing-left: 10%;
+
+  @media (max-width: 768px) {
+    --content-x-padding: 1rem;
+    --content-grid-template: "content";
+    --content-grid-columns: 1fr;
+    --content-width: 100%;
+    --content-spacing-left: 0;
+  }
 }

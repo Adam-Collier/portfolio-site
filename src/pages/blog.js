@@ -99,8 +99,8 @@ export const query = graphql`
             title
             thumbnail {
               childImageSharp {
-                fixed(width: 114, height: 114, quality: 90, toFormat: JPG) {
-                  ...GatsbyImageSharpFixed_withWebp
+                fluid(maxWidth: 114, quality: 90, toFormat: JPG) {
+                  ...GatsbyImageSharpFluid_withWebp
                 }
               }
             }

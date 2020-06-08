@@ -1,8 +1,12 @@
 .blog {
   display: grid;
   grid-gap: 2rem;
-  grid-template-columns: 300px 0.95fr;
-  grid-template-areas: "sidebar content";
+  grid-template-columns: var(--content-grid-columns);
+  grid-template-areas: var(--content-grid-template);
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .sidebar {
@@ -16,6 +20,10 @@
   grid-auto-rows: minmax(min-content, max-content);
   grid-column-gap: 1.5rem;
   grid-row-gap: 2.5rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 
   a {
     text-decoration: none;

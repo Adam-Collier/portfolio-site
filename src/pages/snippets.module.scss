@@ -2,10 +2,8 @@
   width: 100%;
   display: grid;
   grid-gap: 2rem;
-  grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
-  grid-template-areas:
-    "sidebar content"
-    "sidebar nav";
+  grid-template-columns: var(--content-grid-columns);
+  grid-template-areas: var(--content-grid-template);
 }
 
 ul {
@@ -15,7 +13,7 @@ ul {
 .content {
   grid-area: content;
   width: var(--content-width);
-  margin-left: 10%;
+  margin-left: var(--content-spacing-left);
 
   --anchor-padding: 80px;
 

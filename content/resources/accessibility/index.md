@@ -22,3 +22,5 @@ icon: "./icon.svg"
 [HTML5 Hidden Attribute](https://davidwalsh.name/html5-hidden) - A short article on using the hidden attribute rather than using CSS
 
 [Where to put Buttons in Forms](https://adamsilver.io/articles/where-to-put-buttons-in-forms/) - Great do's and don'ts for forms
+
+[HTML Hell](https://www.htmhell.dev/) - A great site for recognising bad HTML practices and how to fix them.

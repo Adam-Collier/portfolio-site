@@ -2,13 +2,17 @@ import PropTypes from "prop-types"
 import React from "react"
 import { Link } from "gatsby"
 import { globalHistory } from "@reach/router"
+import { useContext } from "../../context"
 
 import NavLink from "../NavLink"
+import MobileMenu from "../MobileMenu"
 
 import styles from "./header.module.scss"
 import commandIcon from "../../icons/command_icon.svg"
 
 const Header = () => {
+  const { isMobileMenuVisible } = useContext()[0]
+
   const getPath = relativePath => {
     let pathMappings = {
       "/": "Home",
@@ -48,6 +52,7 @@ const Header = () => {
         <NavLink to="/snippets">Snippets</NavLink>
         <NavLink to="/resources">Resources</NavLink>
       </div>
+      {isMobileMenuVisible && <MobileMenu />}
     </header>
   )
 }

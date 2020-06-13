@@ -8,6 +8,10 @@
   display: flex;
   justify-content: space-between;
 
+  * {
+    font-weight: 600;
+  }
+
   h4 {
     margin-bottom: 0;
     margin-right: 0.25rem;
@@ -36,13 +40,11 @@
     margin-left: 1rem;
     color: var(--primary-black);
     text-decoration: none;
-    font-weight: 400;
     font-size: 1rem;
   }
 }
 
 .home {
-  font-weight: 600;
   text-decoration: none;
   color: var(--primary-black);
   margin-right: 1rem;

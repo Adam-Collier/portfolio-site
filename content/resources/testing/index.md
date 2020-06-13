@@ -17,6 +17,6 @@ How do you know if the system you built works? Through testing it! But testing d
 
 [Mocha](https://mochajs.org/) - more simple, and configurable. Ideal for developers who seek complete control over their unit testing environment.
 
-## **End-to-End Test** - Regression + Acceptance Testing
+## Tutorials
 
-(Coming Soon)
+[How to use React Testing Library Tutorial](https://www.robinwieruch.de/react-testing-library) -

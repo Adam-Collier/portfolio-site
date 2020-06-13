@@ -1,15 +1,19 @@
 .link {
   position: relative;
+  text-shadow: 1px 1px var(--primary-white), 1px -1px var(--primary-white),
+    -1px 1px var(--primary-white), -1px -1px var(--primary-white);
 }
 
 .active {
-  &:after {
+  position: relative;
+  &:before {
     content: "";
     position: absolute;
     left: 0;
     right: 0;
-    bottom: -0.25rem;
-    height: 2px;
+    height: 1.5px;
+    bottom: 2px;
     background: var(--primary-accent);
+    z-index: -1;
   }
 }

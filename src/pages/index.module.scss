@@ -23,7 +23,7 @@
   }
 
   h1 {
-    font-size: clamp(2rem, 12vw, 5rem);
+    font-size: unquote("max(16px, min(10vw, 50px))");
     letter-spacing: 0.02em;
   }
 

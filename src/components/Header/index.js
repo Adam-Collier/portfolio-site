@@ -44,7 +44,6 @@ const Header = () => {
         )}
       </div>
       <div className={styles.navigation}>
-        <NavLink to="/now">Now</NavLink>
         <NavLink to="/blog">Blog</NavLink>
         <NavLink to="/snippets">Snippets</NavLink>
         <NavLink to="/resources">Resources</NavLink>

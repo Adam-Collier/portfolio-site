@@ -45,11 +45,11 @@ const Blog = ({ data }) => {
   return (
     <Layout container="fluid" className={styles.blog}>
       <SEO title="Blog page" />
-      <Sidebar>
-        <p>
-          A collection of writing which can range from talking about code,
-          design or life in general. Enjoy this eclectic collection of writings
-        </p>
+      <Sidebar
+        title="Blog"
+        description="A collection of writing which can range from talking about code,
+          design or life in general. Enjoy this eclectic collection of writings"
+      >
         <div className={styles.tags}>
           {tags.map(({ tag }, i) => (
             <button

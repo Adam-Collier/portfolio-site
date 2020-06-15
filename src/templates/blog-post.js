@@ -25,7 +25,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
-      <Sidebar title="Resources" data={data}>
+      <Sidebar title="Blogpost" data={data}>
         {({ searchPosts }) =>
           searchPosts.map(({ node }, i) => (
             <Blogpost node={node} key={i} noThumbnail />

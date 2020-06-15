@@ -7,7 +7,11 @@
   display: flex;
   justify-content: space-between;
 
-  img {
+  @media (max-width: 767px) {
+    display: none;
+  }
+
+  svg {
     width: 2rem;
     height: 2rem;
     padding: 0.5rem;

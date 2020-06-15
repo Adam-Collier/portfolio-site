@@ -14,6 +14,10 @@ const stateReducer = (state, action) => {
       return { isMobileMenuVisible: true }
     }
 
+    case "mobileMenuHide": {
+      return { isMobileMenuVisible: false }
+    }
+
     default: {
       throw new Error(`Unhandled action type: ${action.type}`)
     }

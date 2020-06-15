@@ -21,10 +21,6 @@
   p {
     margin: 0;
   }
-
-  @media (max-width: 768px) {
-    display: none;
-  }
 }
 
 .bar {
@@ -32,4 +28,15 @@
   justify-content: space-between;
   align-items: center;
   padding-bottom: 1rem;
+}
+
+h4.title {
+  @media (min-width: 768px) {
+    display: none;
+  }
+  margin-bottom: 0.75rem;
+}
+
+p.description {
+  margin-bottom: 1rem;
 }

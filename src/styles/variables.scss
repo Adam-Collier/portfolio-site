@@ -18,7 +18,7 @@
 
   @media (max-width: 768px) {
     --content-x-padding: 1rem;
-    --content-grid-template: "content";
+    --content-grid-template: "sidebar" "content";
     --content-grid-columns: 1fr;
     --content-width: 100%;
     --content-spacing-left: 0;

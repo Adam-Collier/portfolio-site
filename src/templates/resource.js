@@ -19,14 +19,18 @@ const ResourceTemplate = ({ data, pageContext, location }) => {
       location={location}
       title={siteTitle}
       container="fluid"
-      className={styles.blogpost}
+      className={styles.resources}
     >
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
 
-      <Sidebar title="Resources" data={data}>
+      <Sidebar
+        title="Resources"
+        data={data}
+        description="This is a group of resources I have either learned something from or thought could become useful in the future."
+      >
         {({ searchPosts }) =>
           searchPosts.map(({ node }, i) => (
             <Resource node={node} key={i} currentPageId={post.id} />

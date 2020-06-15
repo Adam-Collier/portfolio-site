@@ -11,6 +11,7 @@ ul {
 }
 
 .content {
+  overflow: hidden;
   grid-area: content;
   width: var(--content-width);
   margin-left: var(--content-spacing-left);
@@ -51,8 +52,10 @@ ul {
 }
 
 .tableOfContents {
-  height: calc(90vh - 200px);
-  overflow-y: scroll;
+  @media (min-width: 768px) {
+    height: calc(90vh - 200px);
+    overflow-y: scroll;
+  }
   a {
     text-decoration: none;
     color: var(--primary-accent);

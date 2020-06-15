@@ -5,4 +5,33 @@
   bottom: 0;
   right: 0;
   background: var(--primary-black);
+  z-index: 50;
+
+  > svg {
+    position: absolute;
+    text-align: right;
+
+    right: 1rem;
+    top: 1rem;
+  }
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 3rem 1.5rem 1.5rem;
+
+  a {
+    text-decoration: none;
+    text-shadow: none;
+    color: var(--primary-white);
+    font-weight: 500;
+    font-size: 3rem;
+    line-height: 1.5;
+
+    &:before {
+      display: none;
+    }
+  }
 }

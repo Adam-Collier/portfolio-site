@@ -6,6 +6,21 @@
   grid-template-areas: var(--content-grid-template);
 }
 
+.blogpost,
+.resources {
+  width: 100%;
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: var(--content-grid-columns);
+  grid-template-areas: var(--content-grid-template);
+}
+
+.blogpost {
+  @media (max-width: 767px) {
+    --content-grid-template: "content" "sidebar";
+  }
+}
+
 .content {
   grid-area: content;
   width: var(--content-width);

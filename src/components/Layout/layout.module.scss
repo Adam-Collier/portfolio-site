@@ -12,9 +12,9 @@
 .container,
 .container-fluid {
   --container-padding: 4.5rem;
-  @media (max-width: 768px) {
-    --container-padding: 6rem;
-  }
+  // @media (max-width: 768px) {
+  //   --container-padding: 6rem;
+  // }
 
   padding-top: var(--container-padding);
 }

@@ -3,7 +3,7 @@ import React from "react"
 import CommandMenu from "../CommandMenu"
 import { useContext } from "../../context"
 
-import HelpIcon from "../../icons/help_icon.svg"
+import helpIcon from "../../icons/help_icon.svg"
 import styles from "./footer.module.scss"
 
 const Index = () => {
@@ -12,14 +12,10 @@ const Index = () => {
   return (
     <footer className={styles.footer}>
       <p>Hit cmd ? to see the shortcut menu</p>
-      {/* <img
+      <img
         role="presentation"
         src={helpIcon}
         alt="help icon"
-        onClick={() => dispatch({ type: "isMenuVisible" })}
-        onKeyDown={() => dispatch({ type: "isMenuVisible" })}
-      /> */}
-      <HelpIcon
         onClick={() => dispatch({ type: "isMenuVisible" })}
         onKeyDown={() => dispatch({ type: "isMenuVisible" })}
       />

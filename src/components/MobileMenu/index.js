@@ -1,7 +1,7 @@
 import React from "react"
 import Navigation from "../Navigation"
 import { useContext } from "../../context"
-import CloseIcon from "../../icons/close_icon.svg"
+import closeIcon from "../../icons/close_icon.svg"
 
 import styles from "./mobilemenu.module.scss"
 
@@ -10,7 +10,12 @@ const Index = () => {
 
   return (
     <div className={styles.menu}>
-      <CloseIcon onClick={() => dispatch({ type: "mobileMenuHide" })} />
+      <button
+        onClick={() => dispatch({ type: "mobileMenuHide" })}
+        onKeyDown={() => dispatch({ type: "mobileMenuHide" })}
+      >
+        <img src={closeIcon} alt="close icon" />
+      </button>
       <Navigation
         styles={styles.navigation}
         onClick={() => dispatch({ type: "mobileMenuHide" })}

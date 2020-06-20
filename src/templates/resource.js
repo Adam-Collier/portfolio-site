@@ -1,5 +1,5 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import Image from "gatsby-image"
 
 import Layout from "../components/Layout"
@@ -9,10 +9,9 @@ import Sidebar from "../components/Sidebar"
 
 import styles from "./template.module.scss"
 
-const ResourceTemplate = ({ data, pageContext, location }) => {
+const ResourceTemplate = ({ data, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata.title
-  const { previous, next } = pageContext
 
   return (
     <Layout
@@ -30,6 +29,7 @@ const ResourceTemplate = ({ data, pageContext, location }) => {
         title="Resources"
         data={data}
         description="This is a group of resources I have either learned something from or thought could become useful in the future."
+        searchContext="Categories"
       >
         {({ searchPosts }) =>
           searchPosts.map(({ node }, i) => (
@@ -52,32 +52,6 @@ const ResourceTemplate = ({ data, pageContext, location }) => {
           />
         )}
         <section dangerouslySetInnerHTML={{ __html: post.html }} />
-        <nav>
-          <ul
-            style={{
-              display: `flex`,
-              flexWrap: `wrap`,
-              justifyContent: `space-between`,
-              listStyle: `none`,
-              padding: 0,
-            }}
-          >
-            <li>
-              {previous && (
-                <Link to={previous.fields.slug} rel="prev">
-                  ← {previous.frontmatter.title}
-                </Link>
-              )}
-            </li>
-            <li>
-              {next && (
-                <Link to={next.fields.slug} rel="next">
-                  {next.frontmatter.title} →
-                </Link>
-              )}
-            </li>
-          </ul>
-        </nav>
       </article>
     </Layout>
   )

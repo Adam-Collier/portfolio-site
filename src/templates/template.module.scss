@@ -17,7 +17,7 @@
 
 .blogpost {
   @media (max-width: 767px) {
-    --content-grid-template: "content" "sidebar";
+    --content-grid-template: "content" "moreposts";
   }
 }
 
@@ -33,13 +33,30 @@
   }
 
   header h1 {
-    font-size: 3rem;
+    font-size: 2rem;
     line-height: 1.3;
+  }
+
+  @media (max-width: 767px) {
+    header + div {
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      border-radius: 0;
+
+      img {
+        border-radius: 0;
+      }
+    }
   }
 
   p {
     line-height: 1.75;
-    font-size: 1.25rem;
+    font-size: 1.125rem;
+    font-weight: 450;
 
     a {
       font-weight: 600;
@@ -48,17 +65,8 @@
 }
 
 .sidebar {
-  > div {
-    position: sticky;
-    top: 72px;
-  }
-
-  grid-area: sidebar;
-  position: relative;
-
-  h4 {
-    margin: 0;
-    color: var(--primary-accent);
+  @media (max-width: 767px) {
+    display: none;
   }
 }
 

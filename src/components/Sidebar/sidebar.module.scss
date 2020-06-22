@@ -2,11 +2,20 @@
   > div {
     position: sticky;
     top: 72px;
+    @media (min-width: 768px) {
+      height: calc(100vh - 140px);
+      display: flex;
+      flex-direction: column;
+    }
 
     > section {
       display: grid;
       grid-gap: 1rem;
       cursor: pointer;
+
+      @media (min-width: 768px) {
+        overflow-y: scroll;
+      }
     }
   }
 

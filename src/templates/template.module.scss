@@ -1,11 +1,3 @@
-.blogpost {
-  width: 100%;
-  display: grid;
-  grid-gap: 2rem;
-  grid-template-columns: var(--content-grid-columns);
-  grid-template-areas: var(--content-grid-template);
-}
-
 .blogpost,
 .resources {
   width: 100%;

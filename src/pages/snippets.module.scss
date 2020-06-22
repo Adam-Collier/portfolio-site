@@ -52,10 +52,6 @@ ul {
 }
 
 .tableOfContents {
-  @media (min-width: 768px) {
-    height: calc(90vh - 200px);
-    overflow-y: scroll;
-  }
   a {
     text-decoration: none;
     color: var(--primary-accent);

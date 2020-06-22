@@ -16,6 +16,8 @@
   --content-x-padding: 1.5rem;
   --content-spacing-left: 10%;
 
+  --icon-fill: var(--primary-black);
+
   @media (max-width: 768px) {
     --content-x-padding: 1rem;
     --content-grid-template: "sidebar" "content";

@@ -75,17 +75,3 @@
     display: none;
   }
 }
-
-.info {
-  border-radius: 50%;
-  border: 1px solid var(--primary-dark-grey);
-  width: 1.75rem;
-  height: 1.75rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-  @media (min-width: 768px) {
-    display: none;
-  }
-}

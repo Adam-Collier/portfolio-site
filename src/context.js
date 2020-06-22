@@ -18,6 +18,10 @@ const stateReducer = (state, action) => {
       return { isMobileMenuVisible: false }
     }
 
+    case "isInfo": {
+      return { isInfo: !state.isInfo }
+    }
+
     default: {
       throw new Error(`Unhandled action type: ${action.type}`)
     }
@@ -27,6 +31,7 @@ const stateReducer = (state, action) => {
 const initialState = {
   isMenuVisible: false,
   isMobileMenuVisible: false,
+  isInfo: false,
 }
 
 function StateProvider({ children }) {

@@ -6,6 +6,7 @@ import { useContext } from "../../context"
 
 import Navigation from "../Navigation"
 import MobileMenu from "../MobileMenu"
+import InfoBar from "../InfoBar"
 
 import styles from "./header.module.scss"
 import commandIcon from "../../icons/command_icon.svg"
@@ -49,7 +50,7 @@ const Header = () => {
           )}
         </div>
         <Navigation styles={styles.navigation} />
-        <p className={styles.info}>i</p>
+        <InfoBar />
       </header>
       {isMobileMenuVisible && <MobileMenu />}
     </>

@@ -1,0 +1,43 @@
+.info {
+  border-radius: 50%;
+  border: 1px solid var(--primary-dark-grey);
+  width: 1.75rem;
+  height: 1.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  cursor: pointer;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+
+.menu {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  background: var(--primary-black);
+  bottom: 1.5rem;
+  left: 1rem;
+  right: 1rem;
+  border-radius: var(--border-radius);
+  padding: 1rem;
+
+  p {
+    color: var(--primary-white);
+    font-weight: 400;
+  }
+
+  p,
+  img {
+    margin: 0;
+  }
+
+  img {
+    width: 1rem;
+    height: 1rem;
+  }
+}

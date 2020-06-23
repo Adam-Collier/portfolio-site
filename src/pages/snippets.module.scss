@@ -58,6 +58,16 @@ ul {
   }
   ul {
     list-style-type: none;
+    font-weight: 400;
+    p {
+      font-weight: 550;
+    }
+    li > ul {
+      margin-top: 0.6rem;
+    }
+    li {
+      margin-bottom: 0.6rem;
+    }
   }
   > ul {
     margin: 0;

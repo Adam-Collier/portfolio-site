@@ -108,4 +108,11 @@ $ git rm -r --cached .
 
 [Parceljs](https://parceljs.org/) - Blazing fast, zero configuration web application bundler
 
+## Collaboration
+
+[MakeSpace](https://makespace.fun) - A whole new way to collaborate, apart. A place to co-create, co-work, or just hang out.
+[Notion](https://www.notion.so) - Write, plan, collaborate, and get organized. A really great tool for note taking and prepping/recording meeting notes. Now it's free for personal accounts!
+
+## Thinking
+
 [Untools](https://untools.co/) - A collection of thinking tools and frameworks to help you solve problems, make decisions and understand systems. I've not read a lot of it yet but it seems pretty cool.

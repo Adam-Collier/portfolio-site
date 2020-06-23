@@ -5,9 +5,17 @@ color: "#24C46B"
 icon: "./icon.svg"
 ---
 
+## Blogs to follow
+
+- [Sara Soueidan](https://www.sarasoueidan.com/blog/)
+
+## Tools
+
 [Colorable](https://colorable.jxnblk.com/) - An easy to understand colour contrast checker by Brent Jackson
 
 [Usecontrast](https://usecontrast.com/) - a macOS app for quick axxess to WCAG colour contrast ratios
+
+## Articles
 
 [A Good Basis for Accessibility](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML) - This article on MDN dives deep into semantic HTML as a basis for building accessible sites
 
@@ -24,3 +32,5 @@ icon: "./icon.svg"
 [Where to put Buttons in Forms](https://adamsilver.io/articles/where-to-put-buttons-in-forms/) - Great do's and don'ts for forms
 
 [HTML Hell](https://www.htmhell.dev/) - A great site for recognising bad HTML practices and how to fix them.
+
+[Inclusively Hiding & Styling Checkboxes and Radio Buttons](https://www.sarasoueidan.com/blog/inclusively-hiding-and-styling-checkboxes-and-radio-buttons) - Accessibly style your checkboxes and radio buttons

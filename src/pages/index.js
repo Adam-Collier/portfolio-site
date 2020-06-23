@@ -20,7 +20,7 @@ const IndexPage = props => (
       I'm
     </h4>
     <h1>Adam Collier</h1>
-    <h2>A UX lovin' Creative Designer &#x26; Developer</h2>
+    <h2>Creative Designer &#x26; Developer</h2>
     <p>
       This site is as much for me as it is for you, it acts as a collection of
       thoughts, aha moments and tidbits of code which always seem to escape my

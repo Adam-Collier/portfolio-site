@@ -1,4 +1,6 @@
 import React from "react"
+import { useTransition, animated } from "react-spring"
+
 import Navigation from "../Navigation"
 import { useContext } from "../../context"
 import closeIcon from "../../icons/close_icon.svg"
@@ -6,21 +8,42 @@ import closeIcon from "../../icons/close_icon.svg"
 import styles from "./mobilemenu.module.scss"
 
 const Index = () => {
-  const dispatch = useContext()[1]
+  const [{ isMobileMenuVisible }, dispatch] = useContext()
 
-  return (
-    <div className={styles.menu}>
-      <button
-        onClick={() => dispatch({ type: "mobileMenuHide" })}
-        onKeyDown={() => dispatch({ type: "mobileMenuHide" })}
-      >
-        <img src={closeIcon} alt="close icon" />
-      </button>
-      <Navigation
-        styles={styles.navigation}
-        onClick={() => dispatch({ type: "mobileMenuHide" })}
-      />
-    </div>
+  const transitions = useTransition(isMobileMenuVisible, null, {
+    from: {
+      opacity: 0,
+      visibility: "hidden",
+      transform: "scale(0.95)",
+    },
+    enter: {
+      opacity: 1,
+      visibility: "visible",
+      transform: "scale(1)",
+    },
+    leave: {
+      opacity: 0,
+      visibility: "hidden",
+      transform: "scale(0.95)",
+    },
+  })
+
+  return transitions.map(
+    ({ item, props, key }) =>
+      item && (
+        <animated.div key={key} style={props} className={styles.menu}>
+          <button
+            onClick={() => dispatch({ type: "mobileMenuHide" })}
+            onKeyDown={() => dispatch({ type: "mobileMenuHide" })}
+          >
+            <img src={closeIcon} alt="close icon" />
+          </button>
+          <Navigation
+            styles={styles.navigation}
+            onClick={() => dispatch({ type: "mobileMenuHide" })}
+          />
+        </animated.div>
+      )
   )
 }
 

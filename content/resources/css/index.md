@@ -2,7 +2,6 @@
 title: CSS
 description: Cascading Style Sheets (CSS) handles the look and feel of a web page and tells the browser how to display the text and other content that you write in HTML.
 color: "#2062AF"
-icon: "./icon.svg"
 ---
 
 Breaking this word up into smaller parts, lets start with the phase 'Style Sheets'.

@@ -5,7 +5,7 @@ import styles from "./resource.module.scss"
 
 const index = ({ node, currentPageId }) => {
   const { id } = node
-  const { title, icon } = node.frontmatter
+  const { title } = node.frontmatter
   const { slug } = node.fields
 
   return (

@@ -41,8 +41,6 @@ const Index = () => {
     }
   `)
 
-  console.log(data)
-
   return (
     <div className={styles.morePosts}>
       <h4>More posts</h4>

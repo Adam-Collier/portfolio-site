@@ -2,7 +2,6 @@
 title: Accessibility
 description: Enabling as many people as possible to use the web, including those with limited abilities. For people with disabilities, accessibility makes things possible.
 color: "#24C46B"
-icon: "./icon.svg"
 ---
 
 ## Blogs to follow

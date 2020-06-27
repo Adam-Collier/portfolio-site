@@ -7,7 +7,6 @@
 
 exports.onClientEntry = () => {
   window.copyToClipboard = (buttontext, str) => {
-    console.log(buttontext)
     const el = document.createElement("textarea")
     el.className = "gatsby-code-button-buffer"
     el.innerHTML = str

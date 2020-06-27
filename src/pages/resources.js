@@ -76,9 +76,6 @@ export const pageQuery = graphql`
       html
       frontmatter {
         title
-        icon {
-          publicURL
-        }
       }
     }
     allMarkdownRemark(
@@ -94,9 +91,6 @@ export const pageQuery = graphql`
           }
           frontmatter {
             title
-            icon {
-              publicURL
-            }
           }
         }
       }

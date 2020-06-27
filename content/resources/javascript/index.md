@@ -2,7 +2,6 @@
 title: Javascript
 description: JavaScript is the programming language of the web. You can use it to add dynamic behavior, store information, and handle requests and responses on a website.
 color: "#F7DF1E"
-icon: "./icon.svg"
 ---
 
 JavaScript is the programming language of the web. You can use it to add dynamic behavior, store information, and handle requests and responses on a website.

@@ -6,6 +6,7 @@
   left: 0;
   display: flex;
   justify-content: space-between;
+  z-index: 5;
 
   @media (max-width: 767px) {
     display: none;

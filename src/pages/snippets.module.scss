@@ -6,49 +6,11 @@
   grid-template-areas: var(--content-grid-template);
 }
 
-ul {
-  list-style-type: none;
-}
-
 .content {
   overflow: hidden;
   grid-area: content;
   width: var(--content-width);
   margin-left: var(--content-spacing-left);
-
-  --anchor-padding: 80px;
-
-  h2,
-  h3 {
-    position: relative;
-
-    &:before {
-      display: block;
-      content: " ";
-      margin-top: calc(-1 * var(--anchor-padding));
-      height: var(--anchor-padding);
-      visibility: hidden;
-      pointer-events: none;
-      position: relative;
-    }
-
-    a {
-      top: var(--anchor-padding) !important;
-    }
-  }
-
-  > div {
-    position: relative;
-    z-index: 2;
-  }
-
-  h2 {
-    z-index: 1;
-  }
-
-  h3 {
-    z-index: 0;
-  }
 }
 
 .tableOfContents {

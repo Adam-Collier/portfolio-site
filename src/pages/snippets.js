@@ -5,7 +5,6 @@ import Layout from "../components/Layout"
 import SEO from "../components/seo"
 import Sidebar from "../components/Sidebar"
 
-import "../styles/button.css"
 import styles from "./snippets.module.scss"
 
 const Snippets = ({ data }) => {

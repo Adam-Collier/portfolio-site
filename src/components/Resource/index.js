@@ -11,7 +11,6 @@ const index = ({ node, currentPageId }) => {
   return (
     <Link to={slug} className={`${styles.resource}`}>
       <article key={slug} className={currentPageId === id ? styles.active : ""}>
-        <img src={icon.publicURL} alt={`${title} icon`} />
         <section>
           <h3>{title}</h3>
         </section>

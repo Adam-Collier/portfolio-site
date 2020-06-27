@@ -62,6 +62,14 @@
   }
 }
 
+.resourceSidebar {
+  div {
+    section {
+      grid-gap: 0.5rem;
+    }
+  }
+}
+
 .bar {
   display: flex;
   justify-content: space-between;

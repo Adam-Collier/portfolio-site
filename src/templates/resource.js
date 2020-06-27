@@ -30,6 +30,7 @@ const ResourceTemplate = ({ data, location }) => {
         data={data}
         description="This is a group of resources I have either learned something from or thought could become useful in the future."
         searchContext="Categories"
+        className={styles.resourceSidebar}
       >
         {({ searchPosts }) =>
           searchPosts.map(({ node }, i) => (

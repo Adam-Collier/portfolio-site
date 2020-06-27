@@ -25,6 +25,7 @@ module.exports = {
       options: {
         plugins: [
           `gatsby-remark-autolink-headers`,
+          `copy-snippet`,
           `gatsby-remark-prismjs`,
           {
             resolve: `gatsby-remark-copy-linked-files`,

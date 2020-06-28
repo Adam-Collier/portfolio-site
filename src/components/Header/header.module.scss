@@ -82,6 +82,10 @@
   background: none;
   line-height: 0;
 
+  @media (min-width: 768px) {
+    display: none;
+  }
+
   img {
     margin: 0;
   }

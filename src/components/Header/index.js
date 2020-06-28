@@ -5,12 +5,15 @@ import { globalHistory } from "@reach/router"
 
 import Navigation from "../Navigation"
 import MobileMenu from "../MobileMenu"
-import InfoBar from "../InfoBar"
+import { useContext } from "../../context"
 
 import styles from "./header.module.scss"
 import commandIcon from "../../icons/command_icon.svg"
+import menuIcon from "../../icons/menu.svg"
 
 const Header = () => {
+  const [{ isMobileMenu }, dispatch] = useContext()
+
   const getPath = relativePath => {
     let pathMappings = {
       "/": "Home",
@@ -47,9 +50,14 @@ const Header = () => {
           )}
         </div>
         <Navigation styles={styles.navigation} />
-        <InfoBar />
+        <button
+          className={styles.menuButton}
+          onClick={() => dispatch({ type: "isMobileMenu" })}
+        >
+          <img src={menuIcon} alt="menu icon" />
+        </button>
       </header>
-      <MobileMenu />
+      {isMobileMenu && <MobileMenu />}
     </>
   )
 }

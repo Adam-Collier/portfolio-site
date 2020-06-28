@@ -10,16 +10,8 @@ const stateReducer = (state, action) => {
       return { isMenuVisible: !state.isMenuVisible }
     }
 
-    case "isMobileMenuVisible": {
-      return { isMobileMenuVisible: true }
-    }
-
-    case "mobileMenuHide": {
-      return { isMobileMenuVisible: false }
-    }
-
-    case "isInfo": {
-      return { isInfo: !state.isInfo }
+    case "isMobileMenu": {
+      return { isMobileMenu: !state.isMobileMenu }
     }
 
     default: {
@@ -30,7 +22,7 @@ const stateReducer = (state, action) => {
 
 const initialState = {
   isMenuVisible: false,
-  isMobileMenuVisible: false,
+  isMobileMenu: false,
   isInfo: false,
 }
 

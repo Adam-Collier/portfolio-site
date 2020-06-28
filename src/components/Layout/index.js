@@ -60,10 +60,10 @@ const Layout = ({ children, location, className, container }) => {
       {
         startDeepPress: function(event) {
           event.preventDefault()
-          dispatch({ type: "isMobileMenuVisible" })
+          dispatch({ type: "isMobileMenu" })
         },
         endDeepPress: function(event) {
-          dispatch({ type: "isMobileMenuVisible", check: true })
+          dispatch({ type: "isMobileMenu", check: true })
         },
       },
       { only: "touch", preventSelect: false }

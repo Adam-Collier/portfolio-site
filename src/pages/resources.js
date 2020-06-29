@@ -7,7 +7,7 @@ import SEO from "../components/seo"
 import Resource from "../components/Resource"
 import Sidebar from "../components/Sidebar"
 
-import styles from "../templates/template.module.scss"
+import styles from "../templates/layout.module.scss"
 
 const ResourceTemplate = ({ data, location }) => {
   const post = data.markdownRemark

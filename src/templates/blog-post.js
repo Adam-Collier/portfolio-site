@@ -8,7 +8,7 @@ import Blogpost from "../components/Blogpost"
 import Sidebar from "../components/Sidebar"
 import MorePosts from "../components/MorePosts"
 
-import styles from "./template.module.scss"
+import styles from "./layout.module.scss"
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark

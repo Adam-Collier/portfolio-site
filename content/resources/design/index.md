@@ -17,3 +17,13 @@ Everything design related I find useful and will reference in the future. It als
 ## Tools
 
 [The Laws of UX](https://lawsofux.com/) - A superb site explaining a collection of design principles that designers can consider when designing a user interface. It's also a stunning site...
+
+## Articles
+
+[Space, Grids, and Layouts](https://www.designsystems.com/space-grids-and-layouts/) - My go to article when thinking about layouts and initial setup. A huge helper in defining spacing and starting to understand the fundamentals.
+
+[A Complete Guide to Typography](https://www.designsystems.com/iconography-guide/) - Essential reading when starting on your iconography journey. Again getting that initial setup makes all the difference in making your icons consistent and beautiful to look at
+
+## Icons
+
+[CSS.gg Icon Set](https://css.gg/) - A thorough collection of open source icons you can use in any of your projects. Created by [@AstritMalsija](https://twitter.com/astritmalsija) it's a great set to have in your arsenal as a designer and/or a developer

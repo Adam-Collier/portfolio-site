@@ -29,3 +29,7 @@ JavaScript is the programming language of the web. You can use it to add dynamic
 [David Walsh Fetch Api Article](https://davidwalsh.name/fetch) - An article I come back to time and time again when I spontaneously forget how to use the fetch API (it happens a lot)
 
 [Understanding Map and Set in JavaScript](https://www.taniarascia.com/understanding-map-and-set-javascript/) - [@taniarascia](https://twitter.com/taniarascia) has written a really great post on the new iterable objects types introducted in ECMAScript 2015. I'm pretty new to Map and Set so this gave me a good understanding of when it could be used,
+
+## Tools
+
+[Bundlephobia](https://bundlephobia.com/) - A good sounding board for whether an npm should be installed. If something seems a little large in size I'll tend to look for something else or build something custom

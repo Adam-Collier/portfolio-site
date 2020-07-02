@@ -80,3 +80,15 @@ document.addEventListener("DOMContentLoaded", function() {
 ```js
 myArray.find(x => x.id === "45").author
 ```
+
+### Duplicate child elements
+
+```js
+// Child elements are usually a HTMLCollection (which we can't map over)
+// So we need to convert it to an array first
+Array.from(element.children).map(child => {
+  // by setting to true we grab the whole subtree too
+  let clonedChild = child.cloneNode(true)
+  element.appendChild(clonedChild)
+})
+```

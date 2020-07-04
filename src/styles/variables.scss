@@ -10,15 +10,21 @@
 
   --sidebar-width: 300px;
 
-  --content-width: 70%;
-  --content-grid-template: "sidebar content";
-  --content-grid-columns: 300px minmax(0, 0.95fr);
+  --content-width: 95%;
+  --max-content-width: 740px;
+  --content-grid-template: "sidebar content padding";
+  --content-grid-columns: 300px minmax(0, 1fr) 2rem;
   --content-x-padding: 1.5rem;
   --content-spacing-left: 10%;
 
   --icon-fill: var(--primary-black);
 
-  @media (max-width: 768px) {
+  @media (min-width: 768px) and (max-width: 1023px) {
+    --content-grid-template: "sidebar content";
+    --content-grid-columns: 200px minmax(0, 1fr);
+  }
+
+  @media (max-width: 767px) {
     --content-x-padding: 1rem;
     --content-grid-template: "sidebar" "content";
     --content-grid-columns: 1fr;

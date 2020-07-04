@@ -16,7 +16,8 @@
 .content {
   grid-area: content;
   width: var(--content-width);
-  margin-left: var(--content-spacing-left);
+  max-width: var(--max-content-width);
+  margin: 0 auto;
 
   > div {
     width: 100%;

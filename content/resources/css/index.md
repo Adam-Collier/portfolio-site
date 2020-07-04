@@ -14,9 +14,9 @@ If you are completely new to web development, please head to [W3School CSS](http
 
 ## Articles
 
-[A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) - The ultimate guide guide to flexbox. CSS tricks really nailed this one and it's one of the best and easiest to understand guides out there
+[A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) - Read/Bookmark - The ultimate guide guide to flexbox. CSS tricks really nailed this one and it's one of the best and easiest to understand guides out there
 
-[A complete Guide to Grid](https://css-tricks.com/snippets/css/complete-guide-grid/) - Another great CSS layouts guide from CSS tricks. I find myself referencing this a lot stored some snippets for easy access.
+[A complete Guide to Grid](https://css-tricks.com/snippets/css/complete-guide-grid/) - Read/Bookmark - Another great CSS layouts guide from CSS tricks. I find myself referencing this a lot stored some snippets for easy access.
 
 [CSS Animations](https://www.youtube.com/watch?v=8kK-cA99SA0&list=PLqGj3iMvMa4LvJ8VctoXnPI0dtE40wfid) - This is where it all started for me and Devtips holds a very dear place in my heart. A lot of it may be outdated but I'm leaving it here for the memories.
 
@@ -27,3 +27,7 @@ If you are completely new to web development, please head to [W3School CSS](http
 [Styling Layout Wrappers In CSS](https://ishadeed.com/article/styling-wrappers-css) - A comprehensive introduction on creating and styling Layout wrappers. I'm a big fan of this article because it covers a lot of use cases.
 
 [Everything I Learned About min(), max(), clamp() In CSS](https://ishadeed.com/article/css-min-max-clamp/) - Ahmed has wrote a great post for those wanting to familiarise themselves with min(), max() and clamp() css functions. I'm excited for this addition to the language and it will revolutionise responsive declarations.
+
+## Tools
+
+[Responsively](https://responsively.app/) - Responsive Design Previewer - Tweeted by none other than [@addyosmani](https://twitter.com/addyosmani) (so it's bound to be good). I've got to say it's absolute bliss being able to see all of the screens I care about in one space side by side, and it even updates if you're using hot reloading.

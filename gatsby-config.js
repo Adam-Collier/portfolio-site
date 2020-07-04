@@ -31,6 +31,7 @@ module.exports = {
             },
           },
           `copy-snippet`,
+          `resource-format`,
           `gatsby-remark-prismjs`,
           {
             resolve: `gatsby-remark-copy-linked-files`,

@@ -2,65 +2,35 @@
   width: 100%;
   display: grid;
   grid-gap: 2rem;
-  grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
-  grid-template-areas:
-    "sidebar content"
-    "sidebar nav";
-}
-
-ul {
-  list-style-type: none;
+  grid-template-columns: var(--content-grid-columns);
+  grid-template-areas: var(--content-grid-template);
 }
 
 .content {
+  overflow: hidden;
   grid-area: content;
   width: var(--content-width);
-  margin-left: 10%;
-
-  --anchor-padding: 80px;
-
-  h2,
-  h3 {
-    position: relative;
-
-    &:before {
-      display: block;
-      content: " ";
-      margin-top: calc(-1 * var(--anchor-padding));
-      height: var(--anchor-padding);
-      visibility: hidden;
-      pointer-events: none;
-      position: relative;
-    }
-
-    a {
-      top: var(--anchor-padding) !important;
-    }
-  }
-
-  > div {
-    position: relative;
-    z-index: 2;
-  }
-
-  h2 {
-    z-index: 1;
-  }
-
-  h3 {
-    z-index: 0;
-  }
+  max-width: var(--max-content-width);
+  margin: 0 auto;
 }
 
 .tableOfContents {
-  height: calc(90vh - 200px);
-  overflow-y: scroll;
   a {
     text-decoration: none;
     color: var(--primary-accent);
   }
   ul {
     list-style-type: none;
+    font-weight: 400;
+    p {
+      font-weight: 550;
+    }
+    li > ul {
+      margin-top: 0.6rem;
+    }
+    li {
+      margin-bottom: 0.6rem;
+    }
   }
   > ul {
     margin: 0;

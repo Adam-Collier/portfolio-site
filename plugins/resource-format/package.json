@@ -1,0 +1,20 @@
+{
+  "name": "gatsby-resource-format",
+  "version": "1.0.0",
+  "description": "A plugin for formatting each resource",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo \"No build script setup\""
+  },
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin"
+  ],
+  "author": "Kyle Gill <kyle.robert.gill@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "mdast-util-to-string": "^1.1.0",
+    "unist-util-visit": "^2.0.2"
+  }
+}

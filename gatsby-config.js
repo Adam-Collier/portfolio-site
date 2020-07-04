@@ -24,7 +24,14 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
-          `gatsby-remark-autolink-headers`,
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              offsetY: `80`,
+            },
+          },
+          `copy-snippet`,
+          `resource-format`,
           `gatsby-remark-prismjs`,
           {
             resolve: `gatsby-remark-copy-linked-files`,

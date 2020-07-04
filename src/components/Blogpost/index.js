@@ -15,7 +15,7 @@ const Index = ({ node, noThumbnail }) => {
     >
       <article key={slug}>
         {!noThumbnail && (
-          <Image fixed={thumbnail.childImageSharp.fixed} alt={title} />
+          <Image fluid={thumbnail.childImageSharp.fluid} alt={title} />
         )}
         <section>
           <small>{date}</small>

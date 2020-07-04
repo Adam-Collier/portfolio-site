@@ -4,6 +4,7 @@ date: 2019-12-09
 featuredImage: ./featured-image.jpg
 thumbnail: ./thumbnail.jpg
 tags: ["fonts", "performance"]
+published: true
 ---
 
 Whilst building this site, it was early on in the redesign process that I decided I wanted to use the brilliant open source font [Inter](https://rsms.me/inter/). Created by the extremely talented Rasmus Andersson ([@rsms](https://twitter.com/rsms)) as an experiment in 2016 whilst working at Figma it has blown up in popularity and rightly so. With 2.5k glyphs, 18 styles and 33 features at the moment it gives designers and developers an incredible amount of variation to express themselves with no doubt one of the best open source fonts you can wish for. However, as much as I love the font there was one major issue when we got the site up and started to run some audits... Each woff2 font was an enormous 104kb each!

@@ -45,11 +45,11 @@ const Blog = ({ data }) => {
   return (
     <Layout container="fluid" className={styles.blog}>
       <SEO title="Blog page" />
-      <Sidebar>
-        <p>
-          A collection of writing which can range from talking about code,
-          design or life in general. Enjoy this eclectic collection of writings
-        </p>
+      <Sidebar
+        title="Blog"
+        description="A collection of writing which can range from talking about code,
+          design or life in general. Enjoy this eclectic collection of writings"
+      >
         <div className={styles.tags}>
           {tags.map(({ tag }, i) => (
             <button
@@ -83,7 +83,10 @@ export const query = graphql`
     }
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { fileAbsolutePath: { regex: "/blog/" } }
+      filter: {
+        fileAbsolutePath: { regex: "/blog/" }
+        frontmatter: { published: { eq: true } }
+      }
     ) {
       edges {
         node {
@@ -96,8 +99,8 @@ export const query = graphql`
             title
             thumbnail {
               childImageSharp {
-                fixed(width: 114, height: 114, quality: 90, toFormat: JPG) {
-                  ...GatsbyImageSharpFixed_withWebp
+                fluid(maxWidth: 114, quality: 90, toFormat: JPG) {
+                  ...GatsbyImageSharpFluid_withWebp
                 }
               }
             }

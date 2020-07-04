@@ -1,0 +1,26 @@
+.gatsby-copy-snippet {
+  color: var(--primary-black);
+  background-color: rgba(255, 255, 255, 0.25);
+  border: none;
+  border-radius: var(--border-radius);
+  font-weight: 450;
+  cursor: pointer;
+  padding: 0.25rem 0.75rem;
+  position: relative;
+  top: 1rem;
+  left: auto;
+  display: block;
+  right: 1rem;
+  margin-bottom: -31px;
+  text-align: right;
+  margin-left: auto;
+  font-size: 0.75rem;
+}
+
+.gatsby-copy-snippet:hover {
+  background-color: var(--primary-white);
+}
+
+.gatsby-copy-snippet:disabled {
+  cursor: not-allowed;
+}

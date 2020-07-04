@@ -29,18 +29,19 @@ const Snippets = ({ data }) => {
   return (
     <Layout container="fluid" className={styles.snippets}>
       <SEO title="Snippets page" />
-      <Sidebar className={styles.sidebar}>
-        <p>
-          There's nothing worse than almost remembering a bit of code you saw on
+      <Sidebar
+        className={styles.sidebar}
+        title="Snippets"
+        description="There's nothing worse than almost remembering a bit of code you saw on
           stackoverflow on in a blogpost once. So I've collated all of the ones
-          I find most useful.
-        </p>
-
+          I find most useful."
+      >
         <div
           className={styles.tableOfContents}
           dangerouslySetInnerHTML={{ __html: tableOfContents }}
         ></div>
       </Sidebar>
+
       <div
         className={styles.content}
         dangerouslySetInnerHTML={{ __html: html }}

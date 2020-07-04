@@ -1,6 +1,10 @@
 @font-face {
   font-family: "Inter";
-  src: url("../../../static/fonts/InterDisplay.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-named-instance: "Regular";
+  font-display: swap;
+  src: url("../../../static/fonts/Inter.woff2") format("woff2");
 }
 
 :root {
@@ -8,9 +12,15 @@
 }
 
 html {
-  font-family: Inter;
+  font-family: "Inter", sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+}
+
+@supports (font-variation-settings: normal) {
+  html {
+    font-family: "Inter var", sans-serif;
+  }
 }
 
 body {

@@ -191,7 +191,7 @@ pre.line-numbers > code {
 .gatsby-highlight {
   background-color: #383e49;
   border-radius: 0.3em;
-  margin: 1.666rem 0;
+  margin: 0 0 1.666rem;
   padding: 1.5rem;
   overflow: auto;
   font-size: 14px;
@@ -199,9 +199,7 @@ pre.line-numbers > code {
 
 @media (max-width: 599px) {
   .gatsby-highlight {
-    width: 100vw;
-    margin: 1.666rem 0 1.666rem -1rem;
-    border-radius: 0;
+    width: calc(100vw - 2rem);
   }
 }
 

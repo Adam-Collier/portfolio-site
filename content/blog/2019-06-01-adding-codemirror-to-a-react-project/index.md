@@ -3,6 +3,7 @@ title: Adding Codemirror to a React Project
 date: 2019-06-01
 thumbnail: ./thumbnail.jpg
 tags: [react, codemirror]
+published: true
 ---
 
 This post is going to cover how to add Codemirror to a react project. Codemirror is a versatile code editor implemeted in javascript for the browser. For my implentation I added it to an electron app built with react but it will work exactly the same in a standard react install. I could have just added the react-codemirror package to do this but sometimes I find adding packages can make things more complicated than they should be.

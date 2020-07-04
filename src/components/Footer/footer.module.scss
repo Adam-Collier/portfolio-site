@@ -6,6 +6,11 @@
   left: 0;
   display: flex;
   justify-content: space-between;
+  z-index: 5;
+
+  @media (max-width: 1024px) {
+    display: none;
+  }
 
   img {
     width: 2rem;

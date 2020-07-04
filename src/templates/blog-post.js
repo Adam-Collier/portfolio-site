@@ -1,31 +1,36 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import Image from "gatsby-image"
 
 import Layout from "../components/Layout"
 import SEO from "../components/seo"
 import Blogpost from "../components/Blogpost"
 import Sidebar from "../components/Sidebar"
+import MorePosts from "../components/MorePosts"
 
-import styles from "./template.module.scss"
+import styles from "./layout.module.scss"
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata.title
-  const { previous, next } = pageContext
 
   return (
     <Layout
       location={location}
       title={siteTitle}
       container="fluid"
-      className={styles.blogpost}
+      className={`${styles.blogpost}`}
     >
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
-      <Sidebar title="Resources" data={data}>
+      <Sidebar
+        title="Blogpost"
+        data={data}
+        className={styles.sidebar}
+        searchContext="More Posts"
+      >
         {({ searchPosts }) =>
           searchPosts.map(({ node }, i) => (
             <Blogpost node={node} key={i} noThumbnail />
@@ -40,39 +45,13 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           <Image
             style={{
               marginBottom: "2rem",
-              borderRadius: "5px",
             }}
             sizes={post.frontmatter.featuredImage.childImageSharp.sizes}
           />
         )}
         <section dangerouslySetInnerHTML={{ __html: post.html }} />
-        <nav>
-          <ul
-            style={{
-              display: `flex`,
-              flexWrap: `wrap`,
-              justifyContent: `space-between`,
-              listStyle: `none`,
-              padding: 0,
-            }}
-          >
-            <li>
-              {previous && (
-                <Link to={previous.fields.slug} rel="prev">
-                  ← {previous.frontmatter.title}
-                </Link>
-              )}
-            </li>
-            <li>
-              {next && (
-                <Link to={next.fields.slug} rel="next">
-                  {next.frontmatter.title} →
-                </Link>
-              )}
-            </li>
-          </ul>
-        </nav>
       </article>
+      <MorePosts />
     </Layout>
   )
 }
@@ -107,6 +86,7 @@ export const pageQuery = graphql`
       filter: {
         fileAbsolutePath: { regex: "/blog/" }
         fields: { slug: { ne: $slug } }
+        frontmatter: { published: { eq: true } }
       }
     ) {
       edges {

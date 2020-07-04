@@ -2,11 +2,20 @@
   > div {
     position: sticky;
     top: 72px;
+    @media (min-width: 768px) {
+      height: calc(100vh - 140px);
+      display: flex;
+      flex-direction: column;
+    }
 
     > section {
       display: grid;
       grid-gap: 1rem;
       cursor: pointer;
+
+      @media (min-width: 768px) {
+        overflow-y: scroll;
+      }
     }
   }
 
@@ -28,4 +37,15 @@
   justify-content: space-between;
   align-items: center;
   padding-bottom: 1rem;
+}
+
+h4.title {
+  @media (min-width: 768px) {
+    display: none;
+  }
+  margin-bottom: 0.75rem;
+}
+
+p.description {
+  margin-bottom: 1rem;
 }

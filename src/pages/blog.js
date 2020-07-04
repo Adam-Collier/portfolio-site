@@ -44,7 +44,7 @@ const Blog = ({ data }) => {
 
   return (
     <Layout container="fluid" className={styles.blog}>
-      <SEO title="Blog page" />
+      <SEO title="Blog" />
       <Sidebar
         title="Blog"
         description="A collection of writing which can range from talking about code,

@@ -28,7 +28,7 @@ const Snippets = ({ data }) => {
 
   return (
     <Layout container="fluid" className={styles.snippets}>
-      <SEO title="Snippets page" />
+      <SEO title="Snippets" />
       <Sidebar
         className={styles.sidebar}
         title="Snippets"

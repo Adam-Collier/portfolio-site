@@ -10,12 +10,12 @@ In the past, whenever some part of the page has changed, even if it was a single
 
 ## Subscribe worthy newsletters
 
-[Overreacted by Dan Abramov](https://github.com/petehunt/react-howto) - A well respected member of the javascript community Dans shares the latest React news, his thoughts and explanations of react concepts.
+[Overreacted by Dan Abramov](https://overreacted.io/) - Dans just great - A well respected member of the javascript community Dans shares the latest React news, his thoughts and explanations of react concepts.
 
-[React Status](https://react.statuscode.com/) - A weekly roundup of the latest React and React Native links and tutorials, always a good read
+[React Status](https://react.statuscode.com/) - Weekly Roundup - A weekly roundup of the latest React and React Native links and tutorials, always a good read. Tip: I sometimes find there's a lot to take in so I spread it out over 2 or 3 sittings.
 
 ## Articles
 
-[React Docs](https://reactjs.org/docs/getting-started.html) - The React docs serve as a solid starting point and a reference for all levels
+[React Docs](https://reactjs.org/docs/getting-started.html) - Read - The React docs serve as a solid starting point and a reference for all levels. I always find myself coming back and re-remembering the react hook syntax.
 
-[How to use React Context effectively](https://kentcdodds.com/blog/how-to-use-react-context-effectively/) - The legend that is Kent C Dodds shows us how to setup React context in a project
+[How to use React Context effectively](https://kentcdodds.com/blog/how-to-use-react-context-effectively/) - Read/Bookmark - The legend that is Kent C Dodds shows us how to setup React context in a project. I always use this for my own context setup and it keeps everything nice and simple.

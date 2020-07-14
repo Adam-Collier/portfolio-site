@@ -37,8 +37,6 @@ Now this will work some magic and our `hero-block` directory will be created wit
    └── init.php
 ```
 
-I would like to be able to throw this into a blocks directory in the theme instead of having to add it to the plugins, but that's just me. On another note what's amazing about create-guten-block is it sets everything up for us, including our development environment (webpack and all that jazz) saving the humble developer many an hour which can be spent pondering life instead.
-
 Now we can just do a cheeky `cd` and start our development environment
 
 ```bash
@@ -46,14 +44,16 @@ $ cd hero-block
 $ npm start
 ```
 
-Also (and this is essential!) make sure to activate your block in the plugin dashboard otherwise you will be wondering why nothing is showing or happening as I did.
+Also (and this is essential!) make sure to activate your block in the plugin dashboard otherwise you will be wondering why nothing is showing or happening as I did and question life.
 
-I feel as though a while ago you couldn't write JSX and use hooks in create-guten-block, but a lot seems to have changed (which is always the case with front end development).
+I do feel as though the last time I used create-guten-block I couldnt use JSX so it is a great feeling to see that this has been added.
 
-So just to prepare you, I find the Gutenberg docs pretty darn awful for figuring out how to create blocks, which is a real shame because blocks are an amazing step forward for WordPress developers. Instead, I found some blog posts which helped with my understanding:
+So just to prepare you for the Gutenberg adventure, I find the Gutenberg docs pretty darn awful for figuring out how to create blocks, which is a real shame because blocks are an amazing step forward for WordPress developers. Instead, I found some blog posts which helped with me understand the basics:
 
 - [Creating a custom block type for WordPress gutenberg]("https://medium.com/stampede-team/creating-a-custom-block-type-for-wordpress-gutenberg-editor-a2539010bb4c")
 - [Learning Gutenberg CSS Tricks]("https://css-tricks.com/learning-gutenberg-7-building-our-block-custom-card-block/")
+
+When you read these you will notice some differences in best practices and styles. Once you get the general idea of how they work you can make some solid assumptions.
 
 Now there are quite a lot of helpers/components which WordPress have created to make it easier to build blocks, however, as mentioned before the docs make this extremely difficult to come by. Instead, I took to looking in the Gutenberg Github repo and just searching for a component I thought I might need. Examples of some components you can find:
 
@@ -77,7 +77,7 @@ keywords: [
 ],
 ```
 
-This is some nice setup create guten block has done for us and we can tweak it more in line with what we want.
+This is some nice setup create guten block has done for us and we can start to put our own stamp on it.
 
 ```jsx
 title: __("Hero Block"), // Block title.
@@ -92,7 +92,7 @@ keywords: [
 
 Gutenberg has defined a tonne of dashicons we can readily use to identify our blocks and can be found in their [developer resources]("https://developer.wordpress.org/resource/dashicons/#arrow-right-alt"). Just make sure to remove the dashicons part of the name and it should work a dream.
 
-Now, a biggie. We need to add our attributes, and this is fundamental to the block building process. Think of attributes as setting the initial state, or making them known to the block that this stuff is needed. In this instance I'm building a hero content block which is going to consist of an image, a title and a subtitle. So keeping that in mind my initial section would look like the below:
+Now, a biggie. We need to add our attributes, and this is fundamental to the block building process. Think of attributes as setting the initial state, or making them known to the block that this content is needed. In this instance I'm building a hero content block which is going to consist of an image, a title and a subtitle. So keeping that in mind my initial section would look like the below:
 
 ```jsx{4-21}
 title: __("Hero Block"), // Block title.
@@ -123,30 +123,40 @@ keywords: [
 ],
 ```
 
-Note: I've got a type attribute here because eventually, I'm going to create a dropdown so users can mix up the layout on the front end. Again the attributes all depend on your needs.
+Note: I've got a type attribute here because eventually, I'm going to create a dropdown so users can mix up the layout on the front end. The attributes are for you to decides, you can pick and choose whatever you want.
 
-So further down in our block.js file, we have an edit function and a save function which allows us to add our react goodness to the backend and frontend respectively. Create guten block puts some placeholder in there by default but we can strip all of that out as we want to be super cool and create our own.
+One thing to acknowledge is that the image id, width, height and alt attributes used above will all be used later on for some clever image wizardry gutenberg supplies. If you're wondering why I've added them that is.
+
+So further down in our block.js file, we have an edit function and a save function which allows us to add our react goodness to the backend and frontend respectively. Create guten block puts some placeholder in there by default but we can strip all of that out to create our custom block.
 
 At the top of the block we can import some components we can use in our edit function:
 
 ```jsx
+// Get the media library component from the editor
 import { MediaUpload, MediaUploadCheck } from "@wordpress/block-editor"
+// Grab a couple of text components we can use for the editor experience
 import { TextControl, SelectControl } from "@wordpress/components"
+
+// import the button component
 import { Button } from "@wordpress/components"
 ```
 
-and then in our edit function we can add the below:
+and then in our edit function we can add the below (I've added a load of comments which will hopefully help you understand exactly what is going on):
 
 ```jsx
 edit: (props) => {
+    // lets grab the props we will need
     const { setAttributes, className, attributes } = props;
-
+    // destructure all of the attributes we need for editing
     const { title, subtitle, type, url } = attributes;
 
     const ALLOWED_MEDIA_TYPES = ["image"];
 
     return (
         <div className={className}>
+            // this is our dropdown
+            // notice the onChange and setAttributes function being called
+            // this updates the type attribute everytime it is changed
             <SelectControl
                 label="Image position "
                 value={type}
@@ -158,19 +168,24 @@ edit: (props) => {
                 ]}
                 onChange={(value) => setAttributes({ type: value })}
             />
-
+            // text box for our title
+            // the value will always be up to date because it is using the title attribute
+            // on every change the title will be updated
             <TextControl
                 label="Title"
                 value={title}
                 onChange={(value) => setAttributes({ title: value })}
             />
-
+            // text box for our subtitle
+            // the value will always be up to date because it is using the subtitle attribute
             <TextControl
                 label="Subtitle"
                 value={subtitle}
                 onChange={(value) => setAttributes({ subtitle: value })}
             />
-
+            // our media upload button
+            // this will open a modal where we can select our image
+            // notice that when the image is selected we are updating some of our attributes
             <MediaUploadCheck>
                 <MediaUpload
                     onSelect={(media) => {
@@ -190,8 +205,37 @@ edit: (props) => {
                     )}
                 />
             </MediaUploadCheck>
-
+            // lets display an image in the editor when one has been selected
             {url && <img src={url} />}
+        </div>
+    );
+},
+```
+
+A reminder that everything in edit is for your backend and what is interacted with in the admin post editor. Now we can sort out our beautiful front end, it should be a little easier to see what is going on but I'll leave some comments anyhow.
+
+```jsx
+save: (props) => {
+
+    const { attributes } = props;
+
+    const { url, alt, id, width, height, title, subtitle, type } = attributes;
+
+    return (
+        <div className={`hero-content content-${type}`}>
+            <div>
+                <h1>{title}</h1>
+                <h4>{subtitle}</h4>
+            </div>
+            <section>
+                <img
+                    src={url}
+                    alt={alt}
+                    className={id ? `wp-image-${id}` : null}
+                    width={width}
+                    height={height}
+                />
+            </section>
         </div>
     );
 },

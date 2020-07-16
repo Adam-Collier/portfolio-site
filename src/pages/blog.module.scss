@@ -16,7 +16,7 @@
 .blogposts {
   display: grid;
   grid-area: content;
-  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   grid-auto-rows: minmax(min-content, max-content);
   grid-column-gap: 1.5rem;
   grid-row-gap: 2.5rem;

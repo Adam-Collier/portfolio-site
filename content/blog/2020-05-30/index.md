@@ -6,7 +6,7 @@ tags: ["wordpress", "gutenberg"]
 published: true
 ---
 
-This week I delved into the world of Gutenberg blocks and created my first block (it took a while...). In the following, I'll show you how to create your own and mention some of the trials and tribulations I encountered along the way. One important thing to note is none of this would have been possible without all of the hard work put into the `create guten block` project so a big thanks to those chaps. Okay, now the small talk is over with lets jump right in. First, we need to create our block, I'm going to call mine hero block, in our plugin directory by doing the following:
+This week I had my first play around with Gutenberg blocks and created my first block (it was a wild ride...). In this post, I thought I would give a little insight into the process of creating a block and some of the headaches I experienced along the way. One important thing to note is that none of this would have been possible without all of the hard work put into the `create-guten-block` open source project so a big thanks to those guys. Okay, now the small talk is over with lets jump right in. First, we need to create our block (I'm going to call mine "hero block") and in our WordPress plugin directory we need to execute the following in our terminal:
 
 ```bash
 # make sure you are in your plugins directory
@@ -44,11 +44,11 @@ $ cd hero-block
 $ npm start
 ```
 
-Also (and this is essential!) make sure to activate your block in the plugin dashboard otherwise you will be wondering why nothing is showing or happening as I did and question life.
+Also (and this is crucial!) make sure to activate your block in the plugin dashboard otherwise you will be wondering why nothing is showing or happening as I did.
 
-I do feel as though the last time I used create-guten-block I couldnt use JSX so it is a great feeling to see that this has been added.
+I do feel as though the last time I used create-guten-block I couldn't use JSX so it is a great feeling to see that this has been added to the project.
 
-So just to prepare you for the Gutenberg adventure, I find the Gutenberg docs pretty darn awful for figuring out how to create blocks, which is a real shame because blocks are an amazing step forward for WordPress developers. Instead, I found some blog posts which helped with me understand the basics:
+So, just to prepare you for the Gutenberg adventure, I find the Gutenberg docs pretty darn awful for figuring out how to create blocks, which is a real shame because blocks are an amazing step forward for WordPress developers. Instead, I found some blog posts which helped with me understand the basics:
 
 - [Creating a custom block type for WordPress gutenberg]("https://medium.com/stampede-team/creating-a-custom-block-type-for-wordpress-gutenberg-editor-a2539010bb4c")
 - [Learning Gutenberg CSS Tricks]("https://css-tricks.com/learning-gutenberg-7-building-our-block-custom-card-block/")
@@ -61,7 +61,7 @@ Now there are quite a lot of helpers/components which WordPress have created to 
 - [TextControl]("https://github.com/WordPress/gutenberg/tree/master/packages/components/src/text-control") - Think PlainText with a label. Users always love a good label.
 - [MediaUpload]("https://github.com/WordPress/gutenberg/tree/master/packages/block-editor/src/components/media-upload") - Add media from your media library.
 
-By understanding what components are available from the Gutenberg team anyone could hypothetically get a block up and running pretty quickly.
+By understanding what components are available from the Gutenberg team anyone could hypothetically get a block up and running pretty swiftly.
 
 Okay enough of that tangent, let's get into the React side of things. First of all, let's sort out our block settings, you will see the below bit of code in your `src/block.js` file:
 
@@ -77,7 +77,7 @@ keywords: [
 ],
 ```
 
-This is some nice setup create guten block has done for us and we can start to put our own stamp on it.
+This is some nice setup create guten block has done for us and we can start to put our stamp on it.
 
 ```jsx
 title: __("Hero Block"), // Block title.
@@ -123,9 +123,9 @@ keywords: [
 ],
 ```
 
-Note: I've got a type attribute here because eventually, I'm going to create a dropdown so users can mix up the layout on the front end. The attributes are for you to decides, you can pick and choose whatever you want.
+Note: I've got a type attribute here because eventually, I'm going to create a dropdown so users can mix up the layout on the front end. The attributes are for you to decide, you can pick and choose whatever you want.
 
-One thing to acknowledge is that the image id, width, height and alt attributes used above will all be used later on for some clever image wizardry gutenberg supplies. If you're wondering why I've added them that is.
+One thing to acknowledge is that the image id, width, height and alt attributes used above will all be used later on for some clever image wizardry Gutenberg supplies. If you're wondering why I've added them that is.
 
 So further down in our block.js file, we have an edit function and a save function which allows us to add our react goodness to the backend and frontend respectively. Create guten block puts some placeholder in there by default but we can strip all of that out to create our custom block.
 
@@ -216,11 +216,12 @@ A reminder that everything in edit is for your backend and what is interacted wi
 
 ```jsx
 save: (props) => {
-
+    // let's grab the attributes props which filters through from our edit function
     const { attributes } = props;
-
+    // define all of the variables we will need to use
     const { url, alt, id, width, height, title, subtitle, type } = attributes;
 
+    // render the template with all of our variables
     return (
         <div className={`hero-content content-${type}`}>
             <div>
@@ -228,10 +229,12 @@ save: (props) => {
                 <h4>{subtitle}</h4>
             </div>
             <section>
+                // this is some wordpress wizardry which I'll explain below
                 <img
                     src={url}
                     alt={alt}
                     className={id ? `wp-image-${id}` : null}
+                    // add a width and height to stop content from jumping on load
                     width={width}
                     height={height}
                 />
@@ -240,3 +243,5 @@ save: (props) => {
     );
 },
 ```
+
+So relatively simple stuff right? Now let's talk through that image tag. I was wondering how they handled images in the core image Gutenberg block and I spotted that it outputs a srcset, which makes it a lot easier to handle responsive images. After browsing the Gutenberg issues and merged PR's the special sauce in this case all comes from the `wp-image-{id}` class name! Therefore by grabbing the image id and creating a class name of a similar nature we could create some low-cost responsive images. This blew my mind when I figured it out especially because there was no mention of it in the docs, thank god for version control and Github.

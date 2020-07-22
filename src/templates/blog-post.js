@@ -13,6 +13,7 @@ import styles from "./layout.module.scss"
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata.title
+  const { tableOfContents } = post
 
   return (
     <Layout
@@ -25,17 +26,11 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
-      <Sidebar
-        title="Blogpost"
-        data={data}
-        className={styles.sidebar}
-        searchContext="More Posts"
-      >
-        {({ searchPosts }) =>
-          searchPosts.map(({ node }, i) => (
-            <Blogpost node={node} key={i} noThumbnail />
-          ))
-        }
+      <Sidebar className={styles.sidebar} title="Table of Contents">
+        <div
+          className={styles.tableOfContents}
+          dangerouslySetInnerHTML={{ __html: tableOfContents }}
+        ></div>
       </Sidebar>
       <article className={styles.content}>
         <header>
@@ -69,6 +64,7 @@ export const pageQuery = graphql`
       id
       excerpt(pruneLength: 160)
       html
+      tableOfContents
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
@@ -89,26 +85,6 @@ export const pageQuery = graphql`
         frontmatter: { published: { eq: true } }
       }
     ) {
-      edges {
-        node {
-          excerpt(pruneLength: 400)
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
-            thumbnail {
-              childImageSharp {
-                fixed(width: 114, height: 114, quality: 90, toFormat: JPG) {
-                  ...GatsbyImageSharpFixed_withWebp
-                }
-              }
-            }
-            tags
-          }
-        }
-      }
       group(field: frontmatter___tags) {
         tag: fieldValue
         totalCount

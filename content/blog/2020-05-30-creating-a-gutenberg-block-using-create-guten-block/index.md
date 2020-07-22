@@ -3,10 +3,9 @@ title: Creating a Gutenberg block using npx create guten block
 date: 2020-05-30
 thumbnail: ./thumbnail.jpg
 tags: ["wordpress", "gutenberg"]
+description: Let's talk about Gutenberg blocks and how we can create a block of our own to create a wonderful UI experience.
 published: true
 ---
-
-## Introduction
 
 This week I had my first play around with Gutenberg blocks and created my first block (it was a wild ride...). In this post, I thought I would give a little insight into the process of creating a block and some of the headaches I experienced along the way. One important thing to note is that none of this would have been possible without all of the hard work put into the `create-guten-block` open source project so a big thanks to those guys. Okay, now the small talk is over with lets jump right in.
 
@@ -226,7 +225,7 @@ edit: (props) => {
 },
 ```
 
-A reminder that everything in edit is for your backend and what is interacted with in the admin post editor. 
+A reminder that everything in edit is for your backend and what is interacted with in the admin post editor.
 
 ## The Save Function
 
@@ -281,5 +280,3 @@ So that should run with hopefully no issues and your block can be all built in a
 ## Conclusion
 
 Well thats it! A very swift introduction on creating Gutenberg Blocks based on my very limited experience. If you have any questions or even answers (I still need many) for anything above shoot me a message (no sliding here)
-
-

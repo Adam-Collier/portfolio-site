@@ -103,6 +103,8 @@ nav {
 }
 
 .tableOfContents {
+  margin-bottom: 0;
+
   a {
     text-decoration: none;
     color: var(--primary-accent);
@@ -122,5 +124,32 @@ nav {
   }
   > ul {
     margin: 0;
+  }
+}
+
+.tags {
+  margin: 0;
+
+  div {
+    cursor: pointer;
+    font-size: 0.825rem;
+    letter-spacing: 0.02rem;
+    background: var(--primary-white);
+    padding: 0.25rem 0.5rem;
+    display: inline-block;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-accent);
+    text-transform: capitalize;
+    font-weight: 500;
+    border: 1px solid var(--primary-accent);
+    border-radius: 1px;
+  }
+}
+
+.written {
+  p:last-of-type {
+    margin-top: 0.2rem;
+    color: var(--primary-grey);
   }
 }

@@ -6,7 +6,10 @@ tags: ["wordpress", "gutenberg"]
 published: true
 ---
 
-This week I delved into the world of Gutenberg blocks and created my first block (it took a while...). In the following, I'll show you how to create your own and mention some of the trials and tribulations I encountered along the way. One important thing to note is none of this would have been possible without all of the hard work put into the `create guten block` project so a big thanks to those chaps. Okay, now the small talk is over with lets jump right in. First, we need to create our block, I'm going to call mine hero block, in our plugin directory by doing the following:
+This week I delved into the world of Gutenberg blocks and created my first block (it took a while...). In the following, I'll show you how to create your own and mention some of the trials and tribulations I encountered along the way. One important thing to note is none of this would have been possible without all of the hard work put into the `create guten block` project so a big thanks to those guys. Okay, now the small talk is over with lets jump right in. 
+
+### Setup Create Guten Block
+First, we need to create our block, I'm going to call mine hero block, in our plugin directory by doing the following:
 
 ```bash
 # make sure you are in your plugins directory
@@ -48,6 +51,8 @@ Also (and this is essential!) make sure to activate your block in the plugin das
 
 I do feel as though the last time I used create-guten-block I couldnt use JSX so it is a great feeling to see that this has been added.
 
+### Prerequisite Notes
+
 So just to prepare you for the Gutenberg adventure, I find the Gutenberg docs pretty darn awful for figuring out how to create blocks, which is a real shame because blocks are an amazing step forward for WordPress developers. Instead, I found some blog posts which helped with me understand the basics:
 
 - [Creating a custom block type for WordPress gutenberg]("https://medium.com/stampede-team/creating-a-custom-block-type-for-wordpress-gutenberg-editor-a2539010bb4c")
@@ -63,7 +68,9 @@ Now there are quite a lot of helpers/components which WordPress have created to 
 
 By understanding what components are available from the Gutenberg team anyone could hypothetically get a block up and running pretty quickly.
 
-Okay enough of that tangent, let's get into the React side of things. First of all, let's sort out our block settings, you will see the below bit of code in your `src/block.js` file:
+### Tweak the Default Settings
+
+Let's get into the React side of things. First of all, let's sort out our block settings, you will see the below bit of code in your `src/block.js` file:
 
 ```js
 // Block name. Block names must be a string that contains a namespace prefix. Example: my-plugin/my-custom-block.
@@ -91,6 +98,8 @@ keywords: [
 ```
 
 Gutenberg has defined a tonne of dashicons we can readily use to identify our blocks and can be found in their [developer resources]("https://developer.wordpress.org/resource/dashicons/#arrow-right-alt"). Just make sure to remove the dashicons part of the name and it should work a dream.
+
+### Adding Attributes
 
 Now, a biggie. We need to add our attributes, and this is fundamental to the block building process. Think of attributes as setting the initial state, or making them known to the block that this content is needed. In this instance I'm building a hero content block which is going to consist of an image, a title and a subtitle. So keeping that in mind my initial section would look like the below:
 
@@ -127,7 +136,9 @@ Note: I've got a type attribute here because eventually, I'm going to create a d
 
 One thing to acknowledge is that the image id, width, height and alt attributes used above will all be used later on for some clever image wizardry gutenberg supplies. If you're wondering why I've added them that is.
 
-So further down in our block.js file, we have an edit function and a save function which allows us to add our react goodness to the backend and frontend respectively. Create guten block puts some placeholder in there by default but we can strip all of that out to create our custom block.
+### The Edit Function
+
+So further down in our block.js file, we have an edit function which allows us to add our react goodness to the backend. Create guten block puts some placeholder in there by default but we can strip all of that out to create our custom block.
 
 At the top of the block we can import some components we can use in our edit function:
 
@@ -141,7 +152,7 @@ import { TextControl, SelectControl } from "@wordpress/components"
 import { Button } from "@wordpress/components"
 ```
 
-and then in our edit function we can add the below (I've added a load of comments which will hopefully help you understand exactly what is going on):
+and then in our function we can add the below (I've added a load of comments which will hopefully help you understand exactly what is going on):
 
 ```jsx
 edit: (props) => {
@@ -212,11 +223,19 @@ edit: (props) => {
 },
 ```
 
-A reminder that everything in edit is for your backend and what is interacted with in the admin post editor. Now we can sort out our beautiful front end, it should be a little easier to see what is going on but I'll leave some comments anyhow.
+A reminder that everything in edit is for your backend and what is interacted with in the admin post editor. 
+
+### The Save Function
+
+The Save function is where we can decide what is and isn't rendered on the client. This is the opportunity for our blocks to shine because we can utilise all the hard work we've done in the backend to get the content and now we can display it beautifully
+
+> Something to bare in mind whilst developing our block, if we have saved our block to a post and then we got into our save function and edit the markup structure we will get an error in our console. This is nothing to worry about we just need to delete the block and readd our updated one.
+
+Now we can create our beautiful front end, it should be a little easier to see what is going on but I'll leave some comments anyway.
 
 ```jsx
 save: (props) => {
-
+    // 
     const { attributes } = props;
 
     const { url, alt, id, width, height, title, subtitle, type } = attributes;

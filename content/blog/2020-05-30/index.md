@@ -6,10 +6,11 @@ tags: ["wordpress", "gutenberg"]
 published: true
 ---
 
-This week I delved into the world of Gutenberg blocks and created my first block (it took a while...). In the following, I'll show you how to create your own and mention some of the trials and tribulations I encountered along the way. One important thing to note is none of this would have been possible without all of the hard work put into the `create guten block` project so a big thanks to those guys. Okay, now the small talk is over with lets jump right in. 
+This week I had my first play around with Gutenberg blocks and created my first block (it was a wild ride...). In this post, I thought I would give a little insight into the process of creating a block and some of the headaches I experienced along the way. One important thing to note is that none of this would have been possible without all of the hard work put into the `create-guten-block` open source project so a big thanks to those guys. Okay, now the small talk is over with lets jump right in.
 
 ### Setup Create Guten Block
-First, we need to create our block, I'm going to call mine hero block, in our plugin directory by doing the following:
+
+First, we need to create our block (I'm going to call mine "hero block") and in our WordPress plugin directory we need to execute the following in our terminal:
 
 ```bash
 # make sure you are in your plugins directory
@@ -47,13 +48,13 @@ $ cd hero-block
 $ npm start
 ```
 
-Also (and this is essential!) make sure to activate your block in the plugin dashboard otherwise you will be wondering why nothing is showing or happening as I did and question life.
+Also (and this is crucial!) make sure to activate your block in the plugin dashboard otherwise you will be wondering why nothing is showing or happening as I did.
 
-I do feel as though the last time I used create-guten-block I couldnt use JSX so it is a great feeling to see that this has been added.
+I do feel as though the last time I used create-guten-block I couldn't use JSX so it is a great feeling to see that this has been added to the project.
 
 ### Prerequisite Notes
 
-So just to prepare you for the Gutenberg adventure, I find the Gutenberg docs pretty darn awful for figuring out how to create blocks, which is a real shame because blocks are an amazing step forward for WordPress developers. Instead, I found some blog posts which helped with me understand the basics:
+So just to prepare you for the Gutenberg experience, I find the Gutenberg docs pretty darn awful for figuring out how to create blocks, which is a real shame because blocks are an amazing step forward for WordPress developers. Instead, I found some blog posts which helped with me understand the basics:
 
 - [Creating a custom block type for WordPress gutenberg]("https://medium.com/stampede-team/creating-a-custom-block-type-for-wordpress-gutenberg-editor-a2539010bb4c")
 - [Learning Gutenberg CSS Tricks]("https://css-tricks.com/learning-gutenberg-7-building-our-block-custom-card-block/")
@@ -66,7 +67,7 @@ Now there are quite a lot of helpers/components which WordPress have created to 
 - [TextControl]("https://github.com/WordPress/gutenberg/tree/master/packages/components/src/text-control") - Think PlainText with a label. Users always love a good label.
 - [MediaUpload]("https://github.com/WordPress/gutenberg/tree/master/packages/block-editor/src/components/media-upload") - Add media from your media library.
 
-By understanding what components are available from the Gutenberg team anyone could hypothetically get a block up and running pretty quickly.
+By understanding what components are available from the Gutenberg team anyone could hypothetically get a block up and running pretty swiftly.
 
 ### Tweak the Default Settings
 
@@ -97,7 +98,7 @@ keywords: [
 ],
 ```
 
-Gutenberg has defined a tonne of dashicons we can readily use to identify our blocks and can be found in their [developer resources]("https://developer.wordpress.org/resource/dashicons/#arrow-right-alt"). Just make sure to remove the dashicons part of the name and it should work a dream.
+Gutenberg has defined a tonne of dashicons we can readily use to identify our blocks and can be found in their [developer resources]("https://developer.wordpress.org/resource/dashicons/#arrow-right-alt"). Just make sure to remove the dashicons part of the name and it should work like a dream.
 
 ### Adding Attributes
 
@@ -132,9 +133,9 @@ keywords: [
 ],
 ```
 
-Note: I've got a type attribute here because eventually, I'm going to create a dropdown so users can mix up the layout on the front end. The attributes are for you to decides, you can pick and choose whatever you want.
+Note: I've got a type attribute here because eventually, I'm going to create a dropdown so users can mix up the layout on the front end. The attributes are for you to decide, you can pick and choose whatever you want.
 
-One thing to acknowledge is that the image id, width, height and alt attributes used above will all be used later on for some clever image wizardry gutenberg supplies. If you're wondering why I've added them that is.
+One thing to acknowledge is that the image id, width, height and alt attributes used above will all be used later on for some clever image wizardry Gutenberg supplies. If you're wondering why I've added them that is.
 
 ### The Edit Function
 
@@ -227,19 +228,20 @@ A reminder that everything in edit is for your backend and what is interacted wi
 
 ### The Save Function
 
-The Save function is where we can decide what is and isn't rendered on the client. This is the opportunity for our blocks to shine because we can utilise all the hard work we've done in the backend to get the content and now we can display it beautifully
+The Save function is where we can decide what is and isn't rendered on the client. This is the opportunity for our blocks to shine because we can utilise all the hard work we've done in the backend to get the content and now display it beautifully
 
 > Something to bare in mind whilst developing our block, if we have saved our block to a post and then we got into our save function and edit the markup structure we will get an error in our console. This is nothing to worry about we just need to delete the block and readd our updated one.
 
-Now we can create our beautiful front end, it should be a little easier to see what is going on but I'll leave some comments anyway.
+It should be a little easier to see what is going on here but I'll shower you with comments anyway.
 
 ```jsx
 save: (props) => {
-    // 
+    // let's grab the attributes props which filters through from our edit function
     const { attributes } = props;
-
+    // define all of the variables we will need to use
     const { url, alt, id, width, height, title, subtitle, type } = attributes;
 
+    // render the template with all of our variables
     return (
         <div className={`hero-content content-${type}`}>
             <div>
@@ -247,10 +249,12 @@ save: (props) => {
                 <h4>{subtitle}</h4>
             </div>
             <section>
+                // this is some wordpress wizardry which I'll explain below
                 <img
                     src={url}
                     alt={alt}
                     className={id ? `wp-image-${id}` : null}
+                    // add a width and height to stop content from jumping on load
                     width={width}
                     height={height}
                 />
@@ -259,3 +263,21 @@ save: (props) => {
     );
 },
 ```
+
+So relatively simple stuff right? Now let's talk through that image tag we touched upon earlier. I was wondering how they handled images in the core image Gutenberg block and I spotted that it outputs a srcset, which makes it a lot easier to handle responsive images. After browsing the Gutenberg issues and merged PR's the special sauce in this case all comes from the `wp-image-{id}` class name. Therefore, by grabbing the image id and creating a class name of a similar nature we could create some low-cost responsive images. This blew my mind when I figured it out especially because there was no mention of it in the docs, thank god for version control and Github. One frustrating thing at the moment is that it presumes your image is full width, so even though it's a very low-cost win it also comes with a lack of flexibility.
+
+### Building your Block
+
+Once you have created your incredibly amazing feat of engineering to show off to the world you can now build it! It's actually super simple and no intense labour required. Execute the below in your terminal, making sure you are in your block directory:
+
+```bash
+$ npm run build
+```
+
+So that should run with hopefully no issues and your block can be all built in all it's glory.
+
+### Conclusion
+
+Well thats it! A very swift introduction on creating Gutenberg Blocks based on my very limited experience. If you have any questions or even answers (I still need many) for anything above shoot me a message (no sliding here)
+
+

@@ -2,6 +2,7 @@
 title: Reduce Page Weight by Subsetting Fonts
 date: 2019-12-09
 featuredImage: ./featured-image.jpg
+category: Code
 thumbnail: ./thumbnail.jpg
 tags: ["fonts", "performance"]
 published: true

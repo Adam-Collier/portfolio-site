@@ -9,7 +9,7 @@ import Sidebar from "../components/Sidebar"
 import styles from "./blog.module.scss"
 
 const Blog = ({ data }) => {
-  const { tags, categories } = data.allMarkdownRemark
+  const { categories } = data.allMarkdownRemark
 
   const [posts, setFilteredPosts] = useState(data.allMarkdownRemark.edges)
   const [activeTags, setActiveTags] = useState([])

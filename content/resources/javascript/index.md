@@ -28,6 +28,8 @@ JavaScript is the programming language of the web. You can use it to add dynamic
 
 [Understanding Map and Set](https://www.taniarascia.com/understanding-map-and-set-javascript/) - Read - [@taniarascia](https://twitter.com/taniarascia) has written a great post on the new iterable objects types introduced in ECMAScript 2015. I'm pretty new to Map and Set so this gave me a good understanding of when it could be used.
 
+[How to Modify Nodes in an Abstract Syntax Tree](https://css-tricks.com/how-to-modify-nodes-in-an-abstract-syntax-tree/) - Parsing Markdown - If you've ever created a plugin in Gatsby this might be familiar to you. [@jlengstorf](https://twitter.com/jlengstorf) talks us through how to create an AST from markdown and how to manipulate what HTML is output.
+
 ## Tools
 
 [Bundlephobia](https://bundlephobia.com/) - NPM module cost - A good sounding board for whether an npm should be installed. If something seems a little large I'll tend to look for something else or build something custom.

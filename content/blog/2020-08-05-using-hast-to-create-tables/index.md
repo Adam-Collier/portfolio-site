@@ -16,7 +16,7 @@ Take a humble Notion export and look at it twice and you'll probably notice some
 
 ### What is AST and Hast?
 
-Abstract Syntax Trees (AST) and Hypertext Abstract Syntax Trees (Hast) are pretty much the same, the only difference being we use "types" to identify elements in AST and "tagNames" in Hast. That's it, easy right? As an overall concept AST's are generally used for turning Markdown content into HTML markup but thats not all... we can take our tree, analyze it and transform/manipulate any of it we like. I want to give you a more visual understanding so I'll throw one together
+Abstract Syntax Trees (AST) and Hypertext Abstract Syntax Trees (Hast) are pretty much the same, the only difference being we use "types" to identify elements in AST and "tagNames" in Hast. That's it, easy right? As an overall concept AST's are generally used for turning Markdown content into HTML markup but thats not all... we can take our tree, analyze it and transform/manipulate any of it we like. I want to give you a more visual understanding so I'll throw together something more visual
 
 Take a bit of markdown like so:
 ```md
@@ -82,7 +82,9 @@ as a Hast this would look like:
 }
 ```
 
-We will be using Hast from here on out but have a play and see what you prefer.
+We will be using Hast from here on out but have a play and see what you prefer. I couldnt find one for Hast but check out this [AST explorer](https://astexplorer.net/#/gist/d9029a2e8827265fbb9b190083b59d4d/3384f3ce6a3084e50043d0c8ce34628ed7477603)
 
 ### Setup
+
+
 

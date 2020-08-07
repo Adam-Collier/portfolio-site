@@ -86,5 +86,33 @@ We will be using Hast from here on out but have a play and see what you prefer. 
 
 ### Setup
 
+Lets keep it super simple and create a package.json using
+
+```bash
+$ npm init -y
+```
+
+a `script.js` file where we can write our script and a plugins directory where we can add our plugins.
+
+so you will have 
+
+```bash
+.
+├── package.json
+├── plugins
+└── script.js
+```
+
+### Unified.js
+
+So what is Unified? Unified is a project that will do a temendous amount of heavy lifting for us. Through the power of open source they have created an easy to use interface to interact and manipulate syntax trees. It sits at the centre of [Rehype](https://github.com/rehypejs/rehype) (HTML), [Remark](https://github.com/remarkjs/remark) (Markdown) and [Retext](https://github.com/retextjs/retext) (Natural Language... whatever that is) and it's this project that allows [MDX](https://mdxjs.com/) to add JSX to markdown files, which is pretty amazing.
+
+Think of unified as being your starting block in your lego masterpiece (of course), each piece of functionality can be attached to that block, but you need that block for everything to work. It's the oven that brings all of the ingredients together. For us we will be attaching Remark (for our Markdown), Rehype (for our HTML) and our own custom plugin to convert csv links to simple tables.
+
+### Setting up the script
+
+
+
+
 
 

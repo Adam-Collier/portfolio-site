@@ -7,6 +7,8 @@
 
 .container-fluid {
   width: 100%;
+  max-width: var(--max-layout-width);
+  margin: 0 auto;
   padding: 0 var(--content-x-padding);
 }
 

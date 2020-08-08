@@ -2,8 +2,10 @@
   padding: 1.5rem;
   position: fixed;
   bottom: 0;
-  right: 0;
-  left: 0;
+  left: 50%;
+  transform: translate(-50%);
+  width: 100%;
+  max-width: var(--max-layout-width);
   display: flex;
   justify-content: space-between;
   z-index: 5;

@@ -1,9 +1,11 @@
 .header {
   position: fixed;
   z-index: 10;
-  left: 0;
+  left: 50%;
   top: 0;
-  right: 0;
+  width: 100%;
+  max-width: var(--max-layout-width);
+  transform: translateX(-50%);
   padding: var(--content-x-padding);
   display: flex;
   justify-content: space-between;

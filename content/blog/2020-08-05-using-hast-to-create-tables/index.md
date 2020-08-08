@@ -19,12 +19,15 @@ Take a humble Notion export and look at it twice and you'll probably notice some
 Abstract Syntax Trees (AST) and Hypertext Abstract Syntax Trees (Hast) are pretty much the same, the only difference being we use "types" to identify elements in AST and "tagNames" in Hast. That's it, easy right? As an overall concept AST's are generally used for turning Markdown content into HTML markup but thats not all... we can take our tree, analyze it and transform/manipulate any of it we like. I want to give you a more visual understanding so I'll throw together something more visual
 
 Take a bit of markdown like so:
+
 ```md
 # Hello World!
+
 This a paragraph
 ```
 
-We create our AST and we would get the below: 
+We create our AST and we would get the below:
+
 ```json
 {
   "type": "root",
@@ -35,24 +38,25 @@ We create our AST and we would get the below:
       "children": [
         {
           "type": "text",
-          "value": "Hello World!",
+          "value": "Hello World!"
         }
-      ],
+      ]
     },
     {
       "type": "paragraph",
       "children": [
         {
           "type": "text",
-          "value": "This is a paragraph",
+          "value": "This is a paragraph"
         }
-      ],
+      ]
     }
-  ],
+  ]
 }
 ```
 
 as a Hast this would look like:
+
 ```json
 {
   "type": "root",
@@ -64,9 +68,9 @@ as a Hast this would look like:
       "children": [
         {
           "type": "text",
-          "value": "Hello World!",
+          "value": "Hello World!"
         }
-      ],
+      ]
     },
     {
       "type": "element",
@@ -74,11 +78,11 @@ as a Hast this would look like:
       "children": [
         {
           "type": "text",
-          "value": "This is a paragraph",
+          "value": "This is a paragraph"
         }
-      ],
+      ]
     }
-  ],
+  ]
 }
 ```
 
@@ -94,7 +98,7 @@ $ npm init -y
 
 a `script.js` file where we can write our script and a plugins directory where we can add our plugins.
 
-so you will have 
+so you will have
 
 ```bash
 .
@@ -111,8 +115,95 @@ Think of unified as being your starting block in your lego masterpiece (of cours
 
 ### Setting up the script
 
+So below is the basic structure of what we need and then we can start to build from that.
 
+```js
+const fs = require("fs")
+const unified = require("unified")
 
+const contents = unified()
+  .processSync(
+    fs.readFileSync(
+      // file path here
+      ``
+    )
+  )
+  .toString()
+```
 
+Here we are reading our markdown file from the path string and passing it into the unified ecosystem. Now we will add our html and markdown plugins: remark-parse to parse the markdown, remark-rehype to turn the markdown into a HTML tree and rehype-stringify to generate the html markup to output.
 
+```js{3-5,8-10}
+const fs = require("fs")
+const unified = require("unified")
+const markdown = require("remark-parse")
+const remark2rehype = require("remark-rehype")
+const html = require("rehype-stringify")
 
+const contents = unified()
+  .use(markdown)
+  .use(remark2rehype)
+  .use(html)
+  .processSync(
+    fs.readFileSync(
+      // file path here
+      ``
+    )
+  )
+  .toString()
+```
+
+```js
+const fs = require("fs")
+const unified = require("unified")
+const prettier = require("prettier")
+const markdown = require("remark-parse")
+const remark2rehype = require("remark-rehype")
+const html = require("rehype-stringify")
+
+const linkToTable = require("./plugins/link-to-table")
+
+const contents = unified()
+  .use(markdown)
+  .use(remark2rehype)
+  .use(linkToTable)
+  .use(html)
+  .processSync(
+    fs.readFileSync(
+      // file path here
+      ``
+    )
+  )
+  .toString()
+
+const outputDir = `${process.cwd()}/public`
+
+if (!fs.existsSync(outputDir)) {
+  fs.mkdirSync(outputDir)
+}
+
+fs.writeFile(
+  `${outputDir}/index.html`,
+  prettier.format(contents, { parser: "html" }),
+  err => {
+    if (err) console.log(err)
+    console.log("Success! Your html has been created")
+  }
+)
+```
+
+### Creating a custom plugin
+
+### How to get CSV data and map it
+
+### Creating the table
+
+### Manipulating the tree
+
+### Exporting the HTML
+
+### Run the script
+
+### Conclusion
+
+### Useful Links

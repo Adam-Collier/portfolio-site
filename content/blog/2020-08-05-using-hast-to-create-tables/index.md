@@ -8,11 +8,11 @@ description: Discover the power of Hast and how we can use it to manipulate mark
 published: true
 ---
 
-I love Notion, I envy their illustrations on the daily but we won't get into that (super illustrator Procreate skills still in progress...) and I think it's a great tool which offers an incredible amount of flexibility to tackle pretty much any task you can think of. Add some collaboration in there with a sprinkle of organisation and you've got something special. I thought great let's collaborate on some boring document work and we can just export it to markdown, upload it and revel in our mastery of the internets. However... A bit of a snag was hit.
+I love Notion, I envy their illustrations more than I care to admit... but thats besides the point. I think it's a great tool which offers an incredible amount of flexibility to tackle a vast range of tasks. Add some collaboration in there with a sprinkle of organisation and you've got something special. I thought great let's collaborate on some boring document work and we can just export it to markdown, upload it and revel in our mastery of the internets. However... A bit of a snag was hit.
 
 ### The problem
 
-Take a humble Notion export and look at it twice and you'll probably notice some things you didn't expect. One assumption I made was that a table would just become a simple markdown table... but no, that's not the case. Instead, what you're left with is a link to a .csv file. I mean I put my table on the page for a reason, I don't want to be clicking off to another page with a tiny table front and centre. So I thought, this needs to be fixed.
+Take a humble Notion export and look at it twice and you'll probably notice some things you didn't expect. One assumption I made was that a table would just become a simple markdown table... but no, that's not the case. Instead, what you're left with is a link to a .csv file. I mean, call me old fashioned but I put my table on the page for a reason, I don't want to be clicking off to another page with a tiny table front and centre. So I thought, I know things, this can probably be fixed. Then comes a long Jason Lengstorf's [How to Modify Nodes in an Abstract Syntax Tree](https://css-tricks.com/how-to-modify-nodes-in-an-abstract-syntax-tree/) and my introduction to the AST.
 
 ### What is AST and Hast?
 
@@ -26,7 +26,7 @@ Take a bit of markdown like so:
 This a paragraph
 ```
 
-We create our AST and we would get the below:
+And from that our AST would look like the below:
 
 ```json
 {
@@ -55,7 +55,7 @@ We create our AST and we would get the below:
 }
 ```
 
-as a Hast this would look like:
+As a Hast this would look like:
 
 ```json
 {
@@ -86,19 +86,19 @@ as a Hast this would look like:
 }
 ```
 
-We will be using Hast from here on out but have a play and see what you prefer. I couldn't find one for Hast but check out this [AST explorer](https://astexplorer.net/#/gist/d9029a2e8827265fbb9b190083b59d4d/3384f3ce6a3084e50043d0c8ce34628ed7477603)
+Note: We will be using Hast from here on out but have a play and see what you prefer. I couldn't find one for Hast but check out the [AST explorer](https://astexplorer.net/#/gist/d9029a2e8827265fbb9b190083b59d4d/3384f3ce6a3084e50043d0c8ce34628ed7477603), throw in some Markdown content and familiarise yourself with the AST equivelent.
 
 ### Setup
 
-Let's keep it super simple and create a package.json using
+Let's keep our setup super simple and create a package.json using
 
 ```bash
 $ npm init -y
 ```
 
-a `script.js` file where we can write our script and a plugins directory where we can add our plugins.
+We will also create a `script.js` as our main script file and a plugins directory where we can add our plugins.
 
-so you will have
+So you should have the below:
 
 ```bash
 .
@@ -107,15 +107,17 @@ so you will have
 └── script.js
 ```
 
+This simple setup gives us a good starting point to construct our script.
+
 ### Unified.js
 
-So what is Unified? Unified is a project that will do a tremendous amount of heavy lifting for us. Through the power of open source, they have created an easy to use interface to interact and manipulate syntax trees. It sits at the centre of [Rehype](https://github.com/rehypejs/rehype) (HTML), [Remark](https://github.com/remarkjs/remark) (Markdown) and [Retext](https://github.com/retextjs/retext) (Natural Language... whatever that is) and it's this project that allows [MDX](https://mdxjs.com/) to add JSX to markdown files, which is pretty amazing.
+So what is Unified? Unified is a project that will do a tremendous amount of heavy lifting for us. Through the power of open source, they have created an easy to use interface to interact and manipulate syntax trees. It sits at the centre of [Rehype](https://github.com/rehypejs/rehype) (HTML), [Remark](https://github.com/remarkjs/remark) (Markdown) and [Retext](https://github.com/retextjs/retext) (Natural Language... whatever that is) and it's this project that allows [MDX](https://mdxjs.com/) to add JSX to markdown files, which I didn't know, but thought it was pretty cool.
 
-Think of unified as being your starting block in your lego masterpiece (of course), each piece of functionality can be attached to that block, but you need that block for everything to work. It's the oven that brings all of the ingredients together. For us we will be attaching Remark (for our Markdown), Rehype (for our HTML) and our custom plugin to convert CSV links to simple tables.
+In terms of a mental model think of unified as being your starting block in your lego construction, each piece of functionality can be attached to that block, but you need that block for everything to work. It's the oven that brings all of the ingredients together. For us we will be attaching Remark (for our Markdown), Rehype (for our HTML) and our custom plugin to convert CSV links to simple tables.
 
 ### Setting up the script
 
-So below is the basic structure of what we need and then we can start to build from that.
+So below is the basic structure of what we need and then we can start to flesh it out from that.
 
 ```js
 const fs = require("fs")
@@ -131,7 +133,7 @@ const contents = unified()
   .toString()
 ```
 
-Here we are reading our markdown file from the path string and passing it into the unified ecosystem. Now we will add our HTML and markdown plugins: remark-parse to parse the markdown, remark-rehype to turn the markdown into an HTML tree and rehype-stringify to generate the HTML markup to output.
+Here we are reading our markdown file from the path string and passing it into the unified ecosystem. Now we add our HTML and markdown plugins: remark-parse to parse the markdown, remark-rehype to turn the markdown into an HTML tree and rehype-stringify to generate the HTML markup to eventually output.
 
 ```js{3-5,8-10}
 const fs = require("fs")
@@ -162,7 +164,8 @@ module.exports = () => (tree) => {
 
 })
 ```
-Notice how the tree is passed in as an argument and we can start to use that in our plugin. Next, we need to import and use our plugin so we can add that to our main script file
+
+Notice how the tree is passed in as an argument we can use that in our plugin? Next, we need to import and use our plugin so we can add that to our main script file
 
 ```js{8,13}
 const fs = require("fs")
@@ -203,11 +206,11 @@ fs.writeFile(
 )
 ```
 
-So there we have added our custom plugins to our unified workflow, the problem is it doesn't exactly do anything at the moment, so let's do that.
+So, we have added our custom plugins to our unified workflow, the problem is it doesn't exactly do anything at the moment. So let's add that.
 
 ### Traversing the tree
 
-Jumping back to our custom plugin we now need to traverse the tree to grab all of the links that link to a .csv file. To do this we need to use the `unist-util-visit-parents` package, which is an unist utility to find nodes.
+Jumping back to our custom plugin we now need to traverse the tree and grab all of the a tags that link to a CSV file. To do this we need to use the `unist-util-visit-parents` package, which is an unist utility to find nodes.
 
 ```js{1,5-11}
 const visit = require('unist-util-visit-parents');
@@ -222,11 +225,12 @@ module.exports = () => (tree) => {
   );
 };
 ```
-Here we are almost running a test on each node. First, we are checking if it's an `a` tag and secondly whether it contains `.csv` in its href string. If it satisfies our requirements it gets passed to the callback, otherwise, it's ignored. And now we have all of the nodes we need to convert to tables!
+
+Here we are almost running a test on each node. First, we are checking if it's an `a` tag and secondly whether it contains `.csv` in its href string. If it satisfies our requirements it gets passed to the callback, otherwise, it's ignored. And just like that we have all of the nodes we need to convert to tables.
 
 ### How to get CSV data and assign it
 
-Now we need to read the data from the .csv before we can create the table, we can do this by using the npm package `parser` and nodes very own `readFileSync`.
+Now we need to read the data from the CSV before we can create the table, we do this by using the npm package `parser` and utilise nodes very own `readFileSync` method.
 
 ```js{2-3,10-14}
 const visit = require('unist-util-visit-parents');
@@ -248,7 +252,7 @@ module.exports = () => (tree) => {
 };
 ```
 
-As you can see we are reading the .csv data using readFileSync, parsing that data into an array we can work with and then using destructuring to assign the values appropriately to tableHeaders and tableRows. Destructing at this point makes it a little easier for us later on. 
+We are reading the CSV data using readFileSync, parsing that data into an array and then destructuring the array and assigning tableHeaders and tableRows. Destructing at this point makes it a little easier for us later on. 
 
 ### Creating the table
 
@@ -301,7 +305,7 @@ module.exports = () => (tree) => {
 
 ### Converting HTML to a Hast node
 
-So now we have our table markup but we need to replace the link node with our table. At the moment we can't do this because nodes need to be replaced with nodes, and at the moment our table is just a string of HTML content. So let's turn our table string into a node we can use. 
+So now we have our table markup but we need to replace the a tag node with our table. At the moment we can't do this because nodes need to be replaced with nodes, and at the moment our table is a string of HTML content. So let's turn our table string into a node. 
 
 ```js{4-5, 40-42}
 const visit = require('unist-util-visit-parents');
@@ -355,11 +359,11 @@ module.exports = () => (tree) => {
 };
 ```
 
-We are taking advantage of the `parse5` and `hast-util-from-parse5` packages here to create our node. Parse5 to parse our HTML string and `hast-util-from-parse5` to turn that HTML structure into a hast node. 
+We are taking advantage of the `parse5` and `hast-util-from-parse5` packages here to create our node. Parse5 to parse our HTML string and `hast-util-from-parse5` to turn the HTML structure into a hast node. 
 
 ### Manipulating the tree
 
-Finally, we can directly change the node attributes which replaces the link node with our newly created table node.
+Finally, we can directly manipulate the node attributes which replaces the link node with our newly created table node.
 
 ```js{43-46}
 const visit = require('unist-util-visit-parents');
@@ -427,7 +431,7 @@ We have now achieved the status of ultimate AST tree wrangler.
 
 ### Conclusion
 
-And that's all folks! So now you should have a somewhat solid understanding of ASTs and how we can use them to manipulate Markdown. The possibilities with this technique are pretty much endless and what that allows us to do is focus on creating simple, readable content in markdown and add the flair and bits of interest later on in the build process. I do hope this has helped in some shape or form and of course if you deem something untrue and in need of amended in this article let me know and as always thanks for taking the time to read this article whoever you are out there. 
+And that's all folks! So now you should have a somewhat solid understanding of ASTs and how we can use them to manipulate Markdown. The possibilities with this technique are pretty much endless and what that allows us to do is focus on creating simple, readable content in markdown and add the flair and finesse later on in the build process. I do hope this has helped in some shape or form and of course if you deem something untrue and in need of amending in this article let me know and as always thanks for taking the time to read this article.
 
 ### Useful Links
 

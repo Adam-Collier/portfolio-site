@@ -12,11 +12,11 @@ I love Notion, I envy their illustrations on the daily but we won't get into tha
 
 ### The problem
 
-Take a humble Notion export and look at it twice and you'll probably notice some things you didn't expect. One assumption I made was that a table would just become a simple markdown table... but no, thats not the case. Instead, what you're left with is a link to a .csv file. I mean I put my table on the page for a reason, I don't want to be clicking off to another page with a tiny table front and centre. So I thought, this needs to be fixed.
+Take a humble Notion export and look at it twice and you'll probably notice some things you didn't expect. One assumption I made was that a table would just become a simple markdown table... but no, that's not the case. Instead, what you're left with is a link to a .csv file. I mean I put my table on the page for a reason, I don't want to be clicking off to another page with a tiny table front and centre. So I thought, this needs to be fixed.
 
 ### What is AST and Hast?
 
-Abstract Syntax Trees (AST) and Hypertext Abstract Syntax Trees (Hast) are pretty much the same, the only difference being we use "types" to identify elements in AST and "tagNames" in Hast. That's it, easy right? As an overall concept AST's are generally used for turning Markdown content into HTML markup but thats not all... we can take our tree, analyze it and transform/manipulate any of it we like. I want to give you a more visual understanding so I'll throw together something more visual
+Abstract Syntax Trees (AST) and Hypertext Abstract Syntax Trees (Hast) are pretty much the same, the only difference being we use "types" to identify elements in AST and "tagNames" in Hast. That's it, easy right? As an overall concept, AST's are generally used for turning Markdown content into HTML markup but that's not all... we can take our tree, analyze it and transform/manipulate any of it we like. I want to give you a more visual understanding so I'll throw together something more visual
 
 Take a bit of markdown like so:
 
@@ -86,11 +86,11 @@ as a Hast this would look like:
 }
 ```
 
-We will be using Hast from here on out but have a play and see what you prefer. I couldnt find one for Hast but check out this [AST explorer](https://astexplorer.net/#/gist/d9029a2e8827265fbb9b190083b59d4d/3384f3ce6a3084e50043d0c8ce34628ed7477603)
+We will be using Hast from here on out but have a play and see what you prefer. I couldn't find one for Hast but check out this [AST explorer](https://astexplorer.net/#/gist/d9029a2e8827265fbb9b190083b59d4d/3384f3ce6a3084e50043d0c8ce34628ed7477603)
 
 ### Setup
 
-Lets keep it super simple and create a package.json using
+Let's keep it super simple and create a package.json using
 
 ```bash
 $ npm init -y
@@ -109,9 +109,9 @@ so you will have
 
 ### Unified.js
 
-So what is Unified? Unified is a project that will do a temendous amount of heavy lifting for us. Through the power of open source they have created an easy to use interface to interact and manipulate syntax trees. It sits at the centre of [Rehype](https://github.com/rehypejs/rehype) (HTML), [Remark](https://github.com/remarkjs/remark) (Markdown) and [Retext](https://github.com/retextjs/retext) (Natural Language... whatever that is) and it's this project that allows [MDX](https://mdxjs.com/) to add JSX to markdown files, which is pretty amazing.
+So what is Unified? Unified is a project that will do a tremendous amount of heavy lifting for us. Through the power of open source, they have created an easy to use interface to interact and manipulate syntax trees. It sits at the centre of [Rehype](https://github.com/rehypejs/rehype) (HTML), [Remark](https://github.com/remarkjs/remark) (Markdown) and [Retext](https://github.com/retextjs/retext) (Natural Language... whatever that is) and it's this project that allows [MDX](https://mdxjs.com/) to add JSX to markdown files, which is pretty amazing.
 
-Think of unified as being your starting block in your lego masterpiece (of course), each piece of functionality can be attached to that block, but you need that block for everything to work. It's the oven that brings all of the ingredients together. For us we will be attaching Remark (for our Markdown), Rehype (for our HTML) and our own custom plugin to convert csv links to simple tables.
+Think of unified as being your starting block in your lego masterpiece (of course), each piece of functionality can be attached to that block, but you need that block for everything to work. It's the oven that brings all of the ingredients together. For us we will be attaching Remark (for our Markdown), Rehype (for our HTML) and our custom plugin to convert CSV links to simple tables.
 
 ### Setting up the script
 
@@ -131,7 +131,7 @@ const contents = unified()
   .toString()
 ```
 
-Here we are reading our markdown file from the path string and passing it into the unified ecosystem. Now we will add our html and markdown plugins: remark-parse to parse the markdown, remark-rehype to turn the markdown into a HTML tree and rehype-stringify to generate the html markup to output.
+Here we are reading our markdown file from the path string and passing it into the unified ecosystem. Now we will add our HTML and markdown plugins: remark-parse to parse the markdown, remark-rehype to turn the markdown into an HTML tree and rehype-stringify to generate the HTML markup to output.
 
 ```js{3-5,8-10}
 const fs = require("fs")
@@ -153,7 +153,18 @@ const contents = unified()
   .toString()
 ```
 
+### Creating a custom plugin
+
+So now we have added the basics we can start to add our plugin. First, we need to create a `link-to-table.js` file in our plugins directory and then export a module
+
 ```js
+module.exports = () => (tree) => {
+
+})
+```
+Notice how the tree is passed in as an argument and we can start to use that in our plugin. Next, we need to import and use our plugin so we can add that to our main script file
+
+```js{8,13}
 const fs = require("fs")
 const unified = require("unified")
 const prettier = require("prettier")
@@ -192,18 +203,235 @@ fs.writeFile(
 )
 ```
 
-### Creating a custom plugin
+So there we have added our custom plugins to our unified workflow, the problem is it doesn't exactly do anything at the moment, so let's do that.
 
-### How to get CSV data and map it
+### Traversing the tree
+
+Jumping back to our custom plugin we now need to traverse the tree to grab all of the links that link to a .csv file. To do this we need to use the `unist-util-visit-parents` package, which is an unist utility to find nodes.
+
+```js{1,5-11}
+const visit = require('unist-util-visit-parents');
+
+module.exports = () => (tree) => {
+  visit(
+    tree,
+    (node) => node.tagName === 'a' && node.properties.href.includes('.csv'),
+    (node, ancestors) => {
+         //do stuff with the nodes here
+    }
+  );
+};
+```
+Here we are almost running a test on each node. First, we are checking if it's an `a` tag and secondly whether it contains `.csv` in its href string. If it satisfies our requirements it gets passed to the callback, otherwise, it's ignored. And now we have all of the nodes we need to convert to tables!
+
+### How to get CSV data and assign it
+
+Now we need to read the data from the .csv before we can create the table, we can do this by using the npm package `parser` and nodes very own `readFileSync`.
+
+```js{2-3,10-14}
+const visit = require('unist-util-visit-parents');
+const parse = require('csv-parse/lib/sync');
+const fs = require('fs');
+
+module.exports = () => (tree) => {
+  visit(
+    tree,
+    (node) => node.tagName === 'a' && node.properties.href.includes('.csv'),
+    (node, ancestors) => {
+      let markdownData = fs.readFileSync(
+        `./${decodeURI(node.properties.href)}`
+      );
+      let rows = parse(markdownData, { columns: false, trim: true });
+      const [tableHeaders, ...tableRows] = rows;
+    }
+  );
+};
+```
+
+As you can see we are reading the .csv data using readFileSync, parsing that data into an array we can work with and then using destructuring to assign the values appropriately to tableHeaders and tableRows. Destructing at this point makes it a little easier for us later on. 
 
 ### Creating the table
 
+Since we now have the CSV data nicely formatted for us and assigned to variables we can now map those and create our table markup. By using template literals here it makes it super easy for us to create the markup, imagine having to concatenate a load of strings (no thank you).
+
+```html{18-39}
+const visit = require('unist-util-visit-parents');
+const parse = require('csv-parse/lib/sync');
+const fs = require('fs');
+
+module.exports = () => (tree) => {
+  visit(
+    tree,
+    (node) => node.tagName === 'a' && node.properties.href.includes('.csv'),
+    (node, ancestors) => {
+      let baseNode = ancestors ? ancestors[ancestors.length - 1] : node;
+
+      let markdownData = fs.readFileSync(
+        `./${decodeURI(node.properties.href)}`
+      );
+      let rows = parse(markdownData, { columns: false, trim: true });
+      const [tableHeaders, ...tableRows] = rows;
+
+      let tableMarkup = `<table>
+                  <thead>
+                      <tr>
+                          ${tableHeaders
+                            .map((header) => `<th>${header}</th>`)
+                            .join('')}
+                      </tr>
+                  </thead>
+                  <tbody>
+                      ${tableRows
+                        .map((row) => {
+                          return `
+                              <tr>
+                                  ${row
+                                    .map((value) => `<td>${value}</td>`)
+                                    .join('')}
+                              </tr>
+                          `;
+                        })
+                        .join('')}
+                  </tbody>
+              </table>`;
+    }
+  );
+};
+```
+
+### Converting HTML to a Hast node
+
+So now we have our table markup but we need to replace the link node with our table. At the moment we can't do this because nodes need to be replaced with nodes, and at the moment our table is just a string of HTML content. So let's turn our table string into a node we can use. 
+
+```js{4-5, 40-42}
+const visit = require('unist-util-visit-parents');
+const parse = require('csv-parse/lib/sync');
+const fs = require('fs');
+const parse5 = require('parse5');
+const fromParse5 = require('hast-util-from-parse5');
+
+module.exports = () => (tree) => {
+  visit(
+    tree,
+    (node) => node.tagName === 'a' && node.properties.href.includes('.csv'),
+    (node, ancestors) => {
+      let markdownData = fs.readFileSync(
+        `./${decodeURI(node.properties.href)}`
+      );
+      let rows = parse(markdownData, { columns: false, trim: true });
+      const [tableHeaders, ...tableRows] = rows;
+
+      let tableMarkup = `<table>
+                  <thead>
+                      <tr>
+                          ${tableHeaders
+                            .map((header) => `<th>${header}</th>`)
+                            .join('')}
+                      </tr>
+                  </thead>
+                  <tbody>
+                      ${tableRows
+                        .map((row) => {
+                          return `
+                              <tr>
+                                  ${row
+                                    .map((value) => `<td>${value}</td>`)
+                                    .join('')}
+                              </tr>
+                          `;
+                        })
+                        .join('')}
+                  </tbody>
+              </table>`;
+
+      let ast = parse5.parseFragment(String(tableMarkup));
+      let hast = fromParse5(ast);
+
+      node.tagName = hast.children[0].tagName;
+      node.children = hast.children[0].children;
+      node.properties = {};
+    }
+  );
+};
+```
+
+We are taking advantage of the `parse5` and `hast-util-from-parse5` packages here to create our node. Parse5 to parse our HTML string and `hast-util-from-parse5` to turn that HTML structure into a hast node. 
+
 ### Manipulating the tree
 
-### Exporting the HTML
+Finally, we can directly change the node attributes which replaces the link node with our newly created table node.
+
+```js{43-46}
+const visit = require('unist-util-visit-parents');
+const parse = require('csv-parse/lib/sync');
+const fs = require('fs');
+const parse5 = require('parse5');
+const fromParse5 = require('hast-util-from-parse5');
+
+module.exports = () => (tree) => {
+  visit(
+    tree,
+    (node) => node.tagName === 'a' && node.properties.href.includes('.csv'),
+    (node, ancestors) => {
+      let markdownData = fs.readFileSync(
+        `./${decodeURI(node.properties.href)}`
+      );
+      let rows = parse(markdownData, { columns: false, trim: true });
+      const [tableHeaders, ...tableRows] = rows;
+
+      let tableMarkup = `<table>
+                  <thead>
+                      <tr>
+                          ${tableHeaders
+                            .map((header) => `<th>${header}</th>`)
+                            .join('')}
+                      </tr>
+                  </thead>
+                  <tbody>
+                      ${tableRows
+                        .map((row) => {
+                          return `
+                              <tr>
+                                  ${row
+                                    .map((value) => `<td>${value}</td>`)
+                                    .join('')}
+                              </tr>
+                          `;
+                        })
+                        .join('')}
+                  </tbody>
+              </table>`;
+
+      let ast = parse5.parseFragment(String(tableMarkup));
+      let hast = fromParse5(ast);
+
+      node.tagName = hast.children[0].tagName;
+      node.children = hast.children[0].children;
+      node.properties = {};
+    }
+  );
+};
+```
+
+As a general rule you wouldn't normally mutate the global state but in the context of AST's it has become pretty much the standard, especially when some AST's can be pretty huge!
 
 ### Run the script
 
+Now if we run the script and check our outputted HTML you should see that our table has been outputted as we expected. 
+
+```bash
+$ node script
+```
+
+We have now achieved the status of ultimate AST tree wrangler. 
+
 ### Conclusion
 
+And that's all folks! So now you should have a somewhat solid understanding of ASTs and how we can use them to manipulate Markdown. The possibilities with this technique are pretty much endless and what that allows us to do is focus on creating simple, readable content in markdown and add the flair and bits of interest later on in the build process. I do hope this has helped in some shape or form and of course if you deem something untrue and in need of amended in this article let me know and as always thanks for taking the time to read this article whoever you are out there. 
+
 ### Useful Links
+
+As always here are a few links I found useful whilst writing this post:
+
+* [How to Modify Nodes in an Abstract Syntax Tree by Jason Lengstorf](https://css-tricks.com/how-to-modify-nodes-in-an-abstract-syntax-tree/)
+* [Creating a Remark Transformer Plugin](https://www.gatsbyjs.org/tutorial/remark-plugin-tutorial/)

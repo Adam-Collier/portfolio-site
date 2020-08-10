@@ -2,6 +2,7 @@
 date: 2019-06-08
 featuredImage: ./featured-image.jpg
 thumbnail: ./thumbnail.jpg
+category: Code
 title: Using React Context instead of Redux
 tags: ["react", "javascript"]
 published: true

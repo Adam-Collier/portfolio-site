@@ -9,7 +9,7 @@ import Sidebar from "../components/Sidebar"
 import styles from "./blog.module.scss"
 
 const Blog = ({ data }) => {
-  const tags = data.allMarkdownRemark.group
+  const { categories } = data.allMarkdownRemark
 
   const [posts, setFilteredPosts] = useState(data.allMarkdownRemark.edges)
   const [activeTags, setActiveTags] = useState([])
@@ -44,13 +44,39 @@ const Blog = ({ data }) => {
 
   return (
     <Layout container="fluid" className={styles.blog}>
-      <SEO title="Blog page" />
+      <SEO title="Blog" />
       <Sidebar
         title="Blog"
         description="A collection of writing which can range from talking about code,
           design or life in general. Enjoy this eclectic collection of writings"
       >
-        <div className={styles.tags}>
+        {categories.map(({ category, edges }) => {
+          let allTags = new Set()
+          edges.forEach(({ node }) => {
+            node.frontmatter.tags.forEach(tag => allTags.add(tag))
+          })
+
+          return (
+            <>
+              <h4>{category}</h4>
+              <div className={styles.tags}>
+                {[...allTags].map((tag, i) => (
+                  <button
+                    key={i}
+                    className={`${
+                      activeTags.includes(tag) ? styles.active : ""
+                    }`}
+                    onClick={handleClick}
+                    onKeyDown={handleClick}
+                  >
+                    {tag}
+                  </button>
+                ))}
+              </div>
+            </>
+          )
+        })}
+        {/* <div className={styles.tags}>
           {tags.map(({ tag }, i) => (
             <button
               key={i}
@@ -61,7 +87,7 @@ const Blog = ({ data }) => {
               {tag}
             </button>
           ))}
-        </div>
+        </div> */}
       </Sidebar>
       <div className={styles.blogposts}>
         {posts.map(({ node }, i) => (
@@ -111,6 +137,20 @@ export const query = graphql`
       group(field: frontmatter___tags) {
         tag: fieldValue
         totalCount
+      }
+      tags: group(field: frontmatter___tags) {
+        tag: fieldValue
+        totalCount
+      }
+      categories: group(field: frontmatter___category) {
+        category: fieldValue
+        edges {
+          node {
+            frontmatter {
+              tags
+            }
+          }
+        }
       }
     }
   }

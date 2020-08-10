@@ -3,6 +3,7 @@ title: Creating a Masonry Layout using CSS Grid
 date: 2019-05-26
 featuredImage: ./featured-image.png
 thumbnail: ./thumbnail.jpg
+category: Code
 tags: ["CSS", "CSS grid"]
 published: true
 ---

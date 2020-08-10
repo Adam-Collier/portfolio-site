@@ -21,7 +21,7 @@ const ResourceTemplate = ({ data, location }) => {
       className={styles.resources}
     >
       <SEO
-        title="resources page"
+        title="Resources"
         description={post.frontmatter.description || post.excerpt}
       />
 

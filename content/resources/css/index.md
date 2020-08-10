@@ -1,33 +1,27 @@
 ---
 title: CSS
-description: Cascading Style Sheets (CSS) handles the look and feel of a web page and tells the browser how to display the text and other content that you write in HTML.
-color: "#2062AF"
 ---
 
-Breaking this word up into smaller parts, lets start with the phase 'Style Sheets'.
-
-**Style Sheets:** During the earlier days of the internet, HTML only allowed for very little style of it's web pages, and only allowed for inline styling, written within the same file. Nowadays, these style sheets, are files that segregated from HTML files, and can be easily added anytime.
-
-**Cascading:** This word represents how the styles are organised, when both styles for the same selector is made, the latest change to that style will be the one most prominant - the one that actually gets used.
-
-If you are completely new to web development, please head to [W3School CSS](https://www.w3schools.com/css/)
+I love CSS, it's one of my favourite things to write and there is always a sense of achievement when you see a design start to come together. With the growing complexity of front end development preprocessors (Sass/Stylus/Less), Styled Components and more recently CSS Modules are playing an important role in creating lean flexible sites.
 
 ## Articles
 
-[A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) - Read/Bookmark - The ultimate guide guide to flexbox. CSS tricks really nailed this one and it's one of the best and easiest to understand guides out there
+[A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) - Read/Bookmark - The ultimate guide guide to flexbox. CSS tricks nailed this one and it's one of the best and easiest to understand guides out there
 
-[A complete Guide to Grid](https://css-tricks.com/snippets/css/complete-guide-grid/) - Read/Bookmark - Another great CSS layouts guide from CSS tricks. I find myself referencing this a lot stored some snippets for easy access.
+[A Complete Guide to Grid](https://css-tricks.com/snippets/css/complete-guide-grid/) - Read/Bookmark - Another great CSS layouts guide from CSS tricks. I find myself referencing this a lot stored some snippets for easy access.
 
-[CSS Animations](https://www.youtube.com/watch?v=8kK-cA99SA0&list=PLqGj3iMvMa4LvJ8VctoXnPI0dtE40wfid) - This is where it all started for me and Devtips holds a very dear place in my heart. A lot of it may be outdated but I'm leaving it here for the memories.
+[CSS Animations](https://www.youtube.com/watch?v=8kK-cA99SA0&list=PLqGj3iMvMa4LvJ8VctoXnPI0dtE40wfid) - Watch/Admire - This is where it all started for me and Devtips holds a very dear place in my heart. A lot of it may be outdated but I'm leaving it here for the memories.
 
-[Pseudo Class Selectors](https://css-tricks.com/pseudo-class-selectors/) - Pseudo classed are incredibly powerful things. I use :after and :before all of the time. This article will help you learn about that and more.
+[Pseudo Class Selectors](https://css-tricks.com/pseudo-class-selectors/) - Read - Pseudo classed are incredibly powerful things. I use :after and :before all of the time and it often gives a more elegant and readable solution. This article will help you learn about that and more.
 
-[Smoother & sharper shadows with layered box-shadows](https://tobiasahlin.com/blog/layered-smooth-box-shadows/) - Create smoother box-shadows with some techniques from Tobias
+[Smoother & sharper shadows with layered box-shadows](https://tobiasahlin.com/blog/layered-smooth-box-shadows/) - Read - Create smoother box-shadows with some techniques from Tobias. Philipp Brumm also created this [tool](https://brumm.af/shadows) inspired by the article. One thing I would love is if it created several box-shadow classes with varying sizes and strengths.
 
-[Styling Layout Wrappers In CSS](https://ishadeed.com/article/styling-wrappers-css) - A comprehensive introduction on creating and styling Layout wrappers. I'm a big fan of this article because it covers a lot of use cases.
+[Styling Layout Wrappers In CSS](https://ishadeed.com/article/styling-wrappers-css) - Read - A comprehensive introduction on creating and styling Layout wrappers. I'm a big fan of this article because it covers a lot of use cases.
 
-[Everything I Learned About min(), max(), clamp() In CSS](https://ishadeed.com/article/css-min-max-clamp/) - Ahmed has wrote a great post for those wanting to familiarise themselves with min(), max() and clamp() css functions. I'm excited for this addition to the language and it will revolutionise responsive declarations.
+[Everything I Learned About min(), max(), clamp() In CSS](https://ishadeed.com/article/css-min-max-clamp/) - Read - Ahmed has wrote a great post for those wanting to familiarise themselves with min(), max() and clamp() CSS functions. I'm excited for this addition to the language and it will revolutionise responsive declarations.
 
 ## Tools
 
 [Responsively](https://responsively.app/) - Responsive Design Previewer - Tweeted by none other than [@addyosmani](https://twitter.com/addyosmani) (so it's bound to be good). I've got to say it's absolute bliss being able to see all of the screens I care about in one space side by side, and it even updates if you're using hot reloading.
+
+[1-Line Layouts](https://1linelayouts.glitch.me/) - Useful Layout Snippets - [@Una](https://twitter.com/Una) has collated 10 modern CSS layout and sizing techniques which anyone can benefit from. CSS again proving how powerful it can be.

@@ -1,11 +1,14 @@
 .container {
   margin: 0 auto;
-  max-width: 960px;
+  width: 95%;
+  max-width: 720px;
   padding: 0 1.0875rem 1.45rem;
 }
 
 .container-fluid {
   width: 100%;
+  max-width: var(--max-layout-width);
+  margin: 0 auto;
   padding: 0 var(--content-x-padding);
 }
 

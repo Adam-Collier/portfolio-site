@@ -12,13 +12,11 @@ How do you know if the system you built works? Through testing it! But testing d
 
 ### Tools
 
-[Jest](https://jestjs.io/) - developed and maintained by Facebook and contributors. Partnered most often with React but works just as well with other JS frameworks.
-
-[Mocha](https://mochajs.org/) - more simple, and configurable. Ideal for developers who seek complete control over their unit testing environment.
+[Jest](https://jestjs.io/) - Framework - Testing Framework - Developed and maintained by Facebook and contributors. Pretty much the go to for React and can be used alongside React Testing Library.
 
 ### Tutorials
 
-[How to use React Testing Library Tutorial](https://www.robinwieruch.de/react-testing-library) - A great introduction on how to use Kent C Dodd's (who I am a big fan of) testing framework.
+[How to use React Testing Library Tutorial](https://www.robinwieruch.de/react-testing-library) - Read/Tutorial - A great introduction on how to use Kent C Dodd's (who I am a big fan of) testing framework. Everyone should learn at least one thing from this article.
 
 ## End to End testing
 
@@ -26,4 +24,4 @@ How do you know if the system you built works? Through testing it! But testing d
 
 ### Tools
 
-[Cypress](https://www.cypress.io) - Cypress io is an open source end to end testing framework for testing anything that runs in the browser.
+[Cypress.io](https://www.cypress.io) - Easily Write Tests - Cypress io is an open source end to end testing framework for testing anything that runs in the browser. Follow the whole user journey and easily pick up on any issues a long the way.

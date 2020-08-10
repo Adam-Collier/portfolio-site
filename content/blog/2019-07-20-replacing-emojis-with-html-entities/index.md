@@ -2,6 +2,7 @@
 title: Replacing Emojis with HTML Entities
 date: "2019-07-20"
 thumbnail: "./thumbnail.jpg"
+category: Code
 tags: [HTML]
 published: true
 ---

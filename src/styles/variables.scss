@@ -6,12 +6,16 @@
   --primary-light-grey: #f0f0f0;
   --primary-accent: #6219ff;
 
+  --accent-lighter: #e4deff;
+  --accent-lightest: #f6f4ff;
+
   --border-radius: 3px;
 
   --sidebar-width: 300px;
 
   --content-width: 95%;
   --max-content-width: 740px;
+  --max-layout-width: 1440px;
   --content-grid-template: "sidebar content padding";
   --content-grid-columns: 300px minmax(0, 1fr) 2rem;
   --content-x-padding: 1.5rem;

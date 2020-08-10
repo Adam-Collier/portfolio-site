@@ -4,15 +4,34 @@ import Image from "gatsby-image"
 
 import Layout from "../components/Layout"
 import SEO from "../components/seo"
-import Blogpost from "../components/Blogpost"
 import Sidebar from "../components/Sidebar"
 import MorePosts from "../components/MorePosts"
 
 import styles from "./layout.module.scss"
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
-  const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata.title
+  const post = data.markdownRemark
+  const {
+    description,
+    excerpt,
+    title,
+    featuredImage,
+    date,
+    tags,
+  } = post.frontmatter
+  let { html, tableOfContents, timeToRead } = post
+
+  if (tableOfContents) {
+    tableOfContents =
+      tableOfContents.slice(0, 4) +
+      `<li>
+        <a href="${location.pathname}#intro">Introduction</a>
+       </li>` +
+      tableOfContents.slice(4)
+  }
+
+  console.log(location)
 
   return (
     <Layout
@@ -21,35 +40,48 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
       container="fluid"
       className={`${styles.blogpost}`}
     >
-      <SEO
-        title={post.frontmatter.title}
-        description={post.frontmatter.description || post.excerpt}
-      />
+      <SEO title={title} description={description || excerpt} />
       <Sidebar
-        title="Blogpost"
-        data={data}
         className={styles.sidebar}
-        searchContext="More Posts"
+        title="Table of Contents"
+        description={description}
       >
-        {({ searchPosts }) =>
-          searchPosts.map(({ node }, i) => (
-            <Blogpost node={node} key={i} noThumbnail />
-          ))
-        }
+        {tableOfContents && (
+          <>
+            <h4>Table of Contents</h4>
+            <ul
+              className={styles.tableOfContents}
+              dangerouslySetInnerHTML={{ __html: tableOfContents }}
+            ></ul>
+          </>
+        )}
+
+        <h4>Written</h4>
+        <div className={styles.written}>
+          <p>{date}</p>
+          <p>{timeToRead} minute read</p>
+        </div>
+
+        <h4>Tags</h4>
+        <div className={styles.tags}>
+          {tags.map(tag => (
+            <div>{tag}</div>
+          ))}
+        </div>
       </Sidebar>
       <article className={styles.content}>
         <header>
-          <h1>{post.frontmatter.title}</h1>
+          <h1 id="intro">{title}</h1>
         </header>
-        {post.frontmatter.featuredImage && (
+        {featuredImage && (
           <Image
             style={{
               marginBottom: "2rem",
             }}
-            sizes={post.frontmatter.featuredImage.childImageSharp.sizes}
+            sizes={featuredImage.childImageSharp.sizes}
           />
         )}
-        <section dangerouslySetInnerHTML={{ __html: post.html }} />
+        <section dangerouslySetInnerHTML={{ __html: html }} />
       </article>
       <MorePosts />
     </Layout>
@@ -69,9 +101,13 @@ export const pageQuery = graphql`
       id
       excerpt(pruneLength: 160)
       html
+      tableOfContents
+      timeToRead
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
+        tags
+        description
         featuredImage {
           childImageSharp {
             sizes(maxWidth: 720, quality: 90, toFormat: JPG) {
@@ -79,39 +115,6 @@ export const pageQuery = graphql`
             }
           }
         }
-      }
-    }
-    allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: {
-        fileAbsolutePath: { regex: "/blog/" }
-        fields: { slug: { ne: $slug } }
-        frontmatter: { published: { eq: true } }
-      }
-    ) {
-      edges {
-        node {
-          excerpt(pruneLength: 400)
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
-            thumbnail {
-              childImageSharp {
-                fixed(width: 114, height: 114, quality: 90, toFormat: JPG) {
-                  ...GatsbyImageSharpFixed_withWebp
-                }
-              }
-            }
-            tags
-          }
-        }
-      }
-      group(field: frontmatter___tags) {
-        tag: fieldValue
-        totalCount
       }
     }
   }

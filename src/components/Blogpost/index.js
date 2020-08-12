@@ -6,7 +6,10 @@ import styles from "./blogpost.module.scss"
 
 const Index = ({ node, noThumbnail }) => {
   const { title, date, description, thumbnail } = node.frontmatter
+  console.log(thumbnail, "this is the thumbnail")
   const { slug } = node.fields
+
+  const { childImageSharp, extension, publicURL } = thumbnail
 
   return (
     <Link
@@ -14,8 +17,13 @@ const Index = ({ node, noThumbnail }) => {
       className={`${styles.blogpost} ${noThumbnail ? styles.noThumbnail : ""}`}
     >
       <article key={slug}>
-        {!noThumbnail && (
-          <Image fluid={thumbnail.childImageSharp.fluid} alt={title} />
+        {extension === "mp4" ? (
+          <video autoPlay loop muted playsInline>
+            {/* <source src="my-animation.webm" type="video/webm" /> */}
+            <source src={publicURL} type="video/mp4" />
+          </video>
+        ) : (
+          <Image fluid={childImageSharp.fluid} alt={title} />
         )}
         <section>
           <small>{date}</small>

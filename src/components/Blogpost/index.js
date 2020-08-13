@@ -6,7 +6,6 @@ import styles from "./blogpost.module.scss"
 
 const Index = ({ node, noThumbnail }) => {
   const { title, date, description, thumbnail } = node.frontmatter
-  console.log(thumbnail, "this is the thumbnail")
   const { slug } = node.fields
 
   const { childImageSharp, extension, publicURL } = thumbnail

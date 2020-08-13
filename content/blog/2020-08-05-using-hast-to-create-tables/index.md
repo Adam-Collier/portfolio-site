@@ -113,11 +113,11 @@ This simple setup gives us a good starting point to construct our script.
 
 So what is Unified? Unified is a project that will do a tremendous amount of heavy lifting for us. Through the power of open source, they have created an easy to use interface to interact and manipulate syntax trees. It sits at the centre of [Rehype](https://github.com/rehypejs/rehype) (HTML), [Remark](https://github.com/remarkjs/remark) (Markdown) and [Retext](https://github.com/retextjs/retext) (Natural Language... whatever that is) and it's this project that allows [MDX](https://mdxjs.com/) to add JSX to markdown files, which I didn't know, but thought it was pretty cool.
 
-In terms of a mental model think of unified as being your starting block in your lego construction, each piece of functionality can be attached to that block, but you need that block for everything to work. It's the oven that brings all of the ingredients together. For us we will be attaching Remark (for our Markdown), Rehype (for our HTML) and our custom plugin to convert CSV links to simple tables.
+In terms of a mental model think of unified as being the starting block in your lego construction, each piece of functionality can be attached to that block, but you need that block for everything to work. It's the oven that brings all of the ingredients together. For us we will be attaching Remark (for our Markdown), Rehype (for our HTML) and our custom plugin to convert CSV links to simple tables.
 
 ### Setting up the script
 
-So below is the basic structure of what we need and then we can start to flesh it out from that.
+Below is the basic structure of what we need and then we can start to flesh it out from there.
 
 ```js
 const fs = require("fs")
@@ -133,7 +133,7 @@ const contents = unified()
   .toString()
 ```
 
-Here we are reading our markdown file from the path string and passing it into the unified ecosystem. Now we add our HTML and markdown plugins: remark-parse to parse the markdown, remark-rehype to turn the markdown into an HTML tree and rehype-stringify to generate the HTML markup to eventually output.
+Here we read the markdown and pass it into the unified ecosystem. Then we add our HTML and markdown plugins: remark-parse to parse the markdown, remark-rehype to turn the markdown into an HTML tree and rehype-stringify to generate the HTML markup to eventually output.
 
 ```js{3-5,8-10}
 const fs = require("fs")

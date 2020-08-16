@@ -14,13 +14,25 @@
     display: none;
   }
 
-  img {
+  .help {
     width: 2rem;
     height: 2rem;
     padding: 0.5rem;
     border-radius: 50%;
     background: var(--primary-black);
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @media (max-width: 1440px) {
+    .reverse {
+      background: var(--primary-white);
+      img {
+        filter: invert(100%);
+      }
+    }
   }
 
   p {

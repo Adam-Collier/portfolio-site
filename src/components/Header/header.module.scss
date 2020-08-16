@@ -29,18 +29,25 @@
     display: flex;
     align-items: center;
   }
+}
 
-  .navigation {
-    a {
-      margin-left: 1rem;
-      color: var(--primary-black);
-      text-decoration: none;
-      font-size: 1rem;
-    }
+div.navigation {
+  a {
+    margin-left: 1rem;
+    color: var(--primary-black);
+    text-decoration: none;
+    font-size: 1rem;
+  }
 
-    @media (max-width: 767px) {
-      display: none;
-    }
+  @media (max-width: 767px) {
+    display: none;
+  }
+}
+
+@media (max-width: 1440px) {
+  div.reverse a {
+    color: var(--primary-white);
+    text-shadow: none;
   }
 }
 

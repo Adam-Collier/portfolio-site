@@ -9,10 +9,7 @@
   padding: var(--content-x-padding);
   display: flex;
   justify-content: space-between;
-
-  @media (max-width: 767px) {
-    background: var(--primary-white);
-  }
+  background: var(--primary-white);
 
   * {
     font-weight: 600;

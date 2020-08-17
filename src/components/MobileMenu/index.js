@@ -11,12 +11,6 @@ const Index = () => {
 
   return (
     <div className={styles.menu}>
-      <button
-        onClick={() => dispatch({ type: "isMobileMenu" })}
-        onKeyDown={() => dispatch({ type: "isMobileMenu" })}
-      >
-        <img src={closeIcon} alt="close icon" />
-      </button>
       <Navigation
         styles={styles.navigation}
         onClick={() => dispatch({ type: "isMobileMenu" })}

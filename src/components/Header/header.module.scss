@@ -96,3 +96,11 @@ div.navigation {
     margin: 0;
   }
 }
+
+.headerAccent {
+  background: var(--primary-accent);
+
+  .home {
+    color: var(--primary-white);
+  }
+}

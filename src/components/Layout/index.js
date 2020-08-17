@@ -71,7 +71,7 @@ const Layout = ({ children, location, className, container }) => {
   })
 
   return (
-    <>
+    <div className={styles.wrapper}>
       <Header siteTitle={data.site.siteMetadata.title} location={location} />
       <div ref={containerRef}>
         <main
@@ -83,7 +83,7 @@ const Layout = ({ children, location, className, container }) => {
         </main>
       </div>
       <Footer />
-    </>
+    </div>
   )
 }
 

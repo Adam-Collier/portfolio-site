@@ -14,8 +14,9 @@
 
 .container,
 .container-fluid {
-  --container-padding: 4.5rem;
-
-  padding-top: var(--container-padding);
   padding-bottom: var(--container-padding);
+}
+
+.wrapper {
+  padding-top: var(--container-padding);
 }

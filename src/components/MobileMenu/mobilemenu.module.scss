@@ -1,17 +1,28 @@
+@keyframes menu {
+  0% {
+    max-height: 0;
+  }
+
+  100% {
+    max-height: 100vh;
+  }
+}
+
 .menu {
   position: fixed;
-  top: 0;
+  top: 56px;
   left: 0;
-  bottom: 0;
   right: 0;
-  background: var(--primary-black);
+  background: var(--primary-accent);
   z-index: 50;
+  overflow: hidden;
+  box-shadow: var(--box-shadow-large);
 
   > button {
     position: absolute;
     text-align: right;
-    right: 1rem;
-    top: 1rem;
+    right: 0.85rem;
+    top: 0.9rem;
     background: none;
     border: none;
     padding: 2px;
@@ -22,12 +33,12 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 3rem 1.5rem 1.5rem;
+  padding: 0 1rem 2rem;
 
   a {
+    color: var(--primary-white);
     text-decoration: none;
     text-shadow: none;
-    color: var(--primary-white);
     font-weight: 500;
     font-size: 3rem;
     line-height: 1.5;

@@ -39,7 +39,7 @@
     border: none;
     font-size: 0.825rem;
     letter-spacing: 0.02rem;
-    background: #e4deff;
+    background: var(--accent-lightest);
     padding: 0.25rem 0.5rem;
     display: inline-block;
     margin-right: 0.5rem;
@@ -47,11 +47,15 @@
     color: var(--primary-accent);
     text-transform: capitalize;
     font-weight: 500;
-    border: 1px solid #e4deff;
+    border: 1px solid var(--accent-lighter);
     border-radius: 1px;
+    &:hover:not(.active) {
+      background: var(--accent-lighter);
+    }
   }
 }
 
 button.active {
   border: 1px solid var(--primary-accent);
+  background: var(--accent-lighter);
 }

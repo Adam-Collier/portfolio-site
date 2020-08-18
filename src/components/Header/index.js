@@ -43,13 +43,16 @@ const Header = () => {
               <span>&#183;</span>
               <div>
                 <img src={commandIcon} alt="command icon" />
-                {path.includes("now") ? <h4>&#8679; </h4> : ""}
                 <h4>{path.slice(0, 1).toUpperCase()}</h4>
               </div>
             </div>
           )}
         </div>
-        <Navigation styles={styles.navigation} />
+        <Navigation
+          styles={`${styles.navigation} ${
+            path === "Home" ? styles.reverse : ""
+          }`}
+        />
         <button
           className={styles.menuButton}
           onClick={() => dispatch({ type: "isMobileMenu" })}

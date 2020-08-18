@@ -3,7 +3,11 @@
     position: sticky;
     top: 72px;
     @media (min-width: 768px) {
+<<<<<<< HEAD
       height: calc(100vh - 144px);
+=======
+      height: calc(100vh - 147px);
+>>>>>>> 4e473837950b7c096ff66c8a016df3457b2625a6
       display: flex;
       flex-direction: column;
     }

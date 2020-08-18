@@ -32,6 +32,8 @@ Everything design-related I find useful and will reference in the future. It als
 
 [A Complete Guide to Typography](https://www.designsystems.com/iconography-guide/) - Design Systems - Essential reading when starting on your iconography journey. Again getting that initial setup makes all the difference in making your icons consistent and beautiful to look at.
 
+[Icons & Keylines Demystified](https://medium.com/@minoraxis/icon-grids-keylines-demystified-5a228fe08cfd) - Icon Design - A great introduction to the different approaches you can take to your guide setup to create consistent icons. I tend to go for the Material design approach but it's whatever works for you.
+
 ## Icons
 
 [CSS.gg Icon Set](https://css.gg/) - A Solid Set of Icons - A thorough collection of open source icons you can use in any of your projects. Created by [@AstritMalsija](https://twitter.com/astritmalsija) it's a great set to have in your arsenal as a designer and/or a developer.

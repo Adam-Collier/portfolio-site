@@ -14,6 +14,8 @@ Many sites and tools are developed with barriers that make it difficult or impos
 
 [HTML Hell](https://www.htmhell.dev/) - HTML Best Practices - A great site for recognising bad HTML practices and how to fix them. Some notable ones to look at are.
 
+[Toptotal](https://www.toptal.com/designers/htmlarrows/symbols/) - HTML entities - Find the HTML equivelent to many a symbol, I've used this quite a few times and a good site is pretty hard to find on this!
+
 ## Articles
 
 [HTML accessibility](https://www.html5accessibility.com/) - Read - maintained by [@stevefaulkner](https://twitter.com/stevefaulkner) gives an overview of browser support for HTML5 features across browsers.

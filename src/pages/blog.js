@@ -76,18 +76,6 @@ const Blog = ({ data }) => {
             </>
           )
         })}
-        {/* <div className={styles.tags}>
-          {tags.map(({ tag }, i) => (
-            <button
-              key={i}
-              className={`${activeTags.includes(tag) ? styles.active : ""}`}
-              onClick={handleClick}
-              onKeyDown={handleClick}
-            >
-              {tag}
-            </button>
-          ))}
-        </div> */}
       </Sidebar>
       <div className={styles.blogposts}>
         {posts.map(({ node }, i) => (
@@ -124,6 +112,8 @@ export const query = graphql`
             date(formatString: "MMMM DD, YYYY")
             title
             thumbnail {
+              publicURL
+              extension
               childImageSharp {
                 fluid(maxWidth: 114, quality: 90, toFormat: JPG) {
                   ...GatsbyImageSharpFluid_withWebp

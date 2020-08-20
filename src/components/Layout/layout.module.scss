@@ -2,21 +2,12 @@
   margin: 0 auto;
   width: 95%;
   max-width: 720px;
-  padding: 0 1.0875rem 1.45rem;
+  padding: var(--container-padding) 1.0875rem;
 }
 
 .container-fluid {
   width: 100%;
   max-width: var(--max-layout-width);
   margin: 0 auto;
-  padding: 0 var(--content-x-padding);
-}
-
-.container,
-.container-fluid {
-  padding-bottom: var(--container-padding);
-}
-
-.wrapper {
-  padding-top: var(--container-padding);
+  padding: var(--container-padding) var(--content-x-padding);
 }

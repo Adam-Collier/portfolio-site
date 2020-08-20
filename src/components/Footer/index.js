@@ -15,7 +15,7 @@ const Index = () => {
   return (
     <footer className={styles.footer}>
       <p>Hit cmd ? to see the shortcut menu</p>
-      <div className={`${styles.help} ${path === "/" ? styles.reverse : ""}`}>
+      <div className={`${styles.help} ${path === "/" ? styles.helpAlt : ""}`}>
         <img
           role="presentation"
           src={helpIcon}

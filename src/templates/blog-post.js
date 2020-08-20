@@ -31,14 +31,12 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
       tableOfContents.slice(4)
   }
 
-  console.log(location)
-
   return (
     <Layout
       location={location}
       title={siteTitle}
-      container="fluid"
-      className={`${styles.blogpost}`}
+      containerType="fluid"
+      containerClass={`${styles.blogpost}`}
     >
       <SEO title={title} description={description || excerpt} />
       <Sidebar

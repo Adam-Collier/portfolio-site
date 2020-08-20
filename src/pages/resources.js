@@ -17,8 +17,8 @@ const ResourceTemplate = ({ data, location }) => {
     <Layout
       location={location}
       title={siteTitle}
-      container="fluid"
-      className={styles.resources}
+      containerType="fluid"
+      containerClass={styles.resources}
     >
       <SEO
         title="Resources"

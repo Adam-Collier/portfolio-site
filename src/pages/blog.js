@@ -43,7 +43,7 @@ const Blog = ({ data }) => {
   }
 
   return (
-    <Layout container="fluid" className={styles.blog}>
+    <Layout containerType="fluid" containerClass={styles.blog}>
       <SEO title="Blog" />
       <Sidebar
         title="Blog"

@@ -6,12 +6,13 @@ import SEO from "../components/seo"
 import styles from "./index.module.css"
 
 import logo from "../icons/logo.svg"
-import twitterIcon from "../icons/twitter.svg"
-import spotifyIcon from "../icons/spotify.svg"
-import letterboxdIcon from "../icons/letterboxd.svg"
 
-const IndexPage = props => (
-  <Layout className={styles.home} container="fluid">
+const IndexPage = () => (
+  <Layout
+    wrapperClass={styles.homeWrapper}
+    containerClass={styles.home}
+    containerType="fluid"
+  >
     <SEO title="Home" />
     <div className={styles.logo}>
       <img src={logo} alt="logo" />
@@ -25,23 +26,6 @@ const IndexPage = props => (
         recommendations, books and music are always encouraged).
       </p>
     </div>
-    {/* <ul>
-      <li>
-        <a href="https://twitter.com/CollierAdam">
-          <img src={twitterIcon} alt="twitter icon" />
-        </a>
-      </li>
-      <li>
-        <a href="https://open.spotify.com/user/1134435866?si=BeBEyLrhQUWPx0hijLZoZA">
-          <img src={spotifyIcon} alt="spotify icon" />
-        </a>
-      </li>
-      <li>
-        <a href="https://letterboxd.com/mistapolnareff/">
-          <img src={letterboxdIcon} alt="letterboxd icon" />
-        </a>
-      </li>
-    </ul> */}
   </Layout>
 )
 

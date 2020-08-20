@@ -1,3 +1,7 @@
+.homeWrapper {
+  --header-background: none;
+}
+
 .home {
   display: flex;
   flex-wrap: wrap;

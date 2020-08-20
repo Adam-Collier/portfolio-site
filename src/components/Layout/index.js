@@ -1,16 +1,8 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
-import React, { useRef, useEffect } from "react"
+import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql, navigate } from "gatsby"
 import { useHotkeys } from "react-hotkeys-hook"
 import { useContext } from "../../context"
-import Pressure from "pressure"
 
 import Header from "../Header"
 import Footer from "../Footer"
@@ -18,7 +10,7 @@ import styles from "./layout.module.scss"
 import "./global.scss"
 import "../../styles/variables.scss"
 
-const Layout = ({ children, location, className, container }) => {
+const Layout = ({ children, wrapperClass, containerClass, containerType }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -52,36 +44,16 @@ const Layout = ({ children, location, className, container }) => {
     navigate("/blog")
   })
 
-  const containerRef = useRef(null)
-
-  useEffect(() => {
-    Pressure.set(
-      containerRef.current,
-      {
-        startDeepPress: function(event) {
-          event.preventDefault()
-          dispatch({ type: "isMobileMenu" })
-        },
-        endDeepPress: function(event) {
-          dispatch({ type: "isMobileMenu", check: true })
-        },
-      },
-      { only: "touch", preventSelect: false }
-    )
-  })
-
   return (
-    <div className={styles.wrapper}>
-      <Header siteTitle={data.site.siteMetadata.title} location={location} />
-      <div ref={containerRef}>
-        <main
-          className={`${
-            container === "fluid" ? styles.containerFluid : styles.container
-          } ${className}`}
-        >
-          {children}
-        </main>
-      </div>
+    <div className={wrapperClass}>
+      <Header siteTitle={data.site.siteMetadata.title} />
+      <main
+        className={`${
+          containerType === "fluid" ? styles.containerFluid : styles.container
+        } ${containerClass}`}
+      >
+        {children}
+      </main>
       <Footer />
     </div>
   )

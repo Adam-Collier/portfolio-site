@@ -27,7 +27,7 @@ const Snippets = ({ data }) => {
     .join("")
 
   return (
-    <Layout container="fluid" className={styles.snippets}>
+    <Layout containerType="fluid" containerClass={styles.snippets}>
       <SEO title="Snippets" />
       <Sidebar
         className={styles.sidebar}

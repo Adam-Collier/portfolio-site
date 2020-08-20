@@ -4,6 +4,8 @@ import { useStaticQuery, graphql, navigate } from "gatsby"
 import { useHotkeys } from "react-hotkeys-hook"
 import { useContext } from "../../context"
 
+import MobileMenu from "../MobileMenu"
+
 import Header from "../Header"
 import Footer from "../Footer"
 import styles from "./layout.module.scss"
@@ -21,7 +23,8 @@ const Layout = ({ children, wrapperClass, containerClass, containerType }) => {
     }
   `)
 
-  const dispatch = useContext()[1]
+  const [{ isMobileMenu }, dispatch] = useContext()
+
   useHotkeys("cmd+/", () => dispatch({ type: "isMenuVisible" }))
   useHotkeys("cmd+h", e => {
     e.preventDefault()
@@ -47,6 +50,7 @@ const Layout = ({ children, wrapperClass, containerClass, containerType }) => {
   return (
     <div className={wrapperClass}>
       <Header siteTitle={data.site.siteMetadata.title} />
+      <MobileMenu isMobileMenu={isMobileMenu} />
       <main
         className={`${
           containerType === "fluid" ? styles.containerFluid : styles.container

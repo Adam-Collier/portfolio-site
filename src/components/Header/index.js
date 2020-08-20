@@ -4,14 +4,13 @@ import { Link } from "gatsby"
 
 import Navigation from "../Navigation"
 import PageUtils from "../PageUtils"
-import MobileMenu from "../MobileMenu"
 import { useContext } from "../../context"
 
 import styles from "./header.module.scss"
 import menuIcon from "../../icons/menu.svg"
 
 const Header = () => {
-  const [{ isMobileMenu }, dispatch] = useContext()
+  const dispatch = useContext()[1]
 
   let path = globalHistory.location.pathname
 
@@ -35,7 +34,6 @@ const Header = () => {
           <img src={menuIcon} alt="menu icon" />
         </button>
       </header>
-      <MobileMenu isMobileMenu={isMobileMenu} />
     </>
   )
 }

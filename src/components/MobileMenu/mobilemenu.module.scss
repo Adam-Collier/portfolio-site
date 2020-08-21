@@ -9,26 +9,10 @@
   box-shadow: var(--box-shadow-large);
 }
 
-.headerLeft {
-  text-decoration: none;
-  font-weight: 600;
-}
-
 .header {
-  padding: var(--content-x-padding);
-  display: flex;
-  justify-content: space-between;
-}
-
-.closeButton {
-  border: none;
-  padding: 0;
-  background: none;
-  line-height: 0;
-
-  img {
-    margin-bottom: 0;
-  }
+  --home-link-color: var(--primary-white);
+  background: var(--primary-accent);
+  position: relative;
 }
 
 .navigation {

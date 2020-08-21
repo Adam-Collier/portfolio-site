@@ -8,17 +8,20 @@ import { useContext } from "../../context"
 
 import styles from "./header.module.scss"
 import menuIcon from "../../icons/menu.svg"
+import closeIcon from "../../icons/close_icon.svg"
 
-const Header = () => {
+const Header = ({ className, isClose, onClick }) => {
   const dispatch = useContext()[1]
 
   let path = globalHistory.location.pathname
 
   return (
     <>
-      <header className={`${styles.header}`}>
+      <header className={`${styles.header} ${className ? className : ""}`}>
         <div className={styles.headerLeft}>
-          <Link to="/">Adam Collier</Link>
+          <Link to="/" onClick={onClick ? onClick : null}>
+            Adam Collier
+          </Link>
           <PageUtils />
         </div>
         <Navigation
@@ -31,7 +34,7 @@ const Header = () => {
           onClick={() => dispatch({ type: "isMobileMenu" })}
           onKeyDown={() => dispatch({ type: "isMobileMenu" })}
         >
-          <img src={menuIcon} alt="menu icon" />
+          <img src={isClose ? closeIcon : menuIcon} alt="menu icon" />
         </button>
       </header>
     </>

@@ -1,4 +1,5 @@
 .header {
+  --home-link-color: var(--primary-black);
   position: fixed;
   z-index: 10;
   top: 0;
@@ -41,17 +42,10 @@
   }
 }
 
-@media (max-width: 1440px) {
-  .navigationAlt a {
-    color: var(--primary-white);
-    text-shadow: none;
-  }
-}
-
 .headerLeft {
   a {
     text-decoration: none;
-    color: var(--primary-black);
+    color: var(--home-link-color);
     margin-right: 1rem;
   }
 }
@@ -68,5 +62,12 @@
 
   img {
     margin: 0;
+  }
+}
+
+@media (max-width: 1440px) {
+  .navigationAlt a {
+    color: var(--primary-white);
+    text-shadow: none;
   }
 }

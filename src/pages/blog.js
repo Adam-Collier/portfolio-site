@@ -6,7 +6,7 @@ import SEO from "../components/seo"
 import Blogpost from "../components/Blogpost"
 import Sidebar from "../components/Sidebar"
 
-import styles from "./blog.module.scss"
+import styles from "./blog.module.css"
 
 const Blog = ({ data }) => {
   const { categories } = data.allMarkdownRemark

@@ -5,7 +5,7 @@ import { useContext } from "../../context"
 import { globalHistory } from "@reach/router"
 
 import helpIcon from "../../icons/help_icon.svg"
-import styles from "./footer.module.scss"
+import styles from "./footer.module.css"
 
 const Index = () => {
   const [{ isMenuVisible }, dispatch] = useContext()

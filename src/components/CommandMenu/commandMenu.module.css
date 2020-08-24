@@ -12,9 +12,9 @@
   right: 0;
   margin: 5% auto;
   border-radius: var(--border-radius);
+}
 
-  th,
-  td {
-    border-color: var(--primary-black);
-  }
+.commandMenu th,
+.commandMenu td {
+  border-color: var(--primary-black);
 }

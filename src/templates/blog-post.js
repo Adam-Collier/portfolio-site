@@ -7,7 +7,7 @@ import SEO from "../components/seo"
 import Sidebar from "../components/Sidebar"
 import MorePosts from "../components/MorePosts"
 
-import styles from "./layout.module.scss"
+import styles from "./blog-post.module.css"
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const siteTitle = data.site.siteMetadata.title

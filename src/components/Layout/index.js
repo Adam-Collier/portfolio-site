@@ -8,9 +8,9 @@ import MobileMenu from "../MobileMenu"
 
 import Header from "../Header"
 import Footer from "../Footer"
-import styles from "./layout.module.scss"
-import "./global.scss"
-import "../../styles/variables.scss"
+import styles from "./layout.module.css"
+import "./global.css"
+import "../../styles/variables.css"
 
 const Layout = ({ children, wrapperClass, containerClass, containerType }) => {
   const data = useStaticQuery(graphql`

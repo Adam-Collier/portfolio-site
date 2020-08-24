@@ -5,7 +5,7 @@ import { useTransition, animated } from "react-spring"
 import Navigation from "../Navigation"
 import Header from "../Header"
 
-import styles from "./mobilemenu.module.scss"
+import styles from "./mobilemenu.module.css"
 
 const Index = ({ isMobileMenu }) => {
   const dispatch = useContext()[1]

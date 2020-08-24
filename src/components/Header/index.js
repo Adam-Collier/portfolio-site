@@ -6,7 +6,7 @@ import Navigation from "../Navigation"
 import PageUtils from "../PageUtils"
 import { useContext } from "../../context"
 
-import styles from "./header.module.scss"
+import styles from "./header.module.css"
 import menuIcon from "../../icons/menu.svg"
 import closeIcon from "../../icons/close_icon.svg"
 

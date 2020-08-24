@@ -20,13 +20,13 @@
   flex-direction: column;
   align-items: flex-start;
   padding: 0.5rem 1rem 2rem;
+}
 
-  a {
-    color: var(--primary-white);
-    text-decoration: none;
-    text-shadow: none;
-    font-weight: 500;
-    font-size: 3rem;
-    line-height: 1.5;
-  }
+.navigation a {
+  color: var(--primary-white);
+  text-decoration: none;
+  text-shadow: none;
+  font-weight: 500;
+  font-size: 3rem;
+  line-height: 1.5;
 }

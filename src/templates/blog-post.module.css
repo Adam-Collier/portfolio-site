@@ -1,17 +1,6 @@
 .blogpost {
   composes: resources from "../pages/resources.module.css";
-}
-
-.blogpost {
-  @media (max-width: 767px) {
-    --content-grid-template: "content" "moreposts";
-  }
-}
-
-.sidebar {
-  @media (max-width: 767px) {
-    display: none;
-  }
+  --content-grid-template: "sidebar content" "sidebar moreposts";
 }
 
 .tableOfContents {
@@ -71,4 +60,14 @@
 
 .content {
   composes: content from "../pages/resources.module.css";
+}
+
+@media (max-width: 767px) {
+  .blogpost {
+    --content-grid-template: "content" "moreposts";
+  }
+
+  .sidebar {
+    display: none;
+  }
 }

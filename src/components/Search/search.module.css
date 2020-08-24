@@ -10,9 +10,9 @@
   cursor: pointer;
   transition: all 200ms ease-in-out, border 500ms ease-out;
   font-size: 0.875rem;
+}
 
-  &:focus {
-    width: 9rem;
-    box-shadow: 0px 1px 0px 0px var(--primary-accent);
-  }
+.search:focus {
+  width: 9rem;
+  box-shadow: 0px 1px 0px 0px var(--primary-accent);
 }

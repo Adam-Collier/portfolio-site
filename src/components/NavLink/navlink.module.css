@@ -6,14 +6,15 @@
 
 .active {
   position: relative;
-  &:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 1.5px;
-    bottom: 2px;
-    background: var(--primary-accent);
-    z-index: -1;
-  }
+}
+
+.active:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1.5px;
+  bottom: 2px;
+  background: var(--primary-accent);
+  z-index: -1;
 }

@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import Search from "../Search"
 
-import styles from "./sidebar.module.scss"
+import styles from "./sidebar.module.css"
 
 const Index = ({
   children,
@@ -19,7 +19,7 @@ const Index = ({
 
   return (
     <div className={`${className ? className : ""} ${styles.sidebar}`}>
-      <div>
+      <div className={styles.sticky}>
         <h4 className={styles.title}>{title}</h4>
         {description && <p className={styles.description}>{description}</p>}
         {data && (

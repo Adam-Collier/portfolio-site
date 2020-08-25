@@ -1,5 +1,6 @@
 import React from "react"
 
+import Toggle from "../Toggle"
 import CommandMenu from "../CommandMenu"
 import { useContext } from "../../context"
 import { globalHistory } from "@reach/router"
@@ -14,7 +15,7 @@ const Index = () => {
 
   return (
     <footer className={styles.footer}>
-      <p>Hit cmd ? to see the shortcut menu</p>
+      {/* <p>Hit cmd ? to see the shortcut menu</p> */}
       <div className={`${styles.help} ${path === "/" ? styles.helpAlt : ""}`}>
         <img
           role="presentation"
@@ -24,6 +25,7 @@ const Index = () => {
           onKeyDown={() => dispatch({ type: "isMenuVisible" })}
         />
       </div>
+      <Toggle />
       <CommandMenu isMenuVisible={isMenuVisible} />
     </footer>
   )

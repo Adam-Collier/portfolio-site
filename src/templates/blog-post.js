@@ -7,7 +7,7 @@ import SEO from "../components/seo"
 import Sidebar from "../components/Sidebar"
 import MorePosts from "../components/MorePosts"
 
-import styles from "./layout.module.scss"
+import styles from "./blog-post.module.css"
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const siteTitle = data.site.siteMetadata.title
@@ -31,14 +31,12 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
       tableOfContents.slice(4)
   }
 
-  console.log(location)
-
   return (
     <Layout
       location={location}
       title={siteTitle}
-      container="fluid"
-      className={`${styles.blogpost}`}
+      containerType="fluid"
+      containerClass={`${styles.blogpost}`}
     >
       <SEO title={title} description={description || excerpt} />
       <Sidebar

@@ -1,0 +1,52 @@
+.sidebar {
+  grid-area: sidebar;
+  position: relative;
+}
+
+.sticky {
+  position: sticky;
+  top: 72px;
+}
+
+.sticky > section {
+  display: grid;
+  grid-gap: 1rem;
+  cursor: pointer;
+}
+
+.sidebar h4 {
+  margin: 0;
+  color: var(--primary-accent);
+}
+
+.bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+}
+
+.title {
+  margin-bottom: 0.75rem;
+}
+
+.description {
+  margin: 0;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .title {
+    display: none;
+  }
+
+  .sticky {
+    height: calc(100vh - 147px);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sticky > section {
+    overflow-y: scroll;
+  }
+}

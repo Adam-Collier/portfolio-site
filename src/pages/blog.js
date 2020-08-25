@@ -6,7 +6,7 @@ import SEO from "../components/seo"
 import Blogpost from "../components/Blogpost"
 import Sidebar from "../components/Sidebar"
 
-import styles from "./blog.module.scss"
+import styles from "./blog.module.css"
 
 const Blog = ({ data }) => {
   const { categories } = data.allMarkdownRemark
@@ -43,7 +43,7 @@ const Blog = ({ data }) => {
   }
 
   return (
-    <Layout container="fluid" className={styles.blog}>
+    <Layout containerType="fluid" containerClass={styles.blog}>
       <SEO title="Blog" />
       <Sidebar
         title="Blog"

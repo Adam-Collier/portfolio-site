@@ -1,10 +1,10 @@
 import React from "react"
 import NavLink from "../NavLink"
 
-const Index = ({ styles, onClick }) => {
+const Index = ({ className, onClick }) => {
   return (
     <div
-      className={styles}
+      className={className}
       onClick={onClick}
       onKeyDown={onClick}
       role="button"

@@ -1,27 +1,42 @@
 import React from "react"
+import { useContext } from "../../context"
+import { useTransition, animated } from "react-spring"
 
 import Navigation from "../Navigation"
-import { useContext } from "../../context"
-import closeIcon from "../../icons/close_icon.svg"
+import Header from "../Header"
 
-import styles from "./mobilemenu.module.scss"
+import styles from "./mobilemenu.module.css"
 
-const Index = () => {
+const Index = ({ isMobileMenu }) => {
   const dispatch = useContext()[1]
 
-  return (
-    <div className={styles.menu}>
-      <button
-        onClick={() => dispatch({ type: "isMobileMenu" })}
-        onKeyDown={() => dispatch({ type: "isMobileMenu" })}
-      >
-        <img src={closeIcon} alt="close icon" />
-      </button>
-      <Navigation
-        styles={styles.navigation}
-        onClick={() => dispatch({ type: "isMobileMenu" })}
-      />
-    </div>
+  const transitions = useTransition(isMobileMenu, null, {
+    from: {
+      maxHeight: "0px",
+    },
+    enter: {
+      maxHeight: "500px",
+    },
+    leave: {
+      maxHeight: "0px",
+    },
+  })
+
+  return transitions.map(
+    ({ item, key, props }) =>
+      item && (
+        <animated.div className={styles.menu} key={key} style={props}>
+          <Header
+            className={styles.header}
+            isClose
+            onClick={() => dispatch({ type: "isMobileMenu" })}
+          />
+          <Navigation
+            className={styles.navigation}
+            onClick={() => dispatch({ type: "isMobileMenu" })}
+          />
+        </animated.div>
+      )
   )
 }
 

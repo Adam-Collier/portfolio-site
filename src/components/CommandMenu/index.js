@@ -2,7 +2,7 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { useTransition, animated } from "react-spring"
 
-import styles from "./commandMenu.module.scss"
+import styles from "./commandMenu.module.css"
 
 const Index = ({ isMenuVisible }) => {
   const data = useStaticQuery(graphql`

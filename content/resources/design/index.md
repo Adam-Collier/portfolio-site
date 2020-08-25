@@ -24,6 +24,8 @@ Everything design-related I find useful and will reference in the future. It als
 
 [Miro](https://miro.com) - Collaboration/Sprints - An amazing tool for facilitating design sprints and collaborating with others. You know a product is good when you think less about how to use it and more about creating quality products.
 
+[Whiteboard](https://witeboard.com/) - Whiteboard with Friends - A great tool if you ever need to quickly sketch and talk through ideas will colleagues or friends. Simply share a URL and away you go.
+
 [Figma](https://www.figma.com) - Collaboration/Design - In my opinion THE best design tool out there right now. Collaborate with other designer friends, work up prototypes for design sprints and share your work easily with developers. It's pretty much a life saver!
 
 ## Articles

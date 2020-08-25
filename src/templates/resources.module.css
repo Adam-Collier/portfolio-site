@@ -1,0 +1,11 @@
+.resources {
+  composes: resources from "../pages/resources.module.css";
+}
+
+.content {
+  composes: content from "../pages/resources.module.css";
+}
+
+.sidebar {
+  composes: sidebar from "../pages/resources.module.css";
+}

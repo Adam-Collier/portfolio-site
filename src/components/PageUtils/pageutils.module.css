@@ -1,0 +1,25 @@
+.shortcut {
+  display: flex;
+}
+
+.shortcut img {
+  margin: 0 0.25rem 0 0;
+}
+
+.shortcut div {
+  display: flex;
+  align-items: center;
+}
+
+.shortcut span {
+  font-size: 2rem;
+  line-height: 0.5;
+  padding: 0 0.5rem;
+}
+
+@media (max-width: 767px) {
+  .breadcrumbs,
+  .shortcut {
+    display: none;
+  }
+}

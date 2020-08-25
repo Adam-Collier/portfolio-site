@@ -5,7 +5,7 @@ import { useContext } from "../../context"
 import { globalHistory } from "@reach/router"
 
 import helpIcon from "../../icons/help_icon.svg"
-import styles from "./footer.module.scss"
+import styles from "./footer.module.css"
 
 const Index = () => {
   const [{ isMenuVisible }, dispatch] = useContext()
@@ -15,7 +15,7 @@ const Index = () => {
   return (
     <footer className={styles.footer}>
       <p>Hit cmd ? to see the shortcut menu</p>
-      <div className={`${styles.help} ${path === "/" ? styles.reverse : ""}`}>
+      <div className={`${styles.help} ${path === "/" ? styles.helpAlt : ""}`}>
         <img
           role="presentation"
           src={helpIcon}

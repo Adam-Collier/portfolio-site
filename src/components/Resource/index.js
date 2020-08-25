@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 
-import styles from "./resource.module.scss"
+import styles from "./resource.module.css"
 
 const index = ({ node, currentPageId }) => {
   const { id } = node

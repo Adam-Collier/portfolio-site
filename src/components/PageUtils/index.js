@@ -1,8 +1,6 @@
 import React from "react"
 import { globalHistory } from "@reach/router"
 
-import commandIcon from "../../icons/command_icon.svg"
-
 import styles from "./pageutils.module.css"
 
 const PageUtils = () => {
@@ -29,8 +27,7 @@ const PageUtils = () => {
         <div className={styles.shortcut}>
           <span>&#183;</span>
           <div>
-            <img src={commandIcon} alt="command icon" />
-            <h4>{path.slice(0, 1).toUpperCase()}</h4>
+            <h4>⌘{path.slice(0, 1).toUpperCase()}</h4>
           </div>
         </div>
       )}

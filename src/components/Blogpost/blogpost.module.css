@@ -1,6 +1,6 @@
 .blogpost {
   text-decoration: none;
-  color: var(--primary-black);
+  color: var(--primary-foreground);
 }
 .blogpost article {
   display: grid;
@@ -23,7 +23,7 @@
   display: block;
   line-height: 1;
   margin-bottom: 0.35rem;
-  color: var(--primary-grey);
+  color: var(--foreground-medium);
 }
 
 .blogpost h3 {

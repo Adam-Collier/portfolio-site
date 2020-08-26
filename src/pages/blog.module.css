@@ -29,7 +29,7 @@
 }
 .blogposts a {
   text-decoration: none;
-  color: var(--primary-black);
+  color: var(--primary-foreground);
 }
 
 .tags {

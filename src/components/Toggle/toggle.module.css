@@ -10,7 +10,7 @@
 }
 
 .toggle {
-  --toggle-background: var(--primary-white);
+  --toggle-background: var(--primary-background);
   background: var(--toggle-background);
   isolation: isolate;
   position: relative;
@@ -73,8 +73,8 @@
   display: inline-block;
   position: relative;
   margin: 0;
-  border: 2px solid var(--primary-black);
-  background: var(--primary-black);
+  border: 2px solid var(--primary-foreground);
+  background: var(--primary-foreground);
   transition: all 0.4s ease;
 }
 
@@ -93,10 +93,11 @@
 }
 
 .toggle:checked {
-  border-color: #654fec;
-  background: var(--primary-accent);
+  border-color: var(--primary-background);
+  background: var(--primary-foreground);
 }
 
 .toggle:checked:after {
+  background: var(--primary-background);
   transform: translatex(20px);
 }

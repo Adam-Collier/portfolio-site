@@ -1,5 +1,5 @@
 .header {
-  --home-link-color: var(--primary-black);
+  --home-link-color: var(--primary-foreground);
   position: fixed;
   z-index: 10;
   top: 0;
@@ -30,7 +30,7 @@
 
 .navigation a {
   margin-left: 1rem;
-  color: var(--primary-black);
+  color: var(--primary-foreground);
   text-decoration: none;
 }
 
@@ -64,7 +64,7 @@
 
 @media (max-width: 1440px) {
   .navigationAlt a {
-    color: var(--primary-white);
+    color: var(--primary-background);
     text-shadow: none;
   }
 }

@@ -9,6 +9,12 @@
 
 :root {
   font-size: 16px;
+  background: var(--primary-background);
+}
+
+.dark img,
+.dark video {
+  filter: brightness(0.9) contrast(1.2);
 }
 
 html {

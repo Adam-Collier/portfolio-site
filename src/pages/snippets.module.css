@@ -12,6 +12,7 @@
   width: var(--content-width);
   max-width: var(--max-content-width);
   margin: 0 auto;
+  color: var(--primary-foreground);
 }
 
 .tableOfContents a {

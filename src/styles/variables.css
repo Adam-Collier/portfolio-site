@@ -1,9 +1,9 @@
 :root {
-  --primary-black: #333333;
-  --primary-white: #ffffff;
-  --primary-grey: #999999;
-  --primary-dark-grey: #666666;
-  --primary-light-grey: #f0f0f0;
+  --primary-foreground: #333333;
+  --primary-background: #ffffff;
+  --foreground-high: #666666;
+  --foreground-medium: #999999;
+  --foreground-low: #f0f0f0;
   --primary-accent: #6219ff;
   --accent-lighter: #e4deff;
   --accent-lightest: #f6f4ff;
@@ -17,12 +17,25 @@
   --container-padding: 4.5rem;
   --content-x-padding: 1.5rem;
   --content-spacing-left: 10%;
-  --header-background: var(--primary-white);
+  --header-background: var(--primary-background);
   --box-shadow-large: 0 2.8px 2.2px rgba(0, 0, 0, 0.02),
     0 6.7px 5.3px rgba(0, 0, 0, 0.028), 0 12.5px 10px rgba(0, 0, 0, 0.035),
     0 22.3px 17.9px rgba(0, 0, 0, 0.042), 0 41.8px 33.4px rgba(0, 0, 0, 0.05),
     0 100px 80px rgba(0, 0, 0, 0.07);
-  --icon-fill: var(--primary-black);
+  --icon-fill: var(--primary-foreground);
+  --code-blocks: #383e49;
+}
+
+:root.dark {
+  --primary-foreground: #eee;
+  --primary-background: #151515;
+  --primary-accent: #ac85ff;
+  --accent-lighter: #382f62;
+  --accent-lightest: #1f1c2f;
+  --foreground-high: #f0f0f0;
+  --foreground-medium: #999999;
+  --foreground-low: #666666;
+  --code-blocks: #232528;
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {

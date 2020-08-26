@@ -26,7 +26,7 @@
   flex: 1 1 300px;
   padding: 0 3rem;
   align-self: stretch;
-  color: var(--primary-white);
+  color: var(--primary-background);
 }
 
 .logo img {
@@ -86,7 +86,7 @@
   .intro {
     position: relative;
     background: none;
-    color: var(--primary-black);
+    color: var(--primary-foreground);
   }
 
   .intro:after {
@@ -98,4 +98,8 @@
     height: 40%;
     background: var(--primary-accent);
   }
+}
+
+.dark .intro {
+  background: var(--primary-foreground);
 }

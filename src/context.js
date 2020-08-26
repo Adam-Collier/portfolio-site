@@ -14,6 +14,17 @@ const stateReducer = (state, action) => {
       return { isMobileMenu: !state.isMobileMenu }
     }
 
+    case "isDarkMode": {
+      let { value } = action
+      localStorage.setItem("isDarkMode", value)
+
+      value
+        ? document.documentElement.classList.add("dark")
+        : document.documentElement.classList.remove("dark")
+
+      return { isDarkMode: value }
+    }
+
     default: {
       throw new Error(`Unhandled action type: ${action.type}`)
     }
@@ -23,7 +34,7 @@ const stateReducer = (state, action) => {
 const initialState = {
   isMenuVisible: false,
   isMobileMenu: false,
-  isInfo: false,
+  isDarkMode: undefined,
 }
 
 function StateProvider({ children }) {

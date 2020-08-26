@@ -10,7 +10,7 @@
 }
 
 .header {
-  --home-link-color: var(--primary-white);
+  --home-link-color: var(--primary-background);
   background: var(--primary-accent);
   position: relative;
 }
@@ -23,7 +23,7 @@
 }
 
 .navigation a {
-  color: var(--primary-white);
+  color: var(--primary-background);
   text-decoration: none;
   text-shadow: none;
   font-weight: 500;

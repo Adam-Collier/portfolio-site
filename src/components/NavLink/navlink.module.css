@@ -1,7 +1,8 @@
 .link {
   position: relative;
-  text-shadow: 1px 1px var(--primary-white), 1px -1px var(--primary-white),
-    -1px 1px var(--primary-white), -1px -1px var(--primary-white);
+  text-shadow: 1px 1px var(--primary-background),
+    1px -1px var(--primary-background), -1px 1px var(--primary-background),
+    -1px -1px var(--primary-background);
 }
 
 .active {

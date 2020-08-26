@@ -35,7 +35,7 @@
 
 .written p:last-of-type {
   margin-top: 0.2rem;
-  color: var(--primary-grey);
+  color: var(--foreground-medium);
 }
 
 .tags {
@@ -46,7 +46,7 @@
   cursor: pointer;
   font-size: 0.825rem;
   letter-spacing: 0.02rem;
-  background: var(--primary-white);
+  background: var(--primary-background);
   padding: 0.25rem 0.5rem;
   display: inline-block;
   margin-right: 0.5rem;

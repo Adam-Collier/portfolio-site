@@ -26,7 +26,7 @@ const index = ({ node, currentPageId }) => {
             fill={
               currentPageId === id
                 ? "var(--primary-accent)"
-                : "var(--primary-light-grey)"
+                : "var(--foreground-low)"
             }
           />
         </svg>

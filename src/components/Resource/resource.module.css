@@ -1,6 +1,6 @@
 .resource {
   text-decoration: none;
-  color: var(--primary-black);
+  color: var(--primary-foreground);
 }
 
 .resource:hover:not(.active) {

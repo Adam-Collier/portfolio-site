@@ -1,20 +1,23 @@
-import React from "react"
+import React, { useEffect } from "react"
+import { useContext } from "../../context"
 import styles from "./toggle.module.css"
 
 export default () => {
-  return (
-    // <label className={styles.label}>
-    //   <div className={styles.toggle}>
-    //     <input
-    //       className={styles.toggleState}
-    //       type="checkbox"
-    //       name="check"
-    //       value="check"
-    //     />
-    //     <div className={styles.indicator}></div>
-    //   </div>
-    // </label>
+  const [{ isDarkMode }, dispatch] = useContext()
 
-    <input type="checkbox" className={styles.toggle} />
+  useEffect(() => {
+    dispatch({
+      type: "isDarkMode",
+      value: window.localStorage.getItem("isDarkMode") === "true",
+    })
+  }, [dispatch])
+
+  return (
+    <input
+      type="checkbox"
+      className={styles.toggle}
+      checked={isDarkMode}
+      onChange={() => dispatch({ type: "isDarkMode", value: !isDarkMode })}
+    />
   )
 }

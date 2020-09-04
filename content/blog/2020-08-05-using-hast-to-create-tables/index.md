@@ -213,17 +213,17 @@ So, we have added our custom plugins to our unified workflow, the problem is it 
 Jumping back to our custom plugin we now need to traverse the tree and grab all of the a tags that link to a CSV file. To do this we need to use the `unist-util-visit-parents` package, which is an unist utility to find nodes.
 
 ```js{1,5-11}
-const visit = require('unist-util-visit-parents');
+const visit = require("unist-util-visit-parents")
 
-module.exports = () => (tree) => {
+module.exports = () => tree => {
   visit(
     tree,
-    (node) => node.tagName === 'a' && node.properties.href.includes('.csv'),
+    node => node.tagName === "a" && node.properties.href.includes(".csv"),
     (node, ancestors) => {
-         //do stuff with the nodes here
+      //do stuff with the nodes here
     }
-  );
-};
+  )
+}
 ```
 
 Here we are almost running a test on each node. First, we are checking if it's an `a` tag and secondly whether it contains `.csv` in its href string. If it satisfies our requirements it gets passed to the callback, otherwise, it's ignored. And just like that we have all of the nodes we need to convert to tables.
@@ -233,201 +233,180 @@ Here we are almost running a test on each node. First, we are checking if it's a
 Now we need to read the data from the CSV before we can create the table, we do this by using the npm package `parser` and utilise nodes very own `readFileSync` method.
 
 ```js{2-3,10-14}
-const visit = require('unist-util-visit-parents');
-const parse = require('csv-parse/lib/sync');
-const fs = require('fs');
+const visit = require("unist-util-visit-parents")
+const parse = require("csv-parse/lib/sync")
+const fs = require("fs")
 
-module.exports = () => (tree) => {
+module.exports = () => tree => {
   visit(
     tree,
-    (node) => node.tagName === 'a' && node.properties.href.includes('.csv'),
+    node => node.tagName === "a" && node.properties.href.includes(".csv"),
     (node, ancestors) => {
-      let markdownData = fs.readFileSync(
-        `./${decodeURI(node.properties.href)}`
-      );
-      let rows = parse(markdownData, { columns: false, trim: true });
-      const [tableHeaders, ...tableRows] = rows;
+      let markdownData = fs.readFileSync(`./${decodeURI(node.properties.href)}`)
+      let rows = parse(markdownData, { columns: false, trim: true })
+      const [tableHeaders, ...tableRows] = rows
     }
-  );
-};
+  )
+}
 ```
 
-We are reading the CSV data using readFileSync, parsing that data into an array and then destructuring the array and assigning tableHeaders and tableRows. Destructing at this point makes it a little easier for us later on. 
+We are reading the CSV data using readFileSync, parsing that data into an array and then destructuring the array and assigning tableHeaders and tableRows. Destructing at this point makes it a little easier for us later on.
 
 ### Creating the table
 
 Since we now have the CSV data nicely formatted for us and assigned to variables we can now map those and create our table markup. By using template literals here it makes it super easy for us to create the markup, imagine having to concatenate a load of strings (no thank you).
 
 ```html{18-39}
-const visit = require('unist-util-visit-parents');
-const parse = require('csv-parse/lib/sync');
-const fs = require('fs');
-
-module.exports = () => (tree) => {
-  visit(
-    tree,
-    (node) => node.tagName === 'a' && node.properties.href.includes('.csv'),
-    (node, ancestors) => {
-      let baseNode = ancestors ? ancestors[ancestors.length - 1] : node;
-
-      let markdownData = fs.readFileSync(
-        `./${decodeURI(node.properties.href)}`
-      );
-      let rows = parse(markdownData, { columns: false, trim: true });
-      const [tableHeaders, ...tableRows] = rows;
-
-      let tableMarkup = `<table>
-                  <thead>
-                      <tr>
-                          ${tableHeaders
-                            .map((header) => `<th>${header}</th>`)
-                            .join('')}
-                      </tr>
-                  </thead>
-                  <tbody>
-                      ${tableRows
-                        .map((row) => {
-                          return `
-                              <tr>
-                                  ${row
-                                    .map((value) => `<td>${value}</td>`)
-                                    .join('')}
-                              </tr>
-                          `;
-                        })
-                        .join('')}
-                  </tbody>
-              </table>`;
-    }
-  );
-};
+const visit = require('unist-util-visit-parents'); const parse =
+require('csv-parse/lib/sync'); const fs = require('fs'); module.exports = () =>
+(tree) => { visit( tree, (node) => node.tagName === 'a' &&
+node.properties.href.includes('.csv'), (node, ancestors) => { let baseNode =
+ancestors ? ancestors[ancestors.length - 1] : node; let markdownData =
+fs.readFileSync( `./${decodeURI(node.properties.href)}` ); let rows =
+parse(markdownData, { columns: false, trim: true }); const [tableHeaders,
+...tableRows] = rows; let tableMarkup = `
+<table>
+  <thead>
+    <tr>
+      ${tableHeaders .map((header) => `
+      <th>${header}</th>
+      `) .join('')}
+    </tr>
+  </thead>
+  <tbody>
+    ${tableRows .map((row) => { return `
+    <tr>
+      ${row .map((value) => `
+      <td>${value}</td>
+      `) .join('')}
+    </tr>
+    `; }) .join('')}
+  </tbody>
+</table>
+`; } ); };
 ```
 
 ### Converting HTML to a Hast node
 
-So now we have our table markup but we need to replace the a tag node with our table. At the moment we can't do this because nodes need to be replaced with nodes, and at the moment our table is a string of HTML content. So let's turn our table string into a node. 
+So now we have our table markup but we need to replace the a tag node with our table. At the moment we can't do this because nodes need to be replaced with nodes, and at the moment our table is a string of HTML content. So let's turn our table string into a node.
 
 ```js{4-5, 40-42}
-const visit = require('unist-util-visit-parents');
-const parse = require('csv-parse/lib/sync');
-const fs = require('fs');
-const parse5 = require('parse5');
-const fromParse5 = require('hast-util-from-parse5');
+const visit = require("unist-util-visit-parents")
+const parse = require("csv-parse/lib/sync")
+const fs = require("fs")
+const parse5 = require("parse5")
+const fromParse5 = require("hast-util-from-parse5")
 
-module.exports = () => (tree) => {
+module.exports = () => tree => {
   visit(
     tree,
-    (node) => node.tagName === 'a' && node.properties.href.includes('.csv'),
+    node => node.tagName === "a" && node.properties.href.includes(".csv"),
     (node, ancestors) => {
-      let markdownData = fs.readFileSync(
-        `./${decodeURI(node.properties.href)}`
-      );
-      let rows = parse(markdownData, { columns: false, trim: true });
-      const [tableHeaders, ...tableRows] = rows;
+      let markdownData = fs.readFileSync(`./${decodeURI(node.properties.href)}`)
+      let rows = parse(markdownData, { columns: false, trim: true })
+      const [tableHeaders, ...tableRows] = rows
 
       let tableMarkup = `<table>
                   <thead>
                       <tr>
                           ${tableHeaders
-                            .map((header) => `<th>${header}</th>`)
-                            .join('')}
+                            .map(header => `<th>${header}</th>`)
+                            .join("")}
                       </tr>
                   </thead>
                   <tbody>
                       ${tableRows
-                        .map((row) => {
+                        .map(row => {
                           return `
                               <tr>
                                   ${row
-                                    .map((value) => `<td>${value}</td>`)
-                                    .join('')}
+                                    .map(value => `<td>${value}</td>`)
+                                    .join("")}
                               </tr>
-                          `;
+                          `
                         })
-                        .join('')}
+                        .join("")}
                   </tbody>
-              </table>`;
+              </table>`
 
-      let ast = parse5.parseFragment(String(tableMarkup));
-      let hast = fromParse5(ast);
+      let ast = parse5.parseFragment(String(tableMarkup))
+      let hast = fromParse5(ast)
 
-      node.tagName = hast.children[0].tagName;
-      node.children = hast.children[0].children;
-      node.properties = {};
+      node.tagName = hast.children[0].tagName
+      node.children = hast.children[0].children
+      node.properties = {}
     }
-  );
-};
+  )
+}
 ```
 
-We are taking advantage of the `parse5` and `hast-util-from-parse5` packages here to create our node. Parse5 to parse our HTML string and `hast-util-from-parse5` to turn the HTML structure into a hast node. 
+We are taking advantage of the `parse5` and `hast-util-from-parse5` packages here to create our node. Parse5 to parse our HTML string and `hast-util-from-parse5` to turn the HTML structure into a hast node.
 
 ### Manipulating the tree
 
 Finally, we can directly manipulate the node attributes which replaces the link node with our newly created table node.
 
 ```js{43-46}
-const visit = require('unist-util-visit-parents');
-const parse = require('csv-parse/lib/sync');
-const fs = require('fs');
-const parse5 = require('parse5');
-const fromParse5 = require('hast-util-from-parse5');
+const visit = require("unist-util-visit-parents")
+const parse = require("csv-parse/lib/sync")
+const fs = require("fs")
+const parse5 = require("parse5")
+const fromParse5 = require("hast-util-from-parse5")
 
-module.exports = () => (tree) => {
+module.exports = () => tree => {
   visit(
     tree,
-    (node) => node.tagName === 'a' && node.properties.href.includes('.csv'),
+    node => node.tagName === "a" && node.properties.href.includes(".csv"),
     (node, ancestors) => {
-      let markdownData = fs.readFileSync(
-        `./${decodeURI(node.properties.href)}`
-      );
-      let rows = parse(markdownData, { columns: false, trim: true });
-      const [tableHeaders, ...tableRows] = rows;
+      let markdownData = fs.readFileSync(`./${decodeURI(node.properties.href)}`)
+      let rows = parse(markdownData, { columns: false, trim: true })
+      const [tableHeaders, ...tableRows] = rows
 
       let tableMarkup = `<table>
                   <thead>
                       <tr>
                           ${tableHeaders
-                            .map((header) => `<th>${header}</th>`)
-                            .join('')}
+                            .map(header => `<th>${header}</th>`)
+                            .join("")}
                       </tr>
                   </thead>
                   <tbody>
                       ${tableRows
-                        .map((row) => {
+                        .map(row => {
                           return `
                               <tr>
                                   ${row
-                                    .map((value) => `<td>${value}</td>`)
-                                    .join('')}
+                                    .map(value => `<td>${value}</td>`)
+                                    .join("")}
                               </tr>
-                          `;
+                          `
                         })
-                        .join('')}
+                        .join("")}
                   </tbody>
-              </table>`;
+              </table>`
 
-      let ast = parse5.parseFragment(String(tableMarkup));
-      let hast = fromParse5(ast);
+      let ast = parse5.parseFragment(String(tableMarkup))
+      let hast = fromParse5(ast)
 
-      node.tagName = hast.children[0].tagName;
-      node.children = hast.children[0].children;
-      node.properties = {};
+      node.tagName = hast.children[0].tagName
+      node.children = hast.children[0].children
+      node.properties = {}
     }
-  );
-};
+  )
+}
 ```
 
 As a general rule you wouldn't normally mutate the global state but in the context of AST's it has become pretty much the standard, especially when some AST's can be pretty huge!
 
 ### Run the script
 
-Now if we run the script and check our outputted HTML you should see that our table has been outputted as we expected. 
+Now if we run the script and check our outputted HTML you should see that our table has been outputted as we expected.
 
 ```bash
 $ node script
 ```
 
-We have now achieved the status of ultimate AST tree wrangler. 
+We have now achieved the status of ultimate AST tree wrangler.
 
 ### Conclusion
 
@@ -437,5 +416,5 @@ And that's all folks! So now you should have a somewhat solid understanding of A
 
 As always here are a few links I found useful whilst writing this post:
 
-* [How to Modify Nodes in an Abstract Syntax Tree by Jason Lengstorf](https://css-tricks.com/how-to-modify-nodes-in-an-abstract-syntax-tree/)
-* [Creating a Remark Transformer Plugin](https://www.gatsbyjs.org/tutorial/remark-plugin-tutorial/)
+- [How to Modify Nodes in an Abstract Syntax Tree by Jason Lengstorf](https://css-tricks.com/how-to-modify-nodes-in-an-abstract-syntax-tree/)
+- [Creating a Remark Transformer Plugin](https://www.gatsbyjs.org/tutorial/remark-plugin-tutorial/)

@@ -15,7 +15,7 @@ export const wrapRootElement = ({ element }) => {
 
 function getInitialColorMode() {
   const persistedColorPreference = window.localStorage.getItem("isDarkMode")
-  const hasPersistedPreference = typeof persistedColorPreference === Boolean
+  const hasPersistedPreference = typeof persistedColorPreference === "string"
   // If the user has explicitly chosen light or dark,
   // let's use it. Otherwise, this value will be null.
   if (hasPersistedPreference) {
@@ -26,11 +26,11 @@ function getInitialColorMode() {
   const mql = window.matchMedia("(prefers-color-scheme: dark)")
   const hasMediaQueryPreference = typeof mql.matches === "dark"
   if (hasMediaQueryPreference) {
-    return mql.matches ? true : false
+    return mql.matches ? "true" : "false"
   }
   // If they are using a browser/OS that doesn't support
   // color themes, let's default to 'light'.
-  return false
+  return "false"
 }
 
 function ColourPreferenceScriptTag() {
@@ -42,7 +42,7 @@ function ColourPreferenceScriptTag() {
 
   console.log(isDarkMode);
 
-  isDarkMode ? document.documentElement.classList.add("dark") : document.documentElement.classList.remove("dark");
+  isDarkMode === "true" ? document.documentElement.classList.add("dark") : document.documentElement.classList.remove("dark");
 })()`
   // eslint-disable-next-line react/no-danger
   return <script dangerouslySetInnerHTML={{ __html: codeToRunOnClient }} />

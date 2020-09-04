@@ -7,8 +7,8 @@ import PageUtils from "../PageUtils"
 import { useContext } from "../../context"
 
 import styles from "./header.module.css"
-import menuIcon from "../../icons/menu.svg"
-import closeIcon from "../../icons/close_icon.svg"
+import MenuIcon from "../../icons/menu.svg"
+import CloseIcon from "../../icons/close_icon.svg"
 
 const Header = ({ className, isClose, onClick }) => {
   const dispatch = useContext()[1]
@@ -34,7 +34,7 @@ const Header = ({ className, isClose, onClick }) => {
           onClick={() => dispatch({ type: "isMobileMenu" })}
           onKeyDown={() => dispatch({ type: "isMobileMenu" })}
         >
-          <img src={isClose ? closeIcon : menuIcon} alt="menu icon" />
+          {isClose ? <CloseIcon /> : <MenuIcon />}
         </button>
       </header>
     </>

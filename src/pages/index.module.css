@@ -22,7 +22,6 @@
 }
 
 .intro {
-  background: var(--primary-accent);
   flex: 1 1 300px;
   padding: 0 3rem;
   align-self: stretch;
@@ -82,6 +81,17 @@
   }
 }
 
+@media (max-width: 1440px) {
+  .intro {
+    background: var(--primary-accent);
+    color: var(--primary-background);
+  }
+
+  .dark .intro {
+    background: var(--primary-foreground);
+  }
+}
+
 @media (min-width: 1441px) {
   .intro {
     position: relative;
@@ -98,8 +108,4 @@
     height: 40%;
     background: var(--primary-accent);
   }
-}
-
-.dark .intro {
-  background: var(--primary-foreground);
 }

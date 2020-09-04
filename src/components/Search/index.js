@@ -1,5 +1,6 @@
 import React from "react"
 
+import SearchIcon from "../../icons/search_icon.svg"
 import styles from "./search.module.css"
 
 const Index = ({ allPosts, searchedPosts }) => {
@@ -17,13 +18,15 @@ const Index = ({ allPosts, searchedPosts }) => {
   }
 
   return (
-    <input
-      className={styles.search}
-      type="search"
-      name="search posts"
-      id="search"
-      onChange={handleChange}
-    />
+    <div className={styles.search}>
+      <SearchIcon />
+      <input
+        type="search"
+        name="search posts"
+        id="search"
+        onChange={handleChange}
+      />
+    </div>
   )
 }
 

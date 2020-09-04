@@ -1,59 +1,3 @@
-/* .label {
-  display: inline-flex;
-  align-items: center;
-  cursor: pointer;
-  color: #394a56;
-}
-
-.label-text {
-  margin-left: 16px;
-}
-
-.toggle {
-  --toggle-background: var(--primary-background);
-  background: var(--toggle-background);
-  isolation: isolate;
-  position: relative;
-  height: 30px;
-  width: 60px;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: -8px -4px 8px 0px #ffffff, 8px 4px 12px 0px #d1d9e6;
-}
-
-.indicator::before {
-  position: absolute;
-  content: "";
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  overflow: hidden;
-  background: blue;
-}
-
-.toggle-state {
-  display: none;
-}
-
-.indicator {
-  height: 100%;
-  width: 200%;
-  background: #ecf0f3;
-  border-radius: 15px;
-  transform: translate3d(-75%, 0, 0);
-  transition: transform 0.4s cubic-bezier(0.85, 0.05, 0.18, 1.35);
-  box-shadow: -8px -4px 8px 0px #ffffff, 8px 4px 12px 0px #d1d9e6;
-}
-
-.toggle-state:checked {
-  --toggle-background: var(--primary-accent);
-}
-
-.toggle-state:checked ~ .indicator {
-  transform: translate3d(25%, 0, 0);
-} */
-
 .toggle {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -75,7 +19,6 @@
   margin: 0;
   border: 2px solid var(--primary-foreground);
   background: var(--primary-foreground);
-  transition: all 0.4s ease;
 }
 
 .toggle:after {
@@ -88,8 +31,6 @@
   border-radius: 50%;
   background: white;
   box-shadow: 0 1px 2px rgba(44, 44, 44, 0.2);
-  /* transition: all 0.2s cubic-bezier(0.5, 0.1, 0.75, 1.35); */
-  transition: transform 0.4s cubic-bezier(0.85, 0.05, 0.18, 1.35);
 }
 
 .toggle:checked {
@@ -100,4 +41,8 @@
 .toggle:checked:after {
   background: var(--primary-background);
   transform: translatex(20px);
+}
+
+.toggle:hover:after {
+  transition: transform 0.4s cubic-bezier(0.85, 0.05, 0.18, 1.35);
 }

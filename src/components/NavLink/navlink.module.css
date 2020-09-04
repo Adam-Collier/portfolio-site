@@ -3,6 +3,7 @@
   text-shadow: 1px 1px var(--primary-background),
     1px -1px var(--primary-background), -1px 1px var(--primary-background),
     -1px -1px var(--primary-background);
+  text-decoration: none;
 }
 
 .active {
@@ -18,4 +19,14 @@
   bottom: 2px;
   background: var(--primary-accent);
   z-index: -1;
+}
+
+@media (max-width: 1024px) {
+  .active:before {
+    display: none;
+  }
+
+  .active {
+    text-decoration: underline;
+  }
 }

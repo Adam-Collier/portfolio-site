@@ -3,15 +3,15 @@
   top: 0;
   left: 0;
   right: 0;
-  background: var(--primary-accent);
+  background: #6219ff;
   z-index: 10;
   overflow: hidden;
   box-shadow: var(--box-shadow-large);
 }
 
 .header {
-  --home-link-color: var(--primary-background);
-  background: var(--primary-accent);
+  --home-link-color: #fff;
+  background: #6219ff;
   position: relative;
 }
 
@@ -23,8 +23,7 @@
 }
 
 .navigation a {
-  color: var(--primary-background);
-  text-decoration: none;
+  color: #fff;
   text-shadow: none;
   font-weight: 500;
   font-size: 3rem;

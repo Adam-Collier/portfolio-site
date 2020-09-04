@@ -10,10 +10,6 @@
   }
 }
 
-.sidebar {
-  grid-area: sidebar;
-}
-
 .blogposts {
   display: grid;
   grid-area: content;
@@ -30,6 +26,10 @@
 .blogposts a {
   text-decoration: none;
   color: var(--primary-foreground);
+}
+
+.category {
+  margin-bottom: 1.45rem;
 }
 
 .tags {

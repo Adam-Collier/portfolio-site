@@ -3,10 +3,6 @@
   --content-grid-template: "sidebar content" "sidebar moreposts";
 }
 
-.tableOfContents {
-  margin-bottom: 0;
-}
-
 .tableOfContents a {
   text-decoration: none;
   color: var(--primary-accent);
@@ -33,8 +29,11 @@
   margin: 0;
 }
 
+.written p:first-of-type {
+  margin-bottom: 0.25rem;
+}
+
 .written p:last-of-type {
-  margin-top: 0.2rem;
   color: var(--foreground-medium);
 }
 

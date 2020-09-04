@@ -10,12 +10,10 @@
 
 .sticky > section {
   display: grid;
-  grid-gap: 1rem;
   cursor: pointer;
 }
 
 .sidebar h4 {
-  margin: 0;
   color: var(--primary-accent);
 }
 
@@ -26,14 +24,12 @@
   padding-bottom: 1rem;
 }
 
-.title {
-  margin-bottom: 0.75rem;
+.bar h4 {
+  margin: 0;
 }
 
 .description {
   color: var(--primary-foreground);
-  margin: 0;
-  margin-bottom: 1rem;
 }
 
 @media (min-width: 768px) {

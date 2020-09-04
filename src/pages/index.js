@@ -5,7 +5,7 @@ import SEO from "../components/seo"
 
 import styles from "./index.module.css"
 
-import logo from "../icons/logo.svg"
+import Logo from "../icons/logo.svg"
 
 import { useContext } from "../context"
 
@@ -15,12 +15,14 @@ const IndexPage = () => {
   return (
     <Layout
       wrapperClass={styles.homeWrapper}
-      containerClass={`${styles.home} ${isDarkMode ? styles.dark : ""}`}
+      containerClass={`${styles.home} ${
+        isDarkMode === "true" ? styles.dark : ""
+      }`}
       containerType="fluid"
     >
       <SEO title="Home" />
       <div className={styles.logo}>
-        <img src={logo} alt="logo" />
+        <Logo />
       </div>
       <div className={styles.intro}>
         <p>

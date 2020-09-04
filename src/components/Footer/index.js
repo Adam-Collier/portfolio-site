@@ -3,27 +3,17 @@ import React from "react"
 import Toggle from "../Toggle"
 import CommandMenu from "../CommandMenu"
 import { useContext } from "../../context"
-import { globalHistory } from "@reach/router"
 
-import helpIcon from "../../icons/help_icon.svg"
+import HelpIcon from "../../icons/help_icon.svg"
 import styles from "./footer.module.css"
 
 const Index = () => {
   const [{ isMenuVisible }, dispatch] = useContext()
 
-  let path = globalHistory.location.pathname
-
   return (
     <footer className={styles.footer}>
-      {/* <p>Hit cmd ? to see the shortcut menu</p> */}
-      <div className={`${styles.help} ${path === "/" ? styles.helpAlt : ""}`}>
-        <img
-          role="presentation"
-          src={helpIcon}
-          alt="help icon"
-          onClick={() => dispatch({ type: "isMenuVisible" })}
-          onKeyDown={() => dispatch({ type: "isMenuVisible" })}
-        />
+      <div className={styles.help}>
+        <HelpIcon onClick={() => dispatch({ type: "isMenuVisible" })} />
       </div>
       <Toggle />
       <CommandMenu isMenuVisible={isMenuVisible} />

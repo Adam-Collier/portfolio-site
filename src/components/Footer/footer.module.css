@@ -38,12 +38,3 @@
     display: none;
   }
 }
-
-@media (max-width: 1440px) {
-  .footer .helpAlt {
-    background: var(--primary-background);
-  }
-  .footer .helpAlt img {
-    filter: invert(100%);
-  }
-}

@@ -62,8 +62,8 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
 
         <h4>Tags</h4>
         <div className={styles.tags}>
-          {tags.map(tag => (
-            <div>{tag}</div>
+          {tags.map((tag, index) => (
+            <div key={index}>{tag}</div>
           ))}
         </div>
       </Sidebar>

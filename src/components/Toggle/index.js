@@ -5,19 +5,29 @@ import styles from "./toggle.module.css"
 export default () => {
   const [{ isDarkMode }, dispatch] = useContext()
 
+  let initialDispatch = useContext()[1]
+
   useEffect(() => {
+    console.log(window.localStorage.getItem("isDarkMode"))
+    initialDispatch({
+      type: "isDarkMode",
+      value: window.localStorage.getItem("isDarkMode"),
+    })
+  }, [initialDispatch])
+
+  let handleInput = event => {
     dispatch({
       type: "isDarkMode",
-      value: window.localStorage.getItem("isDarkMode") === "true",
+      value: isDarkMode === "true" ? "false" : "true",
     })
-  }, [dispatch])
+  }
 
   return (
     <input
       type="checkbox"
       className={styles.toggle}
-      checked={isDarkMode}
-      onChange={() => dispatch({ type: "isDarkMode", value: !isDarkMode })}
+      checked={isDarkMode === "true" ? true : false}
+      onChange={handleInput}
     />
   )
 }

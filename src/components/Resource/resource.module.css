@@ -25,3 +25,7 @@
   background: var(--accent-lighter);
   border-radius: var(--border-radius);
 }
+
+.active svg path {
+  fill: var(--primary-accent);
+}

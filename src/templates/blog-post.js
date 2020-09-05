@@ -6,6 +6,7 @@ import Layout from "../components/Layout"
 import SEO from "../components/seo"
 import Sidebar from "../components/Sidebar"
 import MorePosts from "../components/MorePosts"
+import TableOfContents from "../components/TableOfContents"
 
 import styles from "./blog-post.module.css"
 
@@ -20,16 +21,8 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
     date,
     tags,
   } = post.frontmatter
-  let { html, tableOfContents, timeToRead } = post
 
-  if (tableOfContents) {
-    tableOfContents =
-      tableOfContents.slice(0, 4) +
-      `<li>
-        <a href="${location.pathname}#intro">Introduction</a>
-       </li>` +
-      tableOfContents.slice(4)
-  }
+  let { html, tableOfContents, timeToRead, headings } = post
 
   return (
     <Layout
@@ -45,13 +38,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         description={description}
       >
         {tableOfContents && (
-          <>
-            <h4>Table of Contents</h4>
-            <ul
-              className={styles.tableOfContents}
-              dangerouslySetInnerHTML={{ __html: tableOfContents }}
-            ></ul>
-          </>
+          <TableOfContents headings={headings} path={location.pathname} />
         )}
 
         <h4>Written</h4>
@@ -69,7 +56,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
       </Sidebar>
       <article className={styles.content}>
         <header>
-          <h1 id="intro">{title}</h1>
+          <h1 id="introduction">{title}</h1>
         </header>
         {featuredImage && (
           <Image
@@ -101,6 +88,10 @@ export const pageQuery = graphql`
       html
       tableOfContents
       timeToRead
+      headings {
+        value
+        depth
+      }
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")

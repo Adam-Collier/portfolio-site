@@ -1,11 +1,3 @@
-/**
- * Implement Gatsby's SSR (Server Side Rendering) APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/ssr-apis/
- */
-
-// You can delete this file if you're not using it
-
 import React from "react"
 import { StateProvider } from "./src/context"
 
@@ -39,8 +31,6 @@ function ColourPreferenceScriptTag() {
   ${getInitialColorMode.toString()}
 
   const isDarkMode = getInitialColorMode();
-
-  console.log(isDarkMode);
 
   isDarkMode === "true" ? document.documentElement.classList.add("dark") : document.documentElement.classList.remove("dark");
 })()`

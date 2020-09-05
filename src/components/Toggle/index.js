@@ -8,7 +8,6 @@ export default ({ className }) => {
   let initialDispatch = useContext()[1]
 
   useEffect(() => {
-    console.log(window.localStorage.getItem("isDarkMode"))
     initialDispatch({
       type: "isDarkMode",
       value: window.localStorage.getItem("isDarkMode"),

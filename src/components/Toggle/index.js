@@ -2,7 +2,7 @@ import React, { useEffect } from "react"
 import { useContext } from "../../context"
 import styles from "./toggle.module.css"
 
-export default () => {
+export default ({ className }) => {
   const [{ isDarkMode }, dispatch] = useContext()
 
   let initialDispatch = useContext()[1]
@@ -25,7 +25,7 @@ export default () => {
   return (
     <input
       type="checkbox"
-      className={styles.toggle}
+      className={`${styles.toggle} ${className ? className : ""}`}
       checked={isDarkMode === "true" ? true : false}
       onChange={handleInput}
     />

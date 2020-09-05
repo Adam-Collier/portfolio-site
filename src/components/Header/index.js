@@ -4,6 +4,7 @@ import { Link } from "gatsby"
 
 import Navigation from "../Navigation"
 import PageUtils from "../PageUtils"
+import Toggle from "../Toggle"
 import { useContext } from "../../context"
 
 import styles from "./header.module.css"
@@ -24,18 +25,22 @@ const Header = ({ className, isClose, onClick }) => {
           </Link>
           <PageUtils />
         </div>
-        <Navigation
-          className={`${styles.navigation} ${
-            path === "/" ? styles.navigationAlt : ""
-          }`}
-        />
-        <button
-          className={styles.menuButton}
-          onClick={() => dispatch({ type: "isMobileMenu" })}
-          onKeyDown={() => dispatch({ type: "isMobileMenu" })}
-        >
-          {isClose ? <CloseIcon /> : <MenuIcon />}
-        </button>
+        <div className={styles.headerRight}>
+          <Navigation
+            className={`${styles.navigation} ${
+              path === "/" ? styles.navigationAlt : ""
+            }`}
+          />
+
+          <Toggle className={styles.toggle} />
+          <button
+            className={styles.menuButton}
+            onClick={() => dispatch({ type: "isMobileMenu" })}
+            onKeyDown={() => dispatch({ type: "isMobileMenu" })}
+          >
+            {isClose ? <CloseIcon /> : <MenuIcon />}
+          </button>
+        </div>
       </header>
     </>
   )

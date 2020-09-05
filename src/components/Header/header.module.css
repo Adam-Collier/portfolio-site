@@ -24,7 +24,7 @@
 }
 
 .headerLeft,
-.navigation {
+.headerRight {
   display: flex;
   align-items: center;
 }
@@ -46,6 +46,7 @@
   padding: 0;
   background: none;
   line-height: 0;
+  margin-left: 1.25rem;
 }
 
 @media (max-width: 767px) {
@@ -56,6 +57,10 @@
 
 @media (min-width: 768px) {
   .menuButton {
+    display: none;
+  }
+
+  .toggle {
     display: none;
   }
 }

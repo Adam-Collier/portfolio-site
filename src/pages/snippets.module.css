@@ -1,0 +1,42 @@
+.snippets {
+  width: 100%;
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: var(--content-grid-columns);
+  grid-template-areas: var(--content-grid-template);
+}
+
+.content {
+  overflow: hidden;
+  grid-area: content;
+  width: var(--content-width);
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  color: var(--primary-foreground);
+}
+
+.tableOfContents a {
+  text-decoration: none;
+  color: var(--primary-accent);
+}
+
+.tableOfContents ul {
+  list-style-type: none;
+  font-weight: 400;
+}
+
+.tableOfContents ul p {
+  font-weight: 550;
+}
+
+.tableOfContents ul li > ul {
+  margin-top: 0.6rem;
+}
+
+.tableOfContents ul li {
+  margin-bottom: 0.6rem;
+}
+
+.tableOfContents > ul {
+  margin: 0;
+}

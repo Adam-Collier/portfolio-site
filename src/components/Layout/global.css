@@ -9,6 +9,12 @@
 
 :root {
   font-size: 16px;
+  background: var(--primary-background);
+}
+
+.dark img,
+.dark video {
+  filter: brightness(0.9) contrast(1.2);
 }
 
 html {
@@ -222,7 +228,7 @@ html {
   box-sizing: inherit;
 }
 body {
-  color: hsla(0, 0%, 0%, 0.8);
+  color: var(--primary-foreground);
   font-family: Inter;
   font-weight: normal;
   word-wrap: break-word;

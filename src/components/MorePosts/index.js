@@ -1,8 +1,6 @@
 import React from "react"
 import Blogpost from "../Blogpost"
-
-import blogStyles from "../../pages/blog.module.scss"
-import styles from "./moreposts.module.scss"
+import styles from "./moreposts.module.css"
 
 import { useStaticQuery, graphql } from "gatsby"
 
@@ -11,7 +9,7 @@ const Index = () => {
     query {
       allMarkdownRemark(
         sort: { fields: [frontmatter___date], order: DESC }
-        limit: 3
+        limit: 2
         filter: {
           fileAbsolutePath: { regex: "/blog/" }
           frontmatter: { published: { eq: true } }
@@ -44,7 +42,7 @@ const Index = () => {
   return (
     <div className={styles.morePosts}>
       <h4>More posts</h4>
-      <div className={blogStyles.blogposts}>
+      <div className={styles.blogposts}>
         {data.allMarkdownRemark.edges.map(({ node }, i) => (
           <Blogpost node={node} key={i} />
         ))}

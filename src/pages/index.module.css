@@ -1,3 +1,7 @@
+.homeWrapper {
+  --header-background: none;
+}
+
 .home {
   display: flex;
   flex-wrap: wrap;
@@ -18,11 +22,10 @@
 }
 
 .intro {
-  background: var(--primary-accent);
   flex: 1 1 300px;
   padding: 0 3rem;
   align-self: stretch;
-  color: var(--primary-white);
+  color: var(--primary-background);
 }
 
 .logo img {
@@ -78,11 +81,22 @@
   }
 }
 
-@media (min-width: 1440px) {
+@media (max-width: 1440px) {
+  .intro {
+    background: var(--primary-accent);
+    color: var(--primary-background);
+  }
+
+  .dark .intro {
+    background: var(--primary-foreground);
+  }
+}
+
+@media (min-width: 1441px) {
   .intro {
     position: relative;
     background: none;
-    color: var(--primary-black);
+    color: var(--primary-foreground);
   }
 
   .intro:after {

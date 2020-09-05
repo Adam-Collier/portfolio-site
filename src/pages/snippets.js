@@ -5,7 +5,7 @@ import Layout from "../components/Layout"
 import SEO from "../components/seo"
 import Sidebar from "../components/Sidebar"
 
-import styles from "./snippets.module.scss"
+import styles from "./snippets.module.css"
 
 const Snippets = ({ data }) => {
   let { edges } = data.allMarkdownRemark
@@ -27,7 +27,7 @@ const Snippets = ({ data }) => {
     .join("")
 
   return (
-    <Layout container="fluid" className={styles.snippets}>
+    <Layout containerType="fluid" containerClass={styles.snippets}>
       <SEO title="Snippets" />
       <Sidebar
         className={styles.sidebar}

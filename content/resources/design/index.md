@@ -24,6 +24,8 @@ Everything design-related I find useful and will reference in the future. It als
 
 [Miro](https://miro.com) - Collaboration/Sprints - An amazing tool for facilitating design sprints and collaborating with others. You know a product is good when you think less about how to use it and more about creating quality products.
 
+[Whiteboard](https://witeboard.com/) - Whiteboard with Friends - A great tool if you ever need to quickly sketch and talk through ideas will colleagues or friends. Simply share a URL and away you go.
+
 [Figma](https://www.figma.com) - Collaboration/Design - In my opinion THE best design tool out there right now. Collaborate with other designer friends, work up prototypes for design sprints and share your work easily with developers. It's pretty much a life saver!
 
 ## Articles
@@ -31,6 +33,8 @@ Everything design-related I find useful and will reference in the future. It als
 [Space, Grids, and Layouts](https://www.designsystems.com/space-grids-and-layouts/) - Design Systems - My go-to article when thinking about layouts and initial setup. A huge helper in defining spacing and starting to understand the fundamentals.
 
 [A Complete Guide to Typography](https://www.designsystems.com/iconography-guide/) - Design Systems - Essential reading when starting on your iconography journey. Again getting that initial setup makes all the difference in making your icons consistent and beautiful to look at.
+
+[Icons & Keylines Demystified](https://medium.com/@minoraxis/icon-grids-keylines-demystified-5a228fe08cfd) - Icon Design - A great introduction to the different approaches you can take to your guide setup to create consistent icons. I tend to go for the Material design approach but it's whatever works for you.
 
 ## Icons
 

@@ -1,0 +1,49 @@
+.sidebar {
+  grid-area: sidebar;
+  position: relative;
+}
+
+.sticky {
+  position: sticky;
+  top: 72px;
+}
+
+.sticky > section {
+  display: grid;
+  cursor: pointer;
+}
+
+.sidebar h4 {
+  color: var(--primary-accent);
+}
+
+.bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+}
+
+.bar h4 {
+  margin: 0;
+}
+
+.description {
+  color: var(--primary-foreground);
+}
+
+@media (min-width: 768px) {
+  .title {
+    display: none;
+  }
+
+  .sticky {
+    height: calc(100vh - 147px);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sticky > section {
+    overflow-y: scroll;
+  }
+}

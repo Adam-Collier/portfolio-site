@@ -7,7 +7,7 @@ import SEO from "../components/seo"
 import Resource from "../components/Resource"
 import Sidebar from "../components/Sidebar"
 
-import styles from "./layout.module.scss"
+import styles from "./resources.module.css"
 
 const ResourceTemplate = ({ data, location }) => {
   const post = data.markdownRemark
@@ -17,8 +17,8 @@ const ResourceTemplate = ({ data, location }) => {
     <Layout
       location={location}
       title={siteTitle}
-      container="fluid"
-      className={styles.resources}
+      containerType="fluid"
+      containerClass={styles.resources}
     >
       <SEO
         title={post.frontmatter.title}
@@ -30,7 +30,7 @@ const ResourceTemplate = ({ data, location }) => {
         data={data}
         description="This is a group of resources I have either learned something from or thought could become useful in the future."
         searchContext="Categories"
-        className={styles.resourceSidebar}
+        className={styles.sidebar}
       >
         {({ searchPosts }) =>
           searchPosts.map(({ node }, i) => (

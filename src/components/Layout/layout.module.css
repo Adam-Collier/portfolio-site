@@ -1,0 +1,13 @@
+.container {
+  margin: 0 auto;
+  width: 95%;
+  max-width: 720px;
+  padding: var(--container-padding) 1.0875rem;
+}
+
+.container-fluid {
+  width: 100%;
+  max-width: var(--max-layout-width);
+  margin: 0 auto;
+  padding: var(--container-padding) var(--content-x-padding);
+}

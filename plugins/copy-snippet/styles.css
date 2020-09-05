@@ -1,5 +1,5 @@
 .gatsby-copy-snippet {
-  color: var(--primary-black);
+  color: var(--primary-foreground);
   background-color: rgba(255, 255, 255, 0.25);
   border: none;
   border-radius: var(--border-radius);
@@ -18,7 +18,7 @@
 }
 
 .gatsby-copy-snippet:hover {
-  background-color: var(--primary-white);
+  background-color: var(--primary-background);
 }
 
 .gatsby-copy-snippet:disabled {

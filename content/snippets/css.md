@@ -112,8 +112,8 @@ body {
 ```css
 li {
   // for the underline to "skip" the descenders
-  text-shadow: 1px 1px var(--primary-white), 1px -1px var(--primary-white),
-    -1px 1px var(--primary-white), -1px -1px var(--primary-white);
+  text-shadow: 1px 1px var(--primary-background), 1px -1px var(--primary-background),
+    -1px 1px var(--primary-background), -1px -1px var(--primary-background);
 }
 
 .current-menu-item {
@@ -125,7 +125,7 @@ li {
     right: 0;
     height: 1.5px;
     bottom: 1px;
-    background: var(--primary-black);
+    background: var(--primary-foreground);
     z-index: -1;
   }
 }

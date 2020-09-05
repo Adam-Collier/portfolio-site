@@ -7,11 +7,22 @@ const DispatchContext = React.createContext()
 const stateReducer = (state, action) => {
   switch (action.type) {
     case "isMenuVisible": {
-      return { isMenuVisible: !state.isMenuVisible }
+      return { ...state, isMenuVisible: !state.isMenuVisible }
     }
 
     case "isMobileMenu": {
-      return { isMobileMenu: !state.isMobileMenu }
+      return { ...state, isMobileMenu: !state.isMobileMenu }
+    }
+
+    case "isDarkMode": {
+      let { value } = action
+      localStorage.setItem("isDarkMode", value)
+
+      value === "true"
+        ? document.documentElement.classList.add("dark")
+        : document.documentElement.classList.remove("dark")
+
+      return { ...state, isDarkMode: value }
     }
 
     default: {
@@ -23,7 +34,7 @@ const stateReducer = (state, action) => {
 const initialState = {
   isMenuVisible: false,
   isMobileMenu: false,
-  isInfo: false,
+  isDarkMode: undefined,
 }
 
 function StateProvider({ children }) {

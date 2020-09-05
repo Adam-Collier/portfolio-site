@@ -1,7 +1,9 @@
 import React from "react"
 import { Link } from "gatsby"
 
-import styles from "./resource.module.scss"
+import ArrowIcon from "../../icons/arrow.svg"
+
+import styles from "./resource.module.css"
 
 const index = ({ node, currentPageId }) => {
   const { id } = node
@@ -12,7 +14,8 @@ const index = ({ node, currentPageId }) => {
     <Link to={slug} className={`${styles.resource}`}>
       <article key={slug} className={currentPageId === id ? styles.active : ""}>
         <h3>{title}</h3>
-        <svg
+        <ArrowIcon />
+        {/* <svg
           width="24"
           height="24"
           viewBox="0 0 24 24"
@@ -26,10 +29,10 @@ const index = ({ node, currentPageId }) => {
             fill={
               currentPageId === id
                 ? "var(--primary-accent)"
-                : "var(--primary-light-grey)"
+                : "var(--foreground-low)"
             }
           />
-        </svg>
+        </svg> */}
       </article>
     </Link>
   )

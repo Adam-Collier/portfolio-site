@@ -1,0 +1,32 @@
+.link {
+  position: relative;
+  text-shadow: 1px 1px var(--primary-background),
+    1px -1px var(--primary-background), -1px 1px var(--primary-background),
+    -1px -1px var(--primary-background);
+  text-decoration: none;
+}
+
+.active {
+  position: relative;
+}
+
+.active:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1.5px;
+  bottom: 2px;
+  background: var(--primary-accent);
+  z-index: -1;
+}
+
+@media (max-width: 1024px) {
+  .active:before {
+    display: none;
+  }
+
+  .active {
+    text-decoration: underline;
+  }
+}

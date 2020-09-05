@@ -6,7 +6,7 @@ import SEO from "../components/seo"
 import Blogpost from "../components/Blogpost"
 import Sidebar from "../components/Sidebar"
 
-import styles from "./blog.module.scss"
+import styles from "./blog.module.css"
 
 const Blog = ({ data }) => {
   const { categories } = data.allMarkdownRemark
@@ -43,21 +43,21 @@ const Blog = ({ data }) => {
   }
 
   return (
-    <Layout container="fluid" className={styles.blog}>
+    <Layout containerType="fluid" containerClass={styles.blog}>
       <SEO title="Blog" />
       <Sidebar
         title="Blog"
         description="A collection of writing which can range from talking about code,
           design or life in general. Enjoy this eclectic collection of writings"
       >
-        {categories.map(({ category, edges }) => {
+        {categories.map(({ category, edges }, index) => {
           let allTags = new Set()
           edges.forEach(({ node }) => {
             node.frontmatter.tags.forEach(tag => allTags.add(tag))
           })
 
           return (
-            <>
+            <div className={styles.category} key={index}>
               <h4>{category}</h4>
               <div className={styles.tags}>
                 {[...allTags].map((tag, i) => (
@@ -73,7 +73,7 @@ const Blog = ({ data }) => {
                   </button>
                 ))}
               </div>
-            </>
+            </div>
           )
         })}
       </Sidebar>

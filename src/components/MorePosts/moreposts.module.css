@@ -1,0 +1,15 @@
+.morePosts h4 {
+  margin: 0 0 1.25rem;
+  color: var(--primary-accent);
+}
+
+.morePosts {
+  grid-area: moreposts;
+  width: var(--content-width);
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+}
+
+.blogposts {
+  composes: blogposts from "../../pages/blog.module.css";
+}

@@ -7,7 +7,7 @@ import { useStaticQuery, graphql } from "gatsby"
 const Index = () => {
   const data = useStaticQuery(graphql`
     query {
-      allMarkdownRemark(
+      allMdx(
         sort: { fields: [frontmatter___date], order: DESC }
         limit: 2
         filter: {
@@ -43,7 +43,7 @@ const Index = () => {
     <div className={styles.morePosts}>
       <h4>More posts</h4>
       <div className={styles.blogposts}>
-        {data.allMarkdownRemark.edges.map(({ node }, i) => (
+        {data.allMdx.edges.map(({ node }, i) => (
           <Blogpost node={node} key={i} />
         ))}
       </div>

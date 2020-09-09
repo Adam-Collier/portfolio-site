@@ -11,7 +11,7 @@ const Index = ({
   description,
   searchContext,
 }) => {
-  const allPosts = data ? data.allMarkdownRemark.edges : ""
+  const allPosts = data ? data.edges : ""
   const [searchPosts, setSearchPosts] = useState(allPosts)
   const searchedPosts = posts => {
     setSearchPosts(posts)

@@ -30,9 +30,7 @@ module.exports = {
               offsetY: `80`,
             },
           },
-          `copy-snippet`,
           `resource-format`,
-          `gatsby-remark-prismjs`,
           {
             resolve: `gatsby-remark-copy-linked-files`,
             options: {
@@ -54,7 +52,6 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    `gatsby-plugin-sass`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -73,6 +70,48 @@ module.exports = {
         rule: {
           include: /icons/, // See below to configure properly
         },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: [`.mdx`, `.md`],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              offsetY: `80`,
+            },
+          },
+          {
+            resolve: require.resolve(`./plugins/resource-format`),
+          },
+          {
+            resolve: `gatsby-remark-copy-linked-files`,
+            options: {
+              destinationDir: `${__dirname}/content`,
+              ignoreFileExtensions: [`png`, `jpg`, `jpeg`, `webp`],
+            },
+          },
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              linkImagesToOriginal: false,
+              maxWidth: 720,
+              withWebp: true,
+              quality: 90,
+            },
+          },
+        ],
+      },
+    },
+    {
+      resolve: `gatsby-remark-images`,
+      options: {
+        linkImagesToOriginal: false,
+        maxWidth: 720,
+        withWebp: true,
+        quality: 90,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

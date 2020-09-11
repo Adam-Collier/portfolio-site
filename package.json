@@ -15,6 +15,7 @@
     "gatsby-plugin-react-helmet": "^3.2.1",
     "gatsby-plugin-react-svg": "^3.0.0",
     "gatsby-plugin-sharp": "^2.5.3",
+    "gatsby-plugin-sitemap": "^2.4.12",
     "gatsby-remark-autolink-headers": "^2.3.1",
     "gatsby-remark-copy-linked-files": "^2.2.2",
     "gatsby-remark-images": "^3.2.3",

@@ -4,41 +4,64 @@ import { useActiveHash } from "./use-active-hash"
 
 import styles from "./tableOfContent.module.css"
 
-export default ({ headings, path }) => {
-  const slugify = value =>
-    value
-      .trim()
-      .toLowerCase()
-      .replace(/ /g, "-")
-      .replace(/[-]+/g, "-")
-      .replace(/[^\w-]+/g, "")
+export default ({ tableOfContents, location, className }) => {
+  const getHeadingIds = toc => {
+    const idList = []
+    const hashToId = str => str.slice(1)
 
-  let ids = headings.map(heading => slugify(heading.value))
+    if (toc) {
+      for (const item of toc) {
+        // Sometimes url does not exist on item. See #19851
+        if (item.url) {
+          idList.push(hashToId(item.url))
+        }
 
-  const activeHash = useActiveHash(["introduction", ...ids])
+        // Only traverse sub-items if specified (they are not displayed in ToC)
+        // recursion depth should only go up to 6 headings deep and may come in as
+        // undefined if not set in the tableOfContentsDepth frontmatter field
+        if (item.items) {
+          idList.push(...getHeadingIds(item.items))
+        }
+      }
+    }
 
-  console.log(activeHash)
+    return idList
+  }
+
+  // depth and maxDepth are used to figure out how many bullets deep to render in the ToC sidebar, if no
+  // max depth is set via the tableOfContentsDepth field in the frontmatter, all headings will be rendered
+  function createItems(items, location, activeHash) {
+    return (
+      items &&
+      items.map((item, index) => {
+        const isActive = item.url === `#${activeHash}`
+
+        return (
+          <li key={index}>
+            {item.url && (
+              <Link
+                className={isActive ? styles.active : ""}
+                to={location.pathname + item.url}
+              >
+                {item.title}
+              </Link>
+            )}
+            {item.items && (
+              <ul>{createItems(item.items, location, activeHash)}</ul>
+            )}
+          </li>
+        )
+      })
+    )
+  }
+
+  const activeHash = useActiveHash(getHeadingIds(tableOfContents.items))
 
   return (
     <>
       <h4>Table of Contents</h4>
-      <ul className={styles.tableOfContents}>
-        <li
-          key="introduction"
-          className={"introduction" === activeHash ? styles.active : ""}
-        >
-          <Link to={`${path}#`}>Introduction</Link>
-        </li>
-        {headings.map(heading => {
-          let slug = slugify(heading.value)
-          const isActive = slug === activeHash
-
-          return (
-            <li key={heading.value} className={isActive ? styles.active : ""}>
-              <Link to={`${path}#${slug}`}>{heading.value}</Link>
-            </li>
-          )
-        })}
+      <ul className={`${styles.tableOfContents} ${className ? className : ""}`}>
+        {createItems(tableOfContents.items, location, activeHash)}
       </ul>
     </>
   )

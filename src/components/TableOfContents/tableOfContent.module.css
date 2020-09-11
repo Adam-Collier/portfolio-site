@@ -3,9 +3,14 @@
   color: var(--primary-accent);
 }
 
+.tableOfContents li {
+  list-style-type: none;
+}
+
 .tableOfContents {
   list-style-type: none;
   font-weight: 400;
+  margin-bottom: 1.45rem;
 }
 
 .tableOfContents p {
@@ -20,10 +25,6 @@
   margin-bottom: 0.6rem;
 }
 
-.tableOfContents > ul {
-  margin: 0;
-}
-
-.active a {
+.tableOfContents .active {
   text-decoration: underline;
 }

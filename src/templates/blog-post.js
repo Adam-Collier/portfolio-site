@@ -2,34 +2,22 @@ import React from "react"
 import { graphql } from "gatsby"
 import Image from "gatsby-image"
 
+import MDX from "../components/MDX"
 import Layout from "../components/Layout"
 import SEO from "../components/seo"
 import Sidebar from "../components/Sidebar"
 import MorePosts from "../components/MorePosts"
+import TableOfContents from "../components/TableOfContents"
 
 import styles from "./blog-post.module.css"
 
-const BlogPostTemplate = ({ data, pageContext, location }) => {
+const BlogPostTemplate = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
-  const post = data.markdownRemark
-  const {
-    description,
-    excerpt,
-    title,
-    featuredImage,
-    date,
-    tags,
-  } = post.frontmatter
-  let { html, tableOfContents, timeToRead } = post
+  const post = data.mdx
+  const { frontmatter, body } = post
+  const { description, excerpt, title, featuredImage, date, tags } = frontmatter
 
-  if (tableOfContents) {
-    tableOfContents =
-      tableOfContents.slice(0, 4) +
-      `<li>
-        <a href="${location.pathname}#intro">Introduction</a>
-       </li>` +
-      tableOfContents.slice(4)
-  }
+  let { tableOfContents, timeToRead } = post
 
   return (
     <Layout
@@ -45,13 +33,10 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         description={description}
       >
         {tableOfContents && (
-          <>
-            <h4>Table of Contents</h4>
-            <ul
-              className={styles.tableOfContents}
-              dangerouslySetInnerHTML={{ __html: tableOfContents }}
-            ></ul>
-          </>
+          <TableOfContents
+            tableOfContents={tableOfContents}
+            location={location}
+          />
         )}
 
         <h4>Written</h4>
@@ -69,7 +54,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
       </Sidebar>
       <article className={styles.content}>
         <header>
-          <h1 id="intro">{title}</h1>
+          <h1 id="introduction">{title}</h1>
         </header>
         {featuredImage && (
           <Image
@@ -79,7 +64,9 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             sizes={featuredImage.childImageSharp.sizes}
           />
         )}
-        <section dangerouslySetInnerHTML={{ __html: html }} />
+        <section>
+          <MDX body={body} />
+        </section>
       </article>
       <MorePosts />
     </Layout>
@@ -89,16 +76,16 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
+  query BlogPostBySlug($id: String) {
     site {
       siteMetadata {
         title
       }
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    mdx(id: { eq: $id }) {
       id
       excerpt(pruneLength: 160)
-      html
+      body
       tableOfContents
       timeToRead
       frontmatter {

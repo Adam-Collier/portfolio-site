@@ -1,0 +1,30 @@
+.tableOfContents a {
+  text-decoration: none;
+  color: var(--primary-accent);
+}
+
+.tableOfContents li {
+  list-style-type: none;
+}
+
+.tableOfContents {
+  list-style-type: none;
+  font-weight: 400;
+  margin-bottom: 1.45rem;
+}
+
+.tableOfContents p {
+  font-weight: 550;
+}
+
+.tableOfContents li > ul {
+  margin-top: 0.6rem;
+}
+
+.tableOfContents li {
+  margin-bottom: 0.6rem;
+}
+
+.tableOfContents .active {
+  text-decoration: underline;
+}

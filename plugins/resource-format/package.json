@@ -11,7 +11,7 @@
     "gatsby",
     "gatsby-plugin"
   ],
-  "author": "Kyle Gill <kyle.robert.gill@gmail.com>",
+  "author": "Adam Collier",
   "license": "MIT",
   "dependencies": {
     "mdast-util-to-string": "^1.1.0",

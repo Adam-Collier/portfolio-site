@@ -3,32 +3,6 @@
   --content-grid-template: "sidebar content" "sidebar moreposts";
 }
 
-.tableOfContents a {
-  text-decoration: none;
-  color: var(--primary-accent);
-}
-
-.tableOfContents ul {
-  list-style-type: none;
-  font-weight: 400;
-}
-
-.tableOfContents ul p {
-  font-weight: 550;
-}
-
-.tableOfContents ul li > ul {
-  margin-top: 0.6rem;
-}
-
-.tableOfContents ul li {
-  margin-bottom: 0.6rem;
-}
-
-.tableOfContents > ul {
-  margin: 0;
-}
-
 .written p:first-of-type {
   margin-bottom: 0.25rem;
 }

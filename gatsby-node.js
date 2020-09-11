@@ -14,7 +14,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const result = await graphql(
     `
       {
-        blog: allMarkdownRemark(
+        blog: allMdx(
           sort: { fields: [frontmatter___date], order: DESC }
           limit: 1000
           filter: {
@@ -24,6 +24,7 @@ exports.createPages = async ({ graphql, actions }) => {
         ) {
           edges {
             node {
+              id
               fields {
                 slug
               }
@@ -33,13 +34,14 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
         }
-        resources: allMarkdownRemark(
+        resources: allMdx(
           sort: { fields: [frontmatter___title], order: ASC }
           limit: 1000
           filter: { fileAbsolutePath: { regex: "/resources/" } }
         ) {
           edges {
             node {
+              id
               fields {
                 slug
               }
@@ -60,15 +62,16 @@ exports.createPages = async ({ graphql, actions }) => {
   // Create blog posts pages.
   const posts = result.data.blog.edges
 
-  posts.forEach((post, index) => {
+  posts.forEach(({ node }, index) => {
     const previous = index === posts.length - 1 ? null : posts[index + 1].node
     const next = index === 0 ? null : posts[index - 1].node
 
     createPage({
-      path: post.node.fields.slug,
+      path: node.fields.slug,
       component: blogPost,
       context: {
-        slug: post.node.fields.slug,
+        slug: node.fields.slug,
+        id: node.id,
         previous,
         next,
       },
@@ -82,6 +85,7 @@ exports.createPages = async ({ graphql, actions }) => {
       component: path.resolve(`./src/templates/resource.js`),
       context: {
         slug: node.fields.slug,
+        id: node.id,
       },
     })
   })
@@ -90,7 +94,7 @@ exports.createPages = async ({ graphql, actions }) => {
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
-  if (node.internal.type === `MarkdownRemark`) {
+  if (node.internal.type === `Mdx`) {
     const value = createFilePath({ node, getNode })
     createNodeField({
       name: `slug`,

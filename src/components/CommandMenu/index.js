@@ -1,19 +1,20 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { useTransition, animated } from "react-spring"
+import MDX from "../MDX"
 
 import styles from "./commandMenu.module.css"
 
 const Index = ({ isMenuVisible }) => {
   const data = useStaticQuery(graphql`
     query {
-      markdownRemark(fileAbsolutePath: { regex: "/menu/" }) {
-        html
+      mdx(fileAbsolutePath: { regex: "/menu/" }) {
+        body
       }
     }
   `)
 
-  const { html } = data.markdownRemark
+  const { body } = data.mdx
 
   const transitions = useTransition(isMenuVisible, null, {
     from: {
@@ -33,12 +34,9 @@ const Index = ({ isMenuVisible }) => {
   return transitions.map(
     ({ item, key, props }) =>
       item && (
-        <animated.div
-          key={key}
-          style={props}
-          className={styles.commandMenu}
-          dangerouslySetInnerHTML={{ __html: html }}
-        />
+        <animated.div key={key} style={props} className={styles.commandMenu}>
+          <MDX body={body} />
+        </animated.div>
       )
   )
 }

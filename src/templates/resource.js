@@ -2,6 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import Image from "gatsby-image"
 
+import MDX from "../components/MDX"
 import Layout from "../components/Layout"
 import SEO from "../components/seo"
 import Resource from "../components/Resource"
@@ -10,8 +11,11 @@ import Sidebar from "../components/Sidebar"
 import styles from "./resources.module.css"
 
 const ResourceTemplate = ({ data, location }) => {
-  const post = data.markdownRemark
-  const siteTitle = data.site.siteMetadata.title
+  const { mdx, site } = data
+  const { frontmatter, id, excerpt, body } = mdx
+  const { title, description, featuredImage } = frontmatter
+
+  const siteTitle = site.siteMetadata.title
 
   return (
     <Layout
@@ -20,39 +24,36 @@ const ResourceTemplate = ({ data, location }) => {
       containerType="fluid"
       containerClass={styles.resources}
     >
-      <SEO
-        title={post.frontmatter.title}
-        description={post.frontmatter.description || post.excerpt}
-      />
+      <SEO title={title} description={description || excerpt} />
 
       <Sidebar
         title="Resources"
-        data={data}
+        data={data.allMdx}
         description="This is a group of resources I have either learned something from or thought could become useful in the future."
         searchContext="Categories"
         className={styles.sidebar}
       >
         {({ searchPosts }) =>
           searchPosts.map(({ node }, i) => (
-            <Resource node={node} key={i} currentPageId={post.id} />
+            <Resource node={node} key={i} currentPageId={id} />
           ))
         }
       </Sidebar>
 
       <article className={styles.content}>
         <header>
-          <h1>{post.frontmatter.title}</h1>
+          <h1>{title}</h1>
         </header>
-        {post.frontmatter.featuredImage && (
+        {featuredImage && (
           <Image
             style={{
               marginBottom: "2rem",
               borderRadius: "5px",
             }}
-            sizes={post.frontmatter.featuredImage.childImageSharp.sizes}
+            sizes={featuredImage.childImageSharp.sizes}
           />
         )}
-        <section dangerouslySetInnerHTML={{ __html: post.html }} />
+        <MDX body={body} />
       </article>
     </Layout>
   )
@@ -67,18 +68,18 @@ export const pageQuery = graphql`
         title
       }
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    mdx(fields: { slug: { eq: $slug } }) {
       id
       excerpt(pruneLength: 160)
       fields {
         slug
       }
-      html
+      body
       frontmatter {
         title
       }
     }
-    allMarkdownRemark(
+    allMdx(
       sort: { fields: [frontmatter___title], order: ASC }
       filter: { fileAbsolutePath: { regex: "/resources/" } }
     ) {

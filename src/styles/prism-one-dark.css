@@ -195,6 +195,7 @@ pre.line-numbers > code {
   padding: 1.5rem;
   overflow: auto;
   font-size: 14px;
+  position: relative;
 }
 
 @media (max-width: 599px) {

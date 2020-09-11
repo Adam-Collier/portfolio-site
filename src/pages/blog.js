@@ -9,9 +9,9 @@ import Sidebar from "../components/Sidebar"
 import styles from "./blog.module.css"
 
 const Blog = ({ data }) => {
-  const { categories } = data.allMarkdownRemark
+  const { categories, edges: allPosts } = data.allMdx
 
-  const [posts, setFilteredPosts] = useState(data.allMarkdownRemark.edges)
+  const [posts, setFilteredPosts] = useState(allPosts)
   const [activeTags, setActiveTags] = useState([])
 
   const handleClick = e => {
@@ -24,8 +24,6 @@ const Blog = ({ data }) => {
       : [...activeTags, tagName]
 
     setActiveTags(selectedTags)
-
-    let allPosts = data.allMarkdownRemark.edges
 
     let filteredPosts = allPosts.filter(({ node }) => {
       let { tags } = node.frontmatter
@@ -95,7 +93,7 @@ export const query = graphql`
         title
       }
     }
-    allMarkdownRemark(
+    allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: {
         fileAbsolutePath: { regex: "/blog/" }

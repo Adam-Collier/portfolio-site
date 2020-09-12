@@ -1,6 +1,7 @@
 ---
 title: Creating a Masonry Layout using CSS Grid
-date: 2019-05-26
+description: Not gonna lie masonry can be a bit of a bitch. Let's create our own layout using CSS variables and some javascript.
+date: 2019-07-29
 featuredImage: ./featured-image.png
 thumbnail: ./thumbnail.jpg
 category: Code

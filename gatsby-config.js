@@ -1,18 +1,13 @@
 module.exports = {
   siteMetadata: {
     title: `Adam Collier`,
-    description: `This site is as much for me as it is for you. See what snippets I like to use, what resources I learn from and my thought and processes.`,
+    description: `This site is as much for me as it is for you. See what snippets I like to use, what resources I learn from and my thoughts and processes.`,
     author: `@collieradam`,
+    siteUrl: `https://adam-collier.now.sh`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
-      },
-    },
+    "gatsby-plugin-sitemap",
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -55,13 +50,14 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Adam Collier`,
+        short_name: `Adam Collier`,
         start_url: `/`,
+        lang: `en`,
         background_color: `#663399`,
         theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        display: `standalone`,
+        icon: `src/icons/icon.svg`, // This path is relative to the root of the site.
       },
     },
     {

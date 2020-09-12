@@ -1,20 +1,21 @@
 {
-  "name": "Adam-Collier",
+  "name": "adam-collier",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "This site is as much for me as it is for you. See what snippets I like to use, what resources I learn from and my thoughts and processes.",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Adam Collier",
   "dependencies": {
     "@mdx-js/mdx": "^1.6.16",
     "@mdx-js/react": "^1.6.16",
     "gatsby": "^2.20.12",
     "gatsby-image": "^2.3.1",
-    "gatsby-plugin-manifest": "^2.3.3",
+    "gatsby-plugin-manifest": "^2.4.28",
     "gatsby-plugin-mdx": "^1.2.37",
     "gatsby-plugin-offline": "^3.1.2",
     "gatsby-plugin-react-helmet": "^3.2.1",
     "gatsby-plugin-react-svg": "^3.0.0",
     "gatsby-plugin-sharp": "^2.5.3",
+    "gatsby-plugin-sitemap": "^2.4.12",
     "gatsby-remark-autolink-headers": "^2.3.1",
     "gatsby-remark-copy-linked-files": "^2.2.2",
     "gatsby-remark-images": "^3.2.3",
@@ -48,9 +49,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/Adam-Collier/portfolio-site"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/Adam-Collier/portfolio-site/issues"
   }
 }

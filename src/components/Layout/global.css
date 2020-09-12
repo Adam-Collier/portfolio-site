@@ -620,6 +620,7 @@ code {
   padding: 0;
   padding-top: 0.2em;
   padding-bottom: 0.2em;
+  margin-right: 0.4em;
 }
 pre code {
   background: none;
@@ -631,6 +632,10 @@ tt:before,
 tt:after {
   letter-spacing: -0.2em;
   content: " ";
+}
+code::before {
+  display: inline-block;
+  width: 0.4em;
 }
 pre code:before,
 pre code:after,

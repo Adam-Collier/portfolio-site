@@ -87,7 +87,7 @@
     color: var(--primary-background);
   }
 
-  .dark .intro {
+  :global(.dark) .intro {
     background: var(--primary-foreground);
   }
 }

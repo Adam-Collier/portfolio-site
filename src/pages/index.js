@@ -7,17 +7,11 @@ import styles from "./index.module.css"
 
 import Logo from "../icons/logo.svg"
 
-import { useContext } from "../context"
-
 const IndexPage = () => {
-  const { isDarkMode } = useContext()[0]
-
   return (
     <Layout
       wrapperClass={styles.homeWrapper}
-      containerClass={`${styles.home} ${
-        isDarkMode === "true" ? styles.dark : ""
-      }`}
+      containerClass={`${styles.home}`}
       containerType="fluid"
     >
       <SEO title="Home" />

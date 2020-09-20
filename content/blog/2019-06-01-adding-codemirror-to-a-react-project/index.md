@@ -5,6 +5,7 @@ thumbnail: ./thumbnail.mp4
 category: Code
 tags: [react, codemirror]
 published: true
+description: Sometimes you need a code editor to do code editor stuff. Here's how to add one to your React projects.
 ---
 
 This post is going to cover how to add Codemirror to a react project. Codemirror is a versatile code editor implemeted in javascript for the browser. For my implentation I added it to an electron app built with react but it will work exactly the same in a standard react install. I could have just added the react-codemirror package to do this but sometimes I find adding packages can make things more complicated than they should be.
@@ -176,7 +177,7 @@ function Editor(props) {
 export default Editor
 ```
 
-So to explain a little, I am using the one dark theme by Török Ádám which can be found [here](Török Ádám), created a file within `src` and imported it. Then I have added the theme name to the Codemirror instance options and so it knows what styles to use.
+So to explain a little, I am using the one dark theme by Török Ádám which can be found [here](https://github.com/Aerobird98/codemirror-one-dark-theme), created a file within `src` and imported it. Then I have added the theme name to the Codemirror instance options and so it knows what styles to use.
 
 The code that will be written in the editor will be a mix of css, html and javascript therefore I am using `htmlmixed` mode. There are a bunch of other options you can use such as just `javascript`, `css` and `xml` (for HTML) just take a look at the CodeMirror docs to find the one relevant for your project.
 

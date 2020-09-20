@@ -5,6 +5,7 @@ thumbnail: "./thumbnail.jpg"
 category: Code
 tags: [HTML]
 published: true
+description: Avoid issues using Emoji's in our markup by replacing them with the HTML entity equivalent. Let's write a script to help us do this.
 ---
 
 This week I came across a case where using an emoji in my code broke a page I was working on (I suspected the emoji was causing an error in the database which stopped the rest of the page from rendering). Therefore I wanted to share a way that you can replace any emoji in a string with the HTML entity equivelent which works flawlessly. This post is only going to be a short one since I don't want to deep dive into unicode and the pros and cons of such a format but make rather give you a solution can use in such a situation.

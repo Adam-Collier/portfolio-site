@@ -19,6 +19,8 @@ const BlogPostTemplate = ({ data, location }) => {
 
   let { tableOfContents, timeToRead } = post
 
+  console.log(tableOfContents)
+
   return (
     <Layout
       location={location}
@@ -32,7 +34,7 @@ const BlogPostTemplate = ({ data, location }) => {
         title="Table of Contents"
         description={description}
       >
-        {tableOfContents && (
+        {Object.keys(tableOfContents).length !== 0 && (
           <TableOfContents
             tableOfContents={tableOfContents}
             location={location}

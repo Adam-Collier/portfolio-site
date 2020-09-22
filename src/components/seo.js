@@ -55,6 +55,7 @@ function SEO({ description, lang, meta, image: customImage, title, pathname }) {
         lang,
       }}
       title={title}
+      defaultTitle={site.siteMetadata.title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
       link={
         canonical

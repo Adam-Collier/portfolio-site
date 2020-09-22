@@ -14,7 +14,7 @@ const IndexPage = () => {
       containerClass={`${styles.home}`}
       containerType="fluid"
     >
-      <SEO title="Home" />
+      <SEO />
       <div className={styles.logo}>
         <Logo />
       </div>

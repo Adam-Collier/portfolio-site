@@ -24,7 +24,6 @@ function SEO({ description, lang, meta, image: customImage, title, pathname }) {
           }
         }
         file(relativePath: { eq: "meta-image.jpg" }) {
-          absolutePath
           childImageSharp {
             original {
               width
@@ -38,13 +37,15 @@ function SEO({ description, lang, meta, image: customImage, title, pathname }) {
   )
 
   let defaultImage = file.childImageSharp.original
-  defaultImage.src = file.absolutePath
 
   let metaImage = customImage ? customImage : defaultImage
 
   const metaDescription = description || site.siteMetadata.description
 
-  const image = metaImage && metaImage.src ? metaImage.src : null
+  const image =
+    metaImage && metaImage.src
+      ? `${site.siteMetadata.siteUrl}${metaImage.src}`
+      : null
 
   const canonical = pathname ? `${site.siteMetadata.siteUrl}${pathname}` : null
 

@@ -4,6 +4,8 @@ module.exports = {
     description: `This site is as much for me as it is for you. See what snippets I like to use, what resources I learn from and my thoughts and processes.`,
     author: `@collieradam`,
     siteUrl: `https://adam-collier.now.sh`,
+    image: "/images/meta-image.jpg",
+    keywords: ["Adam Collier", "gatsby", "blog", "resources", "snippets"],
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -13,6 +15,13 @@ module.exports = {
       options: {
         name: `content`,
         path: `${__dirname}/content`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images`,
       },
     },
     {

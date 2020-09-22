@@ -6,12 +6,13 @@
  */
 
 import React from "react"
+import { globalHistory } from "@reach/router"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-function SEO({ description, lang, meta, title }) {
-  const { site } = useStaticQuery(
+function SEO({ description, lang, meta, image: customImage, title, pathname }) {
+  const { site, file } = useStaticQuery(
     graphql`
       query {
         site {
@@ -19,13 +20,36 @@ function SEO({ description, lang, meta, title }) {
             title
             description
             author
+            keywords
+            siteUrl
+          }
+        }
+        file(relativePath: { eq: "meta-image.jpg" }) {
+          relativePath
+          childImageSharp {
+            original {
+              width
+              height
+              src
+            }
           }
         }
       }
     `
   )
 
+  let defaultImage = file.childImageSharp.original
+
+  let metaImage = customImage ? customImage : defaultImage
+
   const metaDescription = description || site.siteMetadata.description
+
+  const image =
+    metaImage && metaImage.src
+      ? `${globalHistory.location.origin}${metaImage.src}`
+      : null
+
+  const canonical = pathname ? `${site.siteMetadata.siteUrl}${pathname}` : null
 
   return (
     <Helmet
@@ -34,6 +58,16 @@ function SEO({ description, lang, meta, title }) {
       }}
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
+      link={
+        canonical
+          ? [
+              {
+                rel: "canonical",
+                href: canonical,
+              },
+            ]
+          : []
+      }
       meta={[
         {
           name: `description`,
@@ -67,7 +101,35 @@ function SEO({ description, lang, meta, title }) {
           name: `twitter:description`,
           content: metaDescription,
         },
-      ].concat(meta)}
+      ]
+        .concat(
+          metaImage
+            ? [
+                {
+                  property: "og:image",
+                  content: image,
+                },
+                {
+                  property: "og:image:width",
+                  content: metaImage.width,
+                },
+                {
+                  property: "og:image:height",
+                  content: metaImage.height,
+                },
+                {
+                  name: "twitter:card",
+                  content: "summary_large_image",
+                },
+              ]
+            : [
+                {
+                  name: "twitter:card",
+                  content: "summary",
+                },
+              ]
+        )
+        .concat(meta)}
     />
   )
 }

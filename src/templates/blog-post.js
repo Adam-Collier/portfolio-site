@@ -19,8 +19,6 @@ const BlogPostTemplate = ({ data, location }) => {
 
   let { tableOfContents, timeToRead } = post
 
-  console.log(tableOfContents)
-
   return (
     <Layout
       location={location}

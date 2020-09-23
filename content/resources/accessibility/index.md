@@ -16,7 +16,7 @@ Many sites and tools are developed with barriers that make it difficult or impos
 
 [Toptotal](https://www.toptal.com/designers/htmlarrows/symbols/) - HTML entities - Find the HTML equivelent to many a symbol, I've used this quite a few times and a good site is pretty hard to find on this!
 
-[Metatags.io](https://metatags.io/) - Social Share Preview - A handy little tool to preview how your blog posts and site in general will look when you share across different platforms.
+[Metatags.io](https://metatags.io/) - Social Share Preview - A handy little tool to preview how your blog posts and site links will look when shared on different platforms.
 
 ## Articles
 

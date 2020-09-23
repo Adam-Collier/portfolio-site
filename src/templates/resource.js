@@ -1,6 +1,5 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Image from "gatsby-image"
 
 import MDX from "../components/MDX"
 import Layout from "../components/Layout"
@@ -13,7 +12,7 @@ import styles from "./resources.module.css"
 const ResourceTemplate = ({ data, location }) => {
   const { mdx, site } = data
   const { frontmatter, id, excerpt, body } = mdx
-  const { title, description, featuredImage } = frontmatter
+  const { title, description } = frontmatter
 
   const siteTitle = site.siteMetadata.title
 
@@ -44,15 +43,6 @@ const ResourceTemplate = ({ data, location }) => {
         <header>
           <h1>{title}</h1>
         </header>
-        {featuredImage && (
-          <Image
-            style={{
-              marginBottom: "2rem",
-              borderRadius: "5px",
-            }}
-            sizes={featuredImage.childImageSharp.sizes}
-          />
-        )}
         <MDX body={body} />
       </article>
     </Layout>

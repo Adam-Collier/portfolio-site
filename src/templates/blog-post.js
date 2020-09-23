@@ -15,9 +15,13 @@ const BlogPostTemplate = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
   const post = data.mdx
   const { frontmatter, body } = post
-  const { description, excerpt, title, featuredImage, date, tags } = frontmatter
+  const { description, excerpt, title, featured, date, tags } = frontmatter
 
   let { tableOfContents, timeToRead } = post
+
+  const image = post.frontmatter.image
+    ? post.frontmatter.image.childImageSharp.resize
+    : null
 
   return (
     <Layout
@@ -26,7 +30,7 @@ const BlogPostTemplate = ({ data, location }) => {
       containerType="fluid"
       containerClass={`${styles.blogpost}`}
     >
-      <SEO title={title} description={description || excerpt} />
+      <SEO title={title} description={description || excerpt} image={image} />
       <Sidebar
         className={styles.sidebar}
         title="Table of Contents"
@@ -56,12 +60,12 @@ const BlogPostTemplate = ({ data, location }) => {
         <header>
           <h1 id="introduction">{title}</h1>
         </header>
-        {featuredImage && (
+        {featured && (
           <Image
             style={{
               marginBottom: "2rem",
             }}
-            sizes={featuredImage.childImageSharp.sizes}
+            sizes={featured.childImageSharp.sizes}
           />
         )}
         <section>
@@ -93,10 +97,19 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         tags
         description
-        featuredImage {
+        featured {
           childImageSharp {
             sizes(maxWidth: 720, quality: 90, toFormat: JPG) {
               ...GatsbyImageSharpSizes_withWebp
+            }
+          }
+        }
+        image: featured {
+          childImageSharp {
+            resize(width: 1200) {
+              src
+              height
+              width
             }
           }
         }

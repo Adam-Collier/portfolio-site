@@ -7,7 +7,7 @@
   transform: translate(-50%);
   width: 100%;
   max-width: var(--max-layout-width);
-  padding: var(--content-x-padding);
+  padding: 19px var(--content-x-padding);
   display: flex;
   justify-content: space-between;
   background: var(--header-background);
@@ -39,6 +39,8 @@
   text-decoration: none;
   color: var(--home-link-color);
   margin-right: 1rem;
+  display: flex;
+  align-items: center;
 }
 
 .menuButton {
@@ -47,6 +49,11 @@
   background: none;
   line-height: 0;
   margin-left: 1.25rem;
+}
+
+.avatar {
+  border-radius: 50%;
+  margin-right: 0.75rem;
 }
 
 @media (max-width: 767px) {

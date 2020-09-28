@@ -34,7 +34,7 @@
 }
 
 .content {
-  grid-area: content;
+  composes: content from "./blog-post.module.css";
 }
 
 @media (max-width: 767px) {

@@ -1,8 +1,5 @@
 .link {
   position: relative;
-  text-shadow: 1px 1px var(--primary-background),
-    1px -1px var(--primary-background), -1px 1px var(--primary-background),
-    -1px -1px var(--primary-background);
   text-decoration: none;
 }
 

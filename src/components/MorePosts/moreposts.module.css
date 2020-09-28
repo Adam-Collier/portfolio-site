@@ -7,7 +7,6 @@
   grid-area: moreposts;
   width: var(--content-width);
   max-width: var(--max-content-width);
-  margin: 0 auto;
 }
 
 .blogposts {

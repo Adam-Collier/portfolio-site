@@ -10,7 +10,7 @@
 }
 
 .header {
-  --home-link-color: #fff;
+  --header-color: #fff;
   background: #6219ff;
   position: relative;
 }
@@ -24,7 +24,6 @@
 
 .navigation a {
   color: #fff;
-  text-shadow: none;
   font-weight: 500;
   font-size: 3rem;
   line-height: 1.5;

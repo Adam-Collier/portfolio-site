@@ -1,5 +1,4 @@
 .header {
-  --home-link-color: var(--primary-foreground);
   position: fixed;
   z-index: 10;
   top: 0;
@@ -11,6 +10,7 @@
   display: flex;
   justify-content: space-between;
   background: var(--header-background);
+  color: var(--header-color);
 }
 
 .header * {
@@ -31,13 +31,13 @@
 
 .navigation a {
   margin-left: 1rem;
-  color: var(--primary-foreground);
+  color: var(--header-color);
   text-decoration: none;
 }
 
 .headerLeft a {
   text-decoration: none;
-  color: var(--home-link-color);
+  color: var(--header-color);
   margin-right: 1rem;
   display: flex;
   align-items: center;
@@ -78,6 +78,5 @@
 @media (max-width: 1440px) {
   .navigationAlt a {
     color: var(--primary-background);
-    text-shadow: none;
   }
 }

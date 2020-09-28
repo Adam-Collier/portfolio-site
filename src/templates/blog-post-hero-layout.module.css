@@ -13,20 +13,24 @@
   grid-gap: 2rem;
 }
 
-.hero {
+.heroWrapper {
   grid-area: hero;
-  min-width: 100vw;
   margin-left: -1.5rem;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  min-height: 70px;
 }
 
 .tags {
   composes: tags from "./blog-post.module.css";
 }
 
-@media (min-width: 1024px) {
-  .hero {
-    height: 70vh;
-  }
+.written {
+  composes: written from "./blog-post.module.css";
 }
 
 .content {

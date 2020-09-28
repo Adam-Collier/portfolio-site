@@ -22,6 +22,7 @@ const BlogPostTemplate = ({ data, location }) => {
     excerpt,
     title,
     featured,
+    mobileFeatured,
     date,
     tags,
     invertHeaderColor,
@@ -35,6 +36,7 @@ const BlogPostTemplate = ({ data, location }) => {
       entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
+            console.log(true)
             invertHeaderColor
               ? wrapper.style.setProperty("--header-color", "white")
               : wrapper.style.setProperty("--header-color", "#333333")
@@ -56,16 +58,25 @@ const BlogPostTemplate = ({ data, location }) => {
       }
     )
 
-    observer.observe(document.querySelector(`.${styles.hero}`))
+    observer.observe(document.querySelector(`.${styles.heroWrapper}`))
 
     return () => {
-      observer.unobserve(document.querySelector(`.${styles.hero}`))
+      observer.unobserve(document.querySelector(`.${styles.heroWrapper}`))
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const image = post.frontmatter.image
     ? post.frontmatter.image.childImageSharp.resize
     : null
+
+  let featuredSources = [
+    mobileFeatured.childImageSharp.fluid,
+    {
+      ...featured.childImageSharp.fluid,
+      media: `(min-width: 768px)`,
+    },
+  ]
 
   return (
     <Layout
@@ -76,7 +87,9 @@ const BlogPostTemplate = ({ data, location }) => {
       containerClass={`${styles.blogpost}`}
     >
       <SEO title={title} description={description || excerpt} image={image} />
-      <Image className={styles.hero} sizes={featured.childImageSharp.sizes} />
+      <div className={styles.heroWrapper}>
+        <Image fluid={featuredSources} />
+      </div>
       <Sidebar
         className={styles.sidebar}
         title="Table of Contents"
@@ -138,8 +151,15 @@ export const pageQuery = graphql`
         invertHeaderColor
         featured {
           childImageSharp {
-            sizes(maxWidth: 1440, quality: 90, toFormat: JPG) {
-              ...GatsbyImageSharpSizes_withWebp
+            fluid(maxWidth: 1920, maxHeight: 800, quality: 90, toFormat: JPG) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
+        }
+        mobileFeatured: featured {
+          childImageSharp {
+            fluid(maxWidth: 768, maxHeight: 650, quality: 90, toFormat: JPG) {
+              ...GatsbyImageSharpFluid_withWebp
             }
           }
         }

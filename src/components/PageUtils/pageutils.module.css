@@ -17,10 +17,6 @@
   padding: 0 0.5rem;
 }
 
-.breadcrumbs,
-.shortcut {
-}
-
 @media (max-width: 767px) {
   .breadcrumbs,
   .shortcut {

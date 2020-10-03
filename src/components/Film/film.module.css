@@ -1,0 +1,76 @@
+.film {
+  --cover-width: 120px;
+  display: grid;
+  grid-template-areas: "cover title" "cover content";
+  grid-template-columns: var(--cover-width) 1fr;
+  grid-column-gap: 1.5rem;
+  padding: 1.5rem 0;
+}
+
+.film p {
+  margin-bottom: 0;
+}
+
+.title {
+  grid-area: title;
+  margin-bottom: 0rem;
+}
+
+.cover {
+  grid-area: cover;
+}
+
+.cover img {
+  margin-bottom: 0;
+}
+
+.image {
+  margin-bottom: 0.5rem;
+}
+
+.film .year,
+.film .genre {
+  font-size: 0.875rem;
+  color: var(--foreground-medium);
+}
+
+.film .year {
+  margin-bottom: 0.25rem;
+}
+
+.content {
+  grid-area: content;
+}
+
+.content > p > span {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.rating {
+  display: inline-block;
+  position: relative;
+  color: var(--primary-accent);
+}
+
+.stars {
+  display: flex;
+  overflow: hidden;
+  width: 20%;
+}
+
+@media (max-width: 768px) {
+  .film {
+    --cover-width: 100px;
+    grid-template-areas: "title" "cover" "content";
+    grid-template-columns: 1fr;
+  }
+
+  .image {
+    display: none;
+  }
+
+  .title {
+    margin-bottom: 0.5rem;
+  }
+}

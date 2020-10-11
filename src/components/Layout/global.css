@@ -258,7 +258,6 @@ h1 {
   padding-right: 0;
   padding-top: 0;
   margin-bottom: 1.45rem;
-  color: inherit;
   font-family: Inter;
   font-weight: 600;
   text-rendering: optimizeLegibility;
@@ -274,7 +273,6 @@ h2 {
   padding-right: 0;
   padding-top: 0;
   margin-bottom: 1.45rem;
-  color: inherit;
   font-family: Inter;
   font-weight: 600;
   text-rendering: optimizeLegibility;
@@ -290,7 +288,6 @@ h3 {
   padding-right: 0;
   padding-top: 0;
   margin-bottom: 1.45rem;
-  color: inherit;
   font-family: Inter;
   font-weight: 600;
   text-rendering: optimizeLegibility;
@@ -306,7 +303,6 @@ h4 {
   padding-right: 0;
   padding-top: 0;
   margin-bottom: 1.45rem;
-  color: inherit;
   font-family: Inter;
   font-weight: 600;
   text-rendering: optimizeLegibility;
@@ -322,7 +318,6 @@ h5 {
   padding-right: 0;
   padding-top: 0;
   margin-bottom: 1.45rem;
-  color: inherit;
   font-family: Inter;
   font-weight: 600;
   text-rendering: optimizeLegibility;
@@ -338,7 +333,6 @@ h6 {
   padding-right: 0;
   padding-top: 0;
   margin-bottom: 1.45rem;
-  color: inherit;
   font-family: Inter;
   font-weight: 600;
   text-rendering: optimizeLegibility;

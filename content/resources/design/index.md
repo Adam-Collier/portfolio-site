@@ -14,6 +14,8 @@ Everything design-related I find useful and will reference in the future. It als
 
 [It's Nice That](https://www.itsnicethat.com/newsletters) - The Don of Design News - It's Nice That has been my go-to for design news and inspiration for years. I have the odd scroll now and then but their weekly email always adds some quality to my inbox.
 
+[Sidebar](https://sidebar.io/) - 5 links a day - A long time favourite of mine and Sidebar never scuppers on sending quality content. I'll admit sometimes 5 links can be a little overwhelming to check daily in that case I recommend just going on the site every now and then, you won't be disappointed.
+
 ## Tools
 
 [The Laws of UX](https://lawsofux.com/) - Theory/Thinking - A superb site explaining a collection of design principles that designers can consider when designing a user interface. It's also a stunning website...

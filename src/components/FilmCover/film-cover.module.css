@@ -1,0 +1,29 @@
+.cover .year,
+.cover .genre {
+  font-size: 0.875rem;
+  color: var(--foreground-medium);
+}
+
+.cover .year {
+  margin-bottom: 0.25rem;
+}
+
+.cover p {
+  margin-bottom: 0;
+}
+
+.image {
+  margin-bottom: 0.5rem;
+}
+
+.rating {
+  display: inline-block;
+  position: relative;
+  color: var(--primary-accent);
+}
+
+.stars {
+  display: flex;
+  overflow: hidden;
+  width: 20%;
+}

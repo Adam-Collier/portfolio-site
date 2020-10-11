@@ -4,7 +4,7 @@ date: 2020-09-25
 thumbnail: ./thumbnail.jpg
 category: Film & Tv
 tags: ["favourites", "film"]
-description: A glimpse into my top 5 favourite films of all time. Of course they are subject to change but that's just human nature.
+description: A rare glimpse into my top 5 favourite films of all time, regardless of genre. Of course, they are subject to change over time as I grow as a human, but that's just the way it goes.
 published: true
 layout: hero
 featured: ./featured-image.jpg

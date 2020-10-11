@@ -34,7 +34,7 @@ The love and care that is oozing out of this film are so strong and beautiful yo
 <Film cover="./covers/parasite_cover.jpg" title="Parasite" year="2019" genre="Comedy, Thriller, Drama" rating={4.5}>
 
 ![Parasite Screenshot](./images/parasite.jpg)
-Expectations were already high, but fuck me it's even better than I anticipated. Forget about genres Parasite flat out refused to fit the narrow parameters of any existing classification. As beautiful and well-executed Parasite is at face value Boon Jong Ho also encourages us to look at the underlying socio-political issues currently being experienced in Korea, honing in on the limited and ignorant perspective of the wealthy. A must-watch for those who want something brilliant and enjoy some minimalist architecture now and then.
+Expectations were already high, but fuck me it's even better than I anticipated. Forget about genres, Parasite flat out refused to fit the narrow parameters of any existing classification. As beautiful and well-executed Parasite is at face value Boon Jong Ho also encourages us to look at the underlying socio-political issues currently being experienced in Korea, honing in on the limited and ignorant perspective of the wealthy. A must-watch for those who want something brilliant and enjoy some minimalist architecture now and then.
 </Film>
 
 <Film cover="./covers/victoria_cover.jpg" title="Victoria" year="2015" genre="Crime, Thriller, Romance" rating={4.5}>
@@ -46,7 +46,7 @@ Filmed in one continuous take and made all the more believable by excellent perf
 <Film cover="./covers/amelie_cover.jpg" title="Amelie" year="2015" genre="Crime, Thriller, Romance" rating={4.5}>
 
 ![Amelie Screenshot](./images/amelie.jpg)
-Amelie really is the movie equivalent of being hugged. It's a beautifully crafted and exquisitely narrated tale about the simple things in life and succeeds in making us pause the appreciate the small wonders that surround us in the everyday. It is by far one of the most joyous, idiosyncratic and downright fun movies I have ever watched, and I long to find another film that makes me feel this way. I'll admit I'm almost residing to the fact that film may not exist.
+Amelie really is the movie equivalent of being hugged. It's a beautifully crafted and exquisitely narrated tale about the simple things in life and succeeds in making us pause to appreciate the small wonders that surround us in the everyday. It is by far one of the most joyous, idiosyncratic and downright fun movies I have ever watched, and I long to find another film that makes me feel this way. I'll admit I'm almost residing to the fact that film may not exist.
 </Film>
 
 <h2>Worthy Contenders</h2>

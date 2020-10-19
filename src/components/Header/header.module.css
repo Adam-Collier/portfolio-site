@@ -29,12 +29,6 @@
   align-items: center;
 }
 
-.navigation a {
-  margin-left: 1rem;
-  color: var(--header-color);
-  text-decoration: none;
-}
-
 .headerLeft a {
   text-decoration: none;
   color: var(--header-color);

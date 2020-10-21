@@ -30,6 +30,8 @@ JavaScript is the programming language of the web. You can use it to add dynamic
 
 [How to Modify Nodes in an Abstract Syntax Tree](https://css-tricks.com/how-to-modify-nodes-in-an-abstract-syntax-tree/) - Parsing Markdown - If you've ever created a plugin in Gatsby this might be familiar to you. [@jlengstorf](https://twitter.com/jlengstorf) talks us through how to create an AST from markdown and how to manipulate what HTML is output.
 
+[How to Set Up webpack 5 from Scratch](https://www.taniarascia.com/how-to-use-webpack/) - Webpack fundamentals - I have previously avoided setting up Webpack configs because it's an intimidating feat (relying on create-react-apps built-in config) but, Tania does a great job of explaining the fundamentals in a simple and approachable way. I feel confident that if you took a bit of time to read through the article, you could get your own Webpack project set up in no time.
+
 ## Tools
 
 [Bundlephobia](https://bundlephobia.com/) - NPM module cost - A good sounding board for whether an npm should be installed. If something seems a little large I'll tend to look for something else or build something custom.

@@ -44,11 +44,11 @@ const BlogPostTemplate = ({ data, location }) => {
           } else {
             wrapper.style.setProperty(
               "--header-color",
-              "var(--primary-foreground"
+              "var(--primary-foreground)"
             )
             wrapper.style.setProperty(
               "--header-background",
-              "var(--primary-background"
+              "var(--primary-background)"
             )
           }
         })

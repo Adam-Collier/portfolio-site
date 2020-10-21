@@ -1,29 +1,28 @@
 .link {
   position: relative;
+  color: var(--header-color);
   text-decoration: none;
+  padding: 0.375rem 0.625rem;
+  text-decoration: none;
+  margin-left: 0.5rem;
+  border-radius: var(--border-radius);
 }
 
 .active {
   position: relative;
-}
-
-.active:before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 1.5px;
-  bottom: 2px;
   background: var(--primary-accent);
-  z-index: -1;
+  color: var(--primary-background);
 }
 
-@media (max-width: 1024px) {
-  .active:before {
-    display: none;
-  }
-
+@media (max-width: 767px) {
   .active {
     text-decoration: underline;
+  }
+}
+
+@media (min-width: 768px) {
+  .link:hover:not(.active) {
+    color: var(--primary-foreground);
+    background: var(--accent-lightest);
   }
 }

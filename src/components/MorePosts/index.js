@@ -8,7 +8,7 @@ const Index = () => {
   const data = useStaticQuery(graphql`
     query {
       allMdx(
-        sort: { fields: [frontmatter___date], order: DESC }
+        sort: { fields: [fields___date], order: DESC }
         limit: 2
         filter: {
           fileAbsolutePath: { regex: "/blog/" }
@@ -20,10 +20,10 @@ const Index = () => {
             excerpt(pruneLength: 400)
             fields {
               slug
+              title
+              date(formatString: "MMMM DD, YYYY")
             }
             frontmatter {
-              date(formatString: "MMMM DD, YYYY")
-              title
               thumbnail {
                 childImageSharp {
                   fluid(maxWidth: 114, quality: 90, toFormat: JPG) {

@@ -5,7 +5,9 @@ import Image from "gatsby-image"
 import styles from "./blogpost.module.css"
 
 const Index = ({ node }) => {
-  const { title, date, description, thumbnail } = node.frontmatter
+  const { frontmatter, fields } = node
+  const { title, date } = fields
+  const { description, thumbnail } = frontmatter
   const { slug } = node.fields
 
   const { childImageSharp, extension, publicURL } = thumbnail

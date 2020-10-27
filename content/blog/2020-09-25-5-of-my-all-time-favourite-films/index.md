@@ -1,6 +1,4 @@
 ---
-title: 5 of my all time favourite films
-date: 2020-09-25
 thumbnail: ./thumbnail.jpg
 category: Film & Tv
 tags: ["favourites", "film"]
@@ -64,5 +62,3 @@ Any of the below could realistically slip into the top 5 depending on what mood 
 	<FilmCover cover="./covers/lobster_cover.jpg" year="2015" genre="Comedy, Romance, Science Fiction" rating={4.5} />
 	<FilmCover cover="./covers/intouchables_cover.jpg" year="2011" genre="Comedy, Drama" rating={4.5} />
 </Grid>
-
-

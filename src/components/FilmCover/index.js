@@ -1,5 +1,5 @@
 import React from "react"
-import { useStaticQuery } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
 import styles from "./film-cover.module.css"
 

@@ -1,7 +1,5 @@
 ---
-title: Reduce Page Weight by Subsetting Fonts
 description: Using Glyphhanger and pyftsubset let's reduce our page weight by subsettting our font files and only serving the glyphs our pages need.
-date: 2019-12-09
 featured: ./featured-image.jpg
 category: Code
 thumbnail: ./thumbnail.jpg

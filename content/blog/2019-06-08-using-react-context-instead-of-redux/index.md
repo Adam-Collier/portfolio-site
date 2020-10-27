@@ -1,8 +1,6 @@
 ---
-date: 2019-06-08
 thumbnail: ./thumbnail.jpg
 category: Code
-title: Using React Context instead of Redux
 description: Forget about the redux hype and add react context to your project instead. Much obliged to Kent C Dodds.
 tags: ["react", "javascript"]
 published: true

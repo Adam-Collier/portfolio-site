@@ -35,7 +35,6 @@ const BlogPostTemplate = ({ data, location }) => {
       entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            console.log(true)
             invertHeaderColor
               ? wrapper.style.setProperty("--header-color", "white")
               : wrapper.style.setProperty("--header-color", "#333333")

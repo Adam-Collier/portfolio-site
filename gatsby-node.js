@@ -19,7 +19,7 @@ exports.createPages = async ({ graphql, actions }) => {
     `
       {
         blog: allMdx(
-          sort: { fields: [frontmatter___date], order: DESC }
+          sort: { fields: [fields___date], order: DESC }
           limit: 1000
           filter: {
             fileAbsolutePath: { regex: "/blog/" }
@@ -40,7 +40,7 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
         resources: allMdx(
-          sort: { fields: [frontmatter___title], order: ASC }
+          sort: { fields: fields___title, order: ASC }
           limit: 1000
           filter: { fileAbsolutePath: { regex: "/resources/" } }
         ) {

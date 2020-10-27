@@ -1,6 +1,4 @@
 ---
-title: Adding Codemirror to a React Project
-date: 2019-06-01
 thumbnail: ./thumbnail.mp4
 category: Code
 tags: [react, codemirror]

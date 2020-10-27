@@ -16,14 +16,13 @@ import styles from "./blog-post-hero-layout.module.css"
 const BlogPostTemplate = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
   const post = data.mdx
-  const { frontmatter, body } = post
+  const { frontmatter, body, fields } = post
+  const { title, date } = fields
   const {
     description,
     excerpt,
-    title,
     featured,
     mobileFeatured,
-    date,
     tags,
     invertHeaderColor,
   } = frontmatter
@@ -36,7 +35,6 @@ const BlogPostTemplate = ({ data, location }) => {
       entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            console.log(true)
             invertHeaderColor
               ? wrapper.style.setProperty("--header-color", "white")
               : wrapper.style.setProperty("--header-color", "#333333")
@@ -143,9 +141,11 @@ export const pageQuery = graphql`
       body
       tableOfContents
       timeToRead
-      frontmatter {
+      fields {
         title
         date(formatString: "MMMM DD, YYYY")
+      }
+      frontmatter {
         tags
         description
         invertHeaderColor

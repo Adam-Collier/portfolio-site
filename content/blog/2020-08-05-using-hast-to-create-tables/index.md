@@ -1,6 +1,4 @@
 ---
-title: Using Hast to create tables from Notions .md and .csv exports
-date: 2020-08-05
 thumbnail: ./thumbnail.jpg
 category: Code
 tags: ["hast", "javascript"]

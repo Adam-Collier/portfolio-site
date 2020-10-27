@@ -1,6 +1,6 @@
 import React from "react"
 import { globalHistory } from "@reach/router"
-import { Link, useStaticQuery } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
 
 import Navigation from "../Navigation"

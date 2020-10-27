@@ -103,11 +103,41 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === `Mdx`) {
-    const value = createFilePath({ node, getNode })
+    let slug = createFilePath({ node, getNode })
+
+    // blog specific manipulations
+    if (slug.includes("/blog/")) {
+      let [match] = slug.match(
+        /([0-9]+)\-([0-9]+)\-([0-9]+)\-([a-zA-Z0-9\-])*/g
+      )
+
+      let [year, month, day, ...name] = match.split("-")
+
+      slug = `/blog/${name.join("-")}`
+
+      let nameWithSpaces = name.join(" ")
+      let title =
+        nameWithSpaces.charAt(0).toUpperCase() + nameWithSpaces.slice(1)
+
+      const date = new Date(year, month - 1, day)
+
+      createNodeField({
+        name: `date`,
+        node,
+        value: date.toJSON(),
+      })
+
+      createNodeField({
+        name: `title`,
+        node,
+        value: title,
+      })
+    }
+
     createNodeField({
       name: `slug`,
       node,
-      value,
+      value: slug,
     })
   }
 }

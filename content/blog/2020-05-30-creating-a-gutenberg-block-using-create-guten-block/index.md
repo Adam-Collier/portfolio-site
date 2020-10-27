@@ -1,6 +1,4 @@
 ---
-title: Creating a Gutenberg block using npx create guten block
-date: 2020-05-30
 thumbnail: ./thumbnail.jpg
 featured: ./featured-image.jpg
 category: Code

@@ -94,7 +94,7 @@ export const query = graphql`
       }
     }
     allMdx(
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: { fields: fields___date, order: DESC }
       filter: {
         fileAbsolutePath: { regex: "/blog/" }
         frontmatter: { published: { eq: true } }
@@ -105,10 +105,10 @@ export const query = graphql`
           excerpt(pruneLength: 400)
           fields {
             slug
+            title
+            date(formatString: "MMMM DD, YYYY")
           }
           frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
             thumbnail {
               publicURL
               extension

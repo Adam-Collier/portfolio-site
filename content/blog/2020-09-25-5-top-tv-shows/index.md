@@ -1,6 +1,4 @@
 ---
-title: 5 of my all time favourite tv shows
-date: 2020-09-25
 thumbnail: ./thumbnail.jpg
 category: Film & Tv
 tags: ["favourites", "tv shows"]

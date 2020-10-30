@@ -70,7 +70,7 @@ function SEO({ description, lang, meta, image: customImage, title, pathname }) {
       meta={[
         {
           name: `google-site-verification`,
-          content: `OjSckjkOMlmANaTB0dr2vDEnUohWKJ3b7SIW8CducY8`,
+          content: `kXoBZ3JPl4ac52Th5S3Jocx7XmmfMJZNQtkPTJZU4l8`,
         },
         {
           name: `description`,

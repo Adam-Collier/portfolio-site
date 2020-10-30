@@ -69,6 +69,10 @@ function SEO({ description, lang, meta, image: customImage, title, pathname }) {
       }
       meta={[
         {
+          name: `google-site-verification`,
+          content: `OjSckjkOMlmANaTB0dr2vDEnUohWKJ3b7SIW8CducY8`,
+        },
+        {
           name: `description`,
           content: metaDescription,
         },

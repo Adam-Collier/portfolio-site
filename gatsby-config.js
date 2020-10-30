@@ -3,7 +3,7 @@ module.exports = {
     title: `Adam Collier`,
     description: `This site is as much for me as it is for you. See what snippets I like to use, what resources I learn from and my thoughts and processes.`,
     author: `@collieradam`,
-    siteUrl: `https://adam-collier.now.sh`,
+    siteUrl: `https://adamcollier.co.uk/`,
     image: "/images/meta-image.jpg",
     keywords: ["Adam Collier", "gatsby", "blog", "resources", "snippets"],
   },

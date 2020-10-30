@@ -1,6 +1,6 @@
 import React from "react"
 import { globalHistory } from "@reach/router"
-import { Link, useStaticQuery } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
 
 import Navigation from "../Navigation"
@@ -19,9 +19,9 @@ const Header = ({ className, isClose, onClick }) => {
 
   const data = useStaticQuery(graphql`
     query {
-      file(relativePath: { eq: "avatar.jpg" }) {
+      file(relativePath: { eq: "avatar.png" }) {
         childImageSharp {
-          fixed(width: 32, height: 32) {
+          fixed(width: 40, height: 40) {
             ...GatsbyImageSharpFixed
           }
         }
@@ -36,7 +36,7 @@ const Header = ({ className, isClose, onClick }) => {
           <Link to="/" onClick={onClick ? onClick : null}>
             <Image
               className={styles.avatar}
-              style={{ width: "28px", height: "28px" }}
+              style={{ width: "38px", height: "38px" }}
               fixed={data.file.childImageSharp.fixed}
             />
             Adam Collier

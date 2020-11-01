@@ -13,8 +13,13 @@ const Index = ({ node }) => {
   const { childImageSharp, extension, publicURL } = thumbnail
 
   return (
-    <Link to={slug} className={`${styles.blogpost}`}>
-      <article key={slug}>
+    <Link
+      to={slug}
+      className={`${styles.blogpost}`}
+      aria-label={`blog post: ${title}`}
+      key={slug}
+    >
+      <article>
         {extension === "mp4" ? (
           <video autoPlay loop muted playsInline>
             <source src={publicURL} type="video/mp4" />

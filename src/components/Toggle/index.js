@@ -22,11 +22,14 @@ export default ({ className }) => {
   }
 
   return (
-    <input
-      type="checkbox"
-      className={`${styles.toggle} ${className ? className : ""}`}
-      checked={isDarkMode === "true" ? true : false}
-      onChange={handleInput}
-    />
+    <label className={styles.label}>
+      dark mode
+      <input
+        type="checkbox"
+        className={`${styles.toggle} ${className ? className : ""}`}
+        checked={isDarkMode === "true" ? true : false}
+        onChange={handleInput}
+      />
+    </label>
   )
 }

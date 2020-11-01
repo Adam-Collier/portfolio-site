@@ -32,32 +32,35 @@ const Header = ({ className, isClose, onClick }) => {
   return (
     <>
       <header className={`${styles.header} ${className ? className : ""}`}>
-        <div className={styles.headerLeft}>
-          <Link to="/" onClick={onClick ? onClick : null}>
-            <Image
-              className={styles.avatar}
-              style={{ width: "38px", height: "38px" }}
-              fixed={data.file.childImageSharp.fixed}
+        <div class={styles.container}>
+          <div className={styles.headerLeft}>
+            <Link to="/" onClick={onClick ? onClick : null}>
+              <Image
+                className={styles.avatar}
+                style={{ width: "38px", height: "38px" }}
+                fixed={data.file.childImageSharp.fixed}
+              />
+              Adam Collier
+            </Link>
+            <PageUtils />
+          </div>
+          <div className={styles.headerRight}>
+            <Navigation
+              className={`${styles.navigation} ${
+                path === "/" ? styles.navigationAlt : ""
+              }`}
             />
-            Adam Collier
-          </Link>
-          <PageUtils />
-        </div>
-        <div className={styles.headerRight}>
-          <Navigation
-            className={`${styles.navigation} ${
-              path === "/" ? styles.navigationAlt : ""
-            }`}
-          />
 
-          <Toggle className={styles.toggle} />
-          <button
-            className={styles.menuButton}
-            onClick={() => dispatch({ type: "isMobileMenu" })}
-            onKeyDown={() => dispatch({ type: "isMobileMenu" })}
-          >
-            {isClose ? <CloseIcon /> : <MenuIcon />}
-          </button>
+            <Toggle className={styles.toggle} />
+            <button
+              className={styles.menuButton}
+              onClick={() => dispatch({ type: "isMobileMenu" })}
+              onKeyDown={() => dispatch({ type: "isMobileMenu" })}
+              aria-label="menu button"
+            >
+              {isClose ? <CloseIcon /> : <MenuIcon />}
+            </button>
+          </div>
         </div>
       </header>
     </>

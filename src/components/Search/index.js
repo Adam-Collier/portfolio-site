@@ -25,6 +25,7 @@ const Index = ({ allPosts, searchedPosts }) => {
         name="search posts"
         id="search"
         onChange={handleChange}
+        aria-label="search resources"
       />
     </div>
   )

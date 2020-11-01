@@ -13,7 +13,7 @@ const Film = ({ cover, title, year, children, genre, rating = 1 }, props) => {
         genre={genre}
         rating={rating}
       />
-      <h3 className={styles.title}>{title}</h3>
+      <h2 className={styles.title}>{title}</h2>
       <div className={styles.content}>{children}</div>
     </section>
   )

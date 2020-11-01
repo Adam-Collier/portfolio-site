@@ -47,7 +47,7 @@ Filmed in one continuous take and made all the more believable by excellent perf
 Amelie really is the movie equivalent of being hugged. It's a beautifully crafted and exquisitely narrated tale about the simple things in life and succeeds in making us pause to appreciate the small wonders that surround us in the everyday. It is by far one of the most joyous, idiosyncratic and downright fun movies I have ever watched, and I long to find another film that makes me feel this way. I'll admit I'm almost residing to the fact that film may not exist.
 </Film>
 
-<h2>Worthy Contenders</h2>
+<h3>Worthy Contenders</h3>
 
 Any of the below could realistically slip into the top 5 depending on what mood I'm in but even if you disagree it'll be a good movie you can watch. So in no particular order:
 

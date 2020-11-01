@@ -56,6 +56,7 @@ const Header = ({ className, isClose, onClick }) => {
               className={styles.menuButton}
               onClick={() => dispatch({ type: "isMobileMenu" })}
               onKeyDown={() => dispatch({ type: "isMobileMenu" })}
+              aria-label="menu button"
             >
               {isClose ? <CloseIcon /> : <MenuIcon />}
             </button>

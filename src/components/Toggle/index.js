@@ -22,14 +22,12 @@ export default ({ className }) => {
   }
 
   return (
-    <label className={styles.label}>
-      dark mode
-      <input
-        type="checkbox"
-        className={`${styles.toggle} ${className ? className : ""}`}
-        checked={isDarkMode === "true" ? true : false}
-        onChange={handleInput}
-      />
-    </label>
+    <input
+      type="checkbox"
+      aria-label="dark mode toggle"
+      className={`${styles.toggle} ${className ? className : ""}`}
+      checked={isDarkMode === "true" ? true : false}
+      onChange={handleInput}
+    />
   )
 }

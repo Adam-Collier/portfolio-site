@@ -1,17 +1,21 @@
 .header {
-  --header-padding: 1rem;
   position: fixed;
   z-index: 10;
   top: 0;
   left: 50%;
   transform: translate(-50%);
   width: 100%;
-  max-width: var(--max-layout-width);
-  padding: var(--header-padding) var(--content-x-padding);
-  display: flex;
-  justify-content: space-between;
   background: var(--header-background);
   color: var(--header-color);
+}
+
+.container {
+  --header-padding: 1rem;
+  max-width: var(--max-layout-width);
+  padding: var(--header-padding) var(--content-x-padding);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
 }
 
 .header * {

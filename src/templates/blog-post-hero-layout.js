@@ -9,8 +9,6 @@ import Sidebar from "../components/Sidebar"
 import MorePosts from "../components/MorePosts"
 import TableOfContents from "../components/TableOfContents"
 
-// import styles from "./blog-post.module.css"
-
 import styles from "./blog-post-hero-layout.module.css"
 
 const BlogPostTemplate = ({ data, location }) => {
@@ -21,7 +19,7 @@ const BlogPostTemplate = ({ data, location }) => {
   const {
     description,
     excerpt,
-    featured,
+    desktopFeatured,
     mobileFeatured,
     tags,
     invertHeaderColor,
@@ -69,9 +67,9 @@ const BlogPostTemplate = ({ data, location }) => {
     : null
 
   let featuredSources = [
-    mobileFeatured.childImageSharp.fluid,
+    { ...mobileFeatured.childImageSharp.fluid, media: `max-width: 767px` },
     {
-      ...featured.childImageSharp.fluid,
+      ...desktopFeatured.childImageSharp.fluid,
       media: `(min-width: 768px)`,
     },
   ]
@@ -149,7 +147,7 @@ export const pageQuery = graphql`
         tags
         description
         invertHeaderColor
-        featured {
+        desktopFeatured: featured {
           childImageSharp {
             fluid(maxWidth: 1920, maxHeight: 800, quality: 90, toFormat: JPG) {
               ...GatsbyImageSharpFluid_withWebp

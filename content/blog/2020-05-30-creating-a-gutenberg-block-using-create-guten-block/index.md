@@ -57,16 +57,16 @@ I do feel as though the last time I used create-guten-block I couldn't use JSX s
 
 So just to prepare you for the Gutenberg experience, I find the Gutenberg docs pretty darn awful for figuring out how to create blocks, which is a real shame because blocks are an amazing step forward for WordPress developers. Instead, I found some blog posts which helped with me understand the basics:
 
-- [Creating a custom block type for WordPress gutenberg]("https://medium.com/stampede-team/creating-a-custom-block-type-for-wordpress-gutenberg-editor-a2539010bb4c")
-- [Learning Gutenberg CSS Tricks]("https://css-tricks.com/learning-gutenberg-7-building-our-block-custom-card-block/")
+- [Creating a custom block type for WordPress gutenberg](https://medium.com/stampede-team/creating-a-custom-block-type-for-wordpress-gutenberg-editor-a2539010bb4c)
+- [Learning Gutenberg CSS Tricks](https://css-tricks.com/learning-gutenberg-7-building-our-block-custom-card-block/)
 
 When you read these you will notice some differences in best practices and styles. Once you get the general idea of how they work you can make some solid assumptions.
 
 Now there are quite a lot of helpers/components which WordPress have created to make it easier to build blocks, however, as mentioned before the docs make this extremely difficult to come by. Instead, I took to looking in the Gutenberg Github repo and just searching for a component I thought I might need. Examples of some components you can find:
 
-- [PlainText]("https://github.com/WordPress/gutenberg/blob/2b2fc18075af17a5dbf658aa550d03896cc40c7a/packages/block-editor/src/components/plain-text/README.md") - A simple text input without any options to change the text style
-- [TextControl]("https://github.com/WordPress/gutenberg/tree/master/packages/components/src/text-control") - Think PlainText with a label. Users always love a good label.
-- [MediaUpload]("https://github.com/WordPress/gutenberg/tree/master/packages/block-editor/src/components/media-upload") - Add media from your media library.
+- [PlainText](https://github.com/WordPress/gutenberg/blob/2b2fc18075af17a5dbf658aa550d03896cc40c7a/packages/block-editor/src/components/plain-text/README.md) - A simple text input without any options to change the text style
+- [TextControl](https://github.com/WordPress/gutenberg/tree/master/packages/components/src/text-control) - Think PlainText with a label. Users always love a good label.
+- [MediaUpload](https://github.com/WordPress/gutenberg/tree/master/packages/block-editor/src/components/media-upload) - Add media from your media library.
 
 By understanding what components are available from the Gutenberg team anyone could hypothetically get a block up and running pretty swiftly.
 
@@ -99,7 +99,7 @@ keywords: [
 ],
 ```
 
-Gutenberg has defined a tonne of dashicons we can readily use to identify our blocks and can be found in their [developer resources]("https://developer.wordpress.org/resource/dashicons/#arrow-right-alt"). Just make sure to remove the dashicons part of the name and it should work like a dream.
+Gutenberg has defined a tonne of dashicons we can readily use to identify our blocks and can be found in their [developer resources](https://developer.wordpress.org/resource/dashicons/#arrow-right-alt). Just make sure to remove the dashicons part of the name and it should work like a dream.
 
 ## Adding Attributes
 

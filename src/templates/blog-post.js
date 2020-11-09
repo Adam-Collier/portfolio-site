@@ -32,11 +32,7 @@ const BlogPostTemplate = ({ data, location }) => {
       containerClass={`${styles.blogpost}`}
     >
       <SEO title={title} description={description || excerpt} image={image} />
-      <Sidebar
-        className={styles.sidebar}
-        title="Table of Contents"
-        description={description}
-      >
+      <Sidebar className={styles.sidebar} description={description}>
         {Object.keys(tableOfContents).length !== 0 && (
           <TableOfContents
             tableOfContents={tableOfContents}

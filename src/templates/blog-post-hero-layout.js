@@ -86,11 +86,7 @@ const BlogPostTemplate = ({ data, location }) => {
       <div className={styles.heroWrapper}>
         <Image fluid={featuredSources} />
       </div>
-      <Sidebar
-        className={styles.sidebar}
-        title="Table of Contents"
-        description={description}
-      >
+      <Sidebar className={styles.sidebar} description={description}>
         {Object.keys(tableOfContents).length !== 0 && (
           <TableOfContents
             tableOfContents={tableOfContents}

@@ -17,6 +17,14 @@
   color: var(--primary-accent);
 }
 
+.sidebar span {
+  display: block;
+  font-size: 1rem;
+  color: var(--primary-accent);
+  font-weight: 600;
+  margin-bottom: 1.45rem;
+}
+
 .bar {
   display: flex;
   justify-content: space-between;
@@ -24,7 +32,7 @@
   padding-bottom: 1rem;
 }
 
-.bar h4 {
+.bar span {
   margin: 0;
 }
 

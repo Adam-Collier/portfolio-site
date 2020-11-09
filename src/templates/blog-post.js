@@ -40,13 +40,13 @@ const BlogPostTemplate = ({ data, location }) => {
           />
         )}
 
-        <h4>Written</h4>
+        <span>Written</span>
         <div className={styles.written}>
           <p>{date}</p>
           <p>{timeToRead} minute read</p>
         </div>
 
-        <h4>Tags</h4>
+        <span>Tags</span>
         <div className={styles.tags}>
           {tags.map((tag, index) => (
             <div key={index}>{tag}</div>

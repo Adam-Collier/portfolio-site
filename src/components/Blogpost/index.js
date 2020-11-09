@@ -29,7 +29,7 @@ const Index = ({ node }) => {
         )}
         <section>
           <small>{date}</small>
-          <h3>{title}</h3>
+          <h2>{title}</h2>
           <p
             dangerouslySetInnerHTML={{
               __html: description || node.excerpt,

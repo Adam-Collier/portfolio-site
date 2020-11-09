@@ -24,13 +24,13 @@ const Index = ({
           (title === "Blog" || title === "Snippets" ? (
             <h1 className={styles.title}>{title}</h1>
           ) : (
-            <h4 className={styles.title}>{title}</h4>
+            <span className={styles.title}>{title}</span>
           ))}
 
         {description && <p className={styles.description}>{description}</p>}
         {data && (
           <div className={styles.bar}>
-            <h4>{searchContext}</h4>
+            <span>{searchContext}</span>
             <Search allPosts={allPosts} searchedPosts={searchedPosts} />
           </div>
         )}

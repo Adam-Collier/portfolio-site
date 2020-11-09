@@ -40,14 +40,13 @@ const Blog = ({ data }) => {
     setFilteredPosts(filteredPosts)
   }
 
+  let description =
+    "A collection of writing which can range from talking about code, design or life in general. Enjoy this eclectic collection of writings"
+
   return (
     <Layout containerType="fluid" containerClass={styles.blog}>
-      <SEO title="Blog" />
-      <Sidebar
-        title="Blog"
-        description="A collection of writing which can range from talking about code,
-          design or life in general. Enjoy this eclectic collection of writings"
-      >
+      <SEO title="Blog" description={description} />
+      <Sidebar title="Blog" description={description}>
         {categories.map(({ category, edges }, index) => {
           let allTags = new Set()
           edges.forEach(({ node }) => {

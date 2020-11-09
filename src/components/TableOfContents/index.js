@@ -59,7 +59,7 @@ export default ({ tableOfContents, location, className }) => {
 
   return (
     <>
-      <h4>Table of Contents</h4>
+      <span>Table of Contents</span>
       <ul className={`${styles.tableOfContents} ${className ? className : ""}`}>
         {createItems(tableOfContents.items, location, activeHash)}
       </ul>

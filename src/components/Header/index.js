@@ -32,7 +32,7 @@ const Header = ({ className, isClose, onClick }) => {
   return (
     <>
       <header className={`${styles.header} ${className ? className : ""}`}>
-        <div class={styles.container}>
+        <div className={styles.container}>
           <div className={styles.headerLeft}>
             <Link to="/" onClick={onClick ? onClick : null}>
               <Image

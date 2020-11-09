@@ -9,26 +9,22 @@ import Sidebar from "../components/Sidebar"
 
 import styles from "./resources.module.css"
 
-const ResourceTemplate = ({ data, location }) => {
-  const { mdx, site } = data
+const ResourceTemplate = ({ data }) => {
+  const { mdx } = data
   const { frontmatter, id, excerpt, body } = mdx
-  const { title, description } = frontmatter
+  const { title } = frontmatter
 
-  const siteTitle = site.siteMetadata.title
+  let description =
+    "This is a group of resources I have either learned something from or thought could become useful in the future."
 
   return (
-    <Layout
-      location={location}
-      title={siteTitle}
-      containerType="fluid"
-      containerClass={styles.resources}
-    >
-      <SEO title={title} description={description || excerpt} />
+    <Layout containerType="fluid" containerClass={styles.resources}>
+      <SEO title="Resources" description={description || excerpt} />
 
       <Sidebar
         title="Resources"
         data={data.allMdx}
-        description="This is a group of resources I have either learned something from or thought could become useful in the future."
+        description={description}
         searchContext="Categories"
         className={styles.sidebar}
       >

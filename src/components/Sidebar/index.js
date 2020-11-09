@@ -20,7 +20,13 @@ const Index = ({
   return (
     <div className={`${className ? className : ""} ${styles.sidebar}`}>
       <div className={styles.sticky}>
-        <h4 className={styles.title}>{title}</h4>
+        {title &&
+          (title === "Blog" || title === "Snippets" ? (
+            <h1 className={styles.title}>{title}</h1>
+          ) : (
+            <h4 className={styles.title}>{title}</h4>
+          ))}
+
         {description && <p className={styles.description}>{description}</p>}
         {data && (
           <div className={styles.bar}>

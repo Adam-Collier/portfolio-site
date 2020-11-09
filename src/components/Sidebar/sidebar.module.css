@@ -28,15 +28,16 @@
   margin: 0;
 }
 
+.title {
+  font-size: 1rem;
+  color: var(--primary-accent);
+}
+
 .description {
   color: var(--primary-foreground);
 }
 
 @media (min-width: 768px) {
-  .title {
-    display: none;
-  }
-
   .sticky {
     height: calc(100vh - 147px);
     display: flex;

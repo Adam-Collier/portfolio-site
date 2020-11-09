@@ -23,7 +23,7 @@ const ResourceTemplate = ({ data, location }) => {
       containerType="fluid"
       containerClass={styles.resources}
     >
-      <SEO title={title} description={description || excerpt} />
+      <SEO title={`${title} Resources`} description={description || excerpt} />
 
       <Sidebar
         title="Resources"

@@ -1,11 +1,12 @@
 .button {
   color: var(--primary-foreground);
-  background-color: rgba(255, 255, 255, 0.25);
+  background-color: #fff;
   border: none;
   border-radius: var(--border-radius);
-  font-weight: 450;
+  font-weight: 500;
+  font-family: "Inter";
   cursor: pointer;
-  padding: 0.25rem 0.75rem;
+  padding: 0.375rem 0.75rem;
   font-size: 0.75rem;
   position: absolute;
   top: 1rem;
@@ -13,7 +14,7 @@
 }
 
 .button:hover {
-  background-color: var(--primary-background);
+  background-color: #d5d5d5;
 }
 
 .button:disabled {

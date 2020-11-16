@@ -10,9 +10,9 @@ const Index = ({ className, onClick }) => {
       role="button"
       tabIndex="0"
     >
-      <NavLink to="/blog">Blog</NavLink>
-      <NavLink to="/snippets">Snippets</NavLink>
-      <NavLink to="/resources">Resources</NavLink>
+      <NavLink to="/blog/">Blog</NavLink>
+      <NavLink to="/snippets/">Snippets</NavLink>
+      <NavLink to="/resources/">Resources</NavLink>
     </div>
   )
 }

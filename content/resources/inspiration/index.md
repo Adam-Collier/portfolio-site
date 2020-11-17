@@ -2,7 +2,7 @@
 title: Inspiration
 ---
 
-Having a lack of inspiration can drag any project down and make for some lack luster design decisions. Here are some sites and other resources I use to kickstart some ideas when tackling a new project.
+Having a lack of inspiration can drag any project down and make for some lack luster design decisions. Here are some sites and other resources to kickstart some ideas when tackling a new project.
 
 ## Curated sites
 
@@ -23,7 +23,7 @@ I've used [Savee](https://savee.it) for a while now and I absolute love it. I've
 
 Any interesting type or adventurous layouts will be added into this collection.
 
-[![Print Collection](./images/design-collection.jpg "Savee print Collection")](https://savee.it/adamcollier/collections/print/)
+[![Print Collection](./images/design-collection.jpg "Savee print Collection")](https://savee.it/adamcollier/collections/print-2/)
 
 ### Web
 

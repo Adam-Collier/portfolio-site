@@ -8,7 +8,7 @@
   --primary-accent: #6219ff;
   --accent-lighter: #e4deff;
   --accent-lightest: #f6f4ff;
-  --border-radius: 1px;
+  --border-radius: 2px;
   --sidebar-width: 300px;
   --content-width: 95%;
   --max-content-width: 740px;
@@ -34,6 +34,7 @@
   --primary-accent: #ac85ff;
   --accent-lighter: #382f62;
   --accent-lightest: #1f1c2f;
+  --foreground-hover: #868686;
   --foreground-high: #f0f0f0;
   --foreground-medium: #999999;
   --foreground-low: #666666;

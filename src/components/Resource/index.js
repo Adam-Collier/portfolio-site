@@ -11,8 +11,14 @@ const index = ({ node, currentPageId }) => {
   const { slug } = node.fields
 
   return (
-    <Link to={slug} className={`${styles.resource}`} aria-label={title}>
-      <article key={slug} className={currentPageId === id ? styles.active : ""}>
+    <Link
+      to={slug}
+      className={`${styles.resource} ${
+        currentPageId === id ? styles.active : ""
+      }`}
+      aria-label={title}
+    >
+      <article key={slug}>
         <h3>{title}</h3>
         <ArrowIcon />
       </article>

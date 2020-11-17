@@ -1,17 +1,15 @@
 .resource {
   text-decoration: none;
   color: var(--primary-foreground);
-}
-
-.resource:hover:not(.active) {
-  background: var(--accent-lightest);
+  position: relative;
+  cursor: pointer;
 }
 
 .resource article {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.75rem 0.25rem 0.75rem 0.5rem;
+  padding: 0.625rem 0;
 }
 
 .resource h3 {
@@ -22,10 +20,39 @@
 
 .active {
   color: var(--primary-accent);
-  background: var(--accent-lighter);
   border-radius: var(--border-radius);
+}
+
+.active:after,
+.resource:hover:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+}
+
+.resource:hover:not(.active) {
+  color: var(--foreground-hover);
+}
+
+.resource:hover:not(.active) svg path {
+  fill: var(--foreground-hover);
+}
+
+.resource:hover:after:not(.active) {
+  background: var(--foreground-hover);
+}
+
+.resource svg path {
+  fill: var(--primary-foreground);
 }
 
 .active svg path {
   fill: var(--primary-accent);
+}
+
+.active:after {
+  background: var(--primary-accent);
 }

@@ -2,7 +2,11 @@
 title: CSS
 ---
 
-I love CSS, it's one of my favourite things to write and there is always a sense of achievement when you see a design start to come together. With the growing complexity of front end development preprocessors (Sass/Stylus/Less), Styled Components and more recently CSS Modules are playing an important role in creating lean flexible sites.
+The ever evolving styles of the web. With the growing complexity of websites, frameworks becoming the norm and bundlers controlling the output of our production code there is a heck of a lot to learn and keep up with.
+
+## Twitter
+
+[@argyleink](https://twitter.com/argyleink) - Follow/Read - Adam Argyle is a great follow on twitter for anyone interested in CSS snippets, topping up your general knowledge and seeing whats on the horizon and being added to browsers.
 
 ## Articles
 

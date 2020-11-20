@@ -13,7 +13,7 @@ export const useActiveHash = (itemIds, rootMargin = undefined) => {
         })
       },
       {
-        rootMargin: rootMargin || `0% 0% -80% 0%`,
+        rootMargin: rootMargin || `0% 0% -87% 0%`,
       }
     )
 

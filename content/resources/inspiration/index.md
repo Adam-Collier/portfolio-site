@@ -2,8 +2,6 @@
 title: Inspiration
 ---
 
-import video from "./images/interactions-collection.mp4"
-
 Having a lack of inspiration can drag any project down and make for some lack luster design decisions. Here are some sites and other resources to kickstart some ideas when tackling a new project.
 
 ## Curated sites
@@ -29,7 +27,7 @@ Any interesting type or adventurous layouts will be added into this collection.
 
 ### 3D
 
-If I come across any interaction that excites me or put my skills to shame, they will be found in here. I use [Kap](https://getkap.co/) to grab all of the screen recordings in GIF format.
+There's so much good 3d work out there it deserves a collection of it's own. It will also serve as a good starting point for any Blender work I do.
 
 [![3D Collection](./images/3d-collection.jpg 'Savee 3D Collection')](https://savee.it/adamcollier/collections/3d/)
 

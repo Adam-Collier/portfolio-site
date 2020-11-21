@@ -2,10 +2,15 @@
   text-decoration: none;
   color: var(--primary-foreground);
 }
+
+.blogpost:hover h2 {
+  text-decoration: underline;
+}
+
 .blogpost article {
   display: grid;
   grid-template-columns: 114px 1fr;
-  grid-template-areas: "image content";
+  grid-template-areas: 'image content';
   grid-column-gap: 1rem;
 }
 

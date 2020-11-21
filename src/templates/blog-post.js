@@ -18,6 +18,8 @@ const BlogPostTemplate = ({ data, location }) => {
   const { title, date } = fields;
   const { description, excerpt, featured, tags } = frontmatter;
 
+  console.log(data);
+
   const { tableOfContents, timeToRead } = post;
 
   const image = post.frontmatter.image
@@ -69,7 +71,7 @@ const BlogPostTemplate = ({ data, location }) => {
           <MDX body={body} />
         </section>
       </article>
-      <MorePosts />
+      <MorePosts data={data.allMdx} />
     </Layout>
   );
 };
@@ -110,6 +112,36 @@ export const pageQuery = graphql`
               height
               width
             }
+          }
+        }
+      }
+    }
+    allMdx(
+      sort: { fields: [fields___date], order: DESC }
+      limit: 2
+      filter: {
+        fileAbsolutePath: { regex: "/blog/" }
+        frontmatter: { published: { eq: true } }
+        id: { ne: $id }
+      }
+    ) {
+      edges {
+        node {
+          excerpt(pruneLength: 400)
+          fields {
+            slug
+            title
+            date(formatString: "MMMM DD, YYYY")
+          }
+          frontmatter {
+            thumbnail {
+              childImageSharp {
+                fluid(maxWidth: 114, quality: 90, toFormat: JPG) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
+            }
+            tags
           }
         }
       }

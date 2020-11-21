@@ -1,5 +1,4 @@
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
 import Blogpost from '../Blogpost';
 import styles from './moreposts.module.css';
 

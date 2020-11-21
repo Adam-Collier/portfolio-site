@@ -4,12 +4,12 @@ module.exports = {
     description: `This site is as much for me as it is for you. See what snippets I like to use, what resources I learn from and my thoughts and processes.`,
     author: `@collieradam`,
     siteUrl: `https://adamcollier.co.uk/`,
-    image: "/images/meta-image.jpg",
-    keywords: ["Adam Collier", "gatsby", "blog", "resources", "snippets"],
+    image: '/images/meta-image.jpg',
+    keywords: ['Adam Collier', 'gatsby', 'blog', 'resources', 'snippets'],
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    "gatsby-plugin-sitemap",
+    'gatsby-plugin-sitemap',
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -46,7 +46,7 @@ module.exports = {
             resolve: `gatsby-remark-images`,
             options: {
               linkImagesToOriginal: false,
-              maxWidth: 720,
+              maxWidth: 740,
               withWebp: true,
               quality: 90,
             },
@@ -70,7 +70,7 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-react-svg",
+      resolve: 'gatsby-plugin-react-svg',
       options: {
         rule: {
           include: /icons/, // See below to configure properly
@@ -89,6 +89,13 @@ module.exports = {
             },
           },
           {
+            resolve: 'gatsby-remark-external-links',
+            options: {
+              target: '_blank',
+              rel: 'noopener noreferrer',
+            },
+          },
+          {
             resolve: require.resolve(`./plugins/resource-format`),
           },
           {
@@ -102,7 +109,7 @@ module.exports = {
             resolve: `gatsby-remark-images`,
             options: {
               linkImagesToOriginal: false,
-              maxWidth: 720,
+              maxWidth: 740,
               withWebp: true,
               quality: 90,
             },
@@ -114,7 +121,7 @@ module.exports = {
       resolve: `gatsby-remark-images`,
       options: {
         linkImagesToOriginal: false,
-        maxWidth: 720,
+        maxWidth: 740,
         withWebp: true,
         quality: 90,
       },
@@ -123,4 +130,4 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
-}
+};

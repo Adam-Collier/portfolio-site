@@ -2,7 +2,7 @@
 title: Accessibility
 ---
 
-Many sites and tools are developed with barriers that make it difficult or impossible for some people to use. This is where accessibility comes in. By making sites more accessible the web can be used by everyone and benefit everyone.
+Many sites and tools are developed with barriers that make it difficult or impossible for some people to use. This is where accessibility comes in. By making sites more accessible we can make the web a better place for everyone.
 
 ## Blogs to follow
 

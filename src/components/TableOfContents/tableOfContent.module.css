@@ -1,16 +1,24 @@
 .tableOfContents a {
   text-decoration: none;
-  color: var(--primary-accent);
+  color: var(--primary-foreground);
+  font-weight: 400;
+  font-size: 1rem;
 }
 
 .tableOfContents li {
   list-style-type: none;
 }
 
+.tableOfContents a:hover:not(.active) {
+  color: var(--foreground-hover);
+}
+
 .tableOfContents {
+  --list-spacing: 0.75rem;
   list-style-type: none;
   font-weight: 400;
   margin-bottom: 1.45rem;
+  margin-left: 0;
 }
 
 .tableOfContents p {
@@ -18,13 +26,27 @@
 }
 
 .tableOfContents li > ul {
-  margin-top: 0.6rem;
+  margin-top: var(--list-spacing);
 }
 
-.tableOfContents li {
-  margin-bottom: 0.6rem;
+.tableOfContents li,
+.tableOfContents li:last-child {
+  margin-bottom: var(--list-spacing);
 }
 
 .tableOfContents .active {
   text-decoration: underline;
+  color: var(--primary-accent);
+  font-weight: 600;
+}
+
+.tableOfContents > li > ul > li > a {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  .tableOfContents {
+    --list-spacing: 0.5rem;
+  }
 }

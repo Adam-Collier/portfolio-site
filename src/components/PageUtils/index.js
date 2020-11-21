@@ -1,24 +1,24 @@
-import React from "react"
-import { globalHistory } from "@reach/router"
+import React from 'react';
+import { globalHistory } from '@reach/router';
 
-import styles from "./pageutils.module.css"
+import styles from './pageutils.module.css';
 
 const PageUtils = () => {
-  const getPath = relativePath => {
-    let pathMappings = {
-      "/": "Home",
-      "/blog/": "Blogpost",
-      "/resources/": "Resource",
-      default: relativePath.slice(1).replace(/-/g, " "),
-    }
-    return pathMappings[relativePath] || pathMappings["default"]
-  }
+  const getPath = (relativePath) => {
+    const pathMappings = {
+      '/': 'Home',
+      '/blog/': 'Blogpost',
+      '/resources/': 'Resource',
+      default: relativePath.slice(1).replace(/-/g, ' '),
+    };
+    return pathMappings[relativePath] || pathMappings.default;
+  };
 
-  let url = globalHistory.location.pathname.split("/")
+  const url = globalHistory.location.pathname.split('/');
   // remove the end of the url so it is easier to match
-  const shortenedUrl = url.filter((x, i) => i !== 2).join("/")
+  const shortenedUrl = url.filter((x, i) => i !== 2).join('/');
 
-  let path = getPath(shortenedUrl)
+  const path = getPath(shortenedUrl);
 
   return (
     <>
@@ -32,7 +32,7 @@ const PageUtils = () => {
         </div>
       )}
     </>
-  )
-}
+  );
+};
 
-export default PageUtils
+export default PageUtils;

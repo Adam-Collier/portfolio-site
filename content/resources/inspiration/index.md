@@ -2,6 +2,8 @@
 title: Inspiration
 ---
 
+import video from "./images/interactions-collection.mp4"
+
 Having a lack of inspiration can drag any project down and make for some lack luster design decisions. Here are some sites and other resources to kickstart some ideas when tackling a new project.
 
 ## Curated sites
@@ -23,16 +25,22 @@ I've used [Savee](https://savee.it) for a while now and I absolute love it. I've
 
 Any interesting type or adventurous layouts will be added into this collection.
 
-[![Print Collection](./images/design-collection.jpg "Savee print Collection")](https://savee.it/adamcollier/collections/print-2/)
+[![Print Collection](./images/design-collection.jpg 'Savee print Collection')](https://savee.it/adamcollier/collections/print-2/)
 
-### Web
+### 3D
+
+If I come across any interaction that excites me or put my skills to shame, they will be found in here. I use [Kap](https://getkap.co/) to grab all of the screen recordings in GIF format.
+
+[![3D Collection](./images/3d-collection.jpg 'Savee 3D Collection')](https://savee.it/adamcollier/collections/3d/)
+
+<!-- ### Web
 
 Those beautiful web layouts and good uses of type and imagery will live here. Sometimes it will just be an element of the screen which I will note in the info tab.
 
-[![Web Collection](./images/design-collection.jpg "Savee web Collection")](https://savee.it/adamcollier/collections/web/)
+[![Web Collection](./images/design-collection.jpg 'Savee web Collection')](https://savee.it/adamcollier/collections/web/) -->
 
 ### Interactions
 
 If I come across any interaction that excites me or put my skills to shame, they will be found in here. I use [Kap](https://getkap.co/) to grab all of the screen recordings in GIF format.
 
-[![Interactions Collection](./images/design-collection.jpg "Savee interactions Collection")](https://savee.it/adamcollier/collections/interactions/)
+[![Interactions Collection](./images/interactions-collection.jpg 'Savee interactions Collection')](https://savee.it/adamcollier/collections/interactions/)

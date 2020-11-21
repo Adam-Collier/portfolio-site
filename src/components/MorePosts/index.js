@@ -1,8 +1,7 @@
-import React from "react"
-import Blogpost from "../Blogpost"
-import styles from "./moreposts.module.css"
-
-import { useStaticQuery, graphql } from "gatsby"
+import React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
+import Blogpost from '../Blogpost';
+import styles from './moreposts.module.css';
 
 const Index = () => {
   const data = useStaticQuery(graphql`
@@ -37,7 +36,7 @@ const Index = () => {
         }
       }
     }
-  `)
+  `);
 
   return (
     <div className={styles.morePosts}>
@@ -48,7 +47,7 @@ const Index = () => {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Index
+export default Index;

@@ -1,7 +1,7 @@
-import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import Image from "gatsby-image"
-import styles from "./film-cover.module.css"
+import React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
+import Image from 'gatsby-image';
+import styles from './film-cover.module.css';
 
 const FilmCover = ({ cover, title, year, genre, rating = 1, className }) => {
   const { allFile } = useStaticQuery(graphql`
@@ -19,11 +19,11 @@ const FilmCover = ({ cover, title, year, genre, rating = 1, className }) => {
         }
       }
     }
-  `)
+  `);
 
-  let { node: filmCover } = allFile.edges.filter(({ node }) =>
+  const { node: filmCover } = allFile.edges.filter(({ node }) =>
     cover.includes(node.base)
-  )[0]
+  )[0];
 
   return (
     <div className={`${className} ${styles.cover}`}>
@@ -44,7 +44,7 @@ const FilmCover = ({ cover, title, year, genre, rating = 1, className }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default FilmCover
+export default FilmCover;

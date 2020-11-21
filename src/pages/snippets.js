@@ -1,26 +1,26 @@
-import React from "react"
-import { graphql } from "gatsby"
+import React from 'react';
+import { graphql } from 'gatsby';
 
-import MDX from "../components/MDX"
-import Layout from "../components/Layout"
-import SEO from "../components/seo"
-import Sidebar from "../components/Sidebar"
-import TableOfContents from "../components/TableOfContents"
+import MDX from '../components/MDX';
+import Layout from '../components/Layout';
+import SEO from '../components/seo';
+import Sidebar from '../components/Sidebar';
+import TableOfContents from '../components/TableOfContents';
 
-import styles from "./snippets.module.css"
+import styles from './snippets.module.css';
 
 const Snippets = ({ data, location }) => {
-  let { edges } = data.allMdx
+  const { edges } = data.allMdx;
 
-  let concatTableOfContents = edges.reduce((acc, { node }) => {
-    acc.push(node.tableOfContents)
-    return acc
-  }, [])
+  const concatTableOfContents = edges.reduce((acc, { node }) => {
+    acc.push(node.tableOfContents);
+    return acc;
+  }, []);
 
-  let allTableOfContents = { items: [...concatTableOfContents] }
+  const allTableOfContents = { items: [...concatTableOfContents] };
 
-  let description =
-    "There's nothing worse than almost remembering a bit of code you saw on stackoverflow on in a blogpost once. So I've collated all of the ones I find most useful."
+  const description =
+    "There's nothing worse than almost remembering a bit of code you saw on stackoverflow on in a blogpost once. So I've collated all of the ones I find most useful.";
 
   return (
     <Layout containerType="fluid" containerClass={styles.snippets}>
@@ -38,14 +38,14 @@ const Snippets = ({ data, location }) => {
       </Sidebar>
       <div className={styles.content}>
         {edges.map(({ node }, index) => {
-          let { body } = node
+          const { body } = node;
 
-          return <MDX key={index} body={body} />
+          return <MDX key={index} body={body} />;
         })}
       </div>
     </Layout>
-  )
-}
+  );
+};
 
 export const query = graphql`
   query {
@@ -64,6 +64,6 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 
-export default Snippets
+export default Snippets;

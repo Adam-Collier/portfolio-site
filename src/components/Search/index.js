@@ -1,21 +1,21 @@
-import React from "react"
+import React from 'react';
 
-import SearchIcon from "../../icons/search_icon.svg"
-import styles from "./search.module.css"
+import SearchIcon from '../../icons/search_icon.svg';
+import styles from './search.module.css';
 
 const Index = ({ allPosts, searchedPosts }) => {
-  const handleChange = e => {
-    let searchValue = e.target.value.toLowerCase()
+  const handleChange = (e) => {
+    const searchValue = e.target.value.toLowerCase();
 
     const posts = allPosts.filter(({ node }) => {
       if (node.frontmatter.title.toLowerCase().includes(searchValue))
-        return node
+        return node;
 
-      return false
-    })
+      return false;
+    });
 
-    searchedPosts(posts)
-  }
+    searchedPosts(posts);
+  };
 
   return (
     <div className={styles.search}>
@@ -28,7 +28,7 @@ const Index = ({ allPosts, searchedPosts }) => {
         aria-label="search resources"
       />
     </div>
-  )
-}
+  );
+};
 
-export default Index
+export default Index;

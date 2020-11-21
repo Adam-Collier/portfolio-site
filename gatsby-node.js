@@ -4,16 +4,16 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-const path = require(`path`)
-const { createFilePath } = require(`gatsby-source-filesystem`)
+const path = require(`path`);
+const { createFilePath } = require(`gatsby-source-filesystem`);
 
 exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions
+  const { createPage } = actions;
 
-  const blogPost = path.resolve(`./src/templates/blog-post.js`)
+  const blogPost = path.resolve(`./src/templates/blog-post.js`);
   const blogPostHeroLayout = path.resolve(
     `./src/templates/blog-post-hero-layout.js`
-  )
+  );
 
   const result = await graphql(
     `
@@ -58,21 +58,21 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
     `
-  )
+  );
 
   if (result.errors) {
-    throw result.errors
+    throw result.errors;
   }
 
   // Create blog posts pages.
-  const posts = result.data.blog.edges
+  const posts = result.data.blog.edges;
 
   posts.forEach(({ node }, index) => {
-    const previous = index === posts.length - 1 ? null : posts[index + 1].node
-    const next = index === 0 ? null : posts[index - 1].node
+    const previous = index === posts.length - 1 ? null : posts[index + 1].node;
+    const next = index === 0 ? null : posts[index - 1].node;
 
-    let layoutComponent =
-      node.frontmatter.layout === "hero" ? blogPostHeroLayout : blogPost
+    const layoutComponent =
+      node.frontmatter.layout === 'hero' ? blogPostHeroLayout : blogPost;
 
     createPage({
       path: node.fields.slug,
@@ -83,8 +83,8 @@ exports.createPages = async ({ graphql, actions }) => {
         previous,
         next,
       },
-    })
-  })
+    });
+  });
 
   // Create resource pages
   result.data.resources.edges.forEach(({ node }) => {
@@ -95,49 +95,47 @@ exports.createPages = async ({ graphql, actions }) => {
         slug: node.fields.slug,
         id: node.id,
       },
-    })
-  })
-}
+    });
+  });
+};
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
+  const { createNodeField } = actions;
 
   if (node.internal.type === `Mdx`) {
-    let slug = createFilePath({ node, getNode })
+    let slug = createFilePath({ node, getNode });
 
     // blog specific manipulations
-    if (slug.includes("/blog/")) {
-      let [match] = slug.match(
-        /([0-9]+)\-([0-9]+)\-([0-9]+)\-([a-zA-Z0-9\-])*/g
-      )
+    if (slug.includes('/blog/')) {
+      const [match] = slug.match(/([0-9]+)-([0-9]+)-([0-9]+)-([a-zA-Z0-9-])*/g);
 
-      let [year, month, day, ...name] = match.split("-")
+      const [year, month, day, ...name] = match.split('-');
 
-      slug = `/blog/${name.join("-")}`
+      slug = `/blog/${name.join('-')}`;
 
-      let nameWithSpaces = name.join(" ")
-      let title =
-        nameWithSpaces.charAt(0).toUpperCase() + nameWithSpaces.slice(1)
+      const nameWithSpaces = name.join(' ');
+      const title =
+        nameWithSpaces.charAt(0).toUpperCase() + nameWithSpaces.slice(1);
 
-      const date = new Date(year, month - 1, day)
+      const date = new Date(year, month - 1, day);
 
       createNodeField({
         name: `date`,
         node,
         value: date.toJSON(),
-      })
+      });
 
       createNodeField({
         name: `title`,
         node,
         value: title,
-      })
+      });
     }
 
     createNodeField({
       name: `slug`,
       node,
       value: slug,
-    })
+    });
   }
-}
+};

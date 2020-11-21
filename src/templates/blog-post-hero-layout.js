@@ -1,21 +1,21 @@
-import React, { useEffect } from "react"
-import { graphql } from "gatsby"
-import Image from "gatsby-image"
+import React, { useEffect } from 'react';
+import { graphql } from 'gatsby';
+import Image from 'gatsby-image';
 
-import MDX from "../components/MDX"
-import Layout from "../components/Layout"
-import SEO from "../components/seo"
-import Sidebar from "../components/Sidebar"
-import MorePosts from "../components/MorePosts"
-import TableOfContents from "../components/TableOfContents"
+import MDX from '../components/MDX';
+import Layout from '../components/Layout';
+import SEO from '../components/seo';
+import Sidebar from '../components/Sidebar';
+import MorePosts from '../components/MorePosts';
+import TableOfContents from '../components/TableOfContents';
 
-import styles from "./blog-post-hero-layout.module.css"
+import styles from './blog-post-hero-layout.module.css';
 
 const BlogPostTemplate = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata.title
-  const post = data.mdx
-  const { frontmatter, body, fields } = post
-  const { title, date } = fields
+  const siteTitle = data.site.siteMetadata.title;
+  const post = data.mdx;
+  const { frontmatter, body, fields } = post;
+  const { title, date } = fields;
   const {
     description,
     excerpt,
@@ -23,56 +23,58 @@ const BlogPostTemplate = ({ data, location }) => {
     mobileFeatured,
     tags,
     invertHeaderColor,
-  } = frontmatter
+  } = frontmatter;
 
-  let { tableOfContents, timeToRead } = post
+  const { tableOfContents, timeToRead } = post;
 
   useEffect(() => {
-    let wrapper = document.querySelector(`.${styles.wrapper}`)
+    const wrapper = document.querySelector(`.${styles.wrapper}`);
     const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
+      (entries) => {
+        entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            invertHeaderColor
-              ? wrapper.style.setProperty("--header-color", "white")
-              : wrapper.style.setProperty("--header-color", "#333333")
-            wrapper.style.setProperty("--header-background", "none")
+            if (invertHeaderColor) {
+              wrapper.style.setProperty('--header-color', 'white');
+            } else {
+              wrapper.style.setProperty('--header-color', '#333333');
+            }
+            wrapper.style.setProperty('--header-background', 'none');
           } else {
             wrapper.style.setProperty(
-              "--header-color",
-              "var(--primary-foreground)"
-            )
+              '--header-color',
+              'var(--primary-foreground)'
+            );
             wrapper.style.setProperty(
-              "--header-background",
-              "var(--primary-background)"
-            )
+              '--header-background',
+              'var(--primary-background)'
+            );
           }
-        })
+        });
       },
       {
         rootMargin: `-24px 0% 0% 0%`,
       }
-    )
+    );
 
-    observer.observe(document.querySelector(`.${styles.heroWrapper}`))
+    observer.observe(document.querySelector(`.${styles.heroWrapper}`));
 
     return () => {
-      observer.unobserve(document.querySelector(`.${styles.heroWrapper}`))
-    }
+      observer.unobserve(document.querySelector(`.${styles.heroWrapper}`));
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, []);
 
   const image = post.frontmatter.image
     ? post.frontmatter.image.childImageSharp.resize
-    : null
+    : null;
 
-  let featuredSources = [
+  const featuredSources = [
     { ...mobileFeatured.childImageSharp.fluid, media: `max-width: 767px` },
     {
       ...desktopFeatured.childImageSharp.fluid,
       media: `(min-width: 768px)`,
     },
-  ]
+  ];
 
   return (
     <Layout
@@ -117,10 +119,10 @@ const BlogPostTemplate = ({ data, location }) => {
       </article>
       <MorePosts />
     </Layout>
-  )
-}
+  );
+};
 
-export default BlogPostTemplate
+export default BlogPostTemplate;
 
 export const pageQuery = graphql`
   query BlogPostHeroLayoutBySlug($id: String) {
@@ -169,4 +171,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

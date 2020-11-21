@@ -1,28 +1,28 @@
-import React from "react"
-import { graphql } from "gatsby"
-import Image from "gatsby-image"
+import React from 'react';
+import { graphql } from 'gatsby';
+import Image from 'gatsby-image';
 
-import MDX from "../components/MDX"
-import Layout from "../components/Layout"
-import SEO from "../components/seo"
-import Sidebar from "../components/Sidebar"
-import MorePosts from "../components/MorePosts"
-import TableOfContents from "../components/TableOfContents"
+import MDX from '../components/MDX';
+import Layout from '../components/Layout';
+import SEO from '../components/seo';
+import Sidebar from '../components/Sidebar';
+import MorePosts from '../components/MorePosts';
+import TableOfContents from '../components/TableOfContents';
 
-import styles from "./blog-post.module.css"
+import styles from './blog-post.module.css';
 
 const BlogPostTemplate = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata.title
-  const post = data.mdx
-  const { frontmatter, body, fields } = post
-  const { title, date } = fields
-  const { description, excerpt, featured, tags } = frontmatter
+  const siteTitle = data.site.siteMetadata.title;
+  const post = data.mdx;
+  const { frontmatter, body, fields } = post;
+  const { title, date } = fields;
+  const { description, excerpt, featured, tags } = frontmatter;
 
-  let { tableOfContents, timeToRead } = post
+  const { tableOfContents, timeToRead } = post;
 
   const image = post.frontmatter.image
     ? post.frontmatter.image.childImageSharp.resize
-    : null
+    : null;
 
   return (
     <Layout
@@ -60,7 +60,7 @@ const BlogPostTemplate = ({ data, location }) => {
         {featured && (
           <Image
             style={{
-              marginBottom: "2rem",
+              marginBottom: '2rem',
             }}
             sizes={featured.childImageSharp.sizes}
           />
@@ -71,10 +71,10 @@ const BlogPostTemplate = ({ data, location }) => {
       </article>
       <MorePosts />
     </Layout>
-  )
-}
+  );
+};
 
-export default BlogPostTemplate
+export default BlogPostTemplate;
 
 export const pageQuery = graphql`
   query BlogPostBySlug($id: String) {
@@ -115,4 +115,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

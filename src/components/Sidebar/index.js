@@ -1,27 +1,27 @@
-import React, { useState } from "react"
-import Search from "../Search"
+import React, { useState } from 'react';
+import Search from '../Search';
 
-import styles from "./sidebar.module.css"
+import styles from './sidebar.module.css';
 
 const Index = ({
   children,
   title,
-  data = "",
+  data = '',
   className,
   description,
   searchContext,
 }) => {
-  const allPosts = data ? data.edges : ""
-  const [searchPosts, setSearchPosts] = useState(allPosts)
-  const searchedPosts = posts => {
-    setSearchPosts(posts)
-  }
+  const allPosts = data ? data.edges : '';
+  const [searchPosts, setSearchPosts] = useState(allPosts);
+  const searchedPosts = (posts) => {
+    setSearchPosts(posts);
+  };
 
   return (
-    <div className={`${className ? className : ""} ${styles.sidebar}`}>
+    <div className={`${className || ''} ${styles.sidebar}`}>
       <div className={styles.sticky}>
         {title &&
-          (title === "Blog" || title === "Snippets" ? (
+          (title === 'Blog' || title === 'Snippets' ? (
             <h1 className={styles.title}>{title}</h1>
           ) : (
             <span className={styles.title}>{title}</span>
@@ -39,7 +39,7 @@ const Index = ({
         </section>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Index
+export default Index;

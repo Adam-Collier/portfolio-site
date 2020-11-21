@@ -1,57 +1,57 @@
-import React, { useState } from "react"
-import { graphql } from "gatsby"
+import React, { useState } from 'react';
+import { graphql } from 'gatsby';
 
-import Layout from "../components/Layout"
-import SEO from "../components/seo"
-import Blogpost from "../components/Blogpost"
-import Sidebar from "../components/Sidebar"
+import Layout from '../components/Layout';
+import SEO from '../components/seo';
+import Blogpost from '../components/Blogpost';
+import Sidebar from '../components/Sidebar';
 
-import styles from "./blog.module.css"
+import styles from './blog.module.css';
 
 const Blog = ({ data }) => {
-  const { categories, edges: allPosts } = data.allMdx
+  const { categories, edges: allPosts } = data.allMdx;
 
-  const [posts, setFilteredPosts] = useState(allPosts)
-  const [activeTags, setActiveTags] = useState([])
+  const [posts, setFilteredPosts] = useState(allPosts);
+  const [activeTags, setActiveTags] = useState([]);
 
-  const handleClick = e => {
-    e.preventDefault()
+  const handleClick = (e) => {
+    e.preventDefault();
 
-    let tagName = e.target.textContent
+    const tagName = e.target.textContent;
 
-    let selectedTags = activeTags.includes(tagName)
-      ? activeTags.filter(x => x !== tagName)
-      : [...activeTags, tagName]
+    const selectedTags = activeTags.includes(tagName)
+      ? activeTags.filter((x) => x !== tagName)
+      : [...activeTags, tagName];
 
-    setActiveTags(selectedTags)
+    setActiveTags(selectedTags);
 
-    let filteredPosts = allPosts.filter(({ node }) => {
-      let { tags } = node.frontmatter
+    const filteredPosts = allPosts.filter(({ node }) => {
+      const { tags } = node.frontmatter;
       // if post doesnt have any tags return
-      if (!tags) return false
+      if (!tags) return false;
       // if there are no active tags return all posts
-      if (selectedTags.length === 0) return node
+      if (selectedTags.length === 0) return node;
       // if selectedTags include a post tag return the tag
-      let matchingTags = selectedTags.filter(tag => tags.includes(tag))
+      const matchingTags = selectedTags.filter((tag) => tags.includes(tag));
       // if they have matching tags return the post
-      return matchingTags.length >= 1
-    })
+      return matchingTags.length >= 1;
+    });
 
-    setFilteredPosts(filteredPosts)
-  }
+    setFilteredPosts(filteredPosts);
+  };
 
-  let description =
-    "A collection of writing which can range from talking about code, design or life in general. Enjoy this eclectic collection of writings"
+  const description =
+    'A collection of writing which can range from talking about code, design or life in general. Enjoy this eclectic collection of writings';
 
   return (
     <Layout containerType="fluid" containerClass={styles.blog}>
       <SEO title="Blog" description={description} />
       <Sidebar title="Blog" description={description}>
         {categories.map(({ category, edges }, index) => {
-          let allTags = new Set()
+          const allTags = new Set();
           edges.forEach(({ node }) => {
-            node.frontmatter.tags.forEach(tag => allTags.add(tag))
-          })
+            node.frontmatter.tags.forEach((tag) => allTags.add(tag));
+          });
 
           return (
             <div className={styles.category} key={index}>
@@ -59,9 +59,10 @@ const Blog = ({ data }) => {
               <div className={styles.tags}>
                 {[...allTags].map((tag, i) => (
                   <button
+                    type="button"
                     key={i}
                     className={`${
-                      activeTags.includes(tag) ? styles.active : ""
+                      activeTags.includes(tag) ? styles.active : ''
                     }`}
                     onClick={handleClick}
                     onKeyDown={handleClick}
@@ -71,7 +72,7 @@ const Blog = ({ data }) => {
                 ))}
               </div>
             </div>
-          )
+          );
         })}
       </Sidebar>
       <div className={styles.blogposts}>
@@ -80,10 +81,10 @@ const Blog = ({ data }) => {
         ))}
       </div>
     </Layout>
-  )
-}
+  );
+};
 
-export default Blog
+export default Blog;
 
 export const query = graphql`
   query {
@@ -141,4 +142,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

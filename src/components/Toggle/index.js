@@ -1,33 +1,35 @@
-import React, { useEffect } from "react"
-import { useContext } from "../../context"
-import styles from "./toggle.module.css"
+import React, { useEffect } from 'react';
+import { useContext } from '../../context';
+import styles from './toggle.module.css';
 
-export default ({ className }) => {
-  const [{ isDarkMode }, dispatch] = useContext()
+const Toggle = ({ className }) => {
+  const [{ isDarkMode }, dispatch] = useContext();
 
-  let initialDispatch = useContext()[1]
+  const initialDispatch = useContext()[1];
 
   useEffect(() => {
     initialDispatch({
-      type: "isDarkMode",
-      value: window.localStorage.getItem("isDarkMode"),
-    })
-  }, [initialDispatch])
+      type: 'isDarkMode',
+      value: window.localStorage.getItem('isDarkMode'),
+    });
+  }, [initialDispatch]);
 
-  let handleInput = event => {
+  const handleInput = () => {
     dispatch({
-      type: "isDarkMode",
-      value: isDarkMode === "true" ? "false" : "true",
-    })
-  }
+      type: 'isDarkMode',
+      value: isDarkMode === 'true' ? 'false' : 'true',
+    });
+  };
 
   return (
     <input
       type="checkbox"
       aria-label="dark mode toggle"
-      className={`${styles.toggle} ${className ? className : ""}`}
-      checked={isDarkMode === "true" ? true : false}
+      className={`${styles.toggle} ${className || ''}`}
+      checked={isDarkMode === 'true'}
       onChange={handleInput}
     />
-  )
-}
+  );
+};
+
+export default Toggle;

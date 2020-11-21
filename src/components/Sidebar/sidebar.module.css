@@ -19,8 +19,6 @@
 
 .sidebar span {
   display: block;
-  font-size: 1rem;
-  color: var(--primary-accent);
   font-weight: 600;
   margin-bottom: 1.45rem;
 }
@@ -36,12 +34,15 @@
   margin: 0;
 }
 
-.title {
-  font-size: 1rem;
+.title,
+.sidebar span {
+  font-size: 1.125rem;
   color: var(--primary-accent);
 }
 
 .description {
+  font-size: 1rem;
+  font-weight: 500;
   color: var(--primary-foreground);
 }
 

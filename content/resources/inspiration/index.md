@@ -2,7 +2,7 @@
 title: Inspiration
 ---
 
-Having a lack of inspiration can drag any project down and make for some lack luster design decisions. Here are some sites and other resources to kickstart some ideas when tackling a new project.
+Having a lack of inspiration can drag any project down and make for some lacklustre design decisions. Here are some sites and other resources to kickstart some ideas when tackling a new project.
 
 ## Curated sites
 
@@ -17,7 +17,7 @@ Having a lack of inspiration can drag any project down and make for some lack lu
 
 ## Savee Collections
 
-I've used [Savee](https://savee.it) for a while now and I absolute love it. I've grown tired of forgetting where I saw that good thing that one time, so now these collections act as an extension of my visual memory.
+I've used [Savee](https://savee.it) for a while now and I love it. I've grown tired of forgetting where I saw that good thing that one time, so now these collections act as an extension of my visual memory.
 
 ### Print
 
@@ -27,7 +27,7 @@ Any interesting type or adventurous layouts will be added into this collection.
 
 ### 3D
 
-There's so much good 3d work out there it deserves a collection of it's own. It will also serve as a good starting point for any Blender work I do.
+There's so much good 3d work out there it deserves a collection of its own. It will also serve as a good starting point for any Blender work I do.
 
 [![3D Collection](./images/3d-collection.jpg 'Savee 3D Collection')](https://savee.it/adamcollier/collections/3d/)
 
@@ -39,6 +39,6 @@ Those beautiful web layouts and good uses of type and imagery will live here. So
 
 ### Interactions
 
-If I come across any interaction that excites me or put my skills to shame, they will be found in here. I use [Kap](https://getkap.co/) to grab all of the screen recordings in GIF format.
+If I come across any interactions that excite me or put my skills to shame, they will be found in here. I use [Kap](https://getkap.co/) to grab all of the screen recordings in GIF format.
 
 [![Interactions Collection](./images/interactions-collection.jpg 'Savee interactions Collection')](https://savee.it/adamcollier/collections/interactions/)

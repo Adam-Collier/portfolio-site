@@ -1,20 +1,20 @@
-import React from "react"
-import { graphql } from "gatsby"
+import React from 'react';
+import { graphql } from 'gatsby';
 
-import MDX from "../components/MDX"
-import Layout from "../components/Layout"
-import SEO from "../components/seo"
-import Resource from "../components/Resource"
-import Sidebar from "../components/Sidebar"
+import MDX from '../components/MDX';
+import Layout from '../components/Layout';
+import SEO from '../components/seo';
+import Resource from '../components/Resource';
+import Sidebar from '../components/Sidebar';
 
-import styles from "./resources.module.css"
+import styles from './resources.module.css';
 
 const ResourceTemplate = ({ data, location }) => {
-  const { mdx, site } = data
-  const { frontmatter, id, excerpt, body } = mdx
-  const { title, description } = frontmatter
+  const { mdx, site } = data;
+  const { frontmatter, id, excerpt, body } = mdx;
+  const { title, description } = frontmatter;
 
-  const siteTitle = site.siteMetadata.title
+  const siteTitle = site.siteMetadata.title;
 
   return (
     <Layout
@@ -46,10 +46,10 @@ const ResourceTemplate = ({ data, location }) => {
         <MDX body={body} />
       </article>
     </Layout>
-  )
-}
+  );
+};
 
-export default ResourceTemplate
+export default ResourceTemplate;
 
 export const pageQuery = graphql`
   query ResourceBySlug($slug: String!) {
@@ -87,4 +87,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

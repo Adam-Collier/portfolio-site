@@ -1,21 +1,21 @@
-import React from "react"
-import { graphql } from "gatsby"
+import React from 'react';
+import { graphql } from 'gatsby';
 
-import MDX from "../components/MDX"
-import Layout from "../components/Layout"
-import SEO from "../components/seo"
-import Resource from "../components/Resource"
-import Sidebar from "../components/Sidebar"
+import MDX from '../components/MDX';
+import Layout from '../components/Layout';
+import SEO from '../components/seo';
+import Resource from '../components/Resource';
+import Sidebar from '../components/Sidebar';
 
-import styles from "./resources.module.css"
+import styles from './resources.module.css';
 
 const ResourceTemplate = ({ data }) => {
-  const { mdx } = data
-  const { frontmatter, id, excerpt, body } = mdx
-  const { title } = frontmatter
+  const { mdx } = data;
+  const { frontmatter, id, excerpt, body } = mdx;
+  const { title } = frontmatter;
 
-  let description =
-    "This is a group of resources I have either learned something from or thought could become useful in the future."
+  const description =
+    'This is a group of resources I have either learned something from or thought could become useful in the future.';
 
   return (
     <Layout containerType="fluid" containerClass={styles.resources}>
@@ -42,10 +42,10 @@ const ResourceTemplate = ({ data }) => {
         <MDX body={body} />
       </article>
     </Layout>
-  )
-}
+  );
+};
 
-export default ResourceTemplate
+export default ResourceTemplate;
 
 export const pageQuery = graphql`
   query {
@@ -83,4 +83,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

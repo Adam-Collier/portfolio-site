@@ -1,6 +1,6 @@
 .link {
   position: relative;
-  color: var(--header-color);
+  color: var(--nav-color);
   text-decoration: none;
   padding: 0.375rem 0.625rem;
   text-decoration: none;
@@ -10,7 +10,7 @@
 
 .active {
   position: relative;
-  background: var(--primary-accent);
+  background: var(--main-accent);
   color: var(--primary-background);
 }
 

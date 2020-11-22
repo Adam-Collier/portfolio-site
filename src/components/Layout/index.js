@@ -23,16 +23,11 @@ const Layout = ({ children, wrapperClass, containerClass, containerType }) => {
     }
   `);
 
-  const [{ isMobileMenu }, dispatch] = useContext();
+  const [{ isMobileMenu }] = useContext();
 
-  useHotkeys('cmd+/', () => dispatch({ type: 'isMenuVisible' }));
   useHotkeys('cmd+h', (e) => {
     e.preventDefault();
     navigate('/');
-  });
-  useHotkeys('cmd+shift+n', (e) => {
-    e.preventDefault();
-    navigate('/now');
   });
   useHotkeys('cmd+s', (e) => {
     e.preventDefault();

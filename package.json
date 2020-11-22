@@ -68,5 +68,6 @@
   },
   "bugs": {
     "url": "https://github.com/Adam-Collier/portfolio-site/issues"
-  }
+  },
+  "browserslist": ["last 1 version", "> 1%", "IE 10"]
 }

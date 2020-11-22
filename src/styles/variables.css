@@ -5,8 +5,7 @@
   --foreground-high: #666666;
   --foreground-medium: #757575;
   --foreground-low: #f0f0f0;
-  --main-accent: #6219ff;
-  --primary-accent: var(--main-accent);
+  --primary-accent: #6219ff;
   --accent-lighter: #e4deff;
   --accent-lightest: #f6f4ff;
   --border-radius: 2px;

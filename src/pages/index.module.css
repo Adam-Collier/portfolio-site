@@ -1,5 +1,6 @@
 .homeWrapper {
   --header-background: none;
+  --nav-color: var(--primary-background);
 }
 
 .home {
@@ -100,7 +101,7 @@
   }
 
   .intro:after {
-    content: "";
+    content: '';
     position: absolute;
     left: -15%;
     right: auto;

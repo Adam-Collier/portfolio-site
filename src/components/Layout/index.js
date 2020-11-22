@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useStaticQuery, graphql, navigate } from 'gatsby';
+import { navigate } from 'gatsby';
 import { useHotkeys } from 'react-hotkeys-hook';
 import { useContext } from '../../context';
 
@@ -13,16 +13,6 @@ import './global.css';
 import '../../styles/variables.css';
 
 const Layout = ({ children, wrapperClass, containerClass, containerType }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `);
-
   const [{ isMobileMenu }] = useContext();
 
   useHotkeys('cmd+h', (e) => {
@@ -44,7 +34,7 @@ const Layout = ({ children, wrapperClass, containerClass, containerType }) => {
 
   return (
     <div className={wrapperClass}>
-      <Header siteTitle={data.site.siteMetadata.title} />
+      <Header />
       <MobileMenu isMobileMenu={isMobileMenu} />
       <main
         className={`${

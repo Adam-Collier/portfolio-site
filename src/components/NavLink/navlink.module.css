@@ -10,7 +10,7 @@
 
 .active {
   position: relative;
-  background: var(--main-accent);
+  background: var(--primary-accent);
   color: var(--primary-background);
 }
 

@@ -48,7 +48,7 @@
 
 @media (min-width: 768px) {
   .sticky {
-    height: calc(100vh - 147px);
+    height: calc(100vh - 72px);
     display: flex;
     flex-direction: column;
   }

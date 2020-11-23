@@ -1,14 +1,8 @@
 import React from 'react';
 import NavLink from '../NavLink';
 
-const Index = ({ className, onClick }) => (
-  <div
-    className={className}
-    onClick={onClick}
-    onKeyDown={onClick}
-    role="button"
-    tabIndex="0"
-  >
+const Index = ({ className }) => (
+  <div className={className}>
     <NavLink to="/blog/">Blog</NavLink>
     <NavLink to="/snippets/">Snippets</NavLink>
     <NavLink to="/resources/">Resources</NavLink>

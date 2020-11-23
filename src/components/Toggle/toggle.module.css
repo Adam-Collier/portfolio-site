@@ -6,10 +6,6 @@
   cursor: pointer;
 }
 
-.toggle:focus {
-  outline: 0;
-}
-
 .toggle {
   height: 32px;
   width: 52px;
@@ -22,7 +18,7 @@
 }
 
 .toggle:after {
-  content: "";
+  content: '';
   position: absolute;
   top: 2px;
   left: 2px;
@@ -58,7 +54,7 @@
   }
 
   .toggle:after {
-    content: "";
+    content: '';
     position: absolute;
     width: 16px;
     height: 16px;

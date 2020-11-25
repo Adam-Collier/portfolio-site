@@ -1,5 +1,4 @@
 import React from 'react';
-import { globalHistory } from '@reach/router';
 import { Link, useStaticQuery, graphql } from 'gatsby';
 import Image from 'gatsby-image';
 
@@ -14,8 +13,6 @@ import CloseIcon from '../../icons/close_icon.svg';
 
 const Header = ({ className, isClose, onClick }) => {
   const dispatch = useContext()[1];
-
-  const path = globalHistory.location.pathname;
 
   const data = useStaticQuery(graphql`
     query {
@@ -45,12 +42,7 @@ const Header = ({ className, isClose, onClick }) => {
             <PageUtils />
           </div>
           <div className={styles.headerRight}>
-            <Navigation
-              className={`${styles.navigation} ${
-                path === '/' ? styles.navigationAlt : ''
-              }`}
-            />
-
+            <Navigation className={styles.navigation} />
             <Toggle className={styles.toggle} />
             <button
               type="button"

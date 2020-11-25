@@ -1,4 +1,5 @@
 .menu {
+  --primary-accent: #6219ff;
   position: fixed;
   top: 0;
   left: 0;

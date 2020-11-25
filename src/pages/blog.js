@@ -46,6 +46,11 @@ const Blog = ({ data }) => {
   return (
     <Layout containerType="fluid" containerClass={styles.blog}>
       <SEO title="Blog" description={description} />
+      <div className={styles.blogposts}>
+        {posts.map(({ node }, i) => (
+          <Blogpost node={node} key={i} />
+        ))}
+      </div>
       <Sidebar title="Blog" description={description}>
         {categories.map(({ category, edges }, index) => {
           const allTags = new Set();
@@ -75,11 +80,6 @@ const Blog = ({ data }) => {
           );
         })}
       </Sidebar>
-      <div className={styles.blogposts}>
-        {posts.map(({ node }, i) => (
-          <Blogpost node={node} key={i} />
-        ))}
-      </div>
     </Layout>
   );
 };

@@ -1,12 +1,13 @@
 .wrapper {
   --header-background: none;
+  --nav-color: var(--header-color);
 }
 
 .blogpost {
   width: 100%;
   display: grid;
-  --content-grid-template: "hero hero hero" "sidebar content ."
-    "sidebar moreposts .";
+  --content-grid-template: 'hero hero hero' 'sidebar content .'
+    'sidebar moreposts .';
   padding-top: 0;
   grid-template-columns: var(--content-grid-columns);
   grid-template-areas: var(--content-grid-template);
@@ -26,20 +27,20 @@
 }
 
 .tags {
-  composes: tags from "./blog-post.module.css";
+  composes: tags from './blog-post.module.css';
 }
 
 .written {
-  composes: written from "./blog-post.module.css";
+  composes: written from './blog-post.module.css';
 }
 
 .content {
-  composes: content from "./blog-post.module.css";
+  composes: content from './blog-post.module.css';
 }
 
 @media (max-width: 767px) {
   .blogpost {
-    --content-grid-template: "hero" "content" "moreposts";
+    --content-grid-template: 'hero' 'content' 'moreposts';
   }
 
   .sidebar {

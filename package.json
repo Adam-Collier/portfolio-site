@@ -67,9 +67,5 @@
   },
   "bugs": {
     "url": "https://github.com/Adam-Collier/portfolio-site/issues"
-  },
-  "browserslist": [
-    "last 1 chrome version",
-    "last 1 firefox version"
-  ]
+  }
 }

@@ -2,6 +2,7 @@ import React from 'react';
 
 import Layout from '../components/Layout';
 import SEO from '../components/seo';
+import Timeline from '../components/Timeline';
 
 import styles from './index.module.css';
 
@@ -42,7 +43,7 @@ const IndexPage = () => (
       </div>
     </div>
     <div className={styles.timeline}>
-      <p>timeline goes here</p>
+      <Timeline />
     </div>
   </Layout>
 );

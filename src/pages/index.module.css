@@ -1,5 +1,4 @@
 .homeWrapper {
-  --header-background: none;
   --nav-color: var(--primary-background);
 }
 
@@ -8,6 +7,10 @@
   grid-template-areas: 'intro timeline';
   grid-template-columns: 1fr 1fr;
   justify-items: center;
+}
+
+:global(.dark) .home .timeline {
+  --primary-accent: var(--primary-foreground);
 }
 
 .intro,
@@ -19,7 +22,6 @@
 .intro {
   width: calc(100% - 32px);
   max-width: 480px;
-  justify-content: center;
 }
 
 .timeline {
@@ -48,18 +50,44 @@
   background: var(--primary-accent);
   width: 100%;
   height: 100%;
+  padding: 0 1rem;
 }
 
 @media (min-width: 768px) {
-  .home {
-    align-items: center;
+  .homeWrapper {
+    --header-background: none;
+  }
 
-    height: 100vh;
+  .home {
     padding: 0;
+  }
+
+  .timeline {
+    padding-top: 7rem;
+  }
+
+  .intro {
+    position: sticky;
+    height: 100vh;
+    top: 0;
+    justify-content: center;
   }
 
   .intro h1 {
     font-size: 40px;
+  }
+
+  .timeline:after {
+    content: '';
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    background: var(--primary-accent);
+    z-index: -1;
   }
 }
 
@@ -69,6 +97,23 @@
     grid-template-columns: 1fr;
     padding-left: 0;
     padding-right: 0;
+  }
+
+  .intro {
+    padding-top: 0.5rem;
+  }
+
+  .timeline {
+    padding-top: 2rem;
+  }
+
+  .weekList {
+    margin-bottom: 2rem;
+  }
+
+  .weekList span {
+    display: inline-block;
+    min-width: 110px;
   }
 }
 

@@ -1,13 +1,13 @@
 import React from 'react';
 import styles from './entry.module.css';
 
-const Entry = ({ Icon, children, title, timestamp }) => (
+const Entry = ({ Icon, children, title, timestamp, divider = true }) => (
   <div className={styles.entry}>
     <div className={styles.thread}>
       <div className={styles.icon}>
         <Icon size={16} />
       </div>
-      <div className={styles.line} />
+      {divider && <div className={styles.line} />}
     </div>
 
     <div className={styles.contents}>

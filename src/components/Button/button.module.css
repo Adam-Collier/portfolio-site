@@ -1,0 +1,23 @@
+.button {
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  align-items: center;
+  background: var(--primary-background);
+  color: var(--primary-foreground);
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.button:hover {
+  background: var(--button-hover);
+}
+
+.icon {
+  margin-right: 0.5rem;
+}

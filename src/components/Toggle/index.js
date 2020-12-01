@@ -28,6 +28,7 @@ const Toggle = ({ className }) => {
       className={`${styles.toggle} ${className || ''}`}
       checked={isDarkMode === 'true'}
       onChange={handleInput}
+      tabIndex="0"
     />
   );
 };

@@ -18,8 +18,6 @@ const BlogPostTemplate = ({ data, location }) => {
   const { title, date } = fields;
   const { description, excerpt, featured, tags } = frontmatter;
 
-  console.log(data);
-
   const { tableOfContents, timeToRead } = post;
 
   const image = post.frontmatter.image

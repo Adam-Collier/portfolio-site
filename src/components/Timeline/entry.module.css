@@ -1,0 +1,90 @@
+.entry {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  grid-template-areas: 'thread contents';
+
+  margin-bottom: 1rem;
+  grid-gap: 1.45rem;
+}
+
+.thread {
+  grid-area: thread;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--primary-background);
+  padding: 0.75rem;
+  border-radius: 50%;
+  border: 2px solid var(--primary-accent);
+}
+
+.line {
+  flex: 1;
+  width: 1px;
+  margin-bottom: -1rem;
+  background: var(--primary-background);
+}
+
+.contents {
+  min-width: 0;
+  grid-area: contents;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.title {
+  color: var(--primary-background);
+  font-weight: 500;
+  font-size: 1.125rem;
+}
+
+.date {
+  font-size: 0.825rem;
+  color: var(--foreground-low);
+}
+
+.children {
+  color: var(--primary-background);
+  line-height: 1.5;
+  font-weight: 450;
+}
+
+.children :global(.gatsby-highlight) {
+  width: auto;
+  margin-bottom: 0;
+}
+
+@media (max-width: 767px) {
+  .children :global(.gatsby-highlight) {
+    margin-left: -4rem;
+  }
+}
+
+.dateEntry {
+  display: flex;
+  align-items: center;
+  padding-left: calc(44px + 1.45rem);
+  margin-bottom: 1.45rem;
+}
+
+.dateEntry h3 {
+  grid-area: date;
+  margin-bottom: 0;
+}
+
+.stroke {
+  height: 1px;
+  flex: 1;
+  background: var(--primary-background);
+  margin-left: 1rem;
+}

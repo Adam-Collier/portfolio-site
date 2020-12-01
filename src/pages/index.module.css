@@ -1,112 +1,127 @@
 .homeWrapper {
-  --header-background: none;
   --nav-color: var(--primary-background);
 }
 
 .home {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  display: grid;
+  grid-template-areas: 'intro timeline';
+  grid-template-columns: 1fr 1fr;
   justify-items: center;
 }
 
-.logo,
-.intro {
+:global(.dark) .home .timeline {
+  --primary-accent: var(--primary-foreground);
+}
+
+:global(.dark) .timeline :global(.gatsby-highlight) {
+  --primary-foreground: var(--primary-background);
+}
+
+.intro,
+.timeline {
   display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.logo {
-  flex: 3 1 300px;
-  padding: 1rem;
+  flex-direction: column;
 }
 
 .intro {
-  flex: 1 1 300px;
-  padding: 0 3rem;
-  align-self: stretch;
-  color: var(--primary-background);
+  width: calc(100% - 2rem);
+  max-width: 480px;
 }
 
-.logo img {
-  width: 90%;
-  max-width: 500px;
-  margin-bottom: 0;
+.timeline {
+  align-items: center;
 }
 
-.intro p {
-  max-width: 650px;
-  margin: 0;
-  font-style: normal;
-  font-weight: 550;
-  font-size: 1.125rem;
+.intro h2 {
+  margin-bottom: 2rem;
+}
+
+.intro h1 + p {
   line-height: 1.7;
+  margin-bottom: 2rem;
 }
 
-@media (min-width: 767px) {
+.weekList p {
+  margin-bottom: 0.5rem;
+}
+
+.weekList span {
+  display: inline-block;
+  min-width: 140px;
+}
+
+.timeline {
+  background: var(--primary-accent);
+  width: 100%;
+  height: 100%;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .homeWrapper {
+    --header-background: none;
+  }
+
   .home {
     padding: 0;
   }
 
-  .logo,
+  .timeline {
+    padding-top: 7rem;
+  }
+
   .intro {
+    position: sticky;
     height: 100vh;
+    top: 0;
+    justify-content: center;
+  }
+
+  .intro h1 {
+    font-size: 40px;
+  }
+
+  .timeline:after {
+    content: '';
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    background: var(--primary-accent);
+    z-index: -1;
   }
 }
 
 @media (max-width: 767px) {
   .home {
-    flex-direction: column;
-    min-height: 100vh;
-    align-items: flex-start;
+    grid-template-areas: 'intro' 'timeline';
+    grid-template-columns: 1fr;
     padding-left: 0;
     padding-right: 0;
-    padding-bottom: 0;
-  }
-
-  .logo,
-  .intro {
-    padding: 3rem 2rem;
-  }
-
-  .logo {
-    flex: 0;
-    padding: 2rem 2rem 3rem;
-    width: 80%;
   }
 
   .intro {
-    align-items: flex-start;
-    flex: 1;
+    padding-top: 0.5rem;
+  }
+
+  .timeline {
+    padding-top: 2rem;
+  }
+
+  .weekList {
+    margin-bottom: 2rem;
+  }
+
+  .weekList span {
+    display: inline-block;
+    min-width: 110px;
   }
 }
 
-@media (max-width: 1440px) {
-  .intro {
-    background: var(--primary-accent);
-    color: var(--primary-background);
-  }
-
-  :global(.dark) .intro {
-    background: var(--primary-foreground);
-  }
-}
-
-@media (min-width: 1441px) {
-  .intro {
-    position: relative;
-    background: none;
-    color: var(--primary-foreground);
-  }
-
-  .intro:after {
-    content: '';
-    position: absolute;
-    left: -15%;
-    right: auto;
-    width: 0.25rem;
-    height: 40%;
-    background: var(--primary-accent);
-  }
+.intro p {
+  font-style: normal;
+  font-weight: 500;
 }

@@ -1,7 +1,7 @@
 ---
 thumbnail: ./thumbnail.jpg
 category: Film & Tv
-tags: ["favourites", "film"]
+tags: ['favourites', 'film']
 description: A rare glimpse into my top 5 favourite films of all time, regardless of genre. Of course, they are subject to change over time as I grow as a human, but that's just the way it goes.
 published: true
 layout: hero

@@ -1,7 +1,20 @@
 import React from 'react';
 import styles from './entry.module.css';
 
-const Entry = ({ Icon, children, title, timestamp, divider = true }) => (
+const DateEntry = ({ date }) => (
+  <div className={styles.dateEntry}>
+    <h3>{date}</h3>
+    <div className={styles.stroke} />
+  </div>
+);
+
+const TimelineEntry = ({
+  Icon,
+  children,
+  title,
+  timestamp,
+  divider = true,
+}) => (
   <div className={styles.entry}>
     <div className={styles.thread}>
       <div className={styles.icon}>
@@ -20,4 +33,4 @@ const Entry = ({ Icon, children, title, timestamp, divider = true }) => (
   </div>
 );
 
-export default Entry;
+export { DateEntry, TimelineEntry };

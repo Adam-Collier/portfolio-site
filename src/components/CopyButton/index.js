@@ -29,7 +29,7 @@ function Copy({ className, content, duration = 2000, fileName, trim = false }) {
     <button
       type="button"
       name={label}
-      className={`${className} ${styles.button}`}
+      className={`${className || ''} ${styles.button}`}
       disabled={copied}
       onClick={async () => {
         copyToClipboard(trim ? content.trim() : content);

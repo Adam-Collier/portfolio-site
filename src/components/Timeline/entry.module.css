@@ -1,10 +1,14 @@
 .entry {
-  display: flex;
-  max-width: 480px;
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  grid-template-areas: 'thread contents';
+
   margin-bottom: 1rem;
+  grid-gap: 1.45rem;
 }
 
 .thread {
+  grid-area: thread;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,7 +32,8 @@
 }
 
 .contents {
-  margin-left: 1.5rem;
+  min-width: 0;
+  grid-area: contents;
 }
 
 .header {
@@ -52,4 +57,34 @@
   color: var(--primary-background);
   line-height: 1.5;
   font-weight: 450;
+}
+
+.children :global(.gatsby-highlight) {
+  width: auto;
+  margin-bottom: 0;
+}
+
+@media (max-width: 767px) {
+  .children :global(.gatsby-highlight) {
+    margin-left: -4rem;
+  }
+}
+
+.dateEntry {
+  display: flex;
+  align-items: center;
+  padding-left: calc(44px + 1.45rem);
+  margin-bottom: 1.45rem;
+}
+
+.dateEntry h3 {
+  grid-area: date;
+  margin-bottom: 0;
+}
+
+.stroke {
+  height: 1px;
+  flex: 1;
+  background: var(--primary-background);
+  margin-left: 1rem;
 }

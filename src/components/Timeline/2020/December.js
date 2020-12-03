@@ -1,11 +1,12 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import Image from 'gatsby-image';
-import { GitCommit, Box, Edit3, Scissors } from 'react-feather';
+import { GitCommit, Box, Edit3, Scissors, Paperclip } from 'react-feather';
 import Grid from '../../Grid';
 import { TimelineEntry, DateEntry } from '../Entry';
-import Blogpost from '../../Blogpost';
-import CodeBlock from '../../CodeBlock';
+import Button from '../../Button';
+// import Blogpost from '../../Blogpost';
+// import CodeBlock from '../../CodeBlock';
 
 const November = () => {
   const data = useStaticQuery(graphql`
@@ -47,37 +48,25 @@ const November = () => {
 
   return (
     <>
-      <DateEntry date="November, 2020" />
+      <DateEntry date="December, 2020" />
       <TimelineEntry
-        Icon={Scissors}
-        timestamp="November 30, 2020"
-        title="Added a new snippet to React"
+        Icon={Paperclip}
+        timestamp="December 3, 2020"
+        title="Operator Lookup Resource Added"
       >
-        <CodeBlock className="language-css">
-          {`
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  /* This is better for small screens, once min() is better supported */
-  /* grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr)); */
-  grid-gap: 1rem;
-  /* This is the standardized property now, but has slightly less support */
-  /* gap: 1rem */
-} 
-            `}
-        </CodeBlock>
-      </TimelineEntry>
-      <TimelineEntry
-        Icon={Edit3}
-        timestamp="November 29, 2020"
-        title="Published New Blog Post"
-      >
-        <Blogpost node={data.mdx} timeline />
+        <p>
+          Josh Comeau has created a great little tool to help us with those
+          pesky operators, which are always a pain to Google.
+        </p>
+        <Button
+          text="Check it out"
+          link="https://www.joshwcomeau.com/operator-lookup?match=logical-or-assignment"
+        />
       </TimelineEntry>
       <TimelineEntry
         Icon={Box}
-        timestamp="November 28, 2020"
-        title="Temple Ruins render"
+        timestamp="December 2, 2020"
+        title="Temple Ruins Render"
       >
         <p>
           Finished the second lesson of Polygon Runways 3-d illustrator course.
@@ -85,13 +74,13 @@ const November = () => {
           starting to get a feel for space and composition.
         </p>
         <Grid gridTemplateColumns="repeat(2, minmax(0, 1fr))" gridGap="0.5rem">
-          <Image fluid={data.allFile.edges[0].node.childImageSharp.fluid} />
           <Image fluid={data.allFile.edges[1].node.childImageSharp.fluid} />
+          <Image fluid={data.allFile.edges[0].node.childImageSharp.fluid} />
         </Grid>
       </TimelineEntry>
       <TimelineEntry
         Icon={GitCommit}
-        timestamp="November 24, 2020"
+        timestamp="December 1, 2020"
         title="Timeline added to the homepage"
         divider={false}
       />

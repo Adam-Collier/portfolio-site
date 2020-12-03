@@ -34,4 +34,6 @@ JavaScript is the programming language of the web. You can use it to add dynamic
 
 ## Tools
 
+[Operator Lookup](https://www.joshwcomeau.com/operator-lookup/) - Handy Javascript Operator Lookup - Forget trying to google those peaky operators you've seen on Stackoverflow (you can't btw google doesn't like it). Josh Comeau has create a great little tool to help us with just that.
+
 [Bundlephobia](https://bundlephobia.com/) - NPM module cost - A good sounding board for whether an npm should be installed. If something seems a little large I'll tend to look for something else or build something custom.

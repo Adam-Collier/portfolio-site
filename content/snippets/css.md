@@ -119,7 +119,7 @@ li {
 .current-menu-item {
   position: relative;
   &:before {
-    content: "";
+    content: '';
     position: absolute;
     left: 0;
     right: 0;

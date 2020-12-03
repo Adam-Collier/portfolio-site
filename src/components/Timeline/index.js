@@ -1,12 +1,12 @@
 import React from 'react';
 
-import November from './2020/November';
+import December from './2020/December';
 
 import styles from './timeline.module.css';
 
 const Timeline = ({ className }) => (
   <div className={`${className || ''} ${styles.timeline}`}>
-    <November />
+    <December />
   </div>
 );
 

@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'gatsby';
 
 import styles from './button.module.css';
 
-const ConditionalWrapper = ({ link, children }) =>
-  link ? (
+const LinkType = ({ link, children }) =>
+  link.includes('https://') ? (
     <a
       href={link}
       className={styles.link}
@@ -13,8 +14,13 @@ const ConditionalWrapper = ({ link, children }) =>
       {children}
     </a>
   ) : (
-    children
+    <Link to={link} className={styles.link}>
+      {children}
+    </Link>
   );
+
+const ConditionalWrapper = ({ link, children }) =>
+  link ? <LinkType link={link}>{children}</LinkType> : children;
 
 const Button = ({ text, link, Icon = '' }) => (
   <div>

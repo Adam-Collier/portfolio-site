@@ -4,18 +4,17 @@ import Image from 'gatsby-image';
 
 import styles from './blogpost.module.css';
 
-const Index = ({ node }) => {
-  const { frontmatter, fields } = node;
-  const { title, date } = fields;
+const Index = ({ node, timeline }) => {
+  const { frontmatter, fields, excerpt } = node;
+  const { title, date, slug } = fields;
   const { description, thumbnail } = frontmatter;
-  const { slug } = node.fields;
 
   const { childImageSharp, extension, publicURL } = thumbnail;
 
   return (
     <Link
       to={slug}
-      className={`${styles.blogpost}`}
+      className={`${styles.blogpost} ${timeline ? styles.timeline : ''}`}
       aria-label={`blog post: ${title}`}
       key={slug}
     >
@@ -28,9 +27,9 @@ const Index = ({ node }) => {
           <Image fluid={childImageSharp.fluid} alt={title} />
         )}
         <section>
-          <small>{date}</small>
+          {!timeline && <small>{date}</small>}
           <h2>{title}</h2>
-          <p>{description || node.excerpt}</p>
+          <p>{description || excerpt}</p>
         </section>
       </article>
     </Link>

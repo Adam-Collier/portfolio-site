@@ -32,39 +32,41 @@ export default ({
   );
 
   return (
-    <Highlight
-      /* eslint-disable react/jsx-props-no-spreading */
-      {...defaultProps}
-      code={content}
-      language={language}
-      theme={undefined}
-    >
-      {({ tokens, getLineProps, getTokenProps }) => (
-        <div className="gatsby-highlight">
-          {title && (
-            <div className="gatsby-highlight-header">
-              <div className="gatsby-code-title">{title}</div>
-            </div>
-          )}
-          <pre className={`language-${language}`}>
-            <CopyButton fileName={title} content={content} />
-            {tokens.map((line, i) => {
-              const lineProps = getLineProps({ line, key: i });
-              const lineClassName = [lineProps.className]
-                .concat(highlights[i] && `gatsby-highlight-code-line`)
-                .filter(Boolean)
-                .join(` `);
-              return (
-                <div key={i} {...{ ...lineProps, lineClassName }}>
-                  {line.map((token, key) => (
-                    <span key={key} {...getTokenProps({ token, key })} />
-                  ))}
-                </div>
-              );
-            })}
-          </pre>
-        </div>
-      )}
-    </Highlight>
+    <div style={{ position: 'relative' }}>
+      <Highlight
+        /* eslint-disable react/jsx-props-no-spreading */
+        {...defaultProps}
+        code={content}
+        language={language}
+        theme={undefined}
+      >
+        {({ tokens, getLineProps, getTokenProps }) => (
+          <div className="gatsby-highlight">
+            {title && (
+              <div className="gatsby-highlight-header">
+                <div className="gatsby-code-title">{title}</div>
+              </div>
+            )}
+            <pre className={`language-${language}`}>
+              <CopyButton fileName={title} content={content} />
+              {tokens.map((line, i) => {
+                const lineProps = getLineProps({ line, key: i });
+                const lineClassName = [lineProps.className]
+                  .concat(highlights[i] && `gatsby-highlight-code-line`)
+                  .filter(Boolean)
+                  .join(` `);
+                return (
+                  <div key={i} {...{ ...lineProps, lineClassName }}>
+                    {line.map((token, key) => (
+                      <span key={key} {...getTokenProps({ token, key })} />
+                    ))}
+                  </div>
+                );
+              })}
+            </pre>
+          </div>
+        )}
+      </Highlight>
+    </div>
   );
 };

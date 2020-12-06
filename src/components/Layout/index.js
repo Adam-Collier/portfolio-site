@@ -4,6 +4,7 @@ import { navigate } from 'gatsby';
 import { useHotkeys } from 'react-hotkeys-hook';
 import { useContext } from '../../context';
 
+import { useMediaQuery } from '../../hooks/useMediaQuery';
 import MobileMenu from '../MobileMenu';
 
 import Header from '../Header';
@@ -32,10 +33,12 @@ const Layout = ({ children, wrapperClass, containerClass, containerType }) => {
     navigate('/blog');
   });
 
+  const isPageMobile = useMediaQuery('(max-width: 767px)');
+
   return (
     <div className={wrapperClass}>
       <Header />
-      <MobileMenu isMobileMenu={isMobileMenu} />
+      {isPageMobile && <MobileMenu isMobileMenu={isMobileMenu} />}
       <main
         className={`${
           containerType === 'fluid' ? styles.containerFluid : styles.container
@@ -43,7 +46,7 @@ const Layout = ({ children, wrapperClass, containerClass, containerType }) => {
       >
         {children}
       </main>
-      <Footer />
+      {!isPageMobile && <Footer />}
     </div>
   );
 };

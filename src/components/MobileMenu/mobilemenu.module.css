@@ -1,10 +1,10 @@
 .menu {
-  --primary-accent: #6219ff;
+  --primary-accent: #6d28d9;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background: #6219ff;
+  background: var(--primary-accent);
   z-index: 10;
   overflow: hidden;
   box-shadow: var(--box-shadow-large);
@@ -12,7 +12,7 @@
 
 .header {
   --header-color: #fff;
-  background: #6219ff;
+  background: var(--primary-accent);
   position: relative;
 }
 
@@ -20,12 +20,12 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 0.5rem 1rem 2rem;
+  padding: 0.5rem 0 1.45rem;
 }
 
 .navigation a {
   color: #fff;
   font-weight: 500;
-  font-size: 3rem;
+  font-size: 1.625rem;
   line-height: 1.5;
 }

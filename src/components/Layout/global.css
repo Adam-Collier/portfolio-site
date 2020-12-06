@@ -71,6 +71,7 @@ a {
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
   color: var(--primary-accent);
+  text-decoration-skip-ink: auto;
 }
 a:active,
 a:hover {

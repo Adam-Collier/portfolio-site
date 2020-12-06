@@ -23,7 +23,7 @@ const ConditionalWrapper = ({ link, children }) =>
   link ? <LinkType link={link}>{children}</LinkType> : children;
 
 const Button = ({ text, link, Icon = '' }) => (
-  <div>
+  <div className={styles.buttonWrapper}>
     <ConditionalWrapper link={link}>
       <button className={styles.button} type="button">
         {Icon && <Icon className={styles.icon} size={16} />}

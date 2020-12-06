@@ -13,10 +13,6 @@
   --primary-accent: var(--primary-foreground);
 }
 
-:global(.dark) .timeline :global(.gatsby-highlight) {
-  --primary-foreground: var(--primary-background);
-}
-
 .intro,
 .timeline {
   display: flex;

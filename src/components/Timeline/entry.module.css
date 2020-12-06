@@ -59,9 +59,13 @@
   font-weight: 450;
 }
 
+.children a {
+  color: var(--primary-background);
+}
+
 .children :global(.gatsby-highlight) {
   width: auto;
-  margin-bottom: 0;
+  margin-bottom: 1.45rem;
 }
 
 @media (max-width: 767px) {

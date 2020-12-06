@@ -1,7 +1,7 @@
 ---
 title: React
 description: React is a view library created by Facebook, that frontend devs utilize. Due to it's rapid ability to render only particular parts of the page when it's required.
-color: "#61DAFB"
+color: '#61DAFB'
 ---
 
 React is a view library created by Facebook, that frontend devs utilize. Due to it's rapid ability to render only particular parts of the page when it's required - known as dynamically generating elements.
@@ -19,3 +19,5 @@ In the past, whenever some part of the page has changed, even if it was a single
 [React Docs](https://reactjs.org/docs/getting-started.html) - Read - The React docs serve as a solid starting point and a reference for all levels. I always find myself coming back and re-remembering the react hook syntax.
 
 [How to use React Context effectively](https://kentcdodds.com/blog/how-to-use-react-context-effectively/) - Read/Bookmark - The legend that is Kent C Dodds shows us how to setup React context in a project. I always use this for my own context setup and it keeps everything nice and simple.
+
+[Building a custom React media query hook](https://www.netlify.com/blog/2020/12/05/building-a-custom-react-media-query-hook-for-more-responsive-apps/) - Read/Use - [@cassidoo](https://twitter.com/cassidoo) has written a deep dive on how we can use a custom hook to create a smart responsive experience in our React applications. I've been looking for a neat solution like this for a while without resorting to a package like [React Media](https://www.npmjs.com/package/react-media) so this ticks all the boxes.

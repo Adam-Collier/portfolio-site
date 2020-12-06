@@ -5,8 +5,7 @@ import { GitCommit, Box, Edit3, Scissors, Paperclip } from 'react-feather';
 import Grid from '../../Grid';
 import { TimelineEntry, DateEntry } from '../Entry';
 import Button from '../../Button';
-// import Blogpost from '../../Blogpost';
-// import CodeBlock from '../../CodeBlock';
+import CodeBlock from '../../CodeBlock';
 
 const November = () => {
   const data = useStaticQuery(graphql`
@@ -24,31 +23,51 @@ const November = () => {
           }
         }
       }
-      mdx(slug: { regex: "/5-of-my-all-time-favourite-films/" }) {
-        excerpt(pruneLength: 400)
-        fields {
-          slug
-          title
-          date(formatString: "MMMM DD, YYYY")
-        }
-        frontmatter {
-          thumbnail {
-            publicURL
-            extension
-            childImageSharp {
-              fluid(maxWidth: 114, quality: 90, toFormat: JPG) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-          }
-        }
-      }
     }
   `);
 
   return (
     <>
       <DateEntry date="December, 2020" />
+      <TimelineEntry
+        Icon={Scissors}
+        timestamp="December 6, 2020"
+        title="Added useMediaQuery Custom Hook Snippet"
+      >
+        <CodeBlock className="language-js">
+          {`
+import { useState, useEffect } from 'react';
+
+export function useMediaQuery(query) {
+  const [matches, setMatches] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia(query);
+    if (media.matches !== matches) {
+      setMatches(media.matches);
+    }
+    const listener = () => {
+      setMatches(media.matches);
+    };
+    media.addListener(listener);
+    return () => media.removeListener(listener);
+  }, [matches, query]);
+
+  return matches;
+}
+          `}
+        </CodeBlock>
+        <p>
+          Taken from <a href="https://twitter.com/cassidoo">@cassidoo's</a> post{' '}
+          <a href="https://www.netlify.com/blog/2020/12/05/building-a-custom-react-media-query-hook-for-more-responsive-apps">
+            Building a custom React media query hook for more responsive apps
+          </a>
+        </p>
+        <Button
+          text="The full snippet"
+          link="/snippets/#usemediaquery-custom-hook"
+        />
+      </TimelineEntry>
       <TimelineEntry
         Icon={Paperclip}
         timestamp="December 3, 2020"

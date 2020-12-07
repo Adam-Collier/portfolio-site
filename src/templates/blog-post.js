@@ -12,7 +12,6 @@ import TableOfContents from '../components/TableOfContents';
 import styles from './blog-post.module.css';
 
 const BlogPostTemplate = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata.title;
   const post = data.mdx;
   const { frontmatter, body, fields } = post;
   const { title, date } = fields;
@@ -25,13 +24,13 @@ const BlogPostTemplate = ({ data, location }) => {
     : null;
 
   return (
-    <Layout
-      location={location}
-      title={siteTitle}
-      containerType="fluid"
-      containerClass={`${styles.blogpost}`}
-    >
-      <SEO title={title} description={description || excerpt} image={image} />
+    <Layout containerType="fluid" containerClass={`${styles.blogpost}`}>
+      <SEO
+        title={title}
+        description={description || excerpt}
+        image={image}
+        pathname={location.pathname}
+      />
       <Sidebar className={styles.sidebar} description={description}>
         {Object.keys(tableOfContents).length !== 0 && (
           <TableOfContents

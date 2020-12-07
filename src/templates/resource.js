@@ -10,21 +10,17 @@ import Sidebar from '../components/Sidebar';
 import styles from './resources.module.css';
 
 const ResourceTemplate = ({ data, location }) => {
-  const { mdx, site } = data;
+  const { mdx } = data;
   const { frontmatter, id, excerpt, body } = mdx;
   const { title, description } = frontmatter;
 
-  const siteTitle = site.siteMetadata.title;
-
   return (
-    <Layout
-      location={location}
-      title={siteTitle}
-      containerType="fluid"
-      containerClass={styles.resources}
-    >
-      <SEO title={`${title} Resources`} description={description || excerpt} />
-
+    <Layout containerType="fluid" containerClass={styles.resources}>
+      <SEO
+        title={`${title} Resources`}
+        description={description || excerpt}
+        pathname={location.pathname}
+      />
       <Sidebar
         title="Resources"
         data={data.allMdx}
@@ -38,7 +34,6 @@ const ResourceTemplate = ({ data, location }) => {
           ))
         }
       </Sidebar>
-
       <article className={styles.content}>
         <header>
           <h1>{title}</h1>

@@ -6,13 +6,13 @@ import Timeline from '../components/Timeline';
 
 import styles from './index.module.css';
 
-const IndexPage = () => (
+const IndexPage = ({ location }) => (
   <Layout
     wrapperClass={styles.homeWrapper}
     containerClass={`${styles.home}`}
     containerType="fluid"
   >
-    <SEO title="" />
+    <SEO title="" pathname={location.pathname} />
     <div className={styles.intro}>
       <h1>Hey, I'm Adam</h1>
       <p>

@@ -8,7 +8,7 @@ import Sidebar from '../components/Sidebar';
 
 import styles from './blog.module.css';
 
-const Blog = ({ data }) => {
+const Blog = ({ data, location }) => {
   const { categories, edges: allPosts } = data.allMdx;
 
   const [posts, setFilteredPosts] = useState(allPosts);
@@ -45,7 +45,11 @@ const Blog = ({ data }) => {
 
   return (
     <Layout containerType="fluid" containerClass={styles.blog}>
-      <SEO title="Blog" description={description} />
+      <SEO
+        title="Blog"
+        description={description}
+        pathname={location.pathname}
+      />
       <div className={styles.blogposts}>
         {posts.map(({ node }, i) => (
           <Blogpost node={node} key={i} />

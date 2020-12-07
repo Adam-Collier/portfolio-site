@@ -9,7 +9,7 @@ import Sidebar from '../components/Sidebar';
 
 import styles from './resources.module.css';
 
-const ResourceTemplate = ({ data }) => {
+const ResourceTemplate = ({ data, location }) => {
   const { mdx } = data;
   const { frontmatter, id, excerpt, body } = mdx;
   const { title } = frontmatter;
@@ -19,7 +19,11 @@ const ResourceTemplate = ({ data }) => {
 
   return (
     <Layout containerType="fluid" containerClass={styles.resources}>
-      <SEO title="Resources" description={description || excerpt} />
+      <SEO
+        title="Resources"
+        description={description || excerpt}
+        pathname={location.pathname}
+      />
 
       <Sidebar
         title="Resources"

@@ -12,7 +12,6 @@ import TableOfContents from '../components/TableOfContents';
 import styles from './blog-post-hero-layout.module.css';
 
 const BlogPostTemplate = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata.title;
   const post = data.mdx;
   const { frontmatter, body, fields } = post;
   const { title, date } = fields;
@@ -78,13 +77,16 @@ const BlogPostTemplate = ({ data, location }) => {
 
   return (
     <Layout
-      location={location}
-      title={siteTitle}
       containerType="fluid"
       wrapperClass={styles.wrapper}
       containerClass={`${styles.blogpost}`}
     >
-      <SEO title={title} description={description || excerpt} image={image} />
+      <SEO
+        title={title}
+        description={description || excerpt}
+        image={image}
+        pathname={location.pathname}
+      />
       <div className={styles.heroWrapper}>
         <Image fluid={featuredSources} />
       </div>

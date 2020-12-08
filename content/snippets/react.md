@@ -170,3 +170,20 @@ function Page() {
   );
 }
 ```
+
+### Pass props to props.children
+
+A very basic example of how we can pass props down to props.children. If you're wanting to abstract away some logic, make your code more readable or make it easy to switch out components, this is a great solution.
+
+```jsx
+// inside our component we add the props we want as arguments for props.children
+const Blocks = ({ allBlocks, children }) =>
+  allBlocks.map((block, index) => <div>{children(block, index)}</div>);
+
+// then we can access those arguments via a function
+<Blocks allBlocks={state.allBlocks}>
+  {(block, index) => {
+    return <DynamicBlock block={block} index={index} />;
+  }}
+</Blocks>;
+```

@@ -31,10 +31,30 @@ const November = () => {
       <DateEntry date="December, 2020" />
       <TimelineEntry
         Icon={Scissors}
+        timestamp="December 8, 2020"
+        title="Added Pass Props to {children} Snippet"
+      >
+        <CodeBlock className="language-jsx">
+          {`
+// inside our component we add the props we want as arguments for props.children
+const Blocks = ({ allBlocks, children }) =>
+  allBlocks.map((block, index) => <div>{children(block, index)}</div>);
+
+// then we can access those arguments via a function
+<Blocks allBlocks={state.allBlocks}>
+  {(block, index) => {
+    return <DynamicBlock block={block} index={index} />;
+  }}
+</Blocks>;
+`}
+        </CodeBlock>
+      </TimelineEntry>
+      <TimelineEntry
+        Icon={Scissors}
         timestamp="December 6, 2020"
         title="Added useMediaQuery Custom Hook Snippet"
       >
-        <CodeBlock className="language-js">
+        <CodeBlock className="language-jsx">
           {`
 import { useState, useEffect } from 'react';
 

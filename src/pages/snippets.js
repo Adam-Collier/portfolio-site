@@ -24,7 +24,11 @@ const Snippets = ({ data, location }) => {
 
   return (
     <Layout containerType="fluid" containerClass={styles.snippets}>
-      <SEO title="Snippets" description={description} />
+      <SEO
+        title="Snippets"
+        description={description}
+        pathname={location.pathname}
+      />
       <Sidebar
         className={styles.sidebar}
         title="Snippets"

@@ -15,7 +15,7 @@ const Index = () => (
     <span className={styles.divider} />
     <div className={styles.social}>
       <p>
-        Follow me on <a href="https://savee.it/">Savee.it</a>
+        Follow me on <a href="https://savee.it/adamcollier/">Savee.it</a>
       </p>
       <p>
         Tweet me at <a href="https://twitter.com/CollierAdam">@collieradam</a>

@@ -1,24 +1,57 @@
 .footer {
-  padding: 1.5rem;
-  position: fixed;
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%);
+  grid-area: footer;
+  position: relative;
+  margin: 1rem auto 0;
+  padding-top: 1rem;
   width: 100%;
-  max-width: var(--max-layout-width);
-  display: flex;
+  border-top: 1px solid var(--foreground-low);
+  display: grid;
+  grid-template-areas:
+    'pages divider social'
+    'built built built';
+  grid-template-columns: 1fr 1px 1fr;
+  justify-items: center;
   align-items: center;
-  z-index: 5;
-  pointer-events: none;
+  font-weight: 500;
+  background: var(--primary-background);
 }
 
-.footer input {
-  pointer-events: all;
-  margin-left: auto;
+.footer div :is(p, a) {
+  margin-bottom: 1.45rem;
 }
 
-@media (max-width: 1024px) {
-  .footer {
-    display: none;
-  }
+.pages,
+.social {
+  margin-top: 1.45rem;
+}
+
+.pages {
+  grid-area: pages;
+  display: flex;
+  flex-direction: column;
+}
+
+.divider {
+  width: 100%;
+  height: 75%;
+  background: var(--foreground-low);
+}
+
+.social {
+  grid-area: social;
+  position: relative;
+}
+
+.built {
+  grid-area: built;
+  display: flex;
+  margin-top: 1.45rem;
+}
+
+.built svg {
+  margin-right: 0.5rem;
+}
+
+.built span {
+  padding: 0 1rem;
 }

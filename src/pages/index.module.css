@@ -1,10 +1,13 @@
 .homeWrapper {
   --nav-color: var(--primary-background);
+  --left-divider: var(--foreground-low);
 }
 
 .home {
   display: grid;
-  grid-template-areas: 'intro timeline';
+  grid-template-areas:
+    'intro timeline'
+    'intro footer';
   grid-template-columns: 1fr 1fr;
   justify-items: center;
 }
@@ -62,7 +65,18 @@
     padding: 0;
   }
 
+  .home footer:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--foreground-low);
+  }
+
   .timeline {
+    position: relative;
     padding-top: 7rem;
   }
 
@@ -93,7 +107,7 @@
 
 @media (max-width: 767px) {
   .home {
-    grid-template-areas: 'intro' 'timeline';
+    grid-template-areas: 'intro' 'timeline' 'footer';
     grid-template-columns: 1fr;
     padding-left: 0;
     padding-right: 0;

@@ -45,7 +45,8 @@
 .built {
   grid-area: built;
   display: flex;
-  margin-top: 1.45rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .built svg {
@@ -54,4 +55,11 @@
 
 .built span {
   padding: 0 1rem;
+}
+
+@media (max-width: 767px) {
+  .footer {
+    grid-template-columns: 0.5fr 1px 1fr;
+    margin-top: 0;
+  }
 }

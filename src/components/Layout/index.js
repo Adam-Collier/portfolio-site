@@ -45,7 +45,7 @@ const Layout = ({ children, wrapperClass, containerClass, containerType }) => {
         } ${containerClass}`}
       >
         {children}
-        {!isPageMobile && <Footer />}
+        <Footer />
       </main>
     </div>
   );

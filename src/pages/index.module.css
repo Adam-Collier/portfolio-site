@@ -107,7 +107,7 @@
 
 @media (max-width: 767px) {
   .home {
-    grid-template-areas: 'intro' 'timeline';
+    grid-template-areas: 'intro' 'timeline' 'footer';
     grid-template-columns: 1fr;
     padding-left: 0;
     padding-right: 0;

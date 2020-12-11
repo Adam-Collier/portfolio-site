@@ -15,13 +15,34 @@ const Index = () => (
     <span className={styles.divider} />
     <div className={styles.social}>
       <p>
-        Follow me on <a href="https://savee.it/adamcollier/">Savee.it</a>
+        Follow me on{' '}
+        <a
+          href="https://savee.it/adamcollier/"
+          target="__blank"
+          rel="noopener noreferrer"
+        >
+          Savee.it
+        </a>
       </p>
       <p>
-        Tweet me at <a href="https://twitter.com/CollierAdam">@collieradam</a>
+        Tweet me at{' '}
+        <a
+          href="https://twitter.com/CollierAdam"
+          target="__blank"
+          rel="noopener noreferrer"
+        >
+          @collieradam
+        </a>
       </p>
       <p>
-        Checkout my <a href="https://github.com/Adam-Collier">Github</a>
+        Checkout my{' '}
+        <a
+          href="https://github.com/Adam-Collier"
+          target="__blank"
+          rel="noopener noreferrer"
+        >
+          Github
+        </a>
       </p>
     </div>
     <span className={styles.built}>

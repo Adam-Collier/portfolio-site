@@ -11,7 +11,6 @@
   padding-top: 0;
   grid-template-columns: var(--content-grid-columns);
   grid-template-areas: var(--content-grid-template);
-  grid-gap: 2rem;
 }
 
 .heroWrapper {

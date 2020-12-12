@@ -19,7 +19,6 @@
 
 .sidebar span {
   display: block;
-  font-weight: 600;
   margin-bottom: 1.45rem;
 }
 
@@ -32,6 +31,12 @@
 
 .bar span {
   margin: 0;
+}
+
+.title,
+.sidebar span,
+.accordion {
+  font-weight: 600;
 }
 
 .title,
@@ -55,5 +60,43 @@
 
   .sticky > section {
     overflow-y: scroll;
+  }
+}
+
+.accordion {
+  position: sticky;
+  top: 70px;
+  background: var(--primary-background);
+  z-index: 5;
+}
+
+.accordion:active {
+  outline: none;
+}
+
+.accordion summary {
+  font-size: 1rem;
+  color: var(--primary-accent);
+  padding: 0 0 0.75rem;
+  outline: none;
+}
+
+.accordion summary + * {
+  padding-top: 1.45rem;
+  max-height: 60vh;
+  overflow-y: scroll;
+}
+
+@media (max-width: 767px) {
+  .title {
+    grid-area: title;
+    margin-bottom: 0;
+  }
+  .description {
+    grid-area: description;
+    margin-bottom: 0;
+  }
+  .accordion {
+    grid-area: context;
   }
 }

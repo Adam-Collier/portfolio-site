@@ -1,7 +1,26 @@
 import React, { useState } from 'react';
 import Search from '../Search';
+import { useMediaQuery } from '../../hooks/useMediaQuery';
 
 import styles from './sidebar.module.css';
+
+const ConditionalWrapper = ({ children, className }) => {
+  const [title, description, ...content] = children;
+  return useMediaQuery('(max-width: 767px)') ? (
+    <>
+      {title}
+      {description}
+      <details className={styles.accordion}>
+        <summary>Context Menu</summary>
+        {content}
+      </details>
+    </>
+  ) : (
+    <div className={`${className || ''} ${styles.sidebar}`}>
+      <div className={styles.sticky}>{children}</div>
+    </div>
+  );
+};
 
 const Index = ({
   children,
@@ -18,27 +37,27 @@ const Index = ({
   };
 
   return (
-    <div className={`${className || ''} ${styles.sidebar}`}>
-      <div className={styles.sticky}>
-        {title &&
-          (title === 'Blog' || title === 'Snippets' ? (
-            <h1 className={styles.title}>{title}</h1>
-          ) : (
-            <span className={styles.title}>{title}</span>
-          ))}
+    <ConditionalWrapper className={className}>
+      {title &&
+        (title === 'Blog' || title === 'Snippets' ? (
+          <h1 className={styles.title}>{title}</h1>
+        ) : (
+          <span className={styles.title}>{title}</span>
+        ))}
 
-        {description && <p className={styles.description}>{description}</p>}
-        {data && (
-          <div className={styles.bar}>
-            <span>{searchContext}</span>
-            <Search allPosts={allPosts} searchedPosts={searchedPosts} />
-          </div>
-        )}
-        <section className={styles.posts}>
-          {data ? children({ searchPosts }) : children}
-        </section>
-      </div>
-    </div>
+      {description && <p className={styles.description}>{description}</p>}
+
+      {data && (
+        <div className={styles.bar}>
+          <span>{searchContext}</span>
+          <Search allPosts={allPosts} searchedPosts={searchedPosts} />
+        </div>
+      )}
+
+      <section className={styles.posts}>
+        {data ? children({ searchPosts }) : children}
+      </section>
+    </ConditionalWrapper>
   );
 };
 

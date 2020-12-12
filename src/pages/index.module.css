@@ -1,6 +1,7 @@
 .homeWrapper {
   --nav-color: var(--primary-background);
   --left-divider: var(--foreground-low);
+  --content-grid-gap: 0;
 }
 
 .home {
@@ -56,6 +57,10 @@
   padding: 0 1rem;
 }
 
+.home footer {
+  margin-top: 0;
+}
+
 @media (min-width: 768px) {
   .homeWrapper {
     --header-background: none;
@@ -106,6 +111,10 @@
 }
 
 @media (max-width: 767px) {
+  .homeWrapper {
+    --content-grid-gap: 0;
+  }
+
   .home {
     grid-template-areas: 'intro' 'timeline' 'footer';
     grid-template-columns: 1fr;

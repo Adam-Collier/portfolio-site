@@ -4,9 +4,9 @@ import { useMediaQuery } from '../../hooks/useMediaQuery';
 
 import styles from './sidebar.module.css';
 
-const ConditionalWrapper = ({ children, className }) => {
+const ConditionalWrapper = ({ children, className, noContextMenu }) => {
   const [title, description, ...content] = children;
-  return useMediaQuery('(max-width: 767px)') ? (
+  return useMediaQuery('(max-width: 767px)') && !noContextMenu ? (
     <>
       {title}
       {description}
@@ -29,6 +29,7 @@ const Index = ({
   className,
   description,
   searchContext,
+  noContextMenu,
 }) => {
   const allPosts = data ? data.edges : '';
   const [searchPosts, setSearchPosts] = useState(allPosts);
@@ -37,7 +38,7 @@ const Index = ({
   };
 
   return (
-    <ConditionalWrapper className={className}>
+    <ConditionalWrapper className={className} noContextMenu={noContextMenu}>
       {title &&
         (title === 'Blog' || title === 'Snippets' ? (
           <h1 className={styles.title}>{title}</h1>

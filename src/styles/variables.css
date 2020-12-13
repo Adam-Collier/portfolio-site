@@ -59,7 +59,7 @@
     --content-x-padding: 1rem;
     --content-grid-template: 'title' 'description' 'context' 'content' 'footer';
     --content-grid-columns: 1fr;
-    --content-grid-gap: 1rem;
+    --content-grid-gap: 1.45rem;
     --content-width: 100%;
     --content-spacing-left: 0;
   }

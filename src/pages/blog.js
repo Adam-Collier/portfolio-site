@@ -64,7 +64,7 @@ const Blog = ({ data, location }) => {
 
           return (
             <div className={styles.category} key={index}>
-              <span>{category}</span>
+              <span className={styles.categoryTitle}>{category}</span>
               <div className={styles.tags}>
                 {[...allTags].map((tag, i) => (
                   <button

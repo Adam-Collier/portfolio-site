@@ -38,10 +38,20 @@
 
 @media (max-width: 767px) {
   .blogpost {
-    --content-grid-template: 'content' 'moreposts' 'footer';
+    --content-grid-template: 'content' 'sidebar' 'moreposts' 'footer';
   }
 
-  .sidebar {
-    display: none;
+  .postMeta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 'written tags';
+  }
+
+  .written {
+    grid-area: written;
+  }
+
+  .written p {
+    margin-bottom: 0;
   }
 }

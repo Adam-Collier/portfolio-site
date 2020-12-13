@@ -37,12 +37,12 @@
   composes: content from './blog-post.module.css';
 }
 
+.postMeta {
+  composes: postMeta from './blog-post.module.css';
+}
+
 @media (max-width: 767px) {
   .blogpost {
-    --content-grid-template: 'hero' 'content' 'moreposts' 'footer';
-  }
-
-  .sidebar {
-    display: none;
+    --content-grid-template: 'hero' 'content' 'sidebar' 'moreposts' 'footer';
   }
 }

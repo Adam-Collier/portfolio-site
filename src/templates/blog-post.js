@@ -9,6 +9,8 @@ import Sidebar from '../components/Sidebar';
 import MorePosts from '../components/MorePosts';
 import TableOfContents from '../components/TableOfContents';
 
+import { useMediaQuery } from '../hooks/useMediaQuery';
+
 import styles from './blog-post.module.css';
 
 const BlogPostTemplate = ({ data, location }) => {
@@ -31,25 +33,30 @@ const BlogPostTemplate = ({ data, location }) => {
         image={image}
         pathname={location.pathname}
       />
-      <Sidebar className={styles.sidebar} description={description}>
-        {Object.keys(tableOfContents).length !== 0 && (
-          <TableOfContents
-            tableOfContents={tableOfContents}
-            location={location}
-          />
-        )}
-
-        <span>Written</span>
-        <div className={styles.written}>
-          <p>{date}</p>
-          <p>{timeToRead} minute read</p>
-        </div>
-
-        <span>Tags</span>
-        <div className={styles.tags}>
-          {tags.map((tag, index) => (
-            <div key={index}>{tag}</div>
-          ))}
+      <Sidebar
+        className={styles.sidebar}
+        description={useMediaQuery('(min-width: 768px)') ? description : ''}
+        noContextMenu
+      >
+        {useMediaQuery('(min-width: 768px)') &&
+          Object.keys(tableOfContents).length !== 0 && (
+            <TableOfContents
+              tableOfContents={tableOfContents}
+              location={location}
+            />
+          )}
+        <div className={styles.postMeta}>
+          <div className={styles.written}>
+            <h4>Written</h4>
+            <p>{date}</p>
+            <p>{timeToRead} minute read</p>
+          </div>
+          <div className={styles.tags}>
+            <h4>Tags</h4>
+            {tags.map((tag, index) => (
+              <div key={index}>{tag}</div>
+            ))}
+          </div>
         </div>
       </Sidebar>
       <article className={styles.content}>

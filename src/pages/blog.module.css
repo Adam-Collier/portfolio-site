@@ -34,6 +34,12 @@
   color: var(--primary-foreground);
 }
 
+.categoryTitle {
+  display: block;
+  color: var(--primary-accent);
+  margin-bottom: 1.45rem;
+}
+
 .category {
   margin-bottom: 1.45rem;
 }

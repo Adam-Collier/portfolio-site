@@ -82,7 +82,7 @@
 }
 
 .accordion summary + * {
-  padding-top: 1.45rem;
+  padding-top: 0.7rem;
   max-height: 60vh;
   overflow-y: scroll;
 }
@@ -98,5 +98,6 @@
   }
   .accordion {
     grid-area: context;
+    margin-bottom: -0.75rem;
   }
 }

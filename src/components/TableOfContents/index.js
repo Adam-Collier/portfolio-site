@@ -54,7 +54,7 @@ const TableOfContents = ({ tableOfContents, location, className }) => {
 
   return (
     <>
-      <span>Table of Contents</span>
+      <span className={styles.title}>Table of Contents</span>
       <ul className={`${styles.tableOfContents} ${className || ''}`}>
         {createItems(tableOfContents.items, location, activeHash)}
       </ul>

@@ -60,6 +60,5 @@
 @media (max-width: 767px) {
   .footer {
     grid-template-columns: 0.5fr 1px 1fr;
-    margin-top: 0;
   }
 }

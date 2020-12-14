@@ -45,6 +45,11 @@
   font-weight: 600;
 }
 
+.title {
+  display: block;
+  margin-bottom: 1.45rem;
+}
+
 @media (min-width: 768px) {
   .tableOfContents {
     --list-spacing: 0.5rem;

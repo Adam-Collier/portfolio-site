@@ -1,3 +1,8 @@
+.container,
+.container-fluid {
+  grid-gap: var(--content-grid-gap);
+}
+
 .container {
   margin: 0 auto;
   width: 95%;

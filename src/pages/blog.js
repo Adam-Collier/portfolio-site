@@ -55,7 +55,7 @@ const Blog = ({ data, location }) => {
           <Blogpost node={node} key={i} />
         ))}
       </div>
-      <Sidebar title="Blog" description={description}>
+      <Sidebar title="Blog" description={description} noAccordianClose>
         {categories.map(({ category, edges }, index) => {
           const allTags = new Set();
           edges.forEach(({ node }) => {

@@ -4,15 +4,38 @@ import { useMediaQuery } from '../../hooks/useMediaQuery';
 
 import styles from './sidebar.module.css';
 
-const ConditionalWrapper = ({ children, className, noContextMenu }) => {
+const ConditionalWrapper = ({
+  children,
+  className,
+  noContextMenu,
+  noAccordianClose,
+}) => {
+  const [accordianState, setAccordianState] = useState();
+
+  const handleClick = () => setAccordianState(!accordianState);
   const [title, description, ...content] = children;
+
   return useMediaQuery('(max-width: 767px)') && !noContextMenu ? (
     <>
       {title}
       {description}
-      <details className={styles.accordion}>
-        <summary>Context Menu</summary>
-        {content}
+      {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
+      <details className={styles.accordion} open={accordianState}>
+        <summary
+          onClick={(e) => {
+            e.preventDefault();
+            handleClick();
+          }}
+        >
+          Context Menu
+        </summary>
+        {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
+        <div
+          onClick={() => (noAccordianClose ? undefined : handleClick())}
+          onKeyPress={() => (noAccordianClose ? undefined : handleClick())}
+        >
+          {content}
+        </div>
       </details>
     </>
   ) : (
@@ -30,6 +53,7 @@ const Index = ({
   description,
   searchContext,
   noContextMenu,
+  noAccordianClose,
 }) => {
   const allPosts = data ? data.edges : '';
   const [searchPosts, setSearchPosts] = useState(allPosts);
@@ -38,7 +62,11 @@ const Index = ({
   };
 
   return (
-    <ConditionalWrapper className={className} noContextMenu={noContextMenu}>
+    <ConditionalWrapper
+      className={className}
+      noContextMenu={noContextMenu}
+      noAccordianClose={noAccordianClose}
+    >
       {title &&
         (title === 'Blog' || title === 'Snippets' ? (
           <h1 className={styles.title}>{title}</h1>

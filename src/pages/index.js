@@ -26,13 +26,21 @@ const IndexPage = ({ location }) => (
       <div className={styles.weekList}>
         <p>
           <span>Listening to:</span>{' '}
-          <a href="https://open.spotify.com/playlist/1PKP8IoY4X2GMNZJgwwuPZ?si=OgdZAtFSS-Gu5jfydPGfRw">
+          <a
+            href="https://open.spotify.com/playlist/1PKP8IoY4X2GMNZJgwwuPZ?si=OgdZAtFSS-Gu5jfydPGfRw"
+            target="__blank"
+            rel="noopener noreferrer"
+          >
             Low Key Mellow on Spotify
           </a>
         </p>
         <p>
           <span>Reading:</span>{' '}
-          <a href="https://www.waterstones.com/book/1q84-books-1-and-2/haruki-murakami/9780099549062">
+          <a
+            href="https://www.waterstones.com/book/1q84-books-1-and-2/haruki-murakami/9780099549062"
+            target="__blank"
+            rel="noopener noreferrer"
+          >
             1Q84, Haruki Murakami
           </a>
         </p>

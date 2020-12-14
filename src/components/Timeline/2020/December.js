@@ -1,7 +1,14 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import Image from 'gatsby-image';
-import { GitCommit, Box, Edit3, Scissors, Paperclip } from 'react-feather';
+import {
+  GitCommit,
+  Box,
+  Scissors,
+  Paperclip,
+  GitPullRequest,
+  GitMerge,
+} from 'react-feather';
 import Grid from '../../Grid';
 import { TimelineEntry, DateEntry } from '../Entry';
 import Button from '../../Button';
@@ -29,6 +36,21 @@ const November = () => {
   return (
     <>
       <DateEntry date="December, 2020" />
+      <TimelineEntry
+        Icon={GitMerge}
+        timestamp="December 14, 2020"
+        title="Mobile Context Menu for Sidebar Content"
+      >
+        <p>
+          To make navigation a little easier for sidebar content on mobile, it
+          now sits within a sticky accordion.
+        </p>
+        <Button
+          Icon={GitPullRequest}
+          text="Pull Request"
+          link="https://github.com/Adam-Collier/portfolio-site/pull/45"
+        />
+      </TimelineEntry>
       <TimelineEntry
         Icon={Scissors}
         timestamp="December 8, 2020"

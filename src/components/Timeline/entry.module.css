@@ -59,7 +59,7 @@
   font-weight: 450;
 }
 
-.children a {
+.children p a {
   color: var(--primary-background);
 }
 

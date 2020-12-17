@@ -40,6 +40,7 @@ function SEO({ description, lang, meta, image: customImage, title, pathname }) {
 
   const metaTitle = title || site.siteMetadata.title;
   const metaImage = customImage || defaultImage;
+
   const metaDescription = description || site.siteMetadata.description;
 
   const image =
@@ -54,7 +55,7 @@ function SEO({ description, lang, meta, image: customImage, title, pathname }) {
       htmlAttributes={{
         lang,
       }}
-      title={metaTitle}
+      title={title}
       defaultTitle={site.siteMetadata.title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
       link={

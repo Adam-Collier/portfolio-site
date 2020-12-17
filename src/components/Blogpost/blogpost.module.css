@@ -53,13 +53,29 @@
 .timeline {
   display: block;
   background: var(--primary-background);
-  padding: 0.75rem;
   margin: 0;
   border-radius: var(--border-radius);
+  overflow: hidden;
+  margin-bottom: 1.45rem;
 }
 
 .timeline article {
-  grid-template-columns: 96px 1fr;
+  align-items: center;
+  grid-template-columns: 120px 1fr;
+}
+
+.timeline article > div {
+  padding: 0;
+  height: auto;
+  align-self: stretch;
+}
+
+.timeline article section {
+  padding: 1rem 1rem 1rem 0;
+}
+
+.timeline h2 {
+  font-size: 1rem;
 }
 
 @media (min-width: 768px) and (max-width: 1280px) {
@@ -78,11 +94,7 @@
   }
 
   .timeline article {
-    grid-template-columns: 88px 1fr;
-  }
-
-  .timeline h2 {
-    font-size: 1rem;
+    grid-template-columns: 114px 1fr;
   }
 
   .timeline p {

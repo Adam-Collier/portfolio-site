@@ -38,8 +38,8 @@ function SEO({ description, lang, meta, image: customImage, title, pathname }) {
 
   const defaultImage = file.childImageSharp.original;
 
+  const metaTitle = title || site.siteMetadata.title;
   const metaImage = customImage || defaultImage;
-
   const metaDescription = description || site.siteMetadata.description;
 
   const image =
@@ -54,7 +54,7 @@ function SEO({ description, lang, meta, image: customImage, title, pathname }) {
       htmlAttributes={{
         lang,
       }}
-      title={title}
+      title={metaTitle}
       defaultTitle={site.siteMetadata.title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
       link={
@@ -78,7 +78,7 @@ function SEO({ description, lang, meta, image: customImage, title, pathname }) {
         },
         {
           property: `og:title`,
-          content: title,
+          content: metaTitle,
         },
         {
           property: `og:description`,
@@ -98,7 +98,7 @@ function SEO({ description, lang, meta, image: customImage, title, pathname }) {
         },
         {
           name: `twitter:title`,
-          content: title,
+          content: metaTitle,
         },
         {
           name: `twitter:description`,

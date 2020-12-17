@@ -8,10 +8,8 @@ import {
   Paperclip,
   GitPullRequest,
   GitMerge,
-  Edit3,
 } from 'react-feather';
 import Grid from '../../Grid';
-import Blogpost from '../../Blogpost';
 import { TimelineEntry, DateEntry } from '../Entry';
 import Button from '../../Button';
 import CodeBlock from '../../CodeBlock';
@@ -32,38 +30,12 @@ const November = () => {
           }
         }
       }
-      mdx(slug: { regex: "/tv-series-for-the-struggling-enthusiast/" }) {
-        excerpt(pruneLength: 400)
-        fields {
-          slug
-          title
-          date(formatString: "MMMM DD, YYYY")
-        }
-        frontmatter {
-          thumbnail {
-            publicURL
-            extension
-            childImageSharp {
-              fluid(maxWidth: 114, quality: 90, toFormat: JPG) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-          }
-        }
-      }
     }
   `);
 
   return (
     <>
       <DateEntry date="December, 2020" />
-      <TimelineEntry
-        Icon={Edit3}
-        timestamp="December 16, 2020"
-        title="Published New Blog Post"
-      >
-        <Blogpost node={data.mdx} timeline />
-      </TimelineEntry>
       <TimelineEntry
         Icon={GitMerge}
         timestamp="December 14, 2020"

@@ -53,8 +53,8 @@ const BlogPostTemplate = ({ data, location }) => {
           </div>
           <div className={styles.tags}>
             <h4>Tags</h4>
-            {tags.map((tag, index) => (
-              <div key={index}>{tag}</div>
+            {tags.map((tag, key) => (
+              <div key={key}>{tag}</div>
             ))}
           </div>
         </div>

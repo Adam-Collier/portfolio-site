@@ -41,10 +41,10 @@ const Snippets = ({ data, location }) => {
         />
       </Sidebar>
       <div className={styles.content}>
-        {edges.map(({ node }, index) => {
+        {edges.map(({ node }, key) => {
           const { body } = node;
 
-          return <MDX key={index} body={body} />;
+          return <MDX key={key} body={body} />;
         })}
       </div>
     </Layout>

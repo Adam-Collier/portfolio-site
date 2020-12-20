@@ -3,21 +3,21 @@ import { useContext } from '../../context';
 import styles from './toggle.module.css';
 
 const Toggle = ({ className }) => {
-  const [{ isDarkMode }, dispatch] = useContext();
+  const [{ colorPreference }, dispatch] = useContext();
 
   const initialDispatch = useContext()[1];
 
   useEffect(() => {
     initialDispatch({
-      type: 'isDarkMode',
-      value: window.localStorage.getItem('isDarkMode'),
+      type: 'colorPreference',
+      value: window.localStorage.getItem('colorPreference'),
     });
   }, [initialDispatch]);
 
   const handleInput = () => {
     dispatch({
-      type: 'isDarkMode',
-      value: isDarkMode === 'true' ? 'false' : 'true',
+      type: 'colorPreference',
+      value: colorPreference === 'dark' ? 'light' : 'dark',
     });
   };
 
@@ -26,7 +26,7 @@ const Toggle = ({ className }) => {
       type="checkbox"
       aria-label="dark mode toggle"
       className={`${styles.toggle} ${className || ''}`}
-      checked={isDarkMode === 'true'}
+      checked={colorPreference === 'dark'}
       onChange={handleInput}
       tabIndex="0"
     />

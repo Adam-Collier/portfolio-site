@@ -17,8 +17,8 @@ const CheckBox = ({ text }) => {
 
 const CheckboxGroup = ({ textArr }) => (
   <div className={styles.checkboxGroup}>
-    {textArr.map((text) => (
-      <CheckBox text={text} />
+    {textArr.map((text, index) => (
+      <CheckBox text={text} key={index} />
     ))}
   </div>
 );

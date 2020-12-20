@@ -51,8 +51,4 @@ const Layout = ({ children, wrapperClass, containerClass, containerType }) => {
   );
 };
 
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-};
-
 export default Layout;

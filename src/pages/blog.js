@@ -56,14 +56,14 @@ const Blog = ({ data, location }) => {
         ))}
       </div>
       <Sidebar title="Blog" description={description} noAccordianClose>
-        {categories.map(({ category, edges }, index) => {
+        {categories.map(({ category, edges }, key) => {
           const allTags = new Set();
           edges.forEach(({ node }) => {
             node.frontmatter.tags.forEach((tag) => allTags.add(tag));
           });
 
           return (
-            <div className={styles.category} key={index}>
+            <div className={styles.category} key={key}>
               <span className={styles.categoryTitle}>{category}</span>
               <div className={styles.tags}>
                 {[...allTags].map((tag, i) => (

@@ -49,14 +49,14 @@ export default ({
             )}
             <pre className={`language-${language}`}>
               <CopyButton fileName={title} content={content} />
-              {tokens.map((line, i) => {
-                const lineProps = getLineProps({ line, key: i });
-                const lineClassName = [lineProps.className]
-                  .concat(highlights[i] && `gatsby-highlight-code-line`)
+              {tokens.map((line, index) => {
+                const lineProps = getLineProps({ line, key: index });
+                const lineclassname = [lineProps.className]
+                  .concat(highlights[index] && `gatsby-highlight-code-line`)
                   .filter(Boolean)
                   .join(` `);
                 return (
-                  <div key={i} {...{ ...lineProps, lineClassName }}>
+                  <div key={index} {...{ ...lineProps, lineclassname }}>
                     {line.map((token, key) => (
                       <span key={key} {...getTokenProps({ token, key })} />
                     ))}

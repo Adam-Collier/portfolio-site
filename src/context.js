@@ -14,17 +14,17 @@ const stateReducer = (state, action) => {
       return { ...state, isMobileMenu: !state.isMobileMenu };
     }
 
-    case 'isDarkMode': {
+    case 'colorPreference': {
       const { value } = action;
-      localStorage.setItem('isDarkMode', value);
+      localStorage.setItem('colorPreference', value);
 
-      if (value === 'true') {
+      if (value === 'dark') {
         document.documentElement.classList.add('dark');
       } else {
         document.documentElement.classList.remove('dark');
       }
 
-      return { ...state, isDarkMode: value };
+      return { ...state, colorPreference: value };
     }
 
     default: {
@@ -36,7 +36,7 @@ const stateReducer = (state, action) => {
 const initialState = {
   isMenuVisible: false,
   isMobileMenu: false,
-  isDarkMode: undefined,
+  colorPreference: undefined,
 };
 
 function StateProvider({ children }) {

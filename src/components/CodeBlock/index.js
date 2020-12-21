@@ -1,7 +1,8 @@
 import React from 'react';
-import Highlight, { defaultProps } from 'prism-react-renderer';
+import Highlight, { Prism } from 'prism-react-renderer';
 import normalize from './normalize';
 import CopyButton from '../CopyButton';
+import './atom-theme.css';
 
 const getParams = (name = ``) => {
   const [lang, params = ``] = name.split(`:`);
@@ -35,19 +36,19 @@ export default ({
     <div style={{ position: 'relative' }}>
       <Highlight
         /* eslint-disable react/jsx-props-no-spreading */
-        {...defaultProps}
+        Prism={Prism}
         code={content}
         language={language}
         theme={undefined}
       >
-        {({ tokens, getLineProps, getTokenProps }) => (
+        {({ style, tokens, getLineProps, getTokenProps }) => (
           <div className="gatsby-highlight">
             {title && (
               <div className="gatsby-highlight-header">
                 <div className="gatsby-code-title">{title}</div>
               </div>
             )}
-            <pre className={`language-${language}`}>
+            <pre className={className} style={style}>
               <CopyButton fileName={title} content={content} />
               {tokens.map((line, index) => {
                 const lineProps = getLineProps({ line, key: index });

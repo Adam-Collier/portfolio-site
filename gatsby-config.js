@@ -8,8 +8,9 @@ module.exports = {
     keywords: ['Adam Collier', 'gatsby', 'blog', 'resources', 'snippets'],
   },
   plugins: [
+    `gatsby-plugin-webpack-bundle-analyser-v2`,
     `gatsby-plugin-react-helmet`,
-    'gatsby-plugin-sitemap',
+    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {

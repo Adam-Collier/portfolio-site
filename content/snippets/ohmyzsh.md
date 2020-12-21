@@ -17,7 +17,7 @@ $ git clone https://github.com/geometry-zsh/geometry
 
 activate the theme in your .zshrc file
 
-```
+```bash
 ZSH_THEME="geometry/geometry"
 ```
 

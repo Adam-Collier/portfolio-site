@@ -70,7 +70,7 @@ const BlogPostTemplate = ({ data, location }) => {
     : null;
 
   const featuredSources = [
-    { ...mobileFeatured.childImageSharp.fluid, media: `max-width: 767px` },
+    { ...mobileFeatured.childImageSharp.fluid, media: `(max-width: 767px)` },
     {
       ...desktopFeatured.childImageSharp.fluid,
       media: `(min-width: 768px)`,
@@ -90,7 +90,7 @@ const BlogPostTemplate = ({ data, location }) => {
         pathname={location.pathname}
       />
       <div className={styles.heroWrapper}>
-        <Image fluid={featuredSources} />
+        <Image fluid={featuredSources} className={styles.heroImage} />
       </div>
       <Sidebar
         className={styles.sidebar}

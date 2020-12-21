@@ -25,6 +25,10 @@
   min-height: 70px;
 }
 
+.heroImage > div {
+  padding-bottom: 41.6667% !important;
+}
+
 .tags {
   composes: tags from './blog-post.module.css';
 }
@@ -44,5 +48,9 @@
 @media (max-width: 767px) {
   .blogpost {
     --content-grid-template: 'hero' 'content' 'sidebar' 'moreposts' 'footer';
+  }
+
+  .heroImage > div {
+    padding-bottom: 84.8958% !important;
   }
 }

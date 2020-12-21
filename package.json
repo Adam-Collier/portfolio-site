@@ -45,6 +45,7 @@
     "eslint-plugin-prettier": "^3.3.0",
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.18",
     "prettier": "^2.2.1"
   },
   "keywords": [
@@ -68,5 +69,6 @@
   },
   "bugs": {
     "url": "https://github.com/Adam-Collier/portfolio-site/issues"
-  }
+  },
+  "browserslist": ">0.25%"
 }

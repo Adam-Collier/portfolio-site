@@ -11,6 +11,7 @@ module.exports = {
     `gatsby-plugin-webpack-bundle-analyser-v2`,
     `gatsby-plugin-preact`,
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-robots-txt`,
     `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-source-filesystem`,

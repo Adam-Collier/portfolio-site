@@ -6,8 +6,6 @@
 import React from 'react';
 import { StateProvider } from './src/context';
 
-import './src/styles/prism-one-dark.css';
-
 export const wrapRootElement = ({ element }) => (
   <StateProvider>{element}</StateProvider>
 );

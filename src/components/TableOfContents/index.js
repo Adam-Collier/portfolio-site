@@ -8,11 +8,11 @@ import styles from './tableOfContent.module.css';
 // max depth is set via the tableOfContentsDepth field in the frontmatter, all headings will be rendered
 const createItems = (items, location, activeHash) =>
   items &&
-  items.map((item, index) => {
+  items.map((item, key) => {
     const isActive = item.url === `#${activeHash}`;
 
     return (
-      <li key={index}>
+      <li key={key}>
         {item.url && (
           <Link
             className={isActive ? styles.active : ''}
@@ -54,7 +54,7 @@ const TableOfContents = ({ tableOfContents, location, className }) => {
 
   return (
     <>
-      <span>Table of Contents</span>
+      <span className={styles.title}>Table of Contents</span>
       <ul className={`${styles.tableOfContents} ${className || ''}`}>
         {createItems(tableOfContents.items, location, activeHash)}
       </ul>

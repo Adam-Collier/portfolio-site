@@ -38,7 +38,6 @@ body {
 
 article,
 aside,
-details,
 figcaption,
 figure,
 footer,
@@ -46,8 +45,7 @@ header,
 main,
 menu,
 nav,
-section,
-summary {
+section {
   display: block;
 }
 audio,
@@ -421,7 +419,6 @@ pre {
   margin-bottom: 1.45rem;
   font-size: 0.85rem;
   line-height: 1.42;
-  background: hsla(0, 0%, 0%, 0.04);
   border-radius: 3px;
   overflow: auto;
   word-wrap: normal;

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Layout from '../components/Layout';
-import SEO from '../components/seo';
+import SEO from '../components/Seo';
 import Timeline from '../components/Timeline';
 
 import styles from './index.module.css';
@@ -22,23 +22,27 @@ const IndexPage = ({ location }) => (
         anything... literally anything I’ve got time atm... (film
         recommendations, books and music are always encouraged).
       </p>
-      <h2>This week I'm...</h2>
+      <h2>At a glance...</h2>
       <div className={styles.weekList}>
         <p>
-          <span>Watching:</span>{' '}
-          <a href="/netflix/bly-manor">The Haunting of Bly Manor</a>
-        </p>
-        <p>
           <span>Listening to:</span>{' '}
-          <a href="/netflix/bly-manor">Low Key Mellow</a>
-        </p>
-        <p>
-          <span>Podcasting:</span>{' '}
-          <a href="/netflix/bly-manor">This American Life</a>
+          <a
+            href="https://open.spotify.com/playlist/1PKP8IoY4X2GMNZJgwwuPZ?si=OgdZAtFSS-Gu5jfydPGfRw"
+            target="__blank"
+            rel="noopener noreferrer"
+          >
+            Low Key Mellow on Spotify
+          </a>
         </p>
         <p>
           <span>Reading:</span>{' '}
-          <a href="/netflix/bly-manor">Killing Commendatore, Murakami</a>
+          <a
+            href="https://www.waterstones.com/book/1q84-books-1-and-2/haruki-murakami/9780099549062"
+            target="__blank"
+            rel="noopener noreferrer"
+          >
+            1Q84, Haruki Murakami
+          </a>
         </p>
       </div>
     </div>

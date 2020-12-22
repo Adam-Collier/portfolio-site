@@ -13,9 +13,7 @@ import Film from "../../../src/components/Film"
 import FilmCover from "../../../src/components/FilmCover"
 import Grid from "../../../src/components/Grid"
 
-Ah film, the wonderful artistic medium that continually breaks down boundaries and explores the limits of human emotion. Nothing can prepare you for that moment when a scene or a moment blows you away or makes you feel something you've never felt before. I'll admit, I find it difficult to pinpoint the "wow" moments in my life but I know a lot of them are rooted in film and those moments I find myself lost in the narrative.
-
-I felt it important to start to document what I have come to appreciate the most overtime and this is the first one to sit within this garden of thought. I'll throw in some worthy contenders also to broaden the assortment slightly
+Ah film, the wonderful artistic medium that continually breaks down boundaries and explores the limits of human emotion. Nothing can prepare you for that moment when a scene or a moment blows you away or makes you feel something you've never felt before. I felt it important to start to document what I have come to appreciate the most overtime and this is the first article to sit within this garden of thought.
 
 <Film cover="./covers/little_women_cover.jpg" title="Little Women" year="2016" genre="Drama, Romance" rating={5}>
 
@@ -32,7 +30,7 @@ The love and care that is oozing out of this film are so strong and beautiful yo
 <Film cover="./covers/parasite_cover.jpg" title="Parasite" year="2019" genre="Comedy, Thriller, Drama" rating={4.5}>
 
 ![Parasite Screenshot](./images/parasite.jpg)
-Expectations were already high, but fuck me it's even better than I anticipated. Forget about genres, Parasite flat out refused to fit the narrow parameters of any existing classification. As beautiful and well-executed Parasite is at face value Boon Jong Ho also encourages us to look at the underlying socio-political issues currently being experienced in Korea, honing in on the limited and ignorant perspective of the wealthy. A must-watch for those who want something brilliant and enjoy some minimalist architecture now and then.
+Expectations were already high, but fuck me it's even better than I anticipated. Forget about genres, Parasite flat out refused to fit the narrow parameters of any existing classification. As beautiful and well-executed Parasite is at face value Boon Jong Ho also encourages us to look at the underlying socio-political issues currently being experienced in Korea, honing in on the limited and ignorant perspective of the wealthy. A must-watch for those who want something brilliant have an innate appreciation for minimalist architecture.
 </Film>
 
 <Film cover="./covers/victoria_cover.jpg" title="Victoria" year="2015" genre="Crime, Thriller, Romance" rating={4.5}>

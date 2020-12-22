@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 
 import MDX from '../components/MDX';
 import Layout from '../components/Layout';
-import SEO from '../components/seo';
+import SEO from '../components/Seo';
 import Resource from '../components/Resource';
 import Sidebar from '../components/Sidebar';
 
@@ -33,8 +33,8 @@ const ResourceTemplate = ({ data, location }) => {
         className={styles.sidebar}
       >
         {({ searchPosts }) =>
-          searchPosts.map(({ node }, i) => (
-            <Resource node={node} key={i} currentPageId={id} />
+          searchPosts.map(({ node }, key) => (
+            <Resource node={node} key={key} currentPageId={id} />
           ))
         }
       </Sidebar>

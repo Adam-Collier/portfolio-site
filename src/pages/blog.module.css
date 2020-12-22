@@ -1,6 +1,5 @@
 .blog {
   display: grid;
-  grid-gap: 2rem;
   grid-template-columns: var(--content-grid-columns);
   grid-template-areas: var(--content-grid-template);
 }
@@ -33,6 +32,12 @@
 .blogposts a {
   text-decoration: none;
   color: var(--primary-foreground);
+}
+
+.categoryTitle {
+  display: block;
+  color: var(--primary-accent);
+  margin-bottom: 1.45rem;
 }
 
 .category {

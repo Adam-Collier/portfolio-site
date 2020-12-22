@@ -1,8 +1,17 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import Image from 'gatsby-image';
-import { GitCommit, Box, Edit3, Scissors, Paperclip } from 'react-feather';
+import {
+  GitCommit,
+  Box,
+  Scissors,
+  Paperclip,
+  GitPullRequest,
+  GitMerge,
+  Edit3,
+} from 'react-feather';
 import Grid from '../../Grid';
+import Blogpost from '../../Blogpost';
 import { TimelineEntry, DateEntry } from '../Entry';
 import Button from '../../Button';
 import CodeBlock from '../../CodeBlock';
@@ -23,12 +32,53 @@ const November = () => {
           }
         }
       }
+      mdx(slug: { regex: "/tv-series-for-the-struggling-enthusiast/" }) {
+        excerpt(pruneLength: 400)
+        fields {
+          slug
+          title
+          date(formatString: "MMMM DD, YYYY")
+        }
+        frontmatter {
+          thumbnail {
+            publicURL
+            extension
+            childImageSharp {
+              fluid(maxWidth: 114, quality: 90, toFormat: JPG) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
+        }
+      }
     }
   `);
 
   return (
     <>
       <DateEntry date="December, 2020" />
+      <TimelineEntry
+        Icon={Edit3}
+        timestamp="December 16, 2020"
+        title="Published New Blog Post"
+      >
+        <Blogpost node={data.mdx} timeline />
+      </TimelineEntry>
+      <TimelineEntry
+        Icon={GitMerge}
+        timestamp="December 14, 2020"
+        title="Mobile Context Menu for Sidebar Content"
+      >
+        <p>
+          To make navigation a little easier for sidebar content on mobile, it
+          now sits within a sticky accordion.
+        </p>
+        <Button
+          Icon={GitPullRequest}
+          text="Pull Request"
+          link="https://github.com/Adam-Collier/portfolio-site/pull/45"
+        />
+      </TimelineEntry>
       <TimelineEntry
         Icon={Scissors}
         timestamp="December 8, 2020"

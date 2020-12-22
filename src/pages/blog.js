@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { graphql } from 'gatsby';
 
 import Layout from '../components/Layout';
-import SEO from '../components/seo';
+import SEO from '../components/Seo';
 import Blogpost from '../components/Blogpost';
 import Sidebar from '../components/Sidebar';
 
@@ -55,16 +55,16 @@ const Blog = ({ data, location }) => {
           <Blogpost node={node} key={i} />
         ))}
       </div>
-      <Sidebar title="Blog" description={description}>
-        {categories.map(({ category, edges }, index) => {
+      <Sidebar title="Blog" description={description} noAccordianClose>
+        {categories.map(({ category, edges }, key) => {
           const allTags = new Set();
           edges.forEach(({ node }) => {
             node.frontmatter.tags.forEach((tag) => allTags.add(tag));
           });
 
           return (
-            <div className={styles.category} key={index}>
-              <span>{category}</span>
+            <div className={styles.category} key={key}>
+              <span className={styles.categoryTitle}>{category}</span>
               <div className={styles.tags}>
                 {[...allTags].map((tag, i) => (
                   <button

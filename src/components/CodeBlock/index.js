@@ -1,7 +1,8 @@
 import React from 'react';
-import Highlight, { defaultProps } from 'prism-react-renderer';
+import Highlight, { Prism } from 'prism-react-renderer';
 import normalize from './normalize';
 import CopyButton from '../CopyButton';
+import './atom-theme.css';
 
 const getParams = (name = ``) => {
   const [lang, params = ``] = name.split(`:`);
@@ -35,28 +36,28 @@ export default ({
     <div style={{ position: 'relative' }}>
       <Highlight
         /* eslint-disable react/jsx-props-no-spreading */
-        {...defaultProps}
+        Prism={Prism}
         code={content}
         language={language}
         theme={undefined}
       >
-        {({ tokens, getLineProps, getTokenProps }) => (
+        {({ style, tokens, getLineProps, getTokenProps }) => (
           <div className="gatsby-highlight">
             {title && (
               <div className="gatsby-highlight-header">
                 <div className="gatsby-code-title">{title}</div>
               </div>
             )}
-            <pre className={`language-${language}`}>
+            <pre className={className} style={style}>
               <CopyButton fileName={title} content={content} />
-              {tokens.map((line, i) => {
-                const lineProps = getLineProps({ line, key: i });
-                const lineClassName = [lineProps.className]
-                  .concat(highlights[i] && `gatsby-highlight-code-line`)
+              {tokens.map((line, index) => {
+                const lineProps = getLineProps({ line, key: index });
+                const lineclassname = [lineProps.className]
+                  .concat(highlights[index] && `gatsby-highlight-code-line`)
                   .filter(Boolean)
                   .join(` `);
                 return (
-                  <div key={i} {...{ ...lineProps, lineClassName }}>
+                  <div key={index} {...{ ...lineProps, lineclassname }}>
                     {line.map((token, key) => (
                       <span key={key} {...getTokenProps({ token, key })} />
                     ))}

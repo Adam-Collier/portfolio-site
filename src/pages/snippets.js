@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 
 import MDX from '../components/MDX';
 import Layout from '../components/Layout';
-import SEO from '../components/seo';
+import SEO from '../components/Seo';
 import Sidebar from '../components/Sidebar';
 import TableOfContents from '../components/TableOfContents';
 
@@ -41,10 +41,10 @@ const Snippets = ({ data, location }) => {
         />
       </Sidebar>
       <div className={styles.content}>
-        {edges.map(({ node }, index) => {
+        {edges.map(({ node }, key) => {
           const { body } = node;
 
-          return <MDX key={index} body={body} />;
+          return <MDX key={key} body={body} />;
         })}
       </div>
     </Layout>

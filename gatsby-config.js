@@ -6,10 +6,18 @@ module.exports = {
     siteUrl: `https://adamcollier.co.uk/`,
     image: '/images/meta-image.jpg',
     keywords: ['Adam Collier', 'gatsby', 'blog', 'resources', 'snippets'],
+    organization: {
+      name: 'Adam Collier',
+      url: 'https://adamcollier.co.uk',
+      logo: 'images/logo.png',
+    },
   },
   plugins: [
+    `gatsby-plugin-webpack-bundle-analyser-v2`,
+    `gatsby-plugin-preact`,
     `gatsby-plugin-react-helmet`,
-    'gatsby-plugin-sitemap',
+    `gatsby-plugin-robots-txt`,
+    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -31,7 +39,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-autolink-headers`,
             options: {
-              offsetY: `80`,
+              offsetY: `115`,
             },
           },
           `resource-format`,
@@ -85,7 +93,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-autolink-headers`,
             options: {
-              offsetY: `80`,
+              offsetY: `115`,
             },
           },
           {

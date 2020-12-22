@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 
 import MDX from '../components/MDX';
 import Layout from '../components/Layout';
-import SEO from '../components/seo';
+import SEO from '../components/Seo';
 import Resource from '../components/Resource';
 import Sidebar from '../components/Sidebar';
 

@@ -6,6 +6,11 @@ module.exports = {
     siteUrl: `https://adamcollier.co.uk/`,
     image: '/images/meta-image.jpg',
     keywords: ['Adam Collier', 'gatsby', 'blog', 'resources', 'snippets'],
+    organization: {
+      name: 'Adam Collier',
+      url: 'https://adamcollier.co.uk',
+      logo: 'images/logo.png',
+    },
   },
   plugins: [
     `gatsby-plugin-webpack-bundle-analyser-v2`,

@@ -4,7 +4,7 @@ import Image from 'gatsby-image';
 
 import MDX from '../components/MDX';
 import Layout from '../components/Layout';
-import SEO from '../components/seo';
+import SEO from '../components/Seo';
 import Sidebar from '../components/Sidebar';
 import MorePosts from '../components/MorePosts';
 import TableOfContents from '../components/TableOfContents';

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { graphql } from 'gatsby';
 
 import Layout from '../components/Layout';
-import SEO from '../components/seo';
+import SEO from '../components/Seo';
 import Blogpost from '../components/Blogpost';
 import Sidebar from '../components/Sidebar';
 

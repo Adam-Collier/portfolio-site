@@ -32,6 +32,7 @@ const BlogPostTemplate = ({ data, location }) => {
         description={description || excerpt}
         image={image}
         pathname={location.pathname}
+        isBlogPost
       />
       <Sidebar
         className={styles.sidebar}

@@ -10,7 +10,14 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
-function SEO({ description, lang, meta, image: customImage, title, pathname }) {
+function SEO({
+  description,
+  lang,
+  image: customImage,
+  title,
+  pathname,
+  isBlogPost,
+}) {
   const { site, file } = useStaticQuery(
     graphql`
       query {
@@ -58,96 +65,43 @@ function SEO({ description, lang, meta, image: customImage, title, pathname }) {
       title={title}
       defaultTitle={site.siteMetadata.title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
-      link={
-        canonical
-          ? [
-              {
-                rel: 'canonical',
-                href: canonical,
-              },
-            ]
-          : []
-      }
-      meta={[
-        {
-          name: `google-site-verification`,
-          content: `kXoBZ3JPl4ac52Th5S3Jocx7XmmfMJZNQtkPTJZU4l8`,
-        },
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:title`,
-          content: metaTitle,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata.author,
-        },
-        {
-          name: `twitter:title`,
-          content: metaTitle,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-      ]
-        .concat(
-          metaImage
-            ? [
-                {
-                  property: 'og:image',
-                  content: image,
-                },
-                {
-                  property: 'og:image:width',
-                  content: metaImage.width,
-                },
-                {
-                  property: 'og:image:height',
-                  content: metaImage.height,
-                },
-                {
-                  name: 'twitter:card',
-                  content: 'summary_large_image',
-                },
-              ]
-            : [
-                {
-                  name: 'twitter:card',
-                  content: 'summary',
-                },
-              ]
-        )
-        .concat(meta)}
-    />
+    >
+      {/* General tags */}
+      <meta name="robots" content="index,follow" />
+      <meta name="googlebot" content="index,follow" />
+      <meta
+        name="google-site-verification"
+        content="kXoBZ3JPl4ac52Th5S3Jocx7XmmfMJZNQtkPTJZU4l8"
+      />
+      <meta name="description" content={metaDescription} />
+      <meta name="image" content={image} />
+      <link rel="canonical" href={canonical} />
+
+      {/* OpenGraph tags */}
+      <meta property="og:url" content={canonical} />
+      {isBlogPost && <meta property="og:type" content="article" />}
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:image" content={image} />
+
+      {/* Twitter Card tags */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:creator" content={site.siteMetadata.author} />
+      <meta name="twitter:title" content={metaTitle} />
+      <meta name="twitter:description" content={metaDescription} />
+      <meta name="twitter:image" content={image} />
+    </Helmet>
   );
 }
 
 SEO.defaultProps = {
   lang: `en`,
-  meta: [],
   description: ``,
 };
 
 SEO.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string.isRequired,
 };
 

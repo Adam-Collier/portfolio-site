@@ -88,6 +88,7 @@ const BlogPostTemplate = ({ data, location }) => {
         description={description || excerpt}
         image={image}
         pathname={location.pathname}
+        isBlogPost
       />
       <div className={styles.heroWrapper}>
         <Image fluid={featuredSources} className={styles.heroImage} />

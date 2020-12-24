@@ -6,7 +6,7 @@
   transform: translate(-50%);
   width: 100%;
   background: var(--header-background);
-  color: var(--header-color);
+  color: var(--header-text-color);
 }
 
 .container {
@@ -40,7 +40,7 @@
 
 .headerLeft a {
   text-decoration: none;
-  color: var(--header-color);
+  color: var(--header-text-color);
   margin-right: 1rem;
   display: flex;
   align-items: center;

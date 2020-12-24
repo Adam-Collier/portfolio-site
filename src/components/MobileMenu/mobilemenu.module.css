@@ -11,7 +11,7 @@
 }
 
 .header {
-  --header-color: #fff;
+  --header-text-color: #fff;
   background: var(--primary-accent);
   position: relative;
 }

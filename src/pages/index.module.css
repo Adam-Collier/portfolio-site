@@ -1,15 +1,12 @@
 .homeWrapper {
-  --nav-color: var(--primary-background);
+  --nav-text-color: var(--primary-background);
   --left-divider: var(--foreground-low);
-  --content-grid-gap: 0;
+  --grid-gap: 0;
 }
 
 .home {
-  display: grid;
-  grid-template-areas:
-    'intro timeline'
-    'intro footer';
-  grid-template-columns: 1fr 1fr;
+  --grid-areas: 'intro timeline' 'intro footer';
+  --grid-columns: 1fr 1fr;
   justify-items: center;
 }
 
@@ -112,12 +109,12 @@
 
 @media (max-width: 767px) {
   .homeWrapper {
-    --content-grid-gap: 0;
+    --grid-gap: 0;
   }
 
   .home {
-    grid-template-areas: 'intro' 'timeline' 'footer';
-    grid-template-columns: 1fr;
+    --grid-areas: 'intro' 'timeline' 'footer';
+    --grid-columns: 1fr;
     padding-left: 0;
     padding-right: 0;
   }

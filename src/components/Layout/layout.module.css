@@ -1,6 +1,6 @@
 .container,
 .container-fluid {
-  grid-gap: var(--content-grid-gap);
+  grid-gap: var(--grid-gap);
 }
 
 .container {
@@ -15,4 +15,16 @@
   max-width: var(--max-layout-width);
   margin: 0 auto;
   padding: var(--container-padding) var(--content-x-padding) 0;
+}
+
+.sidebarLayout {
+  display: grid;
+  grid-template-columns: var(--grid-columns);
+  grid-template-areas: var(--grid-areas);
+}
+
+@media (max-width: 767px) {
+  .sidebarLayout {
+    grid-template-columns: 1fr;
+  }
 }

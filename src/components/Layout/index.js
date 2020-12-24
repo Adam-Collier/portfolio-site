@@ -13,7 +13,13 @@ import styles from './layout.module.css';
 import './global.css';
 import '../../styles/variables.css';
 
-const Layout = ({ children, wrapperClass, containerClass, containerType }) => {
+const Layout = ({
+  children,
+  wrapperClass,
+  containerClass,
+  containerType,
+  noSidebar,
+}) => {
   const [{ isMobileMenu }] = useContext();
 
   useHotkeys('cmd+h', (e) => {
@@ -35,14 +41,15 @@ const Layout = ({ children, wrapperClass, containerClass, containerType }) => {
 
   const isPageMobile = useMediaQuery('(max-width: 767px)');
 
+  const containerTypeClass =
+    containerType === 'fluid' ? styles.containerFluid : styles.container;
+
   return (
     <div className={wrapperClass}>
       <Header />
       {isPageMobile && <MobileMenu isMobileMenu={isMobileMenu} />}
       <main
-        className={`${
-          containerType === 'fluid' ? styles.containerFluid : styles.container
-        } ${containerClass}`}
+        className={`${containerTypeClass} ${styles.sidebarLayout} ${containerClass} `}
       >
         {children}
         <Footer />

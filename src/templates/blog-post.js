@@ -26,7 +26,11 @@ const BlogPostTemplate = ({ data, location }) => {
     : null;
 
   return (
-    <Layout containerType="fluid" containerClass={styles.blogpost}>
+    <Layout
+      containerType="fluid"
+      containerClass={styles.blogpost}
+      location={location.pathname}
+    >
       <SEO
         title={title}
         description={description || excerpt}

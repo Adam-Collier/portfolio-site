@@ -82,6 +82,7 @@ const BlogPostTemplate = ({ data, location }) => {
       containerType="fluid"
       wrapperClass={styles.wrapper}
       containerClass={styles.blogpost}
+      location={location.pathname}
     >
       <SEO
         title={title}

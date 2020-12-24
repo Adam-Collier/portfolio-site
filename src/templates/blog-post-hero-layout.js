@@ -6,12 +6,13 @@ import MDX from '../components/MDX';
 import Layout from '../components/Layout';
 import SEO from '../components/Seo';
 import Sidebar from '../components/Sidebar';
+import Content from '../components/Content';
 import MorePosts from '../components/MorePosts';
 import TableOfContents from '../components/TableOfContents';
 
 import { useMediaQuery } from '../hooks/useMediaQuery';
 
-import styles from './blog-post-hero-layout.module.css';
+import styles from './blog-post.module.css';
 
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.mdx;
@@ -29,7 +30,7 @@ const BlogPostTemplate = ({ data, location }) => {
   const { tableOfContents, timeToRead } = post;
 
   useEffect(() => {
-    const wrapper = document.querySelector(`.${styles.wrapper}`);
+    const wrapper = document.querySelector(`.${styles.heroWrapper}`);
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -57,10 +58,10 @@ const BlogPostTemplate = ({ data, location }) => {
       }
     );
 
-    observer.observe(document.querySelector(`.${styles.heroWrapper}`));
+    observer.observe(document.querySelector(`.${styles.heroImageWrapper}`));
 
     return () => {
-      observer.unobserve(document.querySelector(`.${styles.heroWrapper}`));
+      observer.unobserve(document.querySelector(`.${styles.heroImageWrapper}`));
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -80,9 +81,8 @@ const BlogPostTemplate = ({ data, location }) => {
   return (
     <Layout
       containerType="fluid"
-      wrapperClass={styles.wrapper}
-      containerClass={styles.blogpost}
-      location={location.pathname}
+      wrapperClass={styles.heroWrapper}
+      containerClass={styles.heroBlogpost}
     >
       <SEO
         title={title}
@@ -92,11 +92,10 @@ const BlogPostTemplate = ({ data, location }) => {
         isBlogPost
         publishDate={date}
       />
-      <div className={styles.heroWrapper}>
+      <div className={styles.heroImageWrapper}>
         <Image fluid={featuredSources} className={styles.heroImage} />
       </div>
       <Sidebar
-        className={styles.sidebar}
         description={useMediaQuery('(min-width: 768px)') ? description : ''}
         noContextMenu
       >
@@ -121,14 +120,14 @@ const BlogPostTemplate = ({ data, location }) => {
           </div>
         </div>
       </Sidebar>
-      <article className={styles.content}>
+      <Content>
         <header>
           <h1 id="introduction">{title}</h1>
         </header>
         <section>
           <MDX body={body} />
         </section>
-      </article>
+      </Content>
       <MorePosts data={data.allMdx} />
     </Layout>
   );

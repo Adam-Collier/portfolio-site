@@ -18,7 +18,7 @@ const ResourceTemplate = ({ data, location }) => {
     'This is a group of resources I have either learned something from or thought could become useful in the future.';
 
   return (
-    <Layout containerType="fluid" containerClass={styles.resources}>
+    <Layout containerType="fluid">
       <SEO
         title="Resources"
         description={description || excerpt}

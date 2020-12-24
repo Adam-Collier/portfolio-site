@@ -1,10 +1,3 @@
-.resources {
-  width: 100%;
-  display: grid;
-  grid-template-columns: var(--content-grid-columns);
-  grid-template-areas: var(--content-grid-template);
-}
-
 .content {
   grid-area: content;
   width: var(--content-width);

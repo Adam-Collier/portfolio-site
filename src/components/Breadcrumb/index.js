@@ -1,8 +1,27 @@
 import React from 'react';
+import { navigate } from 'gatsby';
+import { useHotkeys } from 'react-hotkeys-hook';
 
 import styles from './breadcrumb.module.css';
 
 const Breadcrumb = ({ location }) => {
+  useHotkeys('cmd+h', (e) => {
+    e.preventDefault();
+    navigate('/');
+  });
+  useHotkeys('cmd+s', (e) => {
+    e.preventDefault();
+    navigate('/snippets');
+  });
+  useHotkeys('cmd+r', (e) => {
+    e.preventDefault();
+    navigate('/resources');
+  });
+  useHotkeys('cmd+b', (e) => {
+    e.preventDefault();
+    navigate('/blog');
+  });
+
   const locationString = location.split('/')[1];
 
   const locationName = locationString

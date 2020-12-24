@@ -7,6 +7,8 @@ import Breadcrumb from '../Breadcrumb';
 import Toggle from '../Toggle';
 import { useContext } from '../../context';
 
+import { useMediaQuery } from '../../hooks/useMediaQuery';
+
 import styles from './header.module.css';
 import MenuIcon from '../../icons/menu.svg';
 import CloseIcon from '../../icons/close_icon.svg';
@@ -39,7 +41,9 @@ const Header = ({ location, className, isClose, onClick }) => {
               />
               Adam Collier
             </Link>
-            {location && <Breadcrumb location={location} />}
+            {useMediaQuery('(min-width: 768px)') && location && (
+              <Breadcrumb location={location} />
+            )}
           </div>
           <div className={styles.headerRight}>
             <Navigation className={styles.navigation} />

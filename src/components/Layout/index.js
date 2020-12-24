@@ -1,9 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { navigate } from 'gatsby';
-import { useHotkeys } from 'react-hotkeys-hook';
 import { useContext } from '../../context';
-
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import MobileMenu from '../MobileMenu';
 
@@ -18,26 +14,9 @@ const Layout = ({
   wrapperClass,
   containerClass,
   containerType,
-  noSidebar,
+  location,
 }) => {
   const [{ isMobileMenu }] = useContext();
-
-  useHotkeys('cmd+h', (e) => {
-    e.preventDefault();
-    navigate('/');
-  });
-  useHotkeys('cmd+s', (e) => {
-    e.preventDefault();
-    navigate('/snippets');
-  });
-  useHotkeys('cmd+r', (e) => {
-    e.preventDefault();
-    navigate('/resources');
-  });
-  useHotkeys('cmd+b', (e) => {
-    e.preventDefault();
-    navigate('/blog');
-  });
 
   const isPageMobile = useMediaQuery('(max-width: 767px)');
 
@@ -46,7 +25,7 @@ const Layout = ({
 
   return (
     <div className={wrapperClass}>
-      <Header />
+      <Header location={location} />
       {isPageMobile && <MobileMenu isMobileMenu={isMobileMenu} />}
       <main
         className={`${containerTypeClass} ${styles.sidebarLayout} ${containerClass} `}

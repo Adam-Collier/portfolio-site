@@ -6,6 +6,7 @@ import MDX from '../components/MDX';
 import Layout from '../components/Layout';
 import SEO from '../components/Seo';
 import Sidebar from '../components/Sidebar';
+import Content from '../components/Content';
 import MorePosts from '../components/MorePosts';
 import TableOfContents from '../components/TableOfContents';
 
@@ -35,7 +36,6 @@ const BlogPostTemplate = ({ data, location }) => {
         isBlogPost
       />
       <Sidebar
-        className={styles.sidebar}
         description={useMediaQuery('(min-width: 768px)') ? description : ''}
         noContextMenu
       >
@@ -60,7 +60,7 @@ const BlogPostTemplate = ({ data, location }) => {
           </div>
         </div>
       </Sidebar>
-      <article className={styles.content}>
+      <Content>
         <header>
           <h1 id="introduction">{title}</h1>
         </header>
@@ -75,7 +75,7 @@ const BlogPostTemplate = ({ data, location }) => {
         <section>
           <MDX body={body} />
         </section>
-      </article>
+      </Content>
       <MorePosts data={data.allMdx} />
     </Layout>
   );

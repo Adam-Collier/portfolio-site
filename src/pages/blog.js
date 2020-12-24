@@ -4,6 +4,7 @@ import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import SEO from '../components/Seo';
 import Blogpost from '../components/Blogpost';
+import Blogposts from '../components/BlogPosts';
 import Sidebar from '../components/Sidebar';
 
 import styles from './blog.module.css';
@@ -50,11 +51,11 @@ const Blog = ({ data, location }) => {
         description={description}
         pathname={location.pathname}
       />
-      <div className={styles.blogposts}>
+      <Blogposts>
         {posts.map(({ node }, i) => (
           <Blogpost node={node} key={i} />
         ))}
-      </div>
+      </Blogposts>
       <Sidebar title="Blog" description={description} noAccordianClose>
         {categories.map(({ category, edges }, key) => {
           const allTags = new Set();

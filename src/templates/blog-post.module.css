@@ -2,6 +2,28 @@
   --grid-areas: 'sidebar content' 'sidebar moreposts' 'sidebar footer';
 }
 
+.heroBlogpost {
+  --grid-areas: 'hero hero hero' 'sidebar content .' 'sidebar moreposts .'
+    'sidebar footer .';
+  padding-top: 0;
+}
+
+.heroImageWrapper {
+  grid-area: hero;
+  margin-left: -1.5rem;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  min-height: 70px;
+}
+
+.heroImage > div {
+  padding-bottom: 41.6667% !important;
+}
+
 .written p:first-of-type {
   margin-bottom: 0.25rem;
 }
@@ -30,13 +52,22 @@
   border-radius: 1px;
 }
 
-.content {
-  composes: content from '../pages/resources.module.css';
+.heroWrapper {
+  --header-background: none;
+  --nav-text-color: var(--header-text-color);
 }
 
 @media (max-width: 767px) {
   .blogpost {
     --grid-areas: 'content' 'sidebar' 'moreposts' 'footer';
+  }
+
+  .heroBlogpost {
+    --grid-areas: 'hero' 'content' 'sidebar' 'moreposts' 'footer';
+  }
+
+  .heroImage > div {
+    padding-bottom: 84.8958% !important;
   }
 
   .postMeta {

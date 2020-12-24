@@ -6,8 +6,7 @@ import Layout from '../components/Layout';
 import SEO from '../components/Seo';
 import Resource from '../components/Resource';
 import Sidebar from '../components/Sidebar';
-
-import styles from './resources.module.css';
+import Content from '../components/Content';
 
 const ResourceTemplate = ({ data, location }) => {
   const { mdx } = data;
@@ -30,7 +29,6 @@ const ResourceTemplate = ({ data, location }) => {
         data={data.allMdx}
         description={description}
         searchContext="Categories"
-        className={styles.sidebar}
       >
         {({ searchPosts }) =>
           searchPosts.map(({ node }, key) => (
@@ -39,12 +37,12 @@ const ResourceTemplate = ({ data, location }) => {
         }
       </Sidebar>
 
-      <article className={styles.content}>
+      <Content>
         <header>
           <h1>{title}</h1>
         </header>
         <MDX body={body} />
-      </article>
+      </Content>
     </Layout>
   );
 };

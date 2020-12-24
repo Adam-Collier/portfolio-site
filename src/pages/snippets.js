@@ -5,6 +5,7 @@ import MDX from '../components/MDX';
 import Layout from '../components/Layout';
 import SEO from '../components/Seo';
 import Sidebar from '../components/Sidebar';
+import Content from '../components/Content';
 import TableOfContents from '../components/TableOfContents';
 
 import styles from './snippets.module.css';
@@ -40,13 +41,12 @@ const Snippets = ({ data, location }) => {
           className={styles.tableOfContents}
         />
       </Sidebar>
-      <div className={styles.content}>
+      <Content>
         {edges.map(({ node }, key) => {
           const { body } = node;
-
           return <MDX key={key} body={body} />;
         })}
-      </div>
+      </Content>
     </Layout>
   );
 };

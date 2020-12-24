@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { navigate } from 'gatsby';
 import { useHotkeys } from 'react-hotkeys-hook';
 import { useContext } from '../../context';
@@ -13,7 +12,13 @@ import styles from './layout.module.css';
 import './global.css';
 import '../../styles/variables.css';
 
-const Layout = ({ children, wrapperClass, containerClass, containerType }) => {
+const Layout = ({
+  children,
+  wrapperClass,
+  containerClass,
+  containerType,
+  location,
+}) => {
   const [{ isMobileMenu }] = useContext();
 
   useHotkeys('cmd+h', (e) => {
@@ -37,7 +42,7 @@ const Layout = ({ children, wrapperClass, containerClass, containerType }) => {
 
   return (
     <div className={wrapperClass}>
-      <Header />
+      <Header location={location} />
       {isPageMobile && <MobileMenu isMobileMenu={isMobileMenu} />}
       <main
         className={`${

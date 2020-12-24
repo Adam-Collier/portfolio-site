@@ -3,7 +3,7 @@ import { Link, useStaticQuery, graphql } from 'gatsby';
 import Image from 'gatsby-image';
 
 import Navigation from '../Navigation';
-import PageUtils from '../PageUtils';
+import Breadcrumb from '../Breadcrumb';
 import Toggle from '../Toggle';
 import { useContext } from '../../context';
 
@@ -11,7 +11,7 @@ import styles from './header.module.css';
 import MenuIcon from '../../icons/menu.svg';
 import CloseIcon from '../../icons/close_icon.svg';
 
-const Header = ({ className, isClose, onClick }) => {
+const Header = ({ location, className, isClose, onClick }) => {
   const dispatch = useContext()[1];
 
   const data = useStaticQuery(graphql`
@@ -39,7 +39,7 @@ const Header = ({ className, isClose, onClick }) => {
               />
               Adam Collier
             </Link>
-            <PageUtils />
+            {location && <Breadcrumb location={location} />}
           </div>
           <div className={styles.headerRight}>
             <Navigation className={styles.navigation} />

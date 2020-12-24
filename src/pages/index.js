@@ -11,6 +11,7 @@ const IndexPage = ({ location }) => (
     wrapperClass={styles.homeWrapper}
     containerClass={`${styles.home}`}
     containerType="fluid"
+    location={location.pathname}
   >
     <SEO title="" pathname={location.pathname} />
     <div className={styles.intro}>

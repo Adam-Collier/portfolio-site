@@ -35,14 +35,14 @@ const BlogPostTemplate = ({ data, location }) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             if (invertHeaderColor) {
-              wrapper.style.setProperty('--header-color', 'white');
+              wrapper.style.setProperty('--header-text-color', 'white');
             } else {
-              wrapper.style.setProperty('--header-color', '#333333');
+              wrapper.style.setProperty('--header-text-color', '#333333');
             }
             wrapper.style.setProperty('--header-background', 'none');
           } else {
             wrapper.style.setProperty(
-              '--header-color',
+              '--header-text-color',
               'var(--primary-foreground)'
             );
             wrapper.style.setProperty(
@@ -81,7 +81,7 @@ const BlogPostTemplate = ({ data, location }) => {
     <Layout
       containerType="fluid"
       wrapperClass={styles.wrapper}
-      containerClass={`${styles.blogpost}`}
+      containerClass={styles.blogpost}
       location={location.pathname}
     >
       <SEO

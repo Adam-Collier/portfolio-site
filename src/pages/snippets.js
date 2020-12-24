@@ -23,11 +23,7 @@ const Snippets = ({ data, location }) => {
     "There's nothing worse than almost remembering a bit of code you saw on stackoverflow on in a blogpost once. So I've collated all of the ones I find most useful.";
 
   return (
-    <Layout
-      containerType="fluid"
-      containerClass={styles.snippets}
-      location={location.pathname}
-    >
+    <Layout containerType="fluid" location={location.pathname}>
       <SEO
         title="Snippets"
         description={description}

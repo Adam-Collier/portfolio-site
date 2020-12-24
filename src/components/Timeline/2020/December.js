@@ -62,7 +62,7 @@ const November = () => {
         timestamp="December 16, 2020"
         title="Published New Blog Post"
       >
-        <Blogpost node={data.mdx} timeline />
+        <Blogpost node={data.mdx} isTimeline />
       </TimelineEntry>
       <TimelineEntry
         Icon={GitMerge}

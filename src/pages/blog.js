@@ -44,11 +44,7 @@ const Blog = ({ data, location }) => {
     'A collection of writing which can range from talking about code, design or life in general. Enjoy this eclectic collection of writings';
 
   return (
-    <Layout
-      containerType="fluid"
-      containerClass={styles.blog}
-      location={location.pathname}
-    >
+    <Layout containerType="fluid" location={location.pathname}>
       <SEO
         title="Blog"
         description={description}

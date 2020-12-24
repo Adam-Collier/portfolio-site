@@ -16,15 +16,15 @@
   --content-width: 95%;
   --max-content-width: 740px;
   --max-layout-width: 1440px;
-  --content-grid-template: 'sidebar content padding' 'sidebar footer padding';
-  --content-grid-columns: 340px minmax(0, 1fr) 2rem;
-  --content-grid-gap: 2rem;
+  --grid-areas: 'sidebar content padding' 'sidebar footer padding';
+  --grid-columns: 340px minmax(0, 1fr) 2rem;
+  --grid-gap: 2rem;
   --container-padding: 4.5rem;
   --content-x-padding: 1.5rem;
   --content-spacing-left: 10%;
   --header-background: var(--primary-background);
-  --header-color: var(--primary-foreground);
-  --nav-color: var(--header-color);
+  --header-text-color: var(--primary-foreground);
+  --nav-text-color: var(--header-text-color);
   --box-shadow-large: 0 2.8px 2.2px rgba(0, 0, 0, 0.02),
     0 6.7px 5.3px rgba(0, 0, 0, 0.028), 0 12.5px 10px rgba(0, 0, 0, 0.035),
     0 22.3px 17.9px rgba(0, 0, 0, 0.042), 0 41.8px 33.4px rgba(0, 0, 0, 0.05),
@@ -42,23 +42,22 @@
   --foreground-high: #e5e7eb;
   --foreground-medium: #9ca3af;
   --foreground-low: #374151;
-  --code-blocks: #232528;
   --button-hover: #4a4a4a;
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
   :root {
-    --content-grid-template: 'sidebar content';
-    --content-grid-columns: 200px minmax(0, 1fr);
+    --grid-areas: 'sidebar content';
+    --grid-columns: 200px minmax(0, 1fr);
   }
 }
 
 @media (max-width: 767px) {
   :root {
     --content-x-padding: 1rem;
-    --content-grid-template: 'title' 'description' 'context' 'content' 'footer';
-    --content-grid-columns: 1fr;
-    --content-grid-gap: 1.45rem;
+    --grid-areas: 'title' 'description' 'context' 'content' 'footer';
+    --grid-columns: 1fr;
+    --grid-gap: 1.45rem;
     --content-width: 100%;
     --content-spacing-left: 0;
   }

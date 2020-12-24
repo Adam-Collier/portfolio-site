@@ -9,7 +9,7 @@ import styles from './index.module.css';
 const IndexPage = ({ location }) => (
   <Layout
     wrapperClass={styles.homeWrapper}
-    containerClass={`${styles.home}`}
+    containerClass={styles.home}
     containerType="fluid"
     location={location.pathname}
   >

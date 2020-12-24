@@ -15,11 +15,7 @@ const ResourceTemplate = ({ data, location }) => {
   const { title, description } = frontmatter;
 
   return (
-    <Layout
-      containerType="fluid"
-      containerClass={styles.resources}
-      location={location.pathname}
-    >
+    <Layout containerType="fluid" location={location.pathname}>
       <SEO
         title={`${title} Resources`}
         description={description || excerpt}

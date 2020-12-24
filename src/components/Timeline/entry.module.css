@@ -68,8 +68,9 @@
   margin-bottom: 1.45rem;
 }
 
-@media (max-width: 767px) {
-  .children :global(.gatsby-highlight) {
+@media (max-width: 1100px) {
+  .children :global(.gatsby-highlight),
+  .children > article {
     margin-left: -4rem;
   }
 }

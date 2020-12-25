@@ -120,7 +120,7 @@ module.exports = {
               maxWidth: 596,
               withWebp: true,
               quality: 90,
-              srcSetBreakpoints: [200, 340, 520, 890],
+              srcSetBreakpoints: [200, 360, 414, 720, 828],
             },
           },
         ],
@@ -133,7 +133,7 @@ module.exports = {
         maxWidth: 596,
         withWebp: true,
         quality: 90,
-        srcSetBreakpoints: [200, 340, 520, 890],
+        srcSetBreakpoints: [200, 360, 414, 720, 828],
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

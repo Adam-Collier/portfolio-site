@@ -71,7 +71,7 @@ const BlogPostTemplate = ({ data, location }) => {
     : null;
 
   const featuredSources = [
-    { ...mobileFeatured.childImageSharp.fluid, media: `(max-width: 767px)` },
+    mobileFeatured.childImageSharp.fluid,
     {
       ...desktopFeatured.childImageSharp.fluid,
       media: `(min-width: 768px)`,
@@ -158,14 +158,14 @@ export const pageQuery = graphql`
         invertHeaderColor
         desktopFeatured: featured {
           childImageSharp {
-            fluid(maxWidth: 1920, maxHeight: 800, quality: 90, toFormat: JPG) {
+            fluid(maxWidth: 1440, maxHeight: 600, quality: 90) {
               ...GatsbyImageSharpFluid_withWebp
             }
           }
         }
         mobileFeatured: featured {
           childImageSharp {
-            fluid(maxWidth: 768, maxHeight: 650, quality: 90, toFormat: JPG) {
+            fluid(maxWidth: 360, maxHeight: 305, quality: 90) {
               ...GatsbyImageSharpFluid_withWebp
             }
           }

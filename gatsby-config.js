@@ -117,9 +117,10 @@ module.exports = {
             resolve: `gatsby-remark-images`,
             options: {
               linkImagesToOriginal: false,
-              maxWidth: 740,
+              maxWidth: 596,
               withWebp: true,
               quality: 90,
+              srcSetBreakpoints: [200, 340, 520, 890],
             },
           },
         ],
@@ -129,9 +130,10 @@ module.exports = {
       resolve: `gatsby-remark-images`,
       options: {
         linkImagesToOriginal: false,
-        maxWidth: 740,
+        maxWidth: 596,
         withWebp: true,
         quality: 90,
+        srcSetBreakpoints: [200, 340, 520, 890],
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

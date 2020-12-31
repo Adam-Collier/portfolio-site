@@ -1,0 +1,40 @@
+.categoryTitle {
+  display: block;
+  color: var(--primary-accent);
+  margin-bottom: 1.45rem;
+}
+
+.category {
+  margin-bottom: 1.45rem;
+}
+
+.tags {
+  margin: 0;
+}
+
+.tags button {
+  cursor: pointer;
+  border: none;
+  font-size: 0.825rem;
+  letter-spacing: 0.02rem;
+  background: var(--accent-min);
+  padding: 0.25rem 0.5rem;
+  display: inline-block;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-accent);
+  text-transform: capitalize;
+  font-weight: 500;
+  border: 1px solid var(--accent-lighter);
+  border-radius: 1px;
+}
+
+.tags button:hover:not(.active) {
+  background: var(--accent-low);
+}
+
+.tags .active {
+  border: 1px solid var(--accent-high);
+  background: var(--accent-low);
+  color: var(--accent-high);
+}

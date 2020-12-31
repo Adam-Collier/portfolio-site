@@ -133,7 +133,7 @@ module.exports = {
         maxWidth: 596,
         withWebp: true,
         quality: 90,
-        srcSetBreakpoints: [200, 360, 414, 720, 828],
+        srcSetBreakpoints: [330, 360, 414, 660, 720, 828],
       },
     },
     {

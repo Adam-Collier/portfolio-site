@@ -3,43 +3,29 @@ import { graphql } from 'gatsby';
 
 import Layout from '../components/Layout';
 import SEO from '../components/Seo';
-import Blogpost from '../components/Blogpost';
-import Blogposts from '../components/BlogPosts';
+import Blogposts from '../components/Blogposts';
+import TagFilters from '../components/TagFilter';
 import Sidebar from '../components/Sidebar';
 
-import styles from './blog.module.css';
+const BlogPageContent = ({ allPosts, categories, description }) => {
+  const [posts, setFilteredPosts] = useState(allPosts);
+
+  return (
+    <>
+      <Blogposts posts={posts} />
+      <Sidebar title="Blog" description={description} noAccordianClose>
+        <TagFilters
+          categories={categories}
+          allPosts={allPosts}
+          setFilteredPosts={setFilteredPosts}
+        />
+      </Sidebar>
+    </>
+  );
+};
 
 const Blog = ({ data, location }) => {
   const { categories, edges: allPosts } = data.allMdx;
-
-  const [posts, setFilteredPosts] = useState(allPosts);
-  const [activeTags, setActiveTags] = useState([]);
-
-  const handleClick = (e) => {
-    e.preventDefault();
-
-    const tagName = e.target.textContent;
-
-    const selectedTags = activeTags.includes(tagName)
-      ? activeTags.filter((x) => x !== tagName)
-      : [...activeTags, tagName];
-
-    setActiveTags(selectedTags);
-
-    const filteredPosts = allPosts.filter(({ node }) => {
-      const { tags } = node.frontmatter;
-      // if post doesnt have any tags return
-      if (!tags) return false;
-      // if there are no active tags return all posts
-      if (selectedTags.length === 0) return node;
-      // if selectedTags include a post tag return the tag
-      const matchingTags = selectedTags.filter((tag) => tags.includes(tag));
-      // if they have matching tags return the post
-      return matchingTags.length >= 1;
-    });
-
-    setFilteredPosts(filteredPosts);
-  };
 
   const description =
     'A collection of writing which can range from talking about code, design or life in general. Enjoy this eclectic collection of writings';
@@ -51,45 +37,16 @@ const Blog = ({ data, location }) => {
         description={description}
         pathname={location.pathname}
       />
-      <Blogposts>
-        {posts.map(({ node }, i) => (
-          <Blogpost node={node} key={i} />
-        ))}
-      </Blogposts>
-      <Sidebar title="Blog" description={description} noAccordianClose>
-        {categories.map(({ category, edges }, key) => {
-          const allTags = new Set();
-          edges.forEach(({ node }) => {
-            node.frontmatter.tags.forEach((tag) => allTags.add(tag));
-          });
-
-          return (
-            <div className={styles.category} key={key}>
-              <span className={styles.categoryTitle}>{category}</span>
-              <div className={styles.tags}>
-                {[...allTags].map((tag, i) => (
-                  <button
-                    type="button"
-                    key={i}
-                    className={`${
-                      activeTags.includes(tag) ? styles.active : ''
-                    }`}
-                    onClick={handleClick}
-                    onKeyDown={handleClick}
-                  >
-                    {tag}
-                  </button>
-                ))}
-              </div>
-            </div>
-          );
-        })}
-      </Sidebar>
+      <BlogPageContent
+        allPosts={allPosts}
+        categories={categories}
+        description={description}
+      />
     </Layout>
   );
 };
 
-export default Blog;
+export default React.memo(Blog);
 
 export const query = graphql`
   query {

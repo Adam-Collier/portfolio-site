@@ -42,6 +42,6 @@
 @media (min-width: 768px) {
   .link:hover:not(.active) {
     color: var(--primary-foreground);
-    background: var(--accent-lightest);
+    background: var(--accent-min);
   }
 }

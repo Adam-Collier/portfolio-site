@@ -45,7 +45,7 @@ const ConditionalWrapper = ({
   );
 };
 
-const Index = ({
+const Sidebar = ({
   children,
   title,
   data = '',
@@ -90,4 +90,4 @@ const Index = ({
   );
 };
 
-export default Index;
+export default Sidebar;

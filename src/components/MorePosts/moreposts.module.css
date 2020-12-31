@@ -9,7 +9,3 @@
   max-width: var(--max-content-width);
   margin: 0 auto;
 }
-
-.blogposts {
-  composes: blogposts from "../../pages/blog.module.css";
-}

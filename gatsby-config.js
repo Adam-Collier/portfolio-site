@@ -13,7 +13,12 @@ module.exports = {
     },
   },
   plugins: [
-    `gatsby-plugin-webpack-bundle-analyser-v2`,
+    {
+      resolve: 'gatsby-plugin-webpack-bundle-analyser-v2',
+      options: {
+        disable: true,
+      },
+    },
     `gatsby-plugin-preact`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-robots-txt`,

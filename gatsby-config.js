@@ -150,6 +150,71 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allMdx } }) =>
+              allMdx.edges.map((edge) => {
+                const { node } = edge;
+                const { frontmatter, fields, html } = node;
+                const { slug, title, date } = fields;
+                const { thumbnail, category, description } = frontmatter;
+                return {
+                  title,
+                  description,
+                  date,
+                  url: site.siteMetadata.siteUrl + slug,
+                  guid: site.siteMetadata.siteUrl + slug,
+                  categories: [category],
+                  enclosure: thumbnail && {
+                    url: site.siteMetadata.siteUrl + thumbnail.publicURL,
+                  },
+                  custom_elements: [{ 'content:encoded': html }],
+                };
+              }),
+            query: `
+              {
+                allMdx(sort: {fields: [fields___date], order: DESC}, filter: {fileAbsolutePath: {regex: "/blog/"}, frontmatter: {published: {eq: true}}}) {
+                  edges {
+                    node {
+                      html
+                      fields {
+                        title
+                        date
+                        slug
+                      }
+                      frontmatter {
+                        description
+                        category
+                        thumbnail{
+                          publicURL
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+            output: '/blog/rss.xml',
+            title: "Adam Collier's RSS Feed",
+          },
+        ],
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

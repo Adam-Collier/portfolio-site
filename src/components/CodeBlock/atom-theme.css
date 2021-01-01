@@ -189,7 +189,7 @@ pre.line-numbers > code {
  * and overflow that we removed from <pre>.
  */
 .gatsby-highlight {
-  background-color: #282c34;
+  background-color: #1b1b1b;
   border-radius: 0.3em;
   margin: 0 0 1.666rem;
   padding: 1.5rem;

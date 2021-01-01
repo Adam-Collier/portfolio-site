@@ -5,7 +5,7 @@ import styles from './footer.module.css';
 import GatsbyIcon from '../../icons/gatsby.svg';
 import VercelIcon from '../../icons/vercel.svg';
 
-const Index = () => (
+const Footer = () => (
   <footer className={styles.footer}>
     <div className={styles.pages}>
       <Link to="/blog/">Blog</Link>
@@ -55,4 +55,4 @@ const Index = () => (
   </footer>
 );
 
-export default Index;
+export default Footer;

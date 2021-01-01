@@ -39,7 +39,6 @@ const Breadcrumb = ({ location }) => {
           <h4>⌘{firstLetter}</h4>
         </div>
       </div>
-      <div />
     </>
   );
 };

@@ -64,4 +64,4 @@ const Header = ({ location, className, isClose, onClick }) => {
   );
 };
 
-export default Header;
+export default React.memo(Header);

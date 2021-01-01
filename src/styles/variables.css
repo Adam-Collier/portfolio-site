@@ -8,8 +8,11 @@
   --foreground-medium: #9ca3af;
   --foreground-low: #e5e7eb;
   --primary-accent: #6d28d9;
-  --accent-lighter: #a78bfa;
-  --accent-lightest: #ede9fe;
+  /* in contrast to the foreground */
+  --accent-max: #292442;
+  --accent-high: #5b43c4;
+  --accent-low: #e6e1fd;
+  --accent-min: #f5f3ff;
   --button-hover: var(--foreground-low);
   --border-radius: 2px;
   --sidebar-width: 300px;
@@ -36,8 +39,12 @@
   --primary-foreground: #eee;
   --primary-background: #151515;
   --primary-accent: #8b5cf6;
-  --accent-lighter: #5b21b6;
-  --accent-lightest: #4c1d95;
+  --accent-low: #5b21b6;
+  --accent-min: #4c1d95;
+  --accent-max: #ede9fe;
+  --accent-high: #a78bfa;
+  --accent-low: #382f62;
+  --accent-min: #1f1c2f;
   --foreground-hover: #868686;
   --foreground-high: #e5e7eb;
   --foreground-medium: #9ca3af;

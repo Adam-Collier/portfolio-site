@@ -5,7 +5,7 @@ import Image from 'gatsby-image';
 import styles from './blogpost.module.css';
 import { timeline as timelineStyles } from './timeline.module.css';
 
-const Index = ({ node, isTimeline }) => {
+const Blogpost = ({ node, isTimeline }) => {
   const { frontmatter, fields, excerpt } = node;
   const { title, date, slug } = fields;
   const { description, thumbnail } = frontmatter;
@@ -34,4 +34,4 @@ const Index = ({ node, isTimeline }) => {
   );
 };
 
-export default Index;
+export default React.memo(Blogpost);

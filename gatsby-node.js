@@ -33,7 +33,6 @@ exports.createPages = async ({ graphql, actions }) => {
                 slug
               }
               frontmatter {
-                title
                 layout
               }
             }

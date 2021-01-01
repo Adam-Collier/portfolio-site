@@ -16,3 +16,10 @@
   line-height: 0.5;
   padding: 0 0.5rem;
 }
+
+@media (max-width: 767px) {
+  .breadcrumbs,
+  .shortcut {
+    display: none;
+  }
+}

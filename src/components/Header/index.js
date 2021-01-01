@@ -41,9 +41,7 @@ const Header = ({ location, className, isClose, onClick }) => {
               />
               Adam Collier
             </Link>
-            {useMediaQuery('(min-width: 768px)') && location && (
-              <Breadcrumb location={location} />
-            )}
+            {location && <Breadcrumb location={location} />}
           </div>
           <div className={styles.headerRight}>
             <Navigation className={styles.navigation} />

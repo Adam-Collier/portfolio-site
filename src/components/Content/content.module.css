@@ -6,6 +6,11 @@
   color: var(--primary-foreground);
 }
 
+.content :is(h2, h3, h4) {
+  padding-top: 80px;
+  margin-top: -80px;
+}
+
 .content > div {
   width: 100%;
   margin-left: auto;
@@ -34,6 +39,11 @@
 
   .content header + div img {
     border-radius: 0;
+  }
+
+  .content :is(h2, h3, h4) {
+    padding-top: 115px;
+    margin-top: -115px;
   }
 }
 

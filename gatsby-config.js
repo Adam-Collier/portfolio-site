@@ -45,6 +45,7 @@ module.exports = {
             resolve: `gatsby-remark-autolink-headers`,
             options: {
               offsetY: `115`,
+              icon: false,
             },
           },
           `resource-format`,
@@ -99,6 +100,7 @@ module.exports = {
             resolve: `gatsby-remark-autolink-headers`,
             options: {
               offsetY: `115`,
+              icon: false,
             },
           },
           {

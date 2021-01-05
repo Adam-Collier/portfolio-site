@@ -69,6 +69,8 @@
 
 ### Carousel
 
+A CSS only carousel, made possible by the introduction of scroll-snap. If you're wanting chevrons and click to slide functionality stick to a JS library, but for a mobile only carousel it works great.
+
 ```css
 .carousel {
   display: flex;
@@ -100,6 +102,8 @@
 
 ### Background shorthand
 
+Sometimes it can be a pain remembering the order of each background property
+
 ```css
 /* image, position, size and repeat */
 body {
@@ -107,7 +111,25 @@ body {
 }
 ```
 
+### Multiple background images
+
+Remember that the icon/image is declared after the colour. A good use case for this is image placeholders, for example you could have your companys logo above their brand grey.
+
+```css
+.image-placeholder {
+  background: #eff0f2 url('./icons/logo.svg');
+}
+
+/* alternatively we can define colour and image seperately for the same effect */
+.image-placeholder {
+  background-color: #eff0f2;
+  background-image: url('./icons/logo.svg');
+}
+```
+
 ### Underline styles
+
+Although improving, underlining text in CSS doesn't give you many stylistic options (like stroke width or space from the text). The below solution creates a flexible underline which skips any descenders.
 
 ```css
 li {

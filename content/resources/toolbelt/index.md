@@ -30,6 +30,9 @@ What if every everyone released the new version of their modules at the same tim
 
 [Notion](https://www.notion.so) - Collaboration/Notes - Write, plan, collaborate, and get organized. A really great tool for note taking and prepping/recording meeting notes. Now it's free for personal accounts!
 
+## Sharing
+[Carbon](https://carbon.now.sh/) - Share Code Images - Create and share beautiful images of your source code. Images can easily be shared to twitter or you can download the images files and share that way.
+
 ## Thinking
 
 [Untools](https://untools.co/) - Thinking/Learning - A collection of thinking tools and frameworks to help you solve problems, make decisions and understand systems. I've not read a lot of it yet but it seems pretty cool.

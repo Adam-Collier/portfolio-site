@@ -11,15 +11,19 @@ const chunk = (arr, size) =>
 
 ### Parsing JSON
 
+An interesting snippet I came across on [The Cost of Javascript](https://v8.dev/blog/cost-of-javascript-2019#json). I'll be using this trick the next time I'm parsing big chunks of JSON.
+
 ```js
 const data = { foo: 42, bar: 1337 } // 🐌
 
 const data = JSON.parse('{"foo":42,"bar":1337}') // 🚀
 ```
 
-[The Cost of Javascript](https://v8.dev/blog/cost-of-javascript-2019#json)
+
 
 ### Flatten an array
+
+Intoduced in ES6 we can now easily flatten multi dimensional arrays. Gone are the days of having to write our own solution.
 
 ```js
 // This method accepts one argument to choose the depth of the flattening
@@ -34,6 +38,8 @@ const flattenedArray = multiDimensionalArray.flat() // [1, 2, 3, 4, 5, 6]
 
 ### Remove a property from an Object
 
+A pretty neat solution, by leveraging ES6 Object destructuring assignment we can immutably remove properties.
+
 ```js
 const item = {
   id: 1,
@@ -44,17 +50,6 @@ const item = {
 const { id, ...item2 } = item
 // now item 2 doesnt have an id property
 console.log(item2)
-```
-
-### Ternary alternatives
-
-```js
-return x ? x : y  => return x || y
-
-return x ? true : false => return !!x
-
-return x ? false : true => return !x
-
 ```
 
 ### Optional Chaining

@@ -16,11 +16,11 @@
   --button-hover: var(--foreground-low);
   --border-radius: 2px;
   --sidebar-width: 300px;
-  --content-width: 95%;
+  --content-width: 100%;
   --max-content-width: 740px;
   --max-layout-width: 1440px;
-  --grid-areas: 'sidebar content padding' 'sidebar footer padding';
-  --grid-columns: 340px minmax(0, 1fr) 2rem;
+  --grid-areas: 'sidebar content' 'sidebar footer';
+  --grid-columns: 340px minmax(0, 1fr);
   --grid-gap: 2rem;
   --container-padding: 4.5rem;
   --content-x-padding: 1.5rem;
@@ -52,10 +52,11 @@
   --button-hover: #4a4a4a;
 }
 
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 1280px) {
   :root {
-    --grid-areas: 'sidebar content';
-    --grid-columns: 200px minmax(0, 1fr);
+    --grid-areas: 'sidebar content padding' 'sidebar footer padding';
+    --grid-columns: 340px minmax(0, 1fr) 2rem;
+    --content-width: 95%;
   }
 }
 
@@ -65,7 +66,6 @@
     --grid-areas: 'title' 'description' 'context' 'content' 'footer';
     --grid-columns: 1fr;
     --grid-gap: 1.45rem;
-    --content-width: 100%;
     --content-spacing-left: 0;
   }
 }

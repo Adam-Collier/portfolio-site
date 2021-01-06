@@ -2,6 +2,8 @@
 
 ### Responsive CSS grid
 
+Taken from the infamous CSS Tricks post [A Complete Guide to Grid](https://css-tricks.com/snippets/css/complete-guide-grid/). This serves as a good starting point for setting up your responsive grid.
+
 ```css
 .grid {
   display: grid;
@@ -16,6 +18,8 @@
 
 ### Full width in restricted container
 
+A useful snippet when you need to break out of some constraints in the page layout e.g a grid of images between some written content that fills the width of the page.
+
 ```css
 .full-width {
   width: 100vw;
@@ -29,6 +33,8 @@
 
 ### Max width in restricted container
 
+Too much uniformity in a layout can create for a sub par experience, to create some moments of interest you can break out slightly, but not full width.
+
 ```css
 .not-full-but-bigger {
   margin: auto calc(50% - 50vw);
@@ -39,31 +45,14 @@
 
 ### Line Clamp
 
+An essential snippet of code to have in your arsenal. No more CSS hacks or over engineered Javascript solutions needed.
+
 ```css
 .line-clamp {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-}
-```
-
-### Device hover state
-
-```css
-@media (hover: hover) {
-  .element {
-    opacity: 0;
-  }
-  .element:hover {
-    opacity: 1;
-  }
-}
-
-@media (hover: none) {
-  .element {
-    opacity: 1;
-  }
 }
 ```
 
@@ -102,7 +91,7 @@ A CSS only carousel, made possible by the introduction of scroll-snap. If you're
 
 ### Background shorthand
 
-Sometimes it can be a pain remembering the order of each background property
+Sometimes it can be a pain remembering the order of each background property (it gets me every time).
 
 ```css
 /* image, position, size and repeat */
@@ -129,7 +118,7 @@ Remember that the icon/image is declared after the colour. A good use case for t
 
 ### Underline styles
 
-Although improving, underlining text in CSS doesn't give you many stylistic options (like stroke width or space from the text). The below solution creates a flexible underline which skips any descenders.
+Although improving, underlining text in CSS doesn't allow for many stylistic customisations (like stroke width or space from the text). The below solution creates a flexible underline which skips any descenders.
 
 ```css
 li {

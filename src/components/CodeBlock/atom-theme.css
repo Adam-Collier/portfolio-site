@@ -195,12 +195,7 @@ pre.line-numbers > code {
   padding: 1.5rem;
   overflow: auto;
   font-size: 14px;
-}
-
-@media (max-width: 599px) {
-  .gatsby-highlight {
-    width: calc(100vw - 2rem);
-  }
+  max-width: calc(100vw - 2rem);
 }
 
 /**

@@ -18,19 +18,18 @@ $ git rm -r --cached .
 
 ### Git stash
 
+An underrated command in my opinion. Need to quickly switch branch to do something but don't want to commit your changes on the current branch just yet? Git stash is perfect for this.
+
 ```bash
-# to save changes in a stash
+# for when it's too hard to think of a message
+$ git stash
+
+# to make it clearer what each stash is
 $ git stash save "optional message for yourself"
 
-# view stash list
+# apply the latest stash (I tend to use this the most)
+$ git stash apply stash@{0}
+
+# view a list of your stashes
 $ git stash list
-
-# apply the stash
-$ git stash apply
-
-# apply the stash and remove the files from the stash
-$ git stash pop
-
-# clear the entire stash
-$ git stash clear
 ```

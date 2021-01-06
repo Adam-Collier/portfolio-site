@@ -2,6 +2,8 @@
 
 ### Add Context to a site
 
+Taken from [@kentcdodds](https://twitter.com/kentcdodds) great blog post [How to use React Context effectively](https://kentcdodds.com/blog/how-to-use-react-context-effectively). A good base for setting up global state in any React application.
+
 ```jsx
 // context.js
 
@@ -83,7 +85,11 @@ dispatch({ type: "count" })
 
 ### Immutability in React
 
+React in general tends to frown upon mutating values, especially when updating state. So here are a few methods I like to use to update immutably. Many more can be found in Redux's post [Immutable Update Patterns](https://redux.js.org/recipes/structuring-reducers/immutable-update-patterns)
+
 #### Update an object
+
+The spread operator comes into it's essense here, making it easy to update an object.
 
 ```js
 // state = {
@@ -99,6 +105,8 @@ return {
 
 #### Add an item to an array
 
+We can spread the current array values to the beginning of our new array, followed by our extra value. 
+
 ```js
 const newItem = 'foo';
 // a new array
@@ -110,6 +118,8 @@ return [
 
 #### Prepend an item to an array
 
+Taking advantage of ES6 spread operators we can add an item to an array immutably.
+
 ```js
 const newItem = 'foo';
 // a new array
@@ -120,6 +130,8 @@ return [
 ```
 
 #### Update an item in an array by index
+
+Map is perfect for returning a new array, in this case we can update an item by index.
 
 ```js
 return state.map((item, index) => {

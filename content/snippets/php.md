@@ -2,6 +2,8 @@
 
 ### Import SVG inline
 
+A nice easy way to grab icons anywhere in your site.
+
 ```php
 <?php include("icons/my-icon.svg"); ?>
 
@@ -11,6 +13,8 @@
 
 ### Enqueue a script
 
+A method to functionally add scripts to your wordpress projects footer.
+
 ```php
 wp_enqueue_script(
     'lazysizes',
@@ -18,7 +22,17 @@ wp_enqueue_script(
   );
 ```
 
+### Get template part
+
+Reuse some templated PHP content you have created
+
+```php
+<?php get_template_part('template_parts/griditem'); ?>
+```
+
 ### Use variables in template parts
+
+Sometimes you need to pass variables down into a template part, a similar thinking pattern to react and props. 
 
 ```php
 // you can use any value including objects.
@@ -28,25 +42,9 @@ set_query_var( 'var_name_to_be_used_later', 'Value to be retrieved later' );
 $passedVariable = get_query_var('var_name_to_be_used_later');
 ```
 
-### Get template part
-
-```php
-<?php get_template_part('template_parts/griditem'); ?>
-```
-
-### Assign get_template_part
-
-```php
-function load_template_part($template_name, $part_name=null) {
-  ob_start();
-  get_template_part($template_name, $part_name);
-  $var = ob_get_contents();
-  ob_end_clean();
-  return $var;
-}
-```
-
 ### Name all blocks on the page
+
+If you have ever done any Gutenberg block development for Wordpress this is an essential snippet.
 
 ```php
   $blocks = parse_blocks($post->post_content);

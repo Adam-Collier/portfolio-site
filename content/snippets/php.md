@@ -47,6 +47,8 @@ $passedVariable = get_query_var('var_name_to_be_used_later');
 If you have ever done any Gutenberg block development for Wordpress this is an essential snippet.
 
 ```php
-  $blocks = parse_blocks($post->post_content);
-  var_dump($blocks);
+// lets grab all of the blocks from the post content
+$blocks = parse_blocks($post->post_content);
+// and lets print it out
+var_dump($blocks);
 ```

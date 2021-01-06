@@ -12,7 +12,7 @@ const BlogPageContent = ({ allPosts, categories, description }) => {
 
   return (
     <>
-      <Blogposts posts={posts} />
+      <Blogposts posts={posts} style={{ minHeight: '80vh' }} />
       <Sidebar title="Blog" description={description} noAccordianClose>
         <TagFilters
           categories={categories}

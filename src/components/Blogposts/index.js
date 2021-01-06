@@ -2,8 +2,8 @@ import React from 'react';
 import Blogpost from '../Blogpost';
 import styles from './blogposts.module.css';
 
-const Blogposts = ({ posts }) => (
-  <div className={styles.blogposts}>
+const Blogposts = ({ posts, style }) => (
+  <div className={styles.blogposts} style={{ ...style }}>
     {posts.map(({ node }, i) => (
       <Blogpost node={node} key={i} />
     ))}

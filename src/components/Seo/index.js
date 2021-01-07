@@ -81,6 +81,7 @@ function SEO({
           name="google-site-verification"
           content="kXoBZ3JPl4ac52Th5S3Jocx7XmmfMJZNQtkPTJZU4l8"
         />
+        <meta name="title" content={metaTitle} />
         <meta name="description" content={metaDescription} />
         <meta name="image" content={image} />
         <link rel="canonical" href={canonical} />

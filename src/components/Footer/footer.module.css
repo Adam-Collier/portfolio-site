@@ -8,7 +8,8 @@
   display: grid;
   grid-template-areas:
     'pages divider social'
-    'built built built';
+    'built built built'
+    'copyright copyright copyright';
   grid-template-columns: 1fr 1px 1fr;
   justify-items: center;
   align-items: center;
@@ -46,7 +47,11 @@
   grid-area: built;
   display: flex;
   margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.built * {
+  margin-bottom: 0;
 }
 
 .built svg {
@@ -55,6 +60,12 @@
 
 .built span {
   padding: 0 1rem;
+}
+
+.copyright {
+  margin-bottom: 1rem;
+  grid-area: copyright;
+  color: var(--foreground-medium);
 }
 
 @media (max-width: 767px) {

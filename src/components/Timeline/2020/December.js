@@ -163,8 +163,14 @@ export function useMediaQuery(query) {
           starting to get a feel for space and composition.
         </p>
         <Grid gridTemplateColumns="repeat(2, minmax(0, 1fr))" gridGap="0.5rem">
-          <Image fluid={data.allFile.edges[1].node.childImageSharp.fluid} />
-          <Image fluid={data.allFile.edges[0].node.childImageSharp.fluid} />
+          <Image
+            fluid={data.allFile.edges[1].node.childImageSharp.fluid}
+            alt="Adam Collier"
+          />
+          <Image
+            fluid={data.allFile.edges[0].node.childImageSharp.fluid}
+            alt="Adam Collier"
+          />
         </Grid>
       </TimelineEntry>
       <TimelineEntry

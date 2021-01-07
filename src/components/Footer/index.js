@@ -52,6 +52,9 @@ const Footer = () => (
       <VercelIcon className={styles.vercelIcon} />
       <p>Hosted by Vercel</p>
     </span>
+    <small className={styles.copyright}>
+      © 2021 Adam Collier. All Rights Reserved.
+    </small>
   </footer>
 );
 

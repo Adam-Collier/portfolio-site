@@ -13,7 +13,11 @@ const IndexPage = ({ location }) => (
     containerType="fluid"
     location={location.pathname}
   >
-    <SEO title="" pathname={location.pathname} />
+    <SEO
+      title=""
+      description="Hey I'm Adam Collier and this is my site. Here you will find useful Snippets, Resources and Blogposts"
+      pathname={location.pathname}
+    />
     <div className={styles.intro}>
       <h1>Hey, I'm Adam</h1>
       <p>

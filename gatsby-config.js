@@ -1,3 +1,8 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
   siteMetadata: {
     title: `Adam Collier`,
@@ -23,6 +28,14 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-robots-txt`,
     `gatsby-plugin-sitemap`,
+    {
+      resolve: `spotify-source`,
+      options: {
+        clientId: process.env.SPOTIFY_CLIENT_ID,
+        clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
+        refreshToken: process.env.SPOTIFY_REFRESH_TOKEN,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {

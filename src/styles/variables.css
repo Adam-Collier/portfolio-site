@@ -6,14 +6,13 @@
   --foreground-hover: #b6b6b6;
   --foreground-high: #374151;
   --foreground-medium: #9ca3af;
-  --foreground-low: #e5e7eb;
+  --foreground-low: #f3f3f3;
   --primary-accent: #6d28d9;
   /* in contrast to the foreground */
   --accent-max: #292442;
   --accent-high: #5b43c4;
   --accent-low: #e6e1fd;
   --accent-min: #f5f3ff;
-  --button-hover: var(--foreground-low);
   --border-radius: 2px;
   --sidebar-width: 300px;
   --content-width: 100%;
@@ -27,7 +26,6 @@
   --content-spacing-left: 10%;
   --header-background: var(--primary-background);
   --header-text-color: var(--primary-foreground);
-  --nav-text-color: var(--header-text-color);
   --box-shadow-large: 0 2.8px 2.2px rgba(0, 0, 0, 0.02),
     0 6.7px 5.3px rgba(0, 0, 0, 0.028), 0 12.5px 10px rgba(0, 0, 0, 0.035),
     0 22.3px 17.9px rgba(0, 0, 0, 0.042), 0 41.8px 33.4px rgba(0, 0, 0, 0.05),
@@ -46,10 +44,9 @@
   --accent-low: #382f62;
   --accent-min: #1f1c2f;
   --foreground-hover: #868686;
-  --foreground-high: #e5e7eb;
+  --foreground-high: #d8d8d8;
   --foreground-medium: #9ca3af;
-  --foreground-low: #374151;
-  --button-hover: #4a4a4a;
+  --foreground-low: #262626;
 }
 
 @media (min-width: 1280px) {

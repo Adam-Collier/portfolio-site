@@ -1,143 +1,30 @@
-.homeWrapper {
-  --nav-text-color: var(--primary-background);
-  --left-divider: var(--foreground-low);
-  --grid-gap: 0;
-}
-
 .home {
-  --grid-areas: 'intro timeline' 'intro footer';
-  --grid-columns: 1fr 1fr;
-  justify-items: center;
-}
-
-:global(.dark) .home .timeline {
-  --primary-accent: var(--primary-foreground);
-}
-
-.intro,
-.timeline {
-  display: flex;
-  flex-direction: column;
+  --grid-areas: 'intro timeline' 'spotify timeline' '. timeline' 'footer footer';
+  --grid-columns: 1fr 1.25fr;
+  max-width: 1024px;
 }
 
 .intro {
-  width: calc(100% - 2rem);
-  max-width: 480px;
+  grid-area: intro;
+}
+
+.intro h1 {
+  font-size: 1.75rem;
 }
 
 .timeline {
-  align-items: center;
+  grid-area: timeline;
+  padding-left: 1.5rem;
 }
 
-.intro h2 {
-  margin-bottom: 2rem;
-}
-
-.intro h1 + p {
-  line-height: 1.7;
-  margin-bottom: 2rem;
-}
-
-.weekList p {
-  margin-bottom: 0.5rem;
-}
-
-.weekList span {
-  display: inline-block;
-  min-width: 140px;
-}
-
-.timeline {
-  background: var(--primary-accent);
-  width: 100%;
-  height: 100%;
-  padding: 0 1rem;
-}
-
-.home footer {
-  margin-top: 0;
-}
-
-@media (min-width: 768px) {
-  .homeWrapper {
-    --header-background: none;
-  }
-
-  .home {
-    padding: 0;
-  }
-
-  .home footer:after {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 1px;
-    background: var(--foreground-low);
-  }
-
-  .timeline {
-    position: relative;
-    padding-top: 7rem;
-  }
-
-  .intro {
-    position: sticky;
-    height: 100vh;
-    top: 0;
-    justify-content: center;
-  }
-
-  .intro h1 {
-    font-size: 40px;
-  }
-
-  .timeline:after {
-    content: '';
-    position: fixed;
-    width: 30px;
-    height: 30px;
-    top: 0;
-    left: 50%;
-    width: 50%;
-    height: 100%;
-    background: var(--primary-accent);
-    z-index: -1;
-  }
+.spotify {
+  padding: 1.5rem;
+  grid-area: spotify;
 }
 
 @media (max-width: 767px) {
-  .homeWrapper {
-    --grid-gap: 0;
-  }
-
   .home {
-    --grid-areas: 'intro' 'timeline' 'footer';
+    --grid-areas: 'intro' 'timeline' 'spotify' 'footer';
     --grid-columns: 1fr;
-    padding-left: 0;
-    padding-right: 0;
   }
-
-  .intro {
-    padding-top: 0.5rem;
-  }
-
-  .timeline {
-    padding-top: 2rem;
-  }
-
-  .weekList {
-    margin-bottom: 2rem;
-  }
-
-  .weekList span {
-    display: inline-block;
-    min-width: 110px;
-  }
-}
-
-.intro p {
-  font-style: normal;
-  font-weight: 500;
 }

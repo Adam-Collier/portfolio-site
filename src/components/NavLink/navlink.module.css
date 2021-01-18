@@ -1,6 +1,6 @@
 .link {
   position: relative;
-  color: var(--nav-text-color);
+  color: var(--primary-foreground);
   text-decoration: none;
   padding: 0.375rem 0.625rem;
   text-decoration: none;

@@ -25,6 +25,13 @@ const TopTracks = () => {
             external_urls {
               spotify
             }
+            remoteImage {
+              childImageSharp {
+                fluid(maxWidth: 72) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
+            }
           }
         }
       }

@@ -1,6 +1,6 @@
 .entry {
   display: grid;
-  grid-template-columns: 44px 1fr;
+  grid-template-columns: 32px 1fr;
   grid-template-areas: 'thread contents';
 
   margin-bottom: 1rem;
@@ -18,17 +18,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--primary-background);
-  padding: 0.75rem;
+  background: var(--primary-foreground);
+  padding: 0.5rem;
   border-radius: 50%;
-  border: 2px solid var(--primary-accent);
+  border: 2px solid var(--primary-foreground);
+}
+
+.icon svg {
+  stroke: var(--primary-background);
 }
 
 .line {
   flex: 1;
   width: 1px;
   margin-bottom: -1rem;
-  background: var(--primary-background);
+  background: var(--primary-foreground);
 }
 
 .contents {
@@ -43,29 +47,27 @@
 }
 
 .title {
-  color: var(--primary-background);
   font-weight: 500;
   font-size: 1.125rem;
 }
 
 .date {
   font-size: 0.825rem;
-  color: var(--foreground-low);
+  color: var(--foreground-medium);
 }
 
 .children {
-  color: var(--primary-background);
   line-height: 1.5;
   font-weight: 450;
-}
-
-.children p a {
-  color: var(--primary-background);
 }
 
 .children :global(.gatsby-highlight) {
   width: auto;
   margin-bottom: 1.45rem;
+}
+
+.children p {
+  font-size: 0.875rem;
 }
 
 @media (max-width: 1100px) {
@@ -78,18 +80,11 @@
 .dateEntry {
   display: flex;
   align-items: center;
-  padding-left: calc(44px + 1.45rem);
+  padding-left: calc(32px + 1.45rem);
   margin-bottom: 1.45rem;
 }
 
 .dateEntry h3 {
   grid-area: date;
   margin-bottom: 0;
-}
-
-.stroke {
-  height: 1px;
-  flex: 1;
-  background: var(--primary-background);
-  margin-left: 1rem;
 }

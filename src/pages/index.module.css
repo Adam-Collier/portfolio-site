@@ -1,6 +1,8 @@
 .home {
-  --grid-areas: 'intro timeline' 'spotify timeline' '. timeline' 'footer footer';
+  --grid-areas: 'intro timeline' 'spotify timeline' 'spotify readng'
+    'footer footer';
   --grid-columns: 1fr 1.25fr;
+  grid-template-rows: minmax(0, 1fr);
   max-width: 1024px;
 }
 
@@ -15,6 +17,9 @@
 .timeline {
   grid-area: timeline;
   padding-left: 1.5rem;
+  align-self: stretch;
+  max-height: 925px;
+  overflow: auto;
 }
 
 .spotify {
@@ -22,9 +27,21 @@
   grid-area: spotify;
 }
 
+.readng {
+  padding: 1.5rem;
+  grid-area: readng;
+}
+
 @media (max-width: 767px) {
   .home {
-    --grid-areas: 'intro' 'timeline' 'spotify' 'footer';
+    --grid-areas: 'intro' 'timeandread' 'spotify' 'footer';
     --grid-columns: 1fr;
+  }
+
+  .timeline {
+    grid-area: timeline;
+    padding-left: 1.5rem;
+    align-self: stretch;
+    max-height: 925px;
   }
 }

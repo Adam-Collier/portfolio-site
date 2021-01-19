@@ -1,5 +1,5 @@
 import React from 'react';
-import { GitPullRequest, GitMerge } from 'react-feather';
+import { GitPullRequest, GitMerge, BatteryCharging } from 'react-feather';
 import { TimelineEntry, DateEntry } from '../Entry';
 import Button from '../../Button';
 
@@ -22,6 +22,12 @@ const January = () => (
         link="https://github.com/Adam-Collier/portfolio-site/pull/54"
       />
     </TimelineEntry>
+    <TimelineEntry
+      Icon={BatteryCharging}
+      timestamp="January 1, 2020"
+      title="Recharging for the year ahead"
+      divider={false}
+    />
   </>
 );
 

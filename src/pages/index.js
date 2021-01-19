@@ -5,6 +5,7 @@ import SEO from '../components/Seo';
 import Timeline from '../components/Timeline';
 import Card from '../components/Card';
 import Spotify from '../components/Spotify';
+import Readng from '../components/Readng';
 
 import styles from './index.module.css';
 
@@ -28,11 +29,17 @@ const IndexPage = ({ location }) => (
         why not make it easier for ourselves.
       </p>
     </Card>
+
+    <Card className={styles.spotify}>
+      <Spotify />
+    </Card>
+
     <Card className={styles.timeline}>
       <Timeline />
     </Card>
-    <Card className={styles.spotify}>
-      <Spotify />
+
+    <Card className={styles.readng}>
+      <Readng />
     </Card>
   </Layout>
 );

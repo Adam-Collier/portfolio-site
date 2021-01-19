@@ -6,7 +6,7 @@ import January from './2021/January';
 const Timeline = ({ className }) => (
   <div className={`${className || ''}`}>
     <January />
-    <December />
+    {/* <December /> */}
   </div>
 );
 

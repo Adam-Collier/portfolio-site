@@ -37,6 +37,27 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-rss-feed`,
+      options: {
+        url: process.env.READNG_READ,
+        name: `ReadngRead`,
+      },
+    },
+    {
+      resolve: `gatsby-source-rss-feed`,
+      options: {
+        url: process.env.READNG_WANT_TO_READ,
+        name: `ReadngWantToRead`,
+      },
+    },
+    {
+      resolve: `gatsby-source-rss-feed`,
+      options: {
+        url: process.env.READNG_CURRENTLY_READING,
+        name: `ReadngCurrentlyReading`,
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `content`,

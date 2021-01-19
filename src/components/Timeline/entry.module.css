@@ -30,9 +30,9 @@
 
 .line {
   flex: 1;
-  width: 1px;
+  width: 0px;
   margin-bottom: -1rem;
-  background: var(--primary-foreground);
+  border-right: dashed 1px var(--primary-foreground);
 }
 
 .contents {

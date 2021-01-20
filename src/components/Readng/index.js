@@ -14,7 +14,6 @@ const Readng = () => {
         title
         creator
         link
-        contentSnippet
       }
       allFeedReadngRead(limit: 3) {
         edges {
@@ -23,7 +22,6 @@ const Readng = () => {
             title
             creator
             link
-            contentSnippet
           }
         }
       }
@@ -49,7 +47,7 @@ const Readng = () => {
 };
 
 const Book = ({ node, finished }) => {
-  const { title, creator, link, contentSnippet } = node;
+  const { title, creator, link } = node;
 
   const finishedClass = finished ? styles.finished : null;
 

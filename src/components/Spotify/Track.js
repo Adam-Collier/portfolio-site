@@ -4,9 +4,9 @@ import { ArrowUpRight } from 'react-feather';
 import styles from './track.module.css';
 
 const Track = ({ track }) => {
-  const { id, artists, name, album, external_urls } = track;
+  const { id, artists, name, album, external_urls: externalUrls } = track;
   const { images } = album;
-  const { spotify: trackUrl } = external_urls;
+  const { spotify: trackUrl } = externalUrls;
 
   const artistNames = artists.map((artist) => artist.name).join(', ');
 

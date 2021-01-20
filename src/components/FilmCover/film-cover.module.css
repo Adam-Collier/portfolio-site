@@ -1,7 +1,7 @@
 .cover .year,
 .cover .genre {
   font-size: 0.875rem;
-  color: var(--foreground-medium);
+  color: var(--foreground-high);
 }
 
 .cover .year {

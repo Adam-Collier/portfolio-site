@@ -11,7 +11,7 @@
 }
 
 .track:hover {
-  background: var(--foreground-low);
+  background: var(--foreground-min);
 }
 
 .track:hover .trackName {
@@ -40,7 +40,7 @@
 
 .artist {
   font-size: 0.875rem;
-  color: var(--foreground-medium);
+  color: var(--foreground-high);
 }
 
 .trackName {

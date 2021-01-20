@@ -29,7 +29,7 @@
 }
 
 .written p:last-of-type {
-  color: var(--foreground-medium);
+  color: var(--foreground-high);
 }
 
 .tags {

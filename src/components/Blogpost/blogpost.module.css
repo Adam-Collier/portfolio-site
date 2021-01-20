@@ -32,7 +32,7 @@
   display: block;
   line-height: 1;
   margin-bottom: 0.35rem;
-  color: var(--foreground-medium);
+  color: var(--foreground-high);
 }
 
 .blogpost h2 {

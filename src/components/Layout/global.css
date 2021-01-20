@@ -585,7 +585,7 @@ thead {
 td,
 th {
   text-align: left;
-  border-bottom: 1px solid var(--foreground-low);
+  border-bottom: 1px solid var(--foreground-min);
   font-feature-settings: 'tnum';
   -moz-font-feature-settings: 'tnum';
   -ms-font-feature-settings: 'tnum';

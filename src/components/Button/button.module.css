@@ -21,7 +21,7 @@
 }
 
 .button:hover {
-  background: var(--foreground-high);
+  background: var(--foreground-max);
 }
 
 .icon {

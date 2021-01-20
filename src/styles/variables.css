@@ -4,9 +4,10 @@
   --primary-foreground: #1f2937;
   --primary-background: #f9fafb;
   --foreground-hover: #b6b6b6;
-  --foreground-high: #374151;
-  --foreground-medium: #9ca3af;
-  --foreground-low: #f3f3f3;
+  --foreground-max: #374151;
+  --foreground-high: #9ca3af;
+  --foreground-low: #ededed;
+  --foreground-min: #f3f3f3;
   --primary-accent: #6d28d9;
   /* in contrast to the foreground */
   --accent-max: #292442;
@@ -44,9 +45,10 @@
   --accent-low: #382f62;
   --accent-min: #1f1c2f;
   --foreground-hover: #868686;
-  --foreground-high: #d8d8d8;
-  --foreground-medium: #9ca3af;
-  --foreground-low: #262626;
+  --foreground-max: #d8d8d8;
+  --foreground-high: #9ca3af;
+  --foreground-low: #2b2b2b;
+  --foreground-min: #262626;
 }
 
 @media (min-width: 1280px) {

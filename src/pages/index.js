@@ -22,7 +22,7 @@ const IndexPage = ({ location }) => (
       pathname={location.pathname}
     />
     <Card className={styles.intro}>
-      <h1>Hey, I'm Adam</h1>
+      <h1>Hey, I'm Adam Collier</h1>
       <p>
         This site is as much for me as it is for you, it acts as a collection of
         thoughts, ideas, and documenting processes. We are always learning, so

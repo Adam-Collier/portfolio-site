@@ -36,7 +36,7 @@
 
 @media (max-width: 767px) {
   .home {
-    --grid-areas: 'intro' 'timeandread' 'spotify' 'footer';
+    --grid-areas: 'intro' 'timeline' 'spotify' 'readng' 'footer';
     --grid-columns: 1fr;
   }
 

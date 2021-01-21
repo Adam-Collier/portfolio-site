@@ -9,8 +9,8 @@
   padding: 0.5rem 0.75rem;
   display: flex;
   align-items: center;
-  background: var(--primary-background);
-  color: var(--primary-foreground);
+  background: var(--primary-foreground);
+  color: var(--primary-background);
   font-size: 0.875rem;
   cursor: pointer;
   margin-bottom: 1.45rem;
@@ -21,7 +21,7 @@
 }
 
 .button:hover {
-  background: var(--button-hover);
+  background: var(--foreground-max);
 }
 
 .icon {

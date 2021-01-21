@@ -80,6 +80,8 @@ export const query = graphql`
                 }
               }
             }
+            description
+            excerpt
             tags
           }
         }

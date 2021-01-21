@@ -6,9 +6,9 @@ import styles from './blogpost.module.css';
 import { timeline as timelineStyles } from './timeline.module.css';
 
 const Blogpost = ({ node, isTimeline }) => {
-  const { frontmatter, fields, excerpt } = node;
+  const { frontmatter, fields } = node;
   const { title, date, slug } = fields;
-  const { description, thumbnail } = frontmatter;
+  const { description, thumbnail, excerpt } = frontmatter;
 
   const { childImageSharp, extension, publicURL } = thumbnail;
 
@@ -27,7 +27,7 @@ const Blogpost = ({ node, isTimeline }) => {
         <section>
           {!isTimeline && <small>{date}</small>}
           <h2>{title}</h2>
-          <p>{description || excerpt}</p>
+          <p>{excerpt || description}</p>
         </section>
       </Link>
     </article>

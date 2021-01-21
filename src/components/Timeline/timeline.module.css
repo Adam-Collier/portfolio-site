@@ -1,9 +1,0 @@
-.timeline {
-  background: var(--primary-accent);
-  width: 100%;
-  max-width: 520px;
-}
-
-.timeline h3 {
-  color: var(--primary-background);
-}

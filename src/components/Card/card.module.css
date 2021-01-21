@@ -1,0 +1,11 @@
+.card {
+  padding: 2rem;
+  border: 1px solid var(--foreground-low);
+  border-radius: var(--border-radius);
+  width: 100%;
+  align-self: flex-start;
+}
+
+.card > *:last-child {
+  margin-bottom: 0;
+}

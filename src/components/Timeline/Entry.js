@@ -4,7 +4,6 @@ import styles from './entry.module.css';
 const DateEntry = ({ date }) => (
   <div className={styles.dateEntry}>
     <h3>{date}</h3>
-    <div className={styles.stroke} />
   </div>
 );
 
@@ -18,7 +17,7 @@ const TimelineEntry = ({
   <div className={styles.entry}>
     <div className={styles.thread}>
       <div className={styles.icon}>
-        <Icon size={16} />
+        <Icon size={14} />
       </div>
       {divider && <div className={styles.line} />}
     </div>

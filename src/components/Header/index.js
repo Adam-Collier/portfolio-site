@@ -38,6 +38,7 @@ const Header = ({ location, className, isClose, onClick }) => {
                 className={styles.avatar}
                 style={{ width: '38px', height: '38px' }}
                 fixed={data.file.childImageSharp.fixed}
+                alt="Adam Collier Logo"
               />
               Adam Collier
             </Link>

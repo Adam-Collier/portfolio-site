@@ -29,7 +29,7 @@
 }
 
 .written p:last-of-type {
-  color: var(--foreground-medium);
+  color: var(--foreground-high);
 }
 
 .tags {
@@ -54,7 +54,6 @@
 
 .heroWrapper {
   --header-background: none;
-  --nav-text-color: var(--header-text-color);
 }
 
 @media (max-width: 767px) {

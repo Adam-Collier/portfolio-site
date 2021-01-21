@@ -1,0 +1,45 @@
+.book {
+  position: relative;
+  display: block;
+  color: var(--primary-foreground);
+  text-decoration: none;
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+}
+
+.book:hover .title {
+  text-decoration: underline;
+}
+
+.book:hover {
+  background: var(--foreground-min);
+}
+
+.book:hover .icon {
+  background: var(--primary-background);
+}
+
+.title {
+  margin-bottom: 0.25rem;
+}
+
+.author {
+  color: var(--foreground-high);
+  font-size: 0.875rem;
+  margin-bottom: 0;
+}
+
+.icon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0.5rem;
+  border-radius: 50%;
+  background: var(--foreground-min);
+}
+
+.icon svg {
+  display: block;
+  margin-bottom: 0;
+}

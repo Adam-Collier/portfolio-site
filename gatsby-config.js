@@ -1,3 +1,8 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
   siteMetadata: {
     title: `Adam Collier`,
@@ -19,10 +24,39 @@ module.exports = {
         disable: true,
       },
     },
-    `gatsby-plugin-preact`,
+    // `gatsby-plugin-preact`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-robots-txt`,
     `gatsby-plugin-sitemap`,
+    {
+      resolve: `spotify-source`,
+      options: {
+        clientId: process.env.SPOTIFY_CLIENT_ID,
+        clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
+        refreshToken: process.env.SPOTIFY_REFRESH_TOKEN,
+      },
+    },
+    {
+      resolve: `gatsby-source-rss-feed`,
+      options: {
+        url: process.env.READNG_READ,
+        name: `ReadngRead`,
+      },
+    },
+    {
+      resolve: `gatsby-source-rss-feed`,
+      options: {
+        url: process.env.READNG_WANT_TO_READ,
+        name: `ReadngWantToRead`,
+      },
+    },
+    {
+      resolve: `gatsby-source-rss-feed`,
+      options: {
+        url: process.env.READNG_CURRENTLY_READING,
+        name: `ReadngCurrentlyReading`,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {

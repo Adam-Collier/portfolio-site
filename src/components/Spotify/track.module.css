@@ -1,0 +1,50 @@
+.track {
+  display: grid;
+  position: relative;
+  grid-template-columns: 72px 1fr;
+  padding: 0.5rem 2rem 0.5rem 0.5rem;
+  text-decoration: none;
+}
+
+.track * {
+  margin-bottom: 0;
+}
+
+.track:hover {
+  background: var(--foreground-min);
+}
+
+.track:hover .trackName {
+  text-decoration: underline;
+}
+
+.track:hover .arrow {
+  stroke: var(--primary-foreground);
+}
+
+.track img {
+  margin-bottom: 0;
+  border-radius: var(--border-radius);
+}
+
+.track div {
+  padding-left: 1rem;
+}
+
+.arrow {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  stroke: transparent;
+}
+
+.artist {
+  font-size: 0.875rem;
+  color: var(--foreground-high);
+}
+
+.trackName {
+  font-weight: 500;
+  color: var(--primary-foreground);
+  margin-bottom: 0.125rem;
+}

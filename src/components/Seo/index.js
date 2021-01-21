@@ -76,6 +76,7 @@ function SEO({
         titleTemplate={`%s | ${site.siteMetadata.title}`}
       >
         {/* General tags */}
+        <meta name="robots" content="index, follow" />
         <meta name="googlebot" content="index,follow" />
         <meta
           name="google-site-verification"

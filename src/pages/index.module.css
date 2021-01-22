@@ -38,6 +38,7 @@
   .home {
     --grid-areas: 'intro' 'timeline' 'spotify' 'readng' 'footer';
     --grid-columns: 1fr;
+    padding: var(--container-padding) 0 0;
   }
 
   .timeline {

@@ -9,3 +9,10 @@
 .card > *:last-child {
   margin-bottom: 0;
 }
+
+@media (max-width: 767px) {
+  .card {
+    padding: 2rem;
+    border: none;
+  }
+}

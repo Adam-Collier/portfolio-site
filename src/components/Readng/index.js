@@ -30,10 +30,7 @@ const Readng = () => {
 
   return (
     <>
-      <p>
-        {/* I'm current using <a href="https://beta.readng.co">Readng</a> to keep
-        tabs on what I've read and enjoyed. Below are some of the recent books
-        I've read and what I'm reading at the moment.  */}
+      <p className={styles.intro}>
         Want to know what I'm reading right now or looking for a new book to
         try? Here's exactly that, taken from my{' '}
         <a href="https://beta.readng.co">Readng</a>.

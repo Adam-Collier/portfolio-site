@@ -24,9 +24,11 @@ const IndexPage = ({ location }) => (
     <Card className={styles.intro}>
       <h1>Hey, I'm Adam Collier</h1>
       <p>
-        This site is as much for me as it is for you, it acts as a collection of
-        thoughts, ideas, and documenting processes. We are always learning, so
-        why not make it easier for ourselves.
+        A designer and developer from Manchester, UK. Instead of the traditional
+        portfolio site that never gets updated I wanted to make something
+        functional, practical and useful in my day to day. It will exist as an
+        ever growing repository of ideas, productivity helpers and things I
+        enjoy. Something noteworthy I should add? Send me a message.
       </p>
     </Card>
 

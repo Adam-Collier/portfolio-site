@@ -1,11 +1,27 @@
 import React from 'react';
-import { GitPullRequest, GitMerge, BatteryCharging } from 'react-feather';
+import {
+  GitPullRequest,
+  GitMerge,
+  BatteryCharging,
+  Layout,
+} from 'react-feather';
 import { TimelineEntry, DateEntry } from '../Entry';
 import Button from '../../Button';
 
 const January = () => (
   <>
     <DateEntry date="January, 2021" />
+    <TimelineEntry
+      Icon={Layout}
+      timestamp="January 22, 2021"
+      title="New Homepage Layout"
+    >
+      <p>
+        A new homepage layout which I'm feelin' pretty good about. Spotify and
+        Readng cards have been added which will update on every build (since
+        this is a Gatsby site).
+      </p>
+    </TimelineEntry>
 
     <TimelineEntry
       Icon={GitMerge}

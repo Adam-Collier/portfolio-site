@@ -1,13 +1,21 @@
 ---
-description: Not gonna lie masonry can be a bit of a bitch. Let's create our own layout using CSS variables and some javascript.
+description:
+  Not gonna lie masonry can be a bit of a bitch. Let's create our own layout
+  using CSS variables and some javascript.
+excerpt: Masonry can be a right pain, let's make it easier for ourselves.
 featured: ./featured-image.png
 thumbnail: ./thumbnail.jpg
 category: Code
-tags: ["CSS", "CSS grid"]
+tags: ['CSS', 'CSS grid']
 published: true
 ---
 
-In a recent project I came across a nifty way to create a masonry grid layout using CSS grid and a smidge of javascript . Initially I thought about using something like Masonry.js or Isotope but it kinda felt a little bit overkill. Whats cool about this approach its super flexible and it’s not relying on any frameworks! I’m going to try and keep this post short and sweet so you can get up and running and enjoy this trick yourselves.
+In a recent project I came across a nifty way to create a masonry grid layout
+using CSS grid and a smidge of javascript . Initially I thought about using
+something like Masonry.js or Isotope but it kinda felt a little bit overkill.
+Whats cool about this approach its super flexible and it’s not relying on any
+frameworks! I’m going to try and keep this post short and sweet so you can get
+up and running and enjoy this trick yourselves.
 
 Lets get started by adding some HTML to an index.html file
 
@@ -53,7 +61,8 @@ Lets get started by adding some HTML to an index.html file
 </div>
 ```
 
-Here we have created a simple grid with some grid items. Note: the padding-top and lazyloaded are to prevent the jumping of content when your images load in.
+Here we have created a simple grid with some grid items. Note: the padding-top
+and lazyloaded are to prevent the jumping of content when your images load in.
 
 Now lets create some css
 
@@ -96,9 +105,18 @@ img {
 }
 ```
 
-Essentially what we are doing here is telling `.grid` that we want to display a responsive grid of items. minmax(300px, var( — template-columns, 1fr)) does a lot of the heavy lifting for us here by creating repeating columns with a minimum width of 300px and a max width of 1fr (fr is a fractional unit), when a column width falls below the minimum value the layout reshuffles and the number of columns reduces.
+Essentially what we are doing here is telling `.grid` that we want to display a
+responsive grid of items. minmax(300px, var( — template-columns, 1fr)) does a
+lot of the heavy lifting for us here by creating repeating columns with a
+minimum width of 300px and a max width of 1fr (fr is a fractional unit), when a
+column width falls below the minimum value the layout reshuffles and the number
+of columns reduces.
 
-Some things to note here is grid-auto-rows: 5px which is what is going to allow us to create our masonry layout. Some stylistic preferences I have is to use grid-gap-columns and padding-bottom to create the spacing between elements. The reason for this is I found the spacing to become noticeably inconsistent if grid-gap-rows is also used.
+Some things to note here is grid-auto-rows: 5px which is what is going to allow
+us to create our masonry layout. Some stylistic preferences I have is to use
+grid-gap-columns and padding-bottom to create the spacing between elements. The
+reason for this is I found the spacing to become noticeably inconsistent if
+grid-gap-rows is also used.
 
 ```js
 const grid = document.querySelector('.grid')
@@ -146,8 +164,23 @@ document.addEventListener('DOMContentLoaded', event => {
 window.addEventListener('resize', debounce(positionGridItems, 20))
 ```
 
-Now here is where all of the magic happens. Firstly we get the grid and grid item DOM elements, we set the `rowSize` value (which is equivalent to the grid-auto-rows value in our css file). We create a `setColumns` function which changes the `grid-template-columns` variable if there are less than three items (a full row) to keep the grid item sizes consistent.
+Now here is where all of the magic happens. Firstly we get the grid and grid
+item DOM elements, we set the `rowSize` value (which is equivalent to the
+grid-auto-rows value in our css file). We create a `setColumns` function which
+changes the `grid-template-columns` variable if there are less than three items
+(a full row) to keep the grid item sizes consistent.
 
-In our positionGridItems function we are looping through our gridItems , if the browser is less than 711px inline styles are removed. Anything above 711px we are getting the height of each item and dividing it by our rowSize value. Then we are setting our --row-span variable which is the value of our grid-row-ends css property. And that is pretty much all of the hard work done! We then go onto create a debounce function (taken from a David Walsh post) and then call our positionGridItems function on the DOMContendLoaded event. We call it on the DomContentLoaded event to prevent a flickering of content. Then to top it all off we add a debounced event listener to call the function again when the browser is resized
+In our positionGridItems function we are looping through our gridItems , if the
+browser is less than 711px inline styles are removed. Anything above 711px we
+are getting the height of each item and dividing it by our rowSize value. Then
+we are setting our --row-span variable which is the value of our grid-row-ends
+css property. And that is pretty much all of the hard work done! We then go onto
+create a debounce function (taken from a David Walsh post) and then call our
+positionGridItems function on the DOMContendLoaded event. We call it on the
+DomContentLoaded event to prevent a flickering of content. Then to top it all
+off we add a debounced event listener to call the function again when the
+browser is resized
 
-I hope you have enjoyed this post and don’t hesitate to HMU if you have any questions or just want to say hi 👋 [@collieradam](https://twitter.com/collieradam)
+I hope you have enjoyed this post and don’t hesitate to HMU if you have any
+questions or just want to say hi 👋
+[@collieradam](https://twitter.com/collieradam)

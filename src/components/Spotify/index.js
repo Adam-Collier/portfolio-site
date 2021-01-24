@@ -15,16 +15,15 @@ const TopTracks = () => {
               name
             }
             name
-            album {
-              id
-              images {
-                height
-                url
-                width
-              }
-            }
             external_urls {
               spotify
+            }
+            remoteImage {
+              childImageSharp {
+                fluid(maxWidth: 72) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
             }
           }
         }

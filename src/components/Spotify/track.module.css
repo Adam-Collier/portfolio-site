@@ -8,6 +8,7 @@
   grid-template-columns: 72px 1fr;
   padding: 0.5rem 2rem 0.5rem 0.5rem;
   text-decoration: none;
+  grid-gap: 1rem;
 }
 
 .track * {
@@ -31,8 +32,8 @@
   border-radius: var(--border-radius);
 }
 
-.track div {
-  padding-left: 1rem;
+.image {
+  width: 100%;
 }
 
 .arrow {

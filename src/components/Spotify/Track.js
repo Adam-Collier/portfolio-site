@@ -1,11 +1,11 @@
 import React from 'react';
+import Image from 'gatsby-image';
 
 import { ArrowUpRight } from 'react-feather';
 import styles from './track.module.css';
 
 const Track = ({ track }) => {
-  const { id, artists, name, album, external_urls: externalUrls } = track;
-  const { images } = album;
+  const { id, artists, name, external_urls: externalUrls, remoteImage } = track;
   const { spotify: trackUrl } = externalUrls;
 
   const artistNames = artists.map((artist) => artist.name).join(', ');
@@ -19,7 +19,10 @@ const Track = ({ track }) => {
       rel="noopener noreferrer"
     >
       <ArrowUpRight className={styles.arrow} size={18} />
-      <img src={images[1].url} alt="" />
+      <Image
+        fluid={remoteImage.childImageSharp.fluid}
+        className={styles.image}
+      />
       <div>
         <p className={styles.trackName}>{name}</p>
         <p className={styles.artist}>{artistNames}</p>

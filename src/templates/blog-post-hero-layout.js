@@ -26,8 +26,6 @@ const BlogPostTemplate = ({ data, location }) => {
     invertHeaderColor,
   } = frontmatter;
 
-  const [isImageLoaded, setImageLoaded] = useState(false);
-
   const { tableOfContents, timeToRead } = post;
 
   const {
@@ -131,8 +129,6 @@ const BlogPostTemplate = ({ data, location }) => {
               );
             })}
             <img
-              onLoad={() => setImageLoaded(true)}
-              style={{ opacity: isImageLoaded ? 1 : 0 }}
               src={desktopFallback.src}
               srcSet={desktopFallback.srcSet}
               loading="lazy"

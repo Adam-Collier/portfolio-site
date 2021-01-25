@@ -1,7 +1,7 @@
 .film {
   --cover-width: 120px;
   display: grid;
-  grid-template-areas: "cover title" "cover content";
+  grid-template-areas: 'cover title' 'cover content';
   grid-template-columns: var(--cover-width) 1fr;
   grid-column-gap: 1.5rem;
   padding: 1.5rem 0;
@@ -32,7 +32,7 @@
 @media (max-width: 768px) {
   .film {
     --cover-width: 100px;
-    grid-template-areas: "title" "cover" "content";
+    grid-template-areas: 'title' 'cover' 'content';
     grid-template-columns: 1fr;
   }
 

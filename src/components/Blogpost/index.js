@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import Image from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 import styles from './blogpost.module.css';
 import { timeline as timelineStyles } from './timeline.module.css';
@@ -22,7 +22,7 @@ const Blogpost = ({ node, isTimeline }) => {
             <source src={publicURL} type="video/mp4" />
           </video>
         ) : (
-          <Image fluid={childImageSharp.fluid} alt={title} />
+          <GatsbyImage image={childImageSharp.gatsbyImageData} alt={title} />
         )}
         <section>
           {!isTimeline && <small>{date}</small>}

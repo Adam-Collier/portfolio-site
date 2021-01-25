@@ -49,7 +49,7 @@ const Blog = ({ data, location }) => {
 export default React.memo(Blog);
 
 export const query = graphql`
-  query {
+  {
     site {
       siteMetadata {
         title
@@ -75,9 +75,12 @@ export const query = graphql`
               publicURL
               extension
               childImageSharp {
-                fluid(maxWidth: 114, quality: 90, toFormat: JPG) {
-                  ...GatsbyImageSharpFluid_withWebp
-                }
+                gatsbyImageData(
+                  width: 114
+                  quality: 90
+                  formats: [AUTO, WEBP, AVIF]
+                  layout: CONSTRAINED
+                )
               }
             }
             description

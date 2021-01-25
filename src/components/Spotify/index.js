@@ -20,9 +20,11 @@ const TopTracks = () => {
             }
             remoteImage {
               childImageSharp {
-                fluid(maxWidth: 72) {
-                  ...GatsbyImageSharpFluid_withWebp
-                }
+                gatsbyImageData(
+                  width: 72
+                  layout: CONSTRAINED
+                  formats: [AUTO, WEBP, AVIF]
+                )
               }
             }
           }

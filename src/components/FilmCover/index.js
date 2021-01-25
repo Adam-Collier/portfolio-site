@@ -11,7 +11,7 @@ const FilmCover = ({ cover, title, year, genre, rating = 1, className }) => {
           node {
             childImageSharp {
               gatsbyImageData(
-                width: 114
+                width: 135
                 quality: 90
                 formats: [AUTO, WEBP, AVIF]
                 layout: CONSTRAINED
@@ -35,6 +35,7 @@ const FilmCover = ({ cover, title, year, genre, rating = 1, className }) => {
           image={filmCover.childImageSharp.gatsbyImageData}
           className={styles.image}
           alt={`${title} film cover`}
+          sizes="(max-width: 600px) 128px, 135px"
         />
       </div>
       <p className={styles.genre}>{genre}</p>

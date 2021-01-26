@@ -9,8 +9,12 @@
   color: var(--header-text-color);
 }
 
+:global(.page-wrapper) {
+  background: var(--header-background);
+}
+
 .container {
-  --header-padding: 1rem;
+  --header-padding: 23px;
   max-width: var(--max-layout-width);
   padding: var(--header-padding) var(--content-x-padding);
   margin: 0 auto;
@@ -34,10 +38,6 @@
   align-items: center;
 }
 
-.headerLeft {
-  margin-left: -0.5rem;
-}
-
 .headerLeft a {
   text-decoration: none;
   color: var(--header-text-color);
@@ -52,10 +52,6 @@
   background: none;
   line-height: 0;
   margin-left: 1.25rem;
-}
-
-.avatar {
-  margin-right: 0.25rem;
 }
 
 @media (max-width: 1024px) {

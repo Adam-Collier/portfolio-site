@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 
 import MDX from '../components/MDX';
-import Layout from '../components/Layout';
+import Page from '../components/Page';
 import SEO from '../components/Seo';
 import Resource from '../components/Resource';
 import Sidebar from '../components/Sidebar';
@@ -14,7 +14,7 @@ const ResourceTemplate = ({ data, location }) => {
   const { title, description } = frontmatter;
 
   return (
-    <Layout containerType="fluid" location={location.pathname}>
+    <Page containerType="fluid" location={location}>
       <SEO
         title={`${title} Resources`}
         description={description || excerpt}
@@ -38,7 +38,7 @@ const ResourceTemplate = ({ data, location }) => {
         </header>
         <MDX body={body} />
       </Content>
-    </Layout>
+    </Page>
   );
 };
 

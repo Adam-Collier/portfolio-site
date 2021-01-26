@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { graphql } from 'gatsby';
 
-import Layout from '../components/Layout';
+import Page from '../components/Page';
 import SEO from '../components/Seo';
 import Blogposts from '../components/Blogposts';
 import TagFilters from '../components/TagFilter';
@@ -31,7 +31,7 @@ const Blog = ({ data, location }) => {
     'A collection of writing which can range from talking about code, design or life in general. Enjoy this eclectic collection of writings';
 
   return (
-    <Layout containerType="fluid" location={location.pathname}>
+    <Page containerType="fluid" location={location}>
       <SEO
         title="Blog"
         description={description}
@@ -42,7 +42,7 @@ const Blog = ({ data, location }) => {
         categories={categories}
         description={description}
       />
-    </Layout>
+    </Page>
   );
 };
 

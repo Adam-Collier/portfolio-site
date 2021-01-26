@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 
 import MDX from '../components/MDX';
-import Layout from '../components/Layout';
+import Page from '../components/Page';
 import SEO from '../components/Seo';
 import Sidebar from '../components/Sidebar';
 import Content from '../components/Content';
@@ -27,10 +27,10 @@ const BlogPostTemplate = ({ data, location }) => {
     : null;
 
   return (
-    <Layout
+    <Page
       containerType="fluid"
       containerClass={styles.blogpost}
-      location={location.pathname}
+      location={location}
     >
       <SEO
         title={title}
@@ -81,7 +81,7 @@ const BlogPostTemplate = ({ data, location }) => {
         </section>
       </Content>
       <MorePosts data={data.allMdx} />
-    </Layout>
+    </Page>
   );
 };
 

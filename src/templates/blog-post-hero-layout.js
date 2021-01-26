@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { graphql } from 'gatsby';
 
 import MDX from '../components/MDX';
-import Layout from '../components/Layout';
+import Page from '../components/Page';
 import SEO from '../components/Seo';
 import Sidebar from '../components/Sidebar';
 import Content from '../components/Content';
@@ -40,7 +40,7 @@ const BlogPostTemplate = ({ data, location }) => {
   } = mobileFeatured.childImageSharp.gatsbyImageData.images;
 
   useEffect(() => {
-    const wrapper = document.querySelector(`.${styles.heroWrapper}`);
+    const wrapper = document.querySelector(`.page-wrapper`);
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -81,7 +81,7 @@ const BlogPostTemplate = ({ data, location }) => {
     : null;
 
   return (
-    <Layout
+    <Page
       containerType="fluid"
       wrapperClass={styles.heroWrapper}
       containerClass={styles.heroBlogpost}
@@ -103,29 +103,25 @@ const BlogPostTemplate = ({ data, location }) => {
             {desktopSources.map((source, index) => {
               const { type, srcSet, sizes } = source;
               return (
-                <>
-                  <source
-                    key={index}
-                    type={type}
-                    srcSet={srcSet}
-                    sizes={sizes}
-                    media="(min-width: 768px)"
-                  />
-                </>
+                <source
+                  key={index}
+                  type={type}
+                  srcSet={srcSet}
+                  sizes={sizes}
+                  media="(min-width: 768px)"
+                />
               );
             })}
             {mobileSources.map((source, index) => {
               const { type, srcSet, sizes } = source;
               return (
-                <>
-                  <source
-                    key={index}
-                    type={type}
-                    srcSet={srcSet}
-                    sizes={sizes}
-                    media="(max-width: 767px)"
-                  />
-                </>
+                <source
+                  key={index}
+                  type={type}
+                  srcSet={srcSet}
+                  sizes={sizes}
+                  media="(max-width: 767px)"
+                />
               );
             })}
             <img
@@ -171,7 +167,7 @@ const BlogPostTemplate = ({ data, location }) => {
         </section>
       </Content>
       <MorePosts data={data.allMdx} />
-    </Layout>
+    </Page>
   );
 };
 

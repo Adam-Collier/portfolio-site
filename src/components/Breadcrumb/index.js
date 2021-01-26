@@ -22,7 +22,7 @@ const Breadcrumb = ({ location }) => {
     navigate('/blog');
   });
 
-  const locationString = location.split('/')[1];
+  const locationString = location.pathname.split('/')[1];
 
   const locationName = locationString
     ? locationString.charAt(0).toUpperCase() + locationString.slice(1)

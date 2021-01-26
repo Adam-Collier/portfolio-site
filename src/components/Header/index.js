@@ -16,33 +16,12 @@ import CloseIcon from '../../icons/close_icon.svg';
 const Header = ({ location, className, isClose, onClick }) => {
   const dispatch = useContext()[1];
 
-  const data = useStaticQuery(graphql`
-    {
-      file(relativePath: { eq: "avatar.png" }) {
-        childImageSharp {
-          gatsbyImageData(
-            width: 40
-            height: 40
-            formats: [AUTO, WEBP, AVIF]
-            layout: FIXED
-          )
-        }
-      }
-    }
-  `);
-
   return (
     <>
       <header className={`${styles.header} ${className || ''}`}>
         <div className={styles.container}>
           <div className={styles.headerLeft}>
             <Link to="/" onClick={onClick || null}>
-              <GatsbyImage
-                image={data.file.childImageSharp.gatsbyImageData}
-                className={styles.avatar}
-                style={{ width: '38px', height: '38px' }}
-                alt="Adam Collier Logo"
-              />
               Adam Collier
             </Link>
             {useMediaQuery('(min-width: 768px)') && location && (

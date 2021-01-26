@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 
 import MDX from '../components/MDX';
-import Layout from '../components/Layout';
+import Page from '../components/Page';
 import SEO from '../components/Seo';
 import Sidebar from '../components/Sidebar';
 import Content from '../components/Content';
@@ -24,7 +24,7 @@ const Snippets = ({ data, location }) => {
     "There's nothing worse than almost remembering a bit of code you saw on stackoverflow on in a blogpost once. So I've collated all of the ones I find most useful.";
 
   return (
-    <Layout containerType="fluid" location={location.pathname}>
+    <Page containerType="fluid" location={location}>
       <SEO
         title="Snippets"
         description={description}
@@ -47,7 +47,7 @@ const Snippets = ({ data, location }) => {
           return <MDX key={key} body={body} />;
         })}
       </Content>
-    </Layout>
+    </Page>
   );
 };
 

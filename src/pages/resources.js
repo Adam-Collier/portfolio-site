@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 
 import MDX from '../components/MDX';
-import Layout from '../components/Layout';
+import Page from '../components/Page';
 import SEO from '../components/Seo';
 import Resource from '../components/Resource';
 import Sidebar from '../components/Sidebar';
@@ -17,7 +17,7 @@ const ResourceTemplate = ({ data, location }) => {
     'This is a group of resources I have either learned something from or thought could become useful in the future.';
 
   return (
-    <Layout containerType="fluid" location={location.pathname}>
+    <Page containerType="fluid" location={location}>
       <SEO
         title="Resources"
         description={description || excerpt}
@@ -43,7 +43,7 @@ const ResourceTemplate = ({ data, location }) => {
         </header>
         <MDX body={body} />
       </Content>
-    </Layout>
+    </Page>
   );
 };
 

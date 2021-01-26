@@ -4,6 +4,7 @@ import {
   GitMerge,
   BatteryCharging,
   Layout,
+  Image,
 } from 'react-feather';
 import { TimelineEntry, DateEntry } from '../Entry';
 import Button from '../../Button';
@@ -11,6 +12,17 @@ import Button from '../../Button';
 const January = () => (
   <>
     <DateEntry date="January, 2021" />
+    <TimelineEntry
+      Icon={Image}
+      timestamp="January 26, 2021"
+      title="Gatsby Image Plugin Beta"
+    >
+      <p>
+        Images on this site have been updated to use the new Gatsby Image beta
+        plugin. This will have a lot of benefits going forward, including
+        support for the new AVIF format.
+      </p>
+    </TimelineEntry>
     <TimelineEntry
       Icon={Layout}
       timestamp="January 22, 2021"

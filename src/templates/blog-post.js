@@ -1,9 +1,9 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import Image from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 import MDX from '../components/MDX';
-import Layout from '../components/Layout';
+import Page from '../components/Page';
 import SEO from '../components/Seo';
 import Sidebar from '../components/Sidebar';
 import Content from '../components/Content';
@@ -27,10 +27,10 @@ const BlogPostTemplate = ({ data, location }) => {
     : null;
 
   return (
-    <Layout
+    <Page
       containerType="fluid"
       containerClass={styles.blogpost}
-      location={location.pathname}
+      location={location}
     >
       <SEO
         title={title}
@@ -69,7 +69,7 @@ const BlogPostTemplate = ({ data, location }) => {
           <h1 id="introduction">{title}</h1>
         </header>
         {featured && (
-          <Image
+          <GatsbyImage
             style={{
               marginBottom: '2rem',
             }}
@@ -81,7 +81,7 @@ const BlogPostTemplate = ({ data, location }) => {
         </section>
       </Content>
       <MorePosts data={data.allMdx} />
-    </Layout>
+    </Page>
   );
 };
 
@@ -145,9 +145,12 @@ export const pageQuery = graphql`
           frontmatter {
             thumbnail {
               childImageSharp {
-                fluid(maxWidth: 114, quality: 90, toFormat: JPG) {
-                  ...GatsbyImageSharpFluid_withWebp
-                }
+                gatsbyImageData(
+                  width: 114
+                  quality: 90
+                  formats: [AUTO, WEBP, AVIF]
+                  layout: CONSTRAINED
+                )
               }
             }
             tags

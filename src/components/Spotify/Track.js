@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 import { ArrowUpRight } from 'react-feather';
 import styles from './track.module.css';
@@ -19,8 +19,8 @@ const Track = ({ track }) => {
       rel="noopener noreferrer"
     >
       <ArrowUpRight className={styles.arrow} size={18} />
-      <Image
-        fluid={remoteImage.childImageSharp.fluid}
+      <GatsbyImage
+        image={remoteImage.childImageSharp.gatsbyImageData}
         className={styles.image}
       />
       <div>

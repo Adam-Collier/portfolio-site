@@ -20,9 +20,11 @@ const TopTracks = () => {
             }
             remoteImage {
               childImageSharp {
-                fluid(maxWidth: 72) {
-                  ...GatsbyImageSharpFluid_withWebp
-                }
+                gatsbyImageData(
+                  width: 72
+                  layout: CONSTRAINED
+                  formats: [AUTO, WEBP, AVIF]
+                )
               }
             }
           }
@@ -37,8 +39,8 @@ const TopTracks = () => {
         Wondering what music I’m loving right now? Here’s my top tracks from
         Spotify.
       </p>
-      {allTopTracks.edges.map(({ node }) => (
-        <Track track={node} />
+      {allTopTracks.edges.map(({ node }, index) => (
+        <Track track={node} key={index} />
       ))}
     </>
   );

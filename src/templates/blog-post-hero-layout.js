@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
 import { graphql } from 'gatsby';
-import Image from 'gatsby-image';
 
 import MDX from '../components/MDX';
-import Layout from '../components/Layout';
+import Page from '../components/Page';
 import SEO from '../components/Seo';
 import Sidebar from '../components/Sidebar';
 import Content from '../components/Content';
@@ -29,8 +28,19 @@ const BlogPostTemplate = ({ data, location }) => {
 
   const { tableOfContents, timeToRead } = post;
 
+  const {
+    images: desktopImages,
+    backgroundColor,
+  } = desktopFeatured.childImageSharp.gatsbyImageData;
+
+  const { fallback: desktopFallback, sources: desktopSources } = desktopImages;
+
+  const {
+    sources: mobileSources,
+  } = mobileFeatured.childImageSharp.gatsbyImageData.images;
+
   useEffect(() => {
-    const wrapper = document.querySelector(`.${styles.heroWrapper}`);
+    const wrapper = document.querySelector(`.page-wrapper`);
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -70,16 +80,8 @@ const BlogPostTemplate = ({ data, location }) => {
     ? post.frontmatter.image.childImageSharp.resize
     : null;
 
-  const featuredSources = [
-    mobileFeatured.childImageSharp.fluid,
-    {
-      ...desktopFeatured.childImageSharp.fluid,
-      media: `(min-width: 768px)`,
-    },
-  ];
-
   return (
-    <Layout
+    <Page
       containerType="fluid"
       wrapperClass={styles.heroWrapper}
       containerClass={styles.heroBlogpost}
@@ -93,7 +95,43 @@ const BlogPostTemplate = ({ data, location }) => {
         publishDate={date}
       />
       <div className={styles.heroImageWrapper}>
-        <Image fluid={featuredSources} className={styles.heroImage} />
+        <div
+          className={styles.heroImage}
+          style={{ background: backgroundColor }}
+        >
+          <picture>
+            {desktopSources.map((source, index) => {
+              const { type, srcSet, sizes } = source;
+              return (
+                <source
+                  key={index}
+                  type={type}
+                  srcSet={srcSet}
+                  sizes={sizes}
+                  media="(min-width: 768px)"
+                />
+              );
+            })}
+            {mobileSources.map((source, index) => {
+              const { type, srcSet, sizes } = source;
+              return (
+                <source
+                  key={index}
+                  type={type}
+                  srcSet={srcSet}
+                  sizes={sizes}
+                  media="(max-width: 767px)"
+                />
+              );
+            })}
+            <img
+              src={desktopFallback.src}
+              srcSet={desktopFallback.srcSet}
+              loading="lazy"
+              alt="Adam Collier Hero"
+            />
+          </picture>
+        </div>
       </div>
       <Sidebar
         description={useMediaQuery('(min-width: 768px)') ? description : ''}
@@ -129,7 +167,7 @@ const BlogPostTemplate = ({ data, location }) => {
         </section>
       </Content>
       <MorePosts data={data.allMdx} />
-    </Layout>
+    </Page>
   );
 };
 
@@ -158,16 +196,24 @@ export const pageQuery = graphql`
         invertHeaderColor
         desktopFeatured: featured {
           childImageSharp {
-            fluid(maxWidth: 1440, maxHeight: 600, quality: 90) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
+            gatsbyImageData(
+              quality: 70
+              formats: [AUTO, JPG, WEBP, AVIF]
+              layout: FULL_WIDTH
+              aspectRatio: 2.4
+              breakpoints: [750, 1080, 1366, 1440, 1920]
+            )
           }
         }
         mobileFeatured: featured {
           childImageSharp {
-            fluid(maxWidth: 360, maxHeight: 305, quality: 90) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
+            gatsbyImageData(
+              quality: 80
+              formats: [AUTO, JPG, WEBP, AVIF]
+              layout: FULL_WIDTH
+              aspectRatio: 1.18
+              breakpoints: [750, 828, 1080, 1366, 1920]
+            )
           }
         }
         image: featured {
@@ -201,9 +247,12 @@ export const pageQuery = graphql`
           frontmatter {
             thumbnail {
               childImageSharp {
-                fluid(maxWidth: 114, quality: 90, toFormat: JPG) {
-                  ...GatsbyImageSharpFluid_withWebp
-                }
+                gatsbyImageData(
+                  width: 114
+                  quality: 90
+                  formats: [AUTO, WEBP, AVIF]
+                  layout: CONSTRAINED
+                )
               }
             }
             excerpt

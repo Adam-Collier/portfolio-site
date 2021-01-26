@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Layout from '../components/Layout';
+import Page from '../components/Page';
 import SEO from '../components/Seo';
 import Timeline from '../components/Timeline';
 import Card from '../components/Card';
@@ -10,11 +10,11 @@ import Readng from '../components/Readng';
 import styles from './index.module.css';
 
 const IndexPage = ({ location }) => (
-  <Layout
+  <Page
     wrapperClass={styles.homeWrapper}
     containerClass={styles.home}
     containerType="fluid"
-    location={location.pathname}
+    location={location}
   >
     <SEO
       title=""
@@ -43,7 +43,7 @@ const IndexPage = ({ location }) => (
     <Card className={styles.readng}>
       <Readng />
     </Card>
-  </Layout>
+  </Page>
 );
 
 export default IndexPage;

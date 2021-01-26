@@ -63,10 +63,6 @@
   border-radius: 1px;
 }
 
-.heroWrapper {
-  --header-background: none;
-}
-
 @media (max-width: 767px) {
   .blogpost {
     --grid-areas: 'content' 'sidebar' 'moreposts' 'footer';

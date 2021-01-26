@@ -1,6 +1,6 @@
 .home {
-  --grid-areas: 'intro timeline' 'spotify timeline' 'spotify readng' 'spotify .'
-    'footer footer';
+  --grid-areas: 'intro timeline' 'spotify timeline' 'spotify readng'
+    'spotify readng' 'footer footer';
   --grid-columns: 1fr 1.25fr;
   grid-template-rows: minmax(0, 1fr);
   max-width: 1024px;

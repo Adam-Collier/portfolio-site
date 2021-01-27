@@ -17,10 +17,10 @@
   --border-radius: 2px;
   --sidebar-width: 300px;
   --content-width: 100%;
-  --max-content-width: 740px;
-  --max-layout-width: 1280px;
+  --max-content-width: 70ch;
+  --max-layout-width: 1200px;
   --grid-areas: 'sidebar content' 'sidebar footer';
-  --grid-columns: 340px minmax(0, 1fr);
+  --grid-columns: 320px minmax(0, 1fr);
   --grid-gap: 2rem;
   --container-padding: 4.5rem;
   --content-x-padding: 1.5rem;

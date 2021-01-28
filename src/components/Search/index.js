@@ -1,6 +1,6 @@
 import React from 'react';
+import { Search } from 'react-feather';
 
-import SearchIcon from '../../icons/search_icon.svg';
 import styles from './search.module.css';
 
 const Index = ({ allPosts, searchedPosts }) => {
@@ -8,7 +8,10 @@ const Index = ({ allPosts, searchedPosts }) => {
     const searchValue = e.target.value.toLowerCase();
 
     const posts = allPosts.filter(({ node }) => {
-      if (node.frontmatter.title.toLowerCase().includes(searchValue))
+      if (
+        node.frontmatter.title.toLowerCase().includes(searchValue) ||
+        node.rawBody.toLowerCase().includes(searchValue)
+      )
         return node;
 
       return false;
@@ -19,7 +22,7 @@ const Index = ({ allPosts, searchedPosts }) => {
 
   return (
     <div className={styles.search}>
-      <SearchIcon />
+      <Search size={16} />
       <input
         type="search"
         name="search posts"

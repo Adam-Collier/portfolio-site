@@ -51,7 +51,6 @@ const Sidebar = ({
   data = '',
   className,
   description,
-  searchContext,
   noContextMenu,
   noAccordianClose,
 }) => {
@@ -78,7 +77,6 @@ const Sidebar = ({
 
       {data && (
         <div className={styles.bar}>
-          <span>{searchContext}</span>
           <Search allPosts={allPosts} searchedPosts={searchedPosts} />
         </div>
       )}

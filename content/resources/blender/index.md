@@ -7,7 +7,7 @@ title: Blender
 [Polygon Runway](https://polygonrunway.com) - Watch/Learn - I stumbled across
 this course via a
 [tweet](https://twitter.com/killnicole/status/1313511612142288896) from
-[@killnicole](https://twitter.com/killnicole), which I am forever greatful for.
+[@killnicole](https://twitter.com/killnicole), which I am forever grateful for.
 I've wanted to learn how to create 3D work for a very long time but never known
 how to get started. I'm coming to the end of the course now and I can't
 recommend it enough.

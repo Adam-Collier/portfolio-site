@@ -5,6 +5,7 @@ import {
   BatteryCharging,
   Layout,
   Image,
+  Paperclip,
 } from 'react-feather';
 import { TimelineEntry, DateEntry } from '../Entry';
 import Button from '../../Button';
@@ -12,6 +13,18 @@ import Button from '../../Button';
 const January = () => (
   <>
     <DateEntry date="January, 2021" />
+    <TimelineEntry
+      Icon={Paperclip}
+      timestamp="January 29, 2021"
+      title="Blender Resources Page Added"
+    >
+      <p>
+        Remembering everything I'm learning from Polygon Runways{' '}
+        <a href="https://polygonrunway.com/courses">course</a> can be difficult.
+        So I've created a resources page where I'm going to start to document
+        any shortcuts and bits I think could be handy.
+      </p>
+    </TimelineEntry>
     <TimelineEntry
       Icon={Image}
       timestamp="January 26, 2021"

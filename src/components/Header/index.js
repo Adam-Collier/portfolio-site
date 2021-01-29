@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link, useStaticQuery, graphql } from 'gatsby';
-import { GatsbyImage } from 'gatsby-plugin-image';
+import { Link } from 'gatsby';
 
 import Navigation from '../Navigation';
 import Breadcrumb from '../Breadcrumb';

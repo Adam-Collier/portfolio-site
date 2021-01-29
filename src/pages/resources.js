@@ -24,12 +24,7 @@ const ResourceTemplate = ({ data, location }) => {
         pathname={location.pathname}
       />
 
-      <Sidebar
-        title="Resources"
-        data={data.allMdx}
-        description={description}
-        searchContext="Categories"
-      >
+      <Sidebar title="Resources" data={data.allMdx} description={description}>
         {({ searchPosts }) =>
           searchPosts.map(({ node }, key) => (
             <Resource node={node} key={key} currentPageId={id} />
@@ -81,6 +76,7 @@ export const pageQuery = graphql`
           frontmatter {
             title
           }
+          rawBody
         }
       }
     }

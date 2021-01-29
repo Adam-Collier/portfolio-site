@@ -24,7 +24,6 @@ const ResourceTemplate = ({ data, location }) => {
         title="Resources"
         data={data.allMdx}
         description="This is a group of resources I have either learned something from or thought could become useful in the future."
-        searchContext="Categories"
       >
         {({ searchPosts }) =>
           searchPosts.map(({ node }, key) => (
@@ -76,6 +75,7 @@ export const pageQuery = graphql`
           frontmatter {
             title
           }
+          rawBody
         }
       }
     }

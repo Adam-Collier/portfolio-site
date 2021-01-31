@@ -11,7 +11,7 @@ const FilmCover = ({ cover, title, year, genre, rating = 1, className }) => {
           node {
             childImageSharp {
               gatsbyImageData(
-                width: 135
+                width: 128
                 quality: 90
                 formats: [AUTO, WEBP, AVIF]
                 layout: CONSTRAINED

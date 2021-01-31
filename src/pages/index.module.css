@@ -19,9 +19,6 @@
 .timeline {
   grid-area: timeline;
   padding-left: 1.5rem;
-  align-self: stretch;
-  max-height: 925px;
-  overflow: auto;
 }
 
 .spotify {
@@ -34,17 +31,18 @@
   grid-area: readng;
 }
 
+@media (min-width: 768px) {
+  .timeline {
+    align-self: stretch;
+    max-height: 925px;
+    overflow: auto;
+  }
+}
+
 @media (max-width: 767px) {
   .home {
     --grid-areas: 'intro' 'timeline' 'spotify' 'readng' 'footer';
     --grid-columns: 1fr;
     padding: var(--container-padding) 0 0;
-  }
-
-  .timeline {
-    grid-area: timeline;
-    padding-left: 1.5rem;
-    align-self: stretch;
-    max-height: 925px;
   }
 }

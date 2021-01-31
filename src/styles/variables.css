@@ -22,6 +22,7 @@
   --grid-areas: 'sidebar content' 'sidebar footer';
   --grid-columns: 320px minmax(0, 1fr);
   --grid-gap: 2rem;
+  --alt-line-height: 1.45rem;
   --container-padding: 4.5rem;
   --content-x-padding: 1.5rem;
   --content-spacing-left: 10%;

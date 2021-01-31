@@ -2,6 +2,7 @@
 .cover .genre {
   font-size: 0.875rem;
   color: var(--foreground-high);
+  line-height: var(--alt-line-height);
 }
 
 .cover .year {
@@ -26,4 +27,11 @@
   display: flex;
   overflow: hidden;
   width: 20%;
+}
+
+@media (max-width: 767px) {
+  .cover .year,
+  .cover .genre {
+    font-size: 0.75rem;
+  }
 }

@@ -7,12 +7,39 @@ import {
   Image,
   Paperclip,
 } from 'react-feather';
+import { StaticImage } from 'gatsby-plugin-image';
 import { TimelineEntry, DateEntry } from '../Entry';
 import Button from '../../Button';
+import Grid from '../../Grid';
 
 const January = () => (
   <>
     <DateEntry date="January, 2021" />
+    <TimelineEntry
+      Icon={Paperclip}
+      timestamp="January 30, 2021"
+      title="Blender Course Progress"
+    >
+      <Grid gridTemplateColumns="repeat(2, minmax(0, 1fr))" gridGap="0.5rem">
+        <StaticImage
+          src="./images/cloud_66_30_01_21.jpg"
+          layout="constrained"
+          width={200}
+          alt="Adam Collier Cloud 66 Blender"
+        />
+        <StaticImage
+          src="./images/cloud_66_2_30_01_21.jpg"
+          layout="constrained"
+          width={200}
+          alt="Adam Collier Cloud 66 Blender"
+        />
+      </Grid>
+      <p>
+        Starting to make some headway in Polygon Runway's Cloud 66 tutorial. The
+        structures are starting to take shape and we will begin adding more
+        detail to bring the scene to life.
+      </p>
+    </TimelineEntry>
     <TimelineEntry
       Icon={Paperclip}
       timestamp="January 29, 2021"

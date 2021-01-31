@@ -61,6 +61,10 @@
   font-weight: 450;
 }
 
+.children :global(.gatsby-image-wrapper) {
+  margin-bottom: 1.45rem;
+}
+
 .children :global(.gatsby-highlight) {
   width: auto;
   margin-bottom: 1.45rem;

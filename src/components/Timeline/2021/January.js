@@ -6,6 +6,7 @@ import {
   Layout,
   Image,
   Paperclip,
+  Box,
 } from 'react-feather';
 import { StaticImage } from 'gatsby-plugin-image';
 import { TimelineEntry, DateEntry } from '../Entry';
@@ -16,7 +17,31 @@ const January = () => (
   <>
     <DateEntry date="January, 2021" />
     <TimelineEntry
-      Icon={Paperclip}
+      Icon={Box}
+      timestamp="January 31, 2021"
+      title="Detail Starting To Be Added"
+    >
+      <Grid gridTemplateColumns="repeat(2, minmax(0, 1fr))" gridGap="0.5rem">
+        <StaticImage
+          src="./images/cloud_66_31_01_21.jpg"
+          layout="constrained"
+          width={200}
+          alt="Adam Collier Cloud 66 Blender"
+        />
+        <StaticImage
+          src="./images/cloud_66_2_31_01_21.jpg"
+          layout="constrained"
+          width={200}
+          alt="Adam Collier Cloud 66 Blender"
+        />
+      </Grid>
+      <p>
+        Made some progress on the detailing. Added a set of stairs and some
+        floating industrial structures underneath each platform.
+      </p>
+    </TimelineEntry>
+    <TimelineEntry
+      Icon={Box}
       timestamp="January 30, 2021"
       title="Blender Course Progress"
     >

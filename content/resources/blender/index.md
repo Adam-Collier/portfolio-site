@@ -36,3 +36,11 @@ recommend it enough.
 | `CTRL + Shift + B`    | Rounded Bevel, scroll to round the corners                                                       |
 | `CTRL + Plus key`     | Expand Selection                                                                                 |
 | `Forward Slash (/)`   | Local view (isolate what you're working on and hide everything else)                             |
+| `Shift + S`           | Bring up the Snap menu, perfect for aligning the 3d cursor to a shape without faces              |
+
+### Modifiers
+
+- Skin - Add Mass to Objects - When you've created your edges or wireframe you
+  can use the skin modifier to build up geometry around that shape. This saves
+  us tonnes of time as we only need to think about the super basic structure and
+  use the modifier to flesh it out.

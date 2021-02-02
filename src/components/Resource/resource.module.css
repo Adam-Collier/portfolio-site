@@ -9,7 +9,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.625rem 0;
+  padding: 0.625rem 0.5rem;
+}
+
+.resource:hover {
+  cursor: pointer;
 }
 
 .resource h3 {
@@ -19,26 +23,12 @@
 }
 
 .active {
-  color: var(--primary-accent);
+  background: var(--accent-min);
   border-radius: var(--border-radius);
 }
 
-.active:after,
-.resource:hover:after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-}
-
 .resource:hover:not(.active) {
-  color: var(--foreground-hover);
-}
-
-.resource:hover:not(.active) svg path {
-  fill: var(--foreground-hover);
+  background: var(--foreground-min);
 }
 
 .resource:hover:after:not(.active) {
@@ -47,6 +37,10 @@
 
 .resource svg path {
   fill: var(--primary-foreground);
+}
+
+.resource:not(.active):not(:hover) svg {
+  display: none;
 }
 
 .active svg path {

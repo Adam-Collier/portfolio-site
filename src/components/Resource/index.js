@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
-import ArrowIcon from '../../icons/arrow.svg';
+import { ArrowRight } from 'react-feather';
 
 import styles from './resource.module.css';
 
@@ -20,7 +20,7 @@ const index = ({ node, currentPageId }) => {
     >
       <article key={slug}>
         <h3>{title}</h3>
-        <ArrowIcon />
+        {currentPageId === id ? <ArrowRight size={16} /> : null}
       </article>
     </Link>
   );

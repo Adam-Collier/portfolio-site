@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
+import SharePost from '../components/SharePost';
 
 import MDX from '../components/MDX';
 import Page from '../components/Page';
@@ -16,9 +17,11 @@ import styles from './blog-post.module.css';
 
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.mdx;
-  const { frontmatter, body, fields } = post;
-  const { title, date } = fields;
+  const { siteUrl } = data.site.siteMetadata;
+  const { frontmatter, body, fields, parent } = post;
+  const { title, date, slug } = fields;
   const { description, excerpt, featured, tags } = frontmatter;
+  const { gitLogLatestDate: lastUpdated } = parent.fields;
 
   const { tableOfContents, timeToRead } = post;
 
@@ -51,11 +54,22 @@ const BlogPostTemplate = ({ data, location }) => {
             />
           )}
         <div className={styles.postMeta}>
-          <div className={styles.written}>
-            <h4>Written</h4>
-            <p>{date}</p>
-            <p>{timeToRead} minute read</p>
-          </div>
+          {lastUpdated === date ? (
+            <div className={styles.written}>
+              <h4>Written</h4>
+              <p>{date}</p>
+              <p>{timeToRead} minute read</p>
+            </div>
+          ) : (
+            <div className={styles.written}>
+              <h4>Updated</h4>
+              <p>{lastUpdated}</p>
+              <p>{timeToRead} minute read</p>
+            </div>
+          )}
+
+          <SharePost url={`${siteUrl}${slug}`} />
+
           <div className={styles.tags}>
             <h4>Tags</h4>
             {tags.map((tag, key) => (
@@ -92,6 +106,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        siteUrl
       }
     }
     mdx(id: { eq: $id }) {
@@ -103,6 +118,15 @@ export const pageQuery = graphql`
       fields {
         title
         date(formatString: "MMMM DD, YYYY")
+        slug
+      }
+      parent {
+        ... on File {
+          relativePath
+          fields {
+            gitLogLatestDate(formatString: "MMMM D, YYYY")
+          }
+        }
       }
       frontmatter {
         tags

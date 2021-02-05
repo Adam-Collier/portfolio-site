@@ -10,7 +10,6 @@
 
 .sticky > section {
   display: grid;
-  cursor: pointer;
 }
 
 .sidebar h4 {

@@ -35,6 +35,10 @@
   object-position: center center;
 }
 
+/* .written p {
+  font-size: 0.875rem;
+} */
+
 .written p:first-of-type {
   margin-bottom: 0.25rem;
 }
@@ -75,7 +79,7 @@
   .postMeta {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-areas: 'written tags';
+    grid-template-areas: 'share share' 'written tags';
   }
 
   .written {

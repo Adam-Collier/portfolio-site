@@ -17,6 +17,7 @@ module.exports = {
       logo: 'images/logo.png',
     },
   },
+
   plugins: [
     {
       resolve: 'gatsby-plugin-webpack-bundle-analyser-v2',
@@ -35,6 +36,12 @@ module.exports = {
         clientId: process.env.SPOTIFY_CLIENT_ID,
         clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
         refreshToken: process.env.SPOTIFY_REFRESH_TOKEN,
+      },
+    },
+    {
+      resolve: `gatsby-transformer-gitinfo`,
+      options: {
+        include: /mdx?$/i,
       },
     },
     {

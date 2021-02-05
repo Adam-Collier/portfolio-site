@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
-import { ArrowRight, Circle } from 'react-feather';
+import { ArrowRight } from 'react-feather';
 
 import styles from './resource.module.css';
 

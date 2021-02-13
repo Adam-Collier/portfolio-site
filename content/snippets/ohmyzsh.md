@@ -1,3 +1,6 @@
+---
+updatedDate: '2021-01-06T19:11:53+00:00'
+---
 ## Oh My ZSH
 
 The Oh My ZSH framework for managing your ZSH configuration and comes bundled with thousands of helpful functions, plugins and themes. It's a real game changer.

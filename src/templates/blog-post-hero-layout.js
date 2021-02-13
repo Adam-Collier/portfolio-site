@@ -17,7 +17,7 @@ import styles from './blog-post.module.css';
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.mdx;
   const { siteUrl } = data.site.siteMetadata;
-  const { frontmatter, body, fields, parent } = post;
+  const { frontmatter, body, fields } = post;
   const { title, date, slug } = fields;
 
   const {
@@ -27,9 +27,8 @@ const BlogPostTemplate = ({ data, location }) => {
     mobileFeatured,
     tags,
     invertHeaderColor,
+    updatedDate,
   } = frontmatter;
-
-  const { gitLogLatestDate: lastUpdated } = parent.fields;
 
   const { tableOfContents, timeToRead } = post;
 
@@ -150,7 +149,7 @@ const BlogPostTemplate = ({ data, location }) => {
             />
           )}
         <div className={styles.postMeta}>
-          {lastUpdated === date ? (
+          {updatedDate === date ? (
             <div className={styles.written}>
               <h4>Written</h4>
               <p>{date}</p>
@@ -159,7 +158,7 @@ const BlogPostTemplate = ({ data, location }) => {
           ) : (
             <div className={styles.written}>
               <h4>Updated</h4>
-              <p>{lastUpdated}</p>
+              <p>{updatedDate}</p>
               <p>{timeToRead} minute read</p>
             </div>
           )}
@@ -208,18 +207,11 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         slug
       }
-      parent {
-        ... on File {
-          relativePath
-          fields {
-            gitLogLatestDate(formatString: "MMMM D, YYYY")
-          }
-        }
-      }
       frontmatter {
         tags
         description
         invertHeaderColor
+        updatedDate(formatString: "MMMM DD, YYYY")
         desktopFeatured: featured {
           childImageSharp {
             gatsbyImageData(

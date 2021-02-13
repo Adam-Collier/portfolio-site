@@ -1,3 +1,6 @@
+---
+updatedDate: '2021-01-05T17:06:25+00:00'
+---
 ## Git
 
 ### Delete local branches

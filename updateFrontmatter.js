@@ -5,10 +5,7 @@ const { execSync } = require('child_process');
 const globby = require('globby');
 
 const getFiles = async () => {
-  const files = await globby(
-    `${__dirname}/content/blog/2020-12-16-tv-series-for-the-struggling-enthusiast/index.mdx`,
-    {}
-  );
+  const files = await globby(`${__dirname}/content/**/*.{md,mdx}`, {});
   return files;
 };
 

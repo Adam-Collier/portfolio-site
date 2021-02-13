@@ -12,29 +12,6 @@ const getFiles = async () => {
   return files;
 };
 
-// function addFrontmatter(options) {
-//   const transformer = (tree) => {
-//     console.log(tree);
-//     return visit(
-//       tree,
-//       (node) => node.type === 'yaml',
-//       (node) => {
-//         const currentYaml = node.data.parsedValue;
-
-//         const updatedYaml = {
-//           ...currentYaml,
-//           updatedDate: gitDateUpdated,
-//         };
-
-//         node.value = Object.keys(updatedYaml)
-//           .map((key) => `${key}: ${updatedYaml[key]}`)
-//           .join('\n');
-//       }
-//     );
-//   };
-//   return transformer;
-// }
-
 const updateFrontmatter = async () => {
   const mdFilePaths = await getFiles();
 
@@ -43,7 +20,6 @@ const updateFrontmatter = async () => {
       `git log -1 --pretty=format:%aI ${path}`
     ).toString();
 
-    // get the file contents
     const file = matter.read(path);
     const { data: currentFrontmatter } = file;
 

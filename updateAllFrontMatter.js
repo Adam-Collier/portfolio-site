@@ -2,9 +2,15 @@
 const fs = require('fs').promises;
 const matter = require('gray-matter');
 const { execSync } = require('child_process');
+const globby = require('globby');
+
+const getFiles = async () => {
+  const files = await globby(`${__dirname}/content/**/*.{md,mdx}`, {});
+  return files;
+};
 
 const updateFrontmatter = async () => {
-  const [, , ...mdFilePaths] = process.argv;
+  const mdFilePaths = await getFiles();
 
   mdFilePaths.forEach(async (path) => {
     const gitDateUpdated = execSync(

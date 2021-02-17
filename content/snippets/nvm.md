@@ -1,3 +1,6 @@
+---
+updatedDate: '2021-01-06T19:11:53+00:00'
+---
 ## NVM
 
 [NVM (Node Version Manager)](https://github.com/nvm-sh/nvm) is a tool which helps you easily manage your Node versions. Without NVM managing node versions locally is a real pain, install this once and breathe a sigh of relief.

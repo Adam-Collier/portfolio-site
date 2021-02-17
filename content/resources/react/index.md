@@ -1,7 +1,11 @@
 ---
 title: React
-description: React is a view library created by Facebook, that frontend devs utilize. Due to it's rapid ability to render only particular parts of the page when it's required.
+description: >-
+  React is a view library created by Facebook, that frontend devs utilize. Due
+  to it's rapid ability to render only particular parts of the page when it's
+  required.
 color: '#61DAFB'
+updatedDate: '2020-12-06T19:03:55+00:00'
 ---
 
 React is a view library created by Facebook, that frontend devs utilize. Due to it's rapid ability to render only particular parts of the page when it's required - known as dynamically generating elements.

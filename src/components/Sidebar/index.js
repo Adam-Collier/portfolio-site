@@ -39,7 +39,7 @@ const ConditionalWrapper = ({
       </details>
     </>
   ) : (
-    <div className={`${className || ''} ${styles.sidebar}`}>
+    <div className={`${styles.sidebar} ${className || ''}`}>
       <div className={styles.sticky}>{children}</div>
     </div>
   );
@@ -53,6 +53,7 @@ const Sidebar = ({
   description,
   noContextMenu,
   noAccordianClose,
+  noDescription,
 }) => {
   const allPosts = data ? data.edges : '';
   const [searchPosts, setSearchPosts] = useState(allPosts);
@@ -73,7 +74,9 @@ const Sidebar = ({
           <span className={styles.title}>{title}</span>
         ))}
 
-      {description && <p className={styles.description}>{description}</p>}
+      {!noDescription && description && (
+        <p className={styles.description}>{description}</p>
+      )}
 
       {data && (
         <div className={styles.bar}>

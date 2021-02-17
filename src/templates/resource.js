@@ -11,7 +11,7 @@ import Content from '../components/Content';
 const ResourceTemplate = ({ data, location }) => {
   const { mdx } = data;
   const { frontmatter, id, excerpt, body } = mdx;
-  const { title, description } = frontmatter;
+  const { title, description, updatedDate } = frontmatter;
 
   return (
     <Page containerType="fluid" location={location}>
@@ -33,6 +33,9 @@ const ResourceTemplate = ({ data, location }) => {
       </Sidebar>
       <Content>
         <header>
+          <p style={{ fontSize: '0.875rem', color: 'var(--foreground-high' }}>
+            Updated: {updatedDate}
+          </p>
           <h1>{title}</h1>
         </header>
         <MDX body={body} />
@@ -59,6 +62,7 @@ export const pageQuery = graphql`
       body
       frontmatter {
         title
+        updatedDate(formatString: "MMMM DD, YYYY")
       }
     }
     allMdx(

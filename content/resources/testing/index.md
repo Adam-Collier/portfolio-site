@@ -1,7 +1,10 @@
 ---
 title: Testing
-description: How do you know if the system you built works? The easy answer we usually don't. Still we can become more confident, thats where testing comes in
-color: "#15C213"
+description: >-
+  How do you know if the system you built works? The easy answer we usually
+  don't. Still we can become more confident, thats where testing comes in
+color: '#15C213'
+updatedDate: '2020-07-14T14:27:20+01:00'
 ---
 
 How do you know if the system you built works? Through testing it! But testing different aspects of your system manually (i.e. by entering text into input fields and clicking buttons yourself) can be tedious, and take up a lot of time. This is why developers rely on tools which run through a defined list of expectations to fulfill and alert the developer if one (or many) outcomes did not turn out as expected.

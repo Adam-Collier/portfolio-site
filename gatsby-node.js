@@ -111,7 +111,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
       const [year, month, day, ...name] = match.split('-');
 
-      slug = `/blog/${name.join('-')}/`;
+      slug = `/blog/${name.join('-').toLowerCase()}/`;
 
       const nameWithSpaces = name.join(' ');
       const title =

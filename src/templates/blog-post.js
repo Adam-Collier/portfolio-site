@@ -18,10 +18,9 @@ import styles from './blog-post.module.css';
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.mdx;
   const { siteUrl } = data.site.siteMetadata;
-  const { frontmatter, body, fields, parent } = post;
+  const { frontmatter, body, fields } = post;
   const { title, date, slug } = fields;
-  const { description, excerpt, featured, tags } = frontmatter;
-  const { gitLogLatestDate: lastUpdated } = parent.fields;
+  const { description, excerpt, featured, tags, updatedDate } = frontmatter;
 
   const { tableOfContents, timeToRead } = post;
 
@@ -43,8 +42,10 @@ const BlogPostTemplate = ({ data, location }) => {
         isBlogPost
       />
       <Sidebar
+        className={styles.sidebar}
         description={useMediaQuery('(min-width: 768px)') ? description : ''}
         noContextMenu
+        noDescription
       >
         {useMediaQuery('(min-width: 768px)') &&
           Object.keys(tableOfContents).length !== 0 && (
@@ -54,7 +55,7 @@ const BlogPostTemplate = ({ data, location }) => {
             />
           )}
         <div className={styles.postMeta}>
-          {lastUpdated === date ? (
+          {updatedDate === date || !updatedDate ? (
             <div className={styles.written}>
               <h4>Written</h4>
               <p>{date}</p>
@@ -63,7 +64,7 @@ const BlogPostTemplate = ({ data, location }) => {
           ) : (
             <div className={styles.written}>
               <h4>Updated</h4>
-              <p>{lastUpdated}</p>
+              <p>{updatedDate}</p>
               <p>{timeToRead} minute read</p>
             </div>
           )}
@@ -84,10 +85,9 @@ const BlogPostTemplate = ({ data, location }) => {
         </header>
         {featured && (
           <GatsbyImage
-            style={{
-              marginBottom: '2rem',
-            }}
-            sizes={featured.childImageSharp.sizes}
+            style={{ marginBottom: '1.45rem' }}
+            image={featured.childImageSharp.gatsbyImageData}
+            alt={`${title} featured`}
           />
         )}
         <section>
@@ -120,24 +120,20 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         slug
       }
-      parent {
-        ... on File {
-          relativePath
-          fields {
-            gitLogLatestDate(formatString: "MMMM D, YYYY")
-          }
-        }
-      }
       frontmatter {
         tags
         description
         featured {
           childImageSharp {
-            sizes(maxWidth: 720, quality: 90, toFormat: JPG) {
-              ...GatsbyImageSharpSizes_withWebp
-            }
+            gatsbyImageData(
+              width: 700
+              quality: 90
+              formats: [AUTO, WEBP, AVIF]
+              layout: CONSTRAINED
+            )
           }
         }
+        updatedDate(formatString: "MMMM DD, YYYY")
         image: featured {
           childImageSharp {
             resize(width: 1200) {

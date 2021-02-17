@@ -213,3 +213,7 @@ pre.line-numbers > code {
   min-width: 100%; /* 2 */
   padding-right: 1.5rem;
 }
+
+.token-line:not(:last-child) {
+  min-height: 1rem;
+}

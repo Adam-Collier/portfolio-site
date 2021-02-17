@@ -138,8 +138,10 @@ const BlogPostTemplate = ({ data, location }) => {
         </div>
       </div>
       <Sidebar
+        className={styles.sidebar}
         description={useMediaQuery('(min-width: 768px)') ? description : ''}
         noContextMenu
+        noDescription
       >
         {useMediaQuery('(min-width: 768px)') &&
           Object.keys(tableOfContents).length !== 0 && (
@@ -149,7 +151,7 @@ const BlogPostTemplate = ({ data, location }) => {
             />
           )}
         <div className={styles.postMeta}>
-          {updatedDate === date ? (
+          {updatedDate === date || !updatedDate ? (
             <div className={styles.written}>
               <h4>Written</h4>
               <p>{date}</p>

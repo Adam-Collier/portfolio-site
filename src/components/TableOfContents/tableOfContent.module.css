@@ -2,7 +2,7 @@
   text-decoration: none;
   color: var(--primary-foreground);
   font-weight: 400;
-  font-size: 1rem;
+  font-size: 0.875rem;
 }
 
 .tableOfContents li {
@@ -41,7 +41,7 @@
 }
 
 .tableOfContents > li > ul > li > a {
-  font-size: 1rem;
+  font-size: 0.875rem;
   font-weight: 600;
 }
 

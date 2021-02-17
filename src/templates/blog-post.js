@@ -42,8 +42,10 @@ const BlogPostTemplate = ({ data, location }) => {
         isBlogPost
       />
       <Sidebar
+        className={styles.sidebar}
         description={useMediaQuery('(min-width: 768px)') ? description : ''}
         noContextMenu
+        noDescription
       >
         {useMediaQuery('(min-width: 768px)') &&
           Object.keys(tableOfContents).length !== 0 && (
@@ -53,7 +55,7 @@ const BlogPostTemplate = ({ data, location }) => {
             />
           )}
         <div className={styles.postMeta}>
-          {updatedDate === date ? (
+          {updatedDate === date || !updatedDate ? (
             <div className={styles.written}>
               <h4>Written</h4>
               <p>{date}</p>
@@ -83,10 +85,9 @@ const BlogPostTemplate = ({ data, location }) => {
         </header>
         {featured && (
           <GatsbyImage
-            style={{
-              marginBottom: '2rem',
-            }}
-            sizes={featured.childImageSharp.sizes}
+            style={{ marginBottom: '1.45rem' }}
+            image={featured.childImageSharp.gatsbyImageData}
+            alt={`${title} featured`}
           />
         )}
         <section>
@@ -124,9 +125,12 @@ export const pageQuery = graphql`
         description
         featured {
           childImageSharp {
-            sizes(maxWidth: 720, quality: 90, toFormat: JPG) {
-              ...GatsbyImageSharpSizes_withWebp
-            }
+            gatsbyImageData(
+              width: 700
+              quality: 90
+              formats: [AUTO, WEBP, AVIF]
+              layout: CONSTRAINED
+            )
           }
         }
         updatedDate(formatString: "MMMM DD, YYYY")

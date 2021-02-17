@@ -1,3 +1,10 @@
+.blogpost, .heroBlogpost {
+  --grid-columns: 275px minmax(0, 1fr);
+  --grid-gap: 1rem;
+  --max-layout-width: 1100px;
+    grid-row-gap: 2rem;
+}
+
 .blogpost {
   --grid-areas: 'sidebar content' 'sidebar moreposts' 'sidebar footer';
 }
@@ -35,10 +42,6 @@
   object-position: center center;
 }
 
-/* .written p {
-  font-size: 0.875rem;
-} */
-
 .written p:first-of-type {
   margin-bottom: 0.25rem;
 }
@@ -65,6 +68,12 @@
   font-weight: 500;
   border: 1px solid var(--primary-accent);
   border-radius: 1px;
+}
+
+@media(min-width: 768px){
+  .sidebar > div> section{
+    padding-top: 3rem;
+  }
 }
 
 @media (max-width: 767px) {

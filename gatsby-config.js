@@ -28,7 +28,6 @@ module.exports = {
     // `gatsby-plugin-preact`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-robots-txt`,
-    `gatsby-plugin-sitemap`,
     `gatsby-plugin-image`,
     {
       resolve: `spotify-source`,
@@ -257,6 +256,57 @@ module.exports = {
             title: "Adam Collier's RSS Feed",
           },
         ],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        query: `
+        {
+          site {
+            siteMetadata {
+              siteUrl
+            }
+          }
+          allSitePage(filter: {isCreatedByStatefulCreatePages: {eq: true}}) {
+            edges {
+              node {
+                path
+              }
+            }
+          }
+          allMdx (filter: {slug: {regex: "/^((?!snippets).)*$/"}}){
+            edges {
+              node {
+                id
+                fields {
+                  slug
+                }
+                frontmatter {
+                  updatedDate
+                }
+              }
+            }
+          }
+        }
+        `,
+        resolveSiteUrl: ({ site }) => site.siteMetadata.siteUrl,
+        serialize: ({ site, allSitePage, allMdx }) => {
+          const allPages = allSitePage.edges.map(({ node }) => ({
+            url: `${site.siteMetadata.siteUrl}${node.path}`,
+            changefreq: `daily`,
+            priority: node.path === '/' ? 1 : 0.64,
+          }));
+
+          const mdxPages = allMdx.edges.map(({ node }) => ({
+            url: `${site.siteMetadata.siteUrl}${node.fields.slug}`,
+            changefreq: `daily`,
+            priority: 0.8,
+            lastmodISO: node.frontmatter.updatedDate,
+          }));
+
+          return [...mdxPages, ...allPages];
+        },
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

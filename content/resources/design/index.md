@@ -47,7 +47,7 @@ My design tool of choice and great for designing collaboratively, prototyping an
 
 [Instance Finder](https://www.figma.com/community/plugin/741895659787979282) - Component Management - Finding and trimming down your unused components can be a daunting task, this plugin makes it a tonne easier. Have confidence that your components aren't being used anywhere.
 
-[Lorem Ipsum](https://www.figma.com/community/plugin/736000994034548392/Lorem-ipsum) - Lorem Ipsum Generator - As designers we always need to quickly add some dummy text, this handles that for you. The Auto-generate feature is also a nice touch and saves a lot of time.
+[Lorem Ipsum](https://www.figma.com/community/plugin/736000994034548392/Lorem-ipsum) - Generate Dummy Text - As designers we always need to quickly add some dummy text, this handles that for you. The Auto-generate feature is also a nice touch and saves a lot of time.
 
 ## Icons
 

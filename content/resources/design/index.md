@@ -1,6 +1,7 @@
 ---
 title: Design
-updatedDate: '2020-09-25T17:41:41+01:00'
+updatedDate: '2021-03-06T19:01:25.272Z'
+published: true
 ---
 
 Everything design-related I find useful and will reference in the future. It also lets me keep my sanity by not scouring the whole web for an article I saw once.

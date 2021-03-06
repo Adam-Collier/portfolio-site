@@ -46,10 +46,18 @@
 .artist {
   font-size: 0.875rem;
   color: var(--foreground-high);
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .trackName {
   font-weight: 500;
   color: var(--primary-foreground);
   margin-bottom: 0.125rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }

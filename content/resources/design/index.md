@@ -39,6 +39,16 @@ Everything design-related I find useful and will reference in the future. It als
 
 [Icons & Keylines Demystified](https://medium.com/@minoraxis/icon-grids-keylines-demystified-5a228fe08cfd) - Icon Design - A great introduction to the different approaches you can take to your guide setup to create consistent icons. I tend to go for the Material design approach but it's whatever works for you.
 
+## Figma
+
+My design tool of choice and great for designing collaboratively, prototyping and sharing previews. The Figma team are revolutionising design tooling and taking it to another level.
+
+### Useful Plugins
+
+[Instance Finder](https://www.figma.com/community/plugin/741895659787979282) - Component Management - Finding and trimming down your unused components can be a daunting task, this plugin makes it a tonne easier. Have confidence that your components aren't being used anywhere.
+
+[Lorem Ipsum](https://www.figma.com/community/plugin/736000994034548392/Lorem-ipsum) - Lorem Ipsum Generator - As designers we always need to quickly add some dummy text, this handles that for you. The Auto-generate feature is also a nice touch and saves a lot of time.
+
 ## Icons
 
 [CSS.gg Icon Set](https://css.gg/) - A Solid Set of Icons - A thorough collection of open source icons you can use in any of your projects. Created by [@AstritMalsija](https://twitter.com/astritmalsija) it's a great set to have in your arsenal as a designer and/or a developer.

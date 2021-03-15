@@ -5,7 +5,6 @@ category: Code
 tags:
   - Gatsby
   - Markdown
-excerpt: Show when your content has been updated for better SEO
 description: >-
   Improve your SEO by showing when your posts got last updated. Perfect for
   Gatsby and Next js sites which use Markdown or MDX for their content.
@@ -73,11 +72,11 @@ Here's what's happening:
 }
 ```
 
-^ What is returned from gray-matter, data here being the parsed frontmatter content. 
+^ What is returned from gray-matter, data here being the parsed frontmatter content.
 
 6. If the posts published frontmatter is true we continue, otherwise we do nothing.
-7. Immutably update the object with the new date and assign it to the data property. 
-8. Take the newly updated gray-matter object and turn this back into a string 
+7. Immutably update the object with the new date and assign it to the data property.
+8. Take the newly updated gray-matter object and turn this back into a string
 9. Overwrite the existing content using `fs.writeFile`
 
 Now you will probably have noticed above that we are grabbing the paths using `process.argv`. The reason for doing this is we are using Husky and lint-staged to create a git commit hook. What this essentially means is when we make a commit which includes a Markdown or MDX file, we can run a node script and pass the paths as arguments, hence what you saw above.
@@ -86,10 +85,10 @@ Now you will probably have noticed above that we are grabbing the paths using `p
 
 1. Install Husky `npm i -D husky`
 1. Add Husky's git hooks with `npx husky install` (you will notice it created a .husky directory).
-2. Add your commit hook via `npx husky add .husky/pre-commit "npm run lint:staged"`. This will add a pre-commit file to your `.husky` directory and within that file, your npm command should exist (if not you can manually add it)
-3. Install lint-staged `npm i lint-staged -D`
-4. Create a `.lintstagedrc` file
-5. Add your lint-staged config:
+1. Add your commit hook via `npx husky add .husky/pre-commit "npm run lint:staged"`. This will add a pre-commit file to your `.husky` directory and within that file, your npm command should exist (if not you can manually add it)
+1. Install lint-staged `npm i lint-staged -D`
+1. Create a `.lintstagedrc` file
+1. Add your lint-staged config:
 
 ```json
 {
@@ -97,7 +96,7 @@ Now you will probably have noticed above that we are grabbing the paths using `p
 }
 ```
 
-(updateFrontmatter is the filename of your script) 
+(updateFrontmatter is the filename of your script)
 
 6. Add the script to your package.json
 
@@ -111,7 +110,6 @@ Now, whenever you commit either a Markdown or MDX file Husky will run the node s
 
 ## Useful Links
 
-* [gray-matter package](https://www.npmjs.com/package/gray-matter)
-* [Husky docs](https://typicode.github.io/husky/#/) - These are worth checking out as V5 is very different to V4
-* [gatsby-transformer-gitinfo](https://www.gatsbyjs.com/plugins/gatsby-transformer-gitinfo/) - if your .git directory is deployed alongside your repo check out this plugin
-
+- [gray-matter package](https://www.npmjs.com/package/gray-matter)
+- [Husky docs](https://typicode.github.io/husky/#/) - These are worth checking out as V5 is very different to V4
+- [gatsby-transformer-gitinfo](https://www.gatsbyjs.com/plugins/gatsby-transformer-gitinfo/) - if your .git directory is deployed alongside your repo check out this plugin

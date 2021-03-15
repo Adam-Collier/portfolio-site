@@ -27,7 +27,8 @@ const IndexPage = ({ location, data }) => {
             wanted to make something functional, practical and useful in my day
             to day. It will exist as an ever growing repository of ideas,
             productivity helpers and things I enjoy. Something noteworthy I
-            should add? DM me on Twitter.
+            should add?{' '}
+            <a href="https://twitter.com/CollierAdam">DM me on Twitter.</a>
           </p>
         </section>
         <section>

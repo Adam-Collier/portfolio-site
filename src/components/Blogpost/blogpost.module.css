@@ -1,3 +1,12 @@
+.blogpost {
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+}
+
+.blogpost:hover {
+  background: var(--foreground-min);
+}
+
 .blogpost section {
   color: var(--primary-foreground);
 }
@@ -48,7 +57,7 @@
   overflow: hidden;
   line-height: 1.5;
   font-size: 0.875rem;
-  margin: 0;
+  margin-bottom: 0.5rem;
 }
 
 @media (max-width: 767px) {

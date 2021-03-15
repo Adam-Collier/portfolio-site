@@ -1,47 +1,21 @@
-.home {
-  --grid-areas: 'intro timeline' 'spotify timeline' 'spotify readng'
-    'spotify readng' 'footer footer';
-  --grid-columns: 1fr 1.25fr;
-  grid-template-rows: minmax(0, 1fr);
-  max-width: 1024px;
-  align-items: flex-start;
-  justify-items: flex-start;
-}
-
 .intro {
-  grid-area: intro;
+  margin-top: 3.5rem;
 }
 
-.intro h1 {
-  font-size: 1.75rem;
+.intro p {
+  font-weight: 500;
 }
 
-.timeline {
-  grid-area: timeline;
-  padding-left: 1.5rem;
+.content > section {
+  margin-bottom: 4rem;
 }
 
-.spotify {
-  padding: 1.5rem;
-  grid-area: spotify;
-}
-
-.readng {
-  padding: 1.5rem;
-  grid-area: readng;
-}
-
-@media (min-width: 768px) {
-  .timeline {
-    align-self: stretch;
-    max-height: 925px;
-    overflow: auto;
-  }
+.content > section > p {
+  margin-bottom: 2rem;
 }
 
 @media (max-width: 767px) {
   .home {
-    --grid-areas: 'intro' 'timeline' 'spotify' 'readng' 'footer';
     --grid-columns: 1fr;
     padding: var(--container-padding) 0 0;
   }

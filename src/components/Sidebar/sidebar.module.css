@@ -64,7 +64,7 @@
 
 .accordion {
   position: sticky;
-  top: 70px;
+  top: 60px;
   background: var(--primary-background);
   z-index: 5;
 }

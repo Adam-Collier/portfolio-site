@@ -41,7 +41,7 @@ const Snippets = ({ data, location }) => {
           className={styles.tableOfContents}
         />
       </Sidebar>
-      <Content>
+      <Content hasTOC>
         {edges.map(({ node }, key) => {
           const { body } = node;
           return <MDX key={key} body={body} />;

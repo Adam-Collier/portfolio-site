@@ -22,7 +22,6 @@ const BlogPostTemplate = ({ data, location }) => {
 
   const {
     description,
-    excerpt,
     desktopFeatured,
     mobileFeatured,
     tags,
@@ -92,7 +91,7 @@ const BlogPostTemplate = ({ data, location }) => {
     >
       <SEO
         title={title}
-        description={description || excerpt}
+        description={description}
         image={image}
         pathname={location.pathname}
         isBlogPost
@@ -175,7 +174,7 @@ const BlogPostTemplate = ({ data, location }) => {
           </div>
         </div>
       </Sidebar>
-      <Content>
+      <Content hasTOC>
         <header>
           <h1 id="introduction">{title}</h1>
         </header>
@@ -200,7 +199,6 @@ export const pageQuery = graphql`
     }
     mdx(id: { eq: $id }) {
       id
-      excerpt(pruneLength: 160)
       body
       tableOfContents
       timeToRead
@@ -258,7 +256,6 @@ export const pageQuery = graphql`
     ) {
       edges {
         node {
-          excerpt(pruneLength: 400)
           fields {
             slug
             title
@@ -275,7 +272,7 @@ export const pageQuery = graphql`
                 )
               }
             }
-            excerpt
+            description
             tags
           }
         }

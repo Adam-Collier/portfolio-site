@@ -1,6 +1,7 @@
 ---
 title: CSS
 updatedDate: '2020-11-19T15:44:39+00:00'
+description: Articles on the fundamentals and the newer features coming to CSS. Tools that give you confidence in the CSS you write.
 ---
 
 The ever evolving styles of the web. With the growing complexity of websites,

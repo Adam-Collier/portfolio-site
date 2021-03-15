@@ -1,8 +1,7 @@
 ---
 title: Testing
 description: >-
-  How do you know if the system you built works? The easy answer we usually
-  don't. Still we can become more confident, thats where testing comes in
+  Javascript focussed testing (mostly leaning towards React). Including tutorials on Unit testing and End to End testing.
 color: '#15C213'
 updatedDate: '2020-07-14T14:27:20+01:00'
 ---

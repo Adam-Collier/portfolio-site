@@ -28,7 +28,13 @@ const IndexPage = ({ location, data }) => {
             to day. It will exist as an ever growing repository of ideas,
             productivity helpers and things I enjoy. Something noteworthy I
             should add?{' '}
-            <a href="https://twitter.com/CollierAdam">DM me on Twitter.</a>
+            <a
+              href="https://twitter.com/CollierAdam"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              DM me on Twitter.
+            </a>
           </p>
         </section>
         <section>

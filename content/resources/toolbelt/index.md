@@ -1,8 +1,7 @@
 ---
 title: Toolbelt
 description: >-
-  Helps developers build applications/websites faster and automate tedious
-  processes. These tools are a great addition to anyones arsenal
+  What text editor to use? How do I manage node on my machine? Find out what tools I use for development and much more.
 color: '#21A3F1'
 updatedDate: '2021-01-05T17:06:25+00:00'
 ---
@@ -34,6 +33,7 @@ What if every everyone released the new version of their modules at the same tim
 [Notion](https://www.notion.so) - Collaboration/Notes - Write, plan, collaborate, and get organized. A really great tool for note taking and prepping/recording meeting notes. Now it's free for personal accounts!
 
 ## Sharing
+
 [Carbon](https://carbon.now.sh/) - Share Code Images - Create and share beautiful images of your source code. Images can easily be shared to twitter or you can download the images files and share that way.
 
 ## Thinking

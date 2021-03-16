@@ -1,6 +1,8 @@
 ---
-updatedDate: '2021-01-06T19:11:53+00:00'
+updatedDate: '2021-03-16T21:21:46.858Z'
+published: true
 ---
+
 ## HTML
 
 ### Details element for HTML accordion
@@ -13,3 +15,16 @@ An HTML first "accordian". Forget about using Javascript and make it simple for 
   Stay Home Stay Safe!
 </details>
 ```
+
+### Open link in new tab
+
+````html
+<a
+  href="https://twitter.com/CollierAdam"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  DM me on Twitter.
+</a>
+```
+````

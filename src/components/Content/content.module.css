@@ -6,7 +6,7 @@
   color: var(--primary-foreground);
 }
 
-.content :is(h2, h3, h4) {
+.hasTOC :is(h2, h3, h4) {
   padding-top: 80px;
   margin-top: -80px;
 }
@@ -41,7 +41,7 @@
     border-radius: 0;
   }
 
-  .content :is(h2, h3, h4) {
+  .hasTOC :is(h2, h3, h4) {
     padding-top: 115px;
     margin-top: -115px;
   }

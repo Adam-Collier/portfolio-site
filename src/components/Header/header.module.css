@@ -14,7 +14,7 @@
 }
 
 .container {
-  --header-padding: 23px;
+  --header-padding: 18px;
   max-width: var(--max-layout-width);
   padding: var(--header-padding) var(--content-x-padding);
   margin: 0 auto;
@@ -46,6 +46,10 @@
   align-items: center;
 }
 
+.navigation {
+  padding: 0 2rem;
+}
+
 .menuButton {
   border: none;
   padding: 0;
@@ -72,12 +76,6 @@
 @media (min-width: 768px) {
   .menuButton {
     display: none;
-  }
-
-  .toggle {
-    position: fixed;
-    top: calc(100vh - 3.5rem);
-    right: 1.5rem;
   }
 }
 .menuButton img {

@@ -34,7 +34,6 @@ exports.createPages = async ({ graphql, actions }) => {
               }
               frontmatter {
                 layout
-                excerpt
               }
             }
           }

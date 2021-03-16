@@ -12,6 +12,7 @@
 }
 
 .search input {
+  -webkit-appearance: none;
   padding: 0.375rem 0 0.375rem 2rem;
   background: var(--foreground-min);
   width: 100%;
@@ -27,4 +28,11 @@
   box-sizing: border-box;
   outline: none;
   border: 2px solid var(--accent-low);
+}
+
+@media (max-width: 1024px) {
+  .search input {
+    padding: 0.5rem 0 0.5rem 2rem;
+    font-size: 1rem;
+  }
 }

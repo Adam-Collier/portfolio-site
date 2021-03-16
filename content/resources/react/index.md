@@ -1,9 +1,7 @@
 ---
 title: React
 description: >-
-  React is a view library created by Facebook, that frontend devs utilize. Due
-  to it's rapid ability to render only particular parts of the page when it's
-  required.
+  Anything React affiliated I have found helpful or used in a project. This also includes Gatsby and Next.js.
 color: '#61DAFB'
 updatedDate: '2020-12-06T19:03:55+00:00'
 ---

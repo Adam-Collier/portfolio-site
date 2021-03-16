@@ -2,6 +2,7 @@
 title: Design
 updatedDate: '2021-03-06T19:01:25.272Z'
 published: true
+description: Covering all areas of design. Newletters you should subscribe too, Figma plugins I use, Articles for building design systems and much, much more.
 ---
 
 Everything design-related I find useful and will reference in the future. It also lets me keep my sanity by not scouring the whole web for an article I saw once.

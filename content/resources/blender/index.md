@@ -1,6 +1,7 @@
 ---
 title: Blender
 updatedDate: '2021-02-01T22:21:19+00:00'
+description: Keyboard shortcodes, general notes and utilities I have needed or discovered whilst completing Polygon Runway's 3D Illustrator Course.
 ---
 
 ## Courses

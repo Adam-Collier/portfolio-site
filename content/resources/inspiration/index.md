@@ -1,6 +1,7 @@
 ---
 title: Inspiration
 updatedDate: '2020-11-21T18:00:34+00:00'
+description: Explore the sites I use to gather inspiration and the Savee.it Collections I use to curate the stuff I find.
 ---
 
 Having a lack of inspiration can drag any project down and make for some lacklustre design decisions. Here are some sites and other resources to kickstart some ideas when tackling a new project.

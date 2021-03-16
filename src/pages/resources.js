@@ -1,45 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { graphql } from 'gatsby';
 
-import MDX from '../components/MDX';
 import Page from '../components/Page';
 import SEO from '../components/Seo';
 import Resource from '../components/Resource';
-import Sidebar from '../components/Sidebar';
 import Content from '../components/Content';
+import Search from '../components/Search';
+
+import styles from './resources.module.css';
 
 const ResourceTemplate = ({ data, location }) => {
-  const { mdx } = data;
-  const { frontmatter, id, excerpt, body } = mdx;
-  const { title, updatedDate } = frontmatter;
-
-  const description =
-    'This is a group of resources I have either learned something from or thought could become useful in the future.';
+  const [resources, setResources] = useState(data.allMdx.edges);
 
   return (
-    <Page containerType="fluid" location={location}>
+    <Page containerType="fluid" location={location} noSidebar>
       <SEO
         title="Resources"
-        description={description || excerpt}
+        description="This is a group of resources I have either learned something from or thought could become useful in the future."
         pathname={location.pathname}
       />
 
-      <Sidebar title="Resources" data={data.allMdx} description={description}>
-        {({ searchPosts }) =>
-          searchPosts.map(({ node }, key) => (
-            <Resource node={node} key={key} currentPageId={id} />
-          ))
-        }
-      </Sidebar>
-
-      <Content>
-        <header>
-          <p style={{ fontSize: '0.875rem', color: 'var(--foreground-high' }}>
-            Updated: {updatedDate}
-          </p>
-          <h1>{title}</h1>
-        </header>
-        <MDX body={body} />
+      <Content className={styles.content}>
+        <p>
+          This is a group of resources I have either learned something from or
+          thought could become useful in the future.
+        </p>
+        <div className={styles.search}>
+          <Search allPosts={data.allMdx.edges} searchedPosts={setResources} />
+        </div>
+        {resources.map(({ node }, key) => (
+          <Resource node={node} key={key} />
+        ))}
       </Content>
     </Page>
   );
@@ -54,18 +45,6 @@ export const pageQuery = graphql`
         title
       }
     }
-    mdx(fileAbsolutePath: { regex: "/resources/a/" }) {
-      id
-      excerpt(pruneLength: 160)
-      fields {
-        slug
-      }
-      body
-      frontmatter {
-        title
-        updatedDate(formatString: "MMMM DD, YYYY")
-      }
-    }
     allMdx(
       sort: { fields: [frontmatter___title], order: ASC }
       filter: { fileAbsolutePath: { regex: "/resources/" } }
@@ -73,12 +52,12 @@ export const pageQuery = graphql`
       edges {
         node {
           id
-          excerpt(pruneLength: 400)
           fields {
             slug
           }
           frontmatter {
             title
+            description
           }
           rawBody
         }

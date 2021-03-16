@@ -1,6 +1,7 @@
 ---
 title: Accessibility
 updatedDate: '2021-01-05T17:06:25+00:00'
+description: Articles, tools and blog recommendations for improving site accessibility. Covering topics such as colour, meta tags and HTML entities.
 ---
 
 Many sites and tools are developed with barriers that make it difficult or impossible for some people to use. This is where accessibility comes in. By making sites more accessible we can make the web a better place for everyone.

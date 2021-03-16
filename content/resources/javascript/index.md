@@ -1,6 +1,7 @@
 ---
 title: Javascript
 updatedDate: '2020-12-03T17:51:31+00:00'
+description: Javascript is incredibly vast so here's my curated collection of articles, tools and subscriptions I reference frequently.
 ---
 
 JavaScript is the programming language of the web. You can use it to add dynamic behaviour, store information, and handle requests and responses on a website.

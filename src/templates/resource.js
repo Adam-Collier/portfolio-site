@@ -4,20 +4,20 @@ import { graphql } from 'gatsby';
 import MDX from '../components/MDX';
 import Page from '../components/Page';
 import SEO from '../components/Seo';
-import Resource from '../components/Resource';
+import ResourceLink from '../components/Resource/Link';
 import Sidebar from '../components/Sidebar';
 import Content from '../components/Content';
 
 const ResourceTemplate = ({ data, location }) => {
   const { mdx } = data;
-  const { frontmatter, id, excerpt, body } = mdx;
+  const { frontmatter, id, body } = mdx;
   const { title, description, updatedDate } = frontmatter;
 
   return (
     <Page containerType="fluid" location={location}>
       <SEO
         title={`${title} Resources`}
-        description={description || excerpt}
+        description={description}
         pathname={location.pathname}
       />
       <Sidebar
@@ -27,7 +27,7 @@ const ResourceTemplate = ({ data, location }) => {
       >
         {({ searchPosts }) =>
           searchPosts.map(({ node }, key) => (
-            <Resource node={node} key={key} currentPageId={id} />
+            <ResourceLink node={node} key={key} currentPageId={id} />
           ))
         }
       </Sidebar>
@@ -55,7 +55,6 @@ export const pageQuery = graphql`
     }
     mdx(fields: { slug: { eq: $slug } }) {
       id
-      excerpt(pruneLength: 160)
       fields {
         slug
       }
@@ -72,7 +71,6 @@ export const pageQuery = graphql`
       edges {
         node {
           id
-          excerpt(pruneLength: 400)
           fields {
             slug
           }

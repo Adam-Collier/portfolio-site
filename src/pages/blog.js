@@ -6,13 +6,16 @@ import SEO from '../components/Seo';
 import Blogposts from '../components/Blogposts';
 import TagFilters from '../components/TagFilter';
 import Sidebar from '../components/Sidebar';
+import Content from '../components/Content';
 
 const BlogPageContent = ({ allPosts, categories, description }) => {
   const [posts, setFilteredPosts] = useState(allPosts);
 
   return (
     <>
-      <Blogposts posts={posts} style={{ minHeight: '80vh' }} />
+      <Content>
+        <Blogposts posts={posts} style={{ minHeight: '80vh' }} />
+      </Content>
       <Sidebar title="Blog" description={description} noAccordianClose>
         <TagFilters
           categories={categories}
@@ -64,7 +67,6 @@ export const query = graphql`
     ) {
       edges {
         node {
-          excerpt(pruneLength: 400)
           fields {
             slug
             title
@@ -84,7 +86,6 @@ export const query = graphql`
               }
             }
             description
-            excerpt
             tags
           }
         }

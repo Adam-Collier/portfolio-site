@@ -1,0 +1,20 @@
+.content {
+  margin-top: 3.5rem;
+  min-height: 60vh;
+  margin-bottom: 3rem;
+}
+
+.content > p {
+  font-size: 1.25rem;
+  line-height: 1.7;
+}
+
+.search {
+  padding: 1rem 1rem 1.45rem;
+}
+
+@media (max-width: 1024px) {
+  .search {
+    padding: 1rem 0 1.45rem;
+  }
+}

@@ -17,7 +17,7 @@
   --border-radius: 2px;
   --sidebar-width: 300px;
   --content-width: 100%;
-  --max-content-width: 70ch;
+  --max-content-width: 64ch;
   --max-layout-width: 1200px;
   --grid-areas: 'sidebar content' 'sidebar footer';
   --grid-columns: 320px minmax(0, 1fr);
@@ -50,14 +50,6 @@
   --foreground-high: #9ca3af;
   --foreground-low: #2b2b2b;
   --foreground-min: #262626;
-}
-
-@media (min-width: 1280px) {
-  :root {
-    /* --grid-areas: 'sidebar content padding' 'sidebar footer padding';
-    --grid-columns: 340px minmax(0, 1fr) 2rem;
-    --content-width: 95%; */
-  }
 }
 
 @media (max-width: 767px) {

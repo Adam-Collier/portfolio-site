@@ -55,7 +55,7 @@
 @media (max-width: 767px) {
   :root {
     --content-x-padding: 1rem;
-    --grid-areas: 'title' 'description' 'context' 'content' 'footer';
+    --grid-areas: 'sidebar' 'content' 'footer';
     --grid-columns: 1fr;
     --grid-gap: 1.45rem;
     --content-spacing-left: 0;

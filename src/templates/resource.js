@@ -1,17 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { graphql } from 'gatsby';
 
 import MDX from '../components/MDX';
 import Page from '../components/Page';
 import SEO from '../components/Seo';
-import ResourceLink from '../components/Resource/Link';
+import Resources from '../components/Resources';
 import Sidebar from '../components/Sidebar';
 import Content from '../components/Content';
+import Search from '../components/Search';
+
+import { useMediaQuery } from '../hooks/useMediaQuery';
 
 const ResourceTemplate = ({ data, location }) => {
-  const { mdx } = data;
+  const { mdx, allMdx } = data;
   const { frontmatter, id, body } = mdx;
   const { title, description, updatedDate } = frontmatter;
+
+  const allPosts = allMdx?.edges || '';
+  const [searchPosts, setSearchPosts] = useState(allPosts);
+  const searchedPosts = (posts) => {
+    setSearchPosts(posts);
+  };
 
   return (
     <Page containerType="fluid" location={location}>
@@ -22,14 +31,13 @@ const ResourceTemplate = ({ data, location }) => {
       />
       <Sidebar
         title="Resources"
-        data={data.allMdx}
         description="This is a group of resources I have either learned something from or thought could become useful in the future."
+        noContextMenu
       >
-        {({ searchPosts }) =>
-          searchPosts.map(({ node }, key) => (
-            <ResourceLink node={node} key={key} currentPageId={id} />
-          ))
-        }
+        {useMediaQuery('(min-width: 768px)') && (
+          <Search allPosts={allPosts} searchedPosts={searchedPosts} />
+        )}
+        <Resources posts={searchPosts} id={id} />
       </Sidebar>
       <Content>
         <header>

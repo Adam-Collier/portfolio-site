@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 
 import { ArrowRight } from 'react-feather';
 
-import styles from './resource.module.css';
+import styles from './resource-link.module.css';
 
 const index = ({ node, currentPageId }) => {
   const { id } = node;

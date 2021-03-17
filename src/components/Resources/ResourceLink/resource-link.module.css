@@ -6,38 +6,6 @@
   cursor: pointer;
 }
 
-.resource {
-  display: block;
-  padding: 1rem;
-}
-
-.resource div {
-  display: flex;
-  align-items: center;
-}
-
-.resource h3,
-.resource svg {
-  margin-bottom: 0.5rem;
-  margin-right: 0.5rem;
-}
-
-.resource svg {
-  display: none;
-}
-
-.resource p {
-  margin-bottom: 0;
-}
-
-.resource:hover {
-  background: var(--foreground-min);
-}
-
-.resource:hover svg {
-  display: block;
-}
-
 .resourceLink article {
   display: flex;
   justify-content: space-between;
@@ -56,6 +24,7 @@
 }
 
 .active {
+  display: block;
   background: var(--accent-min);
   border-radius: var(--border-radius);
 }
@@ -82,4 +51,10 @@
 
 .active:after {
   background: var(--primary-accent);
+}
+
+@media (max-width: 767px) {
+  .active svg {
+    display: none;
+  }
 }

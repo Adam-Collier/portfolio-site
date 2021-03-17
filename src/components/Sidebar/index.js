@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Search from '../Search';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 
 import styles from './sidebar.module.css';
@@ -48,47 +47,30 @@ const ConditionalWrapper = ({
 const Sidebar = ({
   children,
   title,
-  data = '',
   className,
   description,
   noContextMenu,
   noAccordianClose,
   noDescription,
-}) => {
-  const allPosts = data ? data.edges : '';
-  const [searchPosts, setSearchPosts] = useState(allPosts);
-  const searchedPosts = (posts) => {
-    setSearchPosts(posts);
-  };
+}) => (
+  <ConditionalWrapper
+    className={className}
+    noContextMenu={noContextMenu}
+    noAccordianClose={noAccordianClose}
+  >
+    {title &&
+      (title === 'Blog' || title === 'Snippets' ? (
+        <h1 className={styles.title}>{title}</h1>
+      ) : (
+        <span className={styles.title}>{title}</span>
+      ))}
 
-  return (
-    <ConditionalWrapper
-      className={className}
-      noContextMenu={noContextMenu}
-      noAccordianClose={noAccordianClose}
-    >
-      {title &&
-        (title === 'Blog' || title === 'Snippets' ? (
-          <h1 className={styles.title}>{title}</h1>
-        ) : (
-          <span className={styles.title}>{title}</span>
-        ))}
+    {!noDescription && description && (
+      <p className={styles.description}>{description}</p>
+    )}
 
-      {!noDescription && description && (
-        <p className={styles.description}>{description}</p>
-      )}
-
-      {data && (
-        <div className={styles.bar}>
-          <Search allPosts={allPosts} searchedPosts={searchedPosts} />
-        </div>
-      )}
-
-      <section className={styles.posts}>
-        {data ? children({ searchPosts }) : children}
-      </section>
-    </ConditionalWrapper>
-  );
-};
+    <section className={styles.posts}>{children}</section>
+  </ConditionalWrapper>
+);
 
 export default Sidebar;

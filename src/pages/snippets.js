@@ -24,7 +24,11 @@ const Snippets = ({ data, location }) => {
     "There's nothing worse than almost remembering a bit of code you saw on stackoverflow on in a blogpost once. So I've collated all of the ones I find most useful.";
 
   return (
-    <Page containerType="fluid" location={location}>
+    <Page
+      containerType="fluid"
+      containerClass={styles.snippets}
+      location={location}
+    >
       <SEO
         title="Snippets"
         description={description}

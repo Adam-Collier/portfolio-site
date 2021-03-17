@@ -18,6 +18,10 @@
 }
 
 @media (max-width: 767px) {
+  .snippets {
+    --grid-areas: 'title' 'description' 'context' 'content' 'footer';
+  }
+
   .content :is(h2, h3, h4) {
     padding-top: 115px;
     margin-top: -115px;

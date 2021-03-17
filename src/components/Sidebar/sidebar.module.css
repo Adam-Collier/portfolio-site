@@ -67,6 +67,7 @@
   top: 60px;
   background: var(--primary-background);
   z-index: 5;
+  margin-top: -1.45rem;
 }
 
 .accordion:active {
@@ -93,7 +94,6 @@
   }
   .description {
     grid-area: description;
-    margin-bottom: 0;
   }
   .accordion {
     grid-area: context;

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { graphql } from 'gatsby';
 
+import styles from './blog.module.css';
+
 import Page from '../components/Page';
 import SEO from '../components/Seo';
 import Blogposts from '../components/Blogposts';
@@ -34,7 +36,11 @@ const Blog = ({ data, location }) => {
     'A collection of writing which can range from talking about code, design or life in general. Enjoy this eclectic collection of writings';
 
   return (
-    <Page containerType="fluid" location={location}>
+    <Page
+      containerType="fluid"
+      containerClass={styles.blog}
+      location={location}
+    >
       <SEO
         title="Blog"
         description={description}

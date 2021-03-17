@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 
 import Page from '../components/Page';
 import SEO from '../components/Seo';
-import Resources from '../components/Resources';
+import ResourceCard from '../components/Resources/ResourceCard';
 import Content from '../components/Content';
 import Search from '../components/Search';
 
@@ -29,7 +29,7 @@ const ResourceTemplate = ({ data, location }) => {
           <Search allPosts={data.allMdx.edges} searchedPosts={setResources} />
         </div>
         {resources.map(({ node }, key) => (
-          <Resources node={node} key={key} />
+          <ResourceCard node={node} key={key} />
         ))}
       </Content>
     </Page>

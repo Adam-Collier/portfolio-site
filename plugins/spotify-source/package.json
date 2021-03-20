@@ -14,6 +14,7 @@
   "author": "Kyle Gill <kyle.robert.gill@gmail.com>",
   "license": "0BSD",
   "dependencies": {
+    "node-fetch": "^2.6.1",
     "querystring": "^0.2.0"
   }
 }

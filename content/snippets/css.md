@@ -1,6 +1,7 @@
 ---
-updatedDate: '2021-01-06T19:11:53+00:00'
+updatedDate: "2021-01-06T19:11:53+00:00"
 ---
+
 ## CSS
 
 ### Responsive CSS grid
@@ -109,13 +110,13 @@ Remember that the icon/image is declared after the colour. A good use case for t
 
 ```css
 .image-placeholder {
-  background: #eff0f2 url('./icons/logo.svg');
+  background: #eff0f2 url("./icons/logo.svg");
 }
 
 /* alternatively we can define colour and image seperately for the same effect */
 .image-placeholder {
   background-color: #eff0f2;
-  background-image: url('./icons/logo.svg');
+  background-image: url("./icons/logo.svg");
 }
 ```
 
@@ -133,7 +134,7 @@ li {
 .current-menu-item {
   position: relative;
   &:before {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     right: 0;
@@ -144,3 +145,55 @@ li {
   }
 }
 ```
+
+### Accessible icon text
+
+To make buttons more accessible we need to let screen readers differentiate each buttons intention. By utilising the `visually-hidden` class name we can hide the text (keeping only the icon) and out buttons will be accessible.
+
+```css
+.visually-hidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+}
+```
+
+[The snippet in a component](https://www.joshwcomeau.com/snippets/react-components/visually-hidden/)
+
+### Using revert instead of underline
+
+When setting `text-decoration: none` on an element if, on hover, we want it to show we can use revert instead of underline to make it show. By using revert we are just telling the browser to undo our declared styles and revert back to the original.
+
+```css
+a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: revert;
+  }
+}
+```
+
+### Apply styles if within another component
+
+This is a fairly tricky thing to understand because we normally understand css as only being able to look inward. However, with Styled components we can check whether a styled component exists within another component and change those styles accordingly.
+
+```js
+const TextLink = styled.a`
+  /* Standard styles: */
+  color: blue;
+  text-decoration: none;
+  /* Styles when rendered inside a quote: */
+  ${QuoteContent} & {
+    color: black;
+    text-decoration: revert;
+  }
+`;
+```
+
+Taken from Josh Comeau's course [css-for-js devs](https://css-for-js.dev)

@@ -1,6 +1,6 @@
 ---
 title: CSS
-updatedDate: '2020-11-19T15:44:39+00:00'
+updatedDate: "2020-11-19T15:44:39+00:00"
 description: Articles on the fundamentals and the newer features coming to CSS. Tools that give you confidence in the CSS you write.
 ---
 
@@ -48,6 +48,39 @@ a big fan of this article because it covers a lot of use cases.
 Read - Ahmed has wrote a great post for those wanting to familiarise themselves
 with min(), max() and clamp() CSS functions. I'm excited for this addition to
 the language and it will revolutionise responsive declarations.
+
+## Josh Comeau's CSS in JS
+
+### Useful width options
+
+```css
+width: min-content | max-content | fit-content;
+```
+
+### Inherit colours
+
+```css
+/* for consistency between parent and child */
+color: inherit;
+```
+
+### Isolated stacking context
+
+```css
+/* add this to the wrapper */
+isolation: isolate;
+```
+
+### Keep items inline
+
+```css
+white-space: nowrap;
+```
+
+List of tools:
+
+- [CSS Stacking Context Inspector](https://chrome.google.com/webstore/detail/css-stacking-context-insp/apjeljpachdcjkgnamgppgfkmddadcki)
+-
 
 ## Tools
 

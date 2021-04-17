@@ -1,6 +1,7 @@
 ---
 updatedDate: '2021-01-06T19:11:53+00:00'
 ---
+
 ## Javascript
 
 ### Chunk an array
@@ -11,7 +12,7 @@ Because sometime you just need to chunk some stuff.
 const chunk = (arr, size) =>
   Array.from({ length: Math.ceil(arr.length / size) }, (v, i) =>
     arr.slice(i * size, i * size + size)
-  )
+  );
 ```
 
 ### Parsing JSON
@@ -19,12 +20,10 @@ const chunk = (arr, size) =>
 An interesting snippet I came across on [The Cost of Javascript](https://v8.dev/blog/cost-of-javascript-2019#json). I'll be using this trick the next time I'm parsing big chunks of JSON.
 
 ```js
-const data = { foo: 42, bar: 1337 } // 🐌
+const data = { foo: 42, bar: 1337 }; // 🐌
 
-const data = JSON.parse('{"foo":42,"bar":1337}') // 🚀
+const data = JSON.parse('{"foo":42,"bar":1337}'); // 🚀
 ```
-
-
 
 ### Flatten an array
 
@@ -36,9 +35,9 @@ const multiDimensionalArray = [
   [1, 2],
   [3, 4],
   [5, 6],
-]
+];
 
-const flattenedArray = multiDimensionalArray.flat() // [1, 2, 3, 4, 5, 6]
+const flattenedArray = multiDimensionalArray.flat(); // [1, 2, 3, 4, 5, 6]
 ```
 
 ### Remove a property from an Object
@@ -49,12 +48,12 @@ A pretty neat solution, by leveraging ES6 Object destructuring assignment we can
 const item = {
   id: 1,
   price: 50,
-  image: "item.jpeg",
-}
+  image: 'item.jpeg',
+};
 
-const { id, ...item2 } = item
+const { id, ...item2 } = item;
 // now item 2 doesnt have an id property
-console.log(item2)
+console.log(item2);
 ```
 
 ### Optional Chaining
@@ -63,10 +62,10 @@ More than anything it's going to save you some heaps of typing, it's a neat solu
 
 ```js
 // Instead of something like
-const city = user && user.address && user.address.city
+const city = user && user.address && user.address.city;
 
 // We can do
-const city = user?.address?.city
+const city = user?.address?.city;
 ```
 
 ### \$(document).ready in vanilla
@@ -74,9 +73,9 @@ const city = user?.address?.city
 No other excuse, I just forget what this is all the time.
 
 ```js
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener('DOMContentLoaded', function () {
   // Handler when the DOM is fully loaded
-})
+});
 ```
 
 ### Get a single value from an array of objects via id
@@ -84,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function() {
 Simple, elegant and it will save you a bunch of time. No more mapping or filtering involved.
 
 ```js
-myArray.find(x => x.id === "45").author
+myArray.find((x) => x.id === '45').author;
 ```
 
 ### Duplicate child elements
@@ -92,9 +91,23 @@ myArray.find(x => x.id === "45").author
 ```js
 // Child elements are usually a HTMLCollection (which we can't map over)
 // So we need to convert it to an array first
-Array.from(element.children).map(child => {
+Array.from(element.children).map((child) => {
   // by setting to true we grab the whole subtree too
-  let clonedChild = child.cloneNode(true)
-  element.appendChild(clonedChild)
-})
+  let clonedChild = child.cloneNode(true);
+  element.appendChild(clonedChild);
+});
+```
+
+### Decode HTML entities
+
+Sometimes when using API's or text from the document special characters are encoded into HTML entities. We can take advantage of the `textarea` tag to auto decode these strings for us.
+
+```js
+export const decodeHtmlEntities = (html) => {
+  var textArea = document.createElement('textarea');
+  textArea.innerHTML = html;
+  let decodedHTML = textArea.value;
+  textArea.remove();
+  return decodedHTML;
+};
 ```

@@ -1,5 +1,5 @@
 ---
-updatedDate: "2021-01-06T19:11:53+00:00"
+updatedDate: '2021-01-06T19:11:53+00:00'
 ---
 
 ## CSS
@@ -110,13 +110,13 @@ Remember that the icon/image is declared after the colour. A good use case for t
 
 ```css
 .image-placeholder {
-  background: #eff0f2 url("./icons/logo.svg");
+  background: #eff0f2 url('./icons/logo.svg');
 }
 
 /* alternatively we can define colour and image seperately for the same effect */
 .image-placeholder {
   background-color: #eff0f2;
-  background-image: url("./icons/logo.svg");
+  background-image: url('./icons/logo.svg');
 }
 ```
 
@@ -134,7 +134,7 @@ li {
 .current-menu-item {
   position: relative;
   &:before {
-    content: "";
+    content: '';
     position: absolute;
     left: 0;
     right: 0;
@@ -197,3 +197,30 @@ const TextLink = styled.a`
 ```
 
 Taken from Josh Comeau's course [css-for-js devs](https://css-for-js.dev)
+
+### The Stack layout
+
+Utilising the "Lobotomised Owls" selector we can create more consistent spacing between the elements on our pages. Essentially what we are telling the browser is if this element has a previous sibling, give this element some margin top.
+
+```css
+.stack {
+  --space: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.stack > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.stack > * + * {
+  margin-top: var(--space);
+}
+```
+
+references:
+
+- For context about the code: [Every Layout - The Stack](https://every-layout.dev/layouts/stack/)
+- To learn about the origins: [Axiomatic CSS and Lobotomized Owls](https://alistapart.com/article/axiomatic-css-and-lobotomized-owls/)

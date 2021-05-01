@@ -1,6 +1,6 @@
 ---
 title: CSS
-updatedDate: "2020-11-19T15:44:39+00:00"
+updatedDate: '2020-11-19T15:44:39+00:00'
 description: Articles on the fundamentals and the newer features coming to CSS. Tools that give you confidence in the CSS you write.
 ---
 
@@ -51,36 +51,23 @@ the language and it will revolutionise responsive declarations.
 
 ## Josh Comeau's CSS in JS
 
-### Useful width options
-
 ```css
+/* useful width options */
 width: min-content | max-content | fit-content;
-```
 
-### Inherit colours
-
-```css
-/* for consistency between parent and child */
+/* inherit colours for parent child consistency */
 color: inherit;
-```
 
-### Isolated stacking context
-
-```css
-/* add this to the wrapper */
+/* isolated stacking context (add to the wrapper) */
 isolation: isolate;
-```
 
-### Keep items inline
-
-```css
+/* keep items inline */
 white-space: nowrap;
 ```
 
-List of tools:
+Tools recommended by Josh:
 
 - [CSS Stacking Context Inspector](https://chrome.google.com/webstore/detail/css-stacking-context-insp/apjeljpachdcjkgnamgppgfkmddadcki)
--
 
 ## Tools
 

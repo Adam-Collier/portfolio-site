@@ -1,8 +1,10 @@
 ---
 title: Design
-updatedDate: '2021-03-06T19:01:25.272Z'
+updatedDate: '2021-05-01T16:43:17.083Z'
 published: true
-description: Covering all areas of design. Newletters you should subscribe too, Figma plugins I use, Articles for building design systems and much, much more.
+description: >-
+  Covering all areas of design. Newletters you should subscribe too, Figma
+  plugins I use, Articles for building design systems and much, much more.
 ---
 
 Everything design-related I find useful and will reference in the future. It also lets me keep my sanity by not scouring the whole web for an article I saw once.
@@ -44,6 +46,10 @@ Everything design-related I find useful and will reference in the future. It als
 ## Figma
 
 My design tool of choice and great for designing collaboratively, prototyping and sharing previews. The Figma team are revolutionising design tooling and taking it to another level.
+
+### The best time saving tip (apple users only sorry)
+
+Need to quickly take a screenshot on your IPhone and paste it in to Figma? A great tip I found takes advantage of Apple's [handoff feature](https://support.apple.com/en-gb/HT209455). Once handoff is activated on your Mac and IPhone you can grab your phone > take a screenshot > tap share > hit copy and then on your desktop just paste it straight into Figma! It's saved me tonnes of time and now the wisdom is passed to you.
 
 ### Useful Plugins
 

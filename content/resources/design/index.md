@@ -1,6 +1,6 @@
 ---
 title: Design
-updatedDate: '2021-05-07T18:10:45.529Z'
+updatedDate: '2021-05-07T18:29:38.932Z'
 published: true
 description: >-
   Covering all areas of design. Newletters you should subscribe too, Figma
@@ -25,7 +25,7 @@ Everything design-related I find useful and will reference in the future. It als
 
 [Staff Design](https://staff.design) - The Individual Contributor Path - I'm a massive fan of anything Brian Lovin does and this is no exception. Brian interviews a great collection of designers and gets some great insights into career growth and the Individual Contributor Path.
 
-[Lovers Magazine](https://www.loversmagazine.com/) - Essential Designer Questions - Previously Interface Lovers, Lovers Magazine amplifies the voice of the designer. Asking the essential questions every designer wants to know in order to push and inspire themselved and creatives in the community.
+[Lovers Magazine](https://www.loversmagazine.com/) - Essential Designer Questions - Previously Interface Lovers, Lovers Magazine amplifies the voice of the designer. Asking the essential questions every designer wants to know in order to push and inspire themselves and creatives in the community.
 
 ## Tools
 

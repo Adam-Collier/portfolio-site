@@ -17,10 +17,6 @@
   margin-right: auto;
 }
 
-.content ul li::marker {
-  color: var(--primary-accent);
-}
-
 .content li {
   font-weight: 450;
   line-height: 1.75;

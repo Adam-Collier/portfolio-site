@@ -1,5 +1,5 @@
 ---
-updatedDate: '2021-03-17T17:57:20.590Z'
+updatedDate: '2021-05-07T18:11:36.476Z'
 published: true
 ---
 
@@ -21,8 +21,11 @@ Install Yalc globally:
 # install globally
 $ npm i -g yalc
 
-# publish component locally
+# publish package locally
 $ yalc publish
+
+# publish and update all projects using that yalc store
+$ yalc publish --push
 
 # add your local package as a dependency
 $ yalc add my-package

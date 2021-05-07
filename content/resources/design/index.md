@@ -1,6 +1,6 @@
 ---
 title: Design
-updatedDate: '2021-05-01T16:43:17.083Z'
+updatedDate: '2021-05-07T18:10:45.529Z'
 published: true
 description: >-
   Covering all areas of design. Newletters you should subscribe too, Figma
@@ -20,6 +20,12 @@ Everything design-related I find useful and will reference in the future. It als
 [It's Nice That](https://www.itsnicethat.com/newsletters) - The Don of Design News - It's Nice That has been my go-to for design news and inspiration for years. I have the odd scroll now and then but their weekly email always adds some quality to my inbox.
 
 [Sidebar](https://sidebar.io/) - 5 links a day - A long time favourite of mine and Sidebar never scuppers on sending quality content. I'll admit sometimes 5 links can be a little overwhelming to check daily in that case I recommend just going on the site every now and then, you won't be disappointed.
+
+## Interview collections
+
+[Staff Design](https://staff.design) - The Individual Contributor Path - I'm a massive fan of anything Brian Lovin does and this is no exception. Brian interviews a great collection of designers and gets some great insights into career growth and the Individual Contributor Path.
+
+[Lovers Magazine](https://www.loversmagazine.com/) - Essential Designer Questions - Previously Interface Lovers, Lovers Magazine amplifies the voice of the designer. Asking the essential questions every designer wants to know in order to push and inspire themselved and creatives in the community.
 
 ## Tools
 

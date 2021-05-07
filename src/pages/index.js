@@ -39,7 +39,7 @@ const IndexPage = ({ location, data }) => {
         </section>
         <section>
           <p>
-            Looking for the latest blog post? Here’s the latest three I’ve
+            Looking for the latest blog post? Here’s the latest four I’ve
             written! Check out the <Link to="/blog">Blog</Link> for more
           </p>
           <Blogposts posts={blogposts} />

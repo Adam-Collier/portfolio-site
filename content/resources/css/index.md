@@ -63,9 +63,42 @@ isolation: isolate;
 
 /* keep items inline */
 white-space: nowrap;
+
+/* only add styles for mouse/trackpad users */
+@media (hover: hover) and (pointer: fine) {
+  button:hover {
+    text-decoration: underline;
+  }
+}
 ```
 
-Tools recommended by Josh:
+#### Recommended break points
+
+- 0-550px — Mobile
+- 550-1100px — Tablet
+- 1100-1500px — Laptop
+- 1500+px — Desktop
+
+#### Using Rems instead of pixels for breakpoints
+
+The idea behind this being, as the user increases their default font size the @media scale slides to accomodate those changes. Whereas, with pixels being "static" our layouts would become cramped and unable to adjust, if the user increased their default font size.
+
+```js
+// constants.js
+const BREAKPOINTS = {
+  tabletMin: 550,
+  laptopMin: 1100,
+  desktopMin: 1500,
+}
+
+const QUERIES = {
+  'tabletAndUp': `(min-width: ${BREAKPOINTS.tabletMin / 16}rem)`
+  'laptopAndUp': `(min-width: ${BREAKPOINTS.laptopMin / 16}rem)`
+  'desktopAndUp': `(min-width: ${BREAKPOINTS.desktopMin / 16}rem)`
+}
+```
+
+#### Tools recommended by Josh:
 
 - [CSS Stacking Context Inspector](https://chrome.google.com/webstore/detail/css-stacking-context-insp/apjeljpachdcjkgnamgppgfkmddadcki)
 

@@ -1,5 +1,5 @@
 ---
-updatedDate: '2021-04-17T17:22:52.614Z'
+updatedDate: '2021-05-07T18:11:06.194Z'
 published: true
 ---
 
@@ -168,7 +168,7 @@ To make buttons more accessible we need to let screen readers differentiate each
 
 ### Using revert instead of underline
 
-When setting `text-decoration: none` on an element if, on hover, we want it to show we can use revert instead of underline to make it show. By using revert we are just telling the browser to undo our declared styles and revert back to the original.
+Say we have created a link with `text-decoration: none` and we want the underline to show on hover, instead of explicitly saying `text-decoration: underline` we can use `revert` so it falls back to the original "state".
 
 ```css
 a {
@@ -201,7 +201,7 @@ Taken from Josh Comeau's course [css-for-js devs](https://css-for-js.dev)
 
 ### The Stack layout
 
-Utilising the "Lobotomised Owls" selector we can create more consistent spacing between the elements on our pages. Essentially what we are telling the browser is if this element has a previous sibling, give this element some margin top.
+Utilising the "Lobotomised Owls" selector we can create more consistent spacing between elements on our pages. Essentially we are telling the browser to only apply margin top to those elements which have a previous sibling.
 
 ```css
 .stack {

@@ -45,9 +45,9 @@ Read - A comprehensive introduction on creating and styling Layout wrappers. I'm
 a big fan of this article because it covers a lot of use cases.
 
 [Everything I Learned About min(), max(), clamp() In CSS](https://ishadeed.com/article/css-min-max-clamp/) -
-Read - Ahmed has wrote a great post for those wanting to familiarise themselves
+Read - Ahmed has wrote a great post for those wanting to familiarize themselves
 with min(), max() and clamp() CSS functions. I'm excited for this addition to
-the language and it will revolutionise responsive declarations.
+the language and it will revolutionize responsive declarations.
 
 ## Josh Comeau's CSS in JS
 

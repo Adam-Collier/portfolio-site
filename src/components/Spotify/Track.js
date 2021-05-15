@@ -22,6 +22,7 @@ const Track = ({ track }) => {
       <GatsbyImage
         image={remoteImage.childImageSharp.gatsbyImageData}
         className={styles.image}
+        alt={`${name}, ${artistNames}`}
       />
       <div>
         <p className={styles.trackName}>{name}</p>

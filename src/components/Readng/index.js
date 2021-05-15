@@ -31,8 +31,8 @@ const Readng = () => {
   return (
     <>
       <Book node={feedReadngCurrentlyReading} />
-      {allFeedReadngRead.edges.map(({ node }) => (
-        <Book node={node} finished />
+      {allFeedReadngRead.edges.map(({ node }, index) => (
+        <Book node={node} key={index} finished />
       ))}
     </>
   );

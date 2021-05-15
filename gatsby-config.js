@@ -165,7 +165,7 @@ module.exports = {
             resolve: `gatsby-remark-images`,
             options: {
               linkImagesToOriginal: false,
-              maxWidth: 596,
+              maxWidth: 640,
               withWebp: true,
               quality: 90,
               srcSetBreakpoints: [200, 360, 414, 720, 828],
@@ -178,7 +178,7 @@ module.exports = {
       resolve: `gatsby-remark-images`,
       options: {
         linkImagesToOriginal: false,
-        maxWidth: 596,
+        maxWidth: 640,
         withWebp: true,
         quality: 90,
         srcSetBreakpoints: [330, 360, 414, 660, 720, 828],

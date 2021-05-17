@@ -13,7 +13,7 @@ const Form = ({ title }) => {
     handle: '',
     message: '',
     honeypot: '',
-    accessKey: 'ed0981a9-287b-4631-9367-39d40c874490',
+    accessKey: process.env.GATSBY_STATICFORM_ACCESS_KEY,
   });
 
   const [response, setResponse] = useState({

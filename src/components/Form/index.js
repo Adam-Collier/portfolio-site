@@ -65,8 +65,8 @@ const Form = ({ title }) => {
     <div className={styles.feedback}>
       <p>
         Please let me know if you found anything I wrote confusing, incorrect or
-        outdated. Write a few words below and I will make any amends you
-        suggest.
+        outdated. Write a few words below and I will use your suggestions to
+        improve this post.
       </p>
       <form className={styles.form} onSubmit={handleSubmit}>
         <label className={styles.message} htmlFor="message">

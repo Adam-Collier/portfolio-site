@@ -1,0 +1,79 @@
+.feedback {
+  --feedback-padding: 1.5rem;
+  background: var(--foreground-min);
+  border-radius: var(--border-radius);
+  padding: var(--feedback-padding);
+  margin-left: calc(var(--feedback-padding) * -1);
+  margin-right: calc(var(--feedback-padding) * -1);
+  border-top: 1px dashed var(--foreground-high);
+  border-bottom: 1px dashed var(--foreground-high);
+  margin-top: 2rem;
+}
+
+.feedback > * {
+  margin: 0;
+}
+
+.feedback > * + * {
+  margin: 0;
+  margin-top: 1.45rem;
+}
+
+.form {
+  display: grid;
+  grid-template-areas: 'message message' 'email handle' 'submit submit';
+  grid-gap: 1rem;
+  margin-bottom: 0;
+}
+
+.message {
+  display: flex;
+  grid-area: message;
+  flex-direction: column;
+}
+
+.email {
+  grid-area: email;
+}
+
+.handle {
+  grid-area: handle;
+}
+
+.submit {
+  grid-area: submit;
+  margin-top: 0.45rem;
+}
+
+.form > * {
+  font-size: 0.875rem;
+}
+
+.form input,
+.form textarea {
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 0.25rem;
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 0.5rem;
+}
+
+.form textarea {
+  resize: vertical;
+}
+
+.alert {
+  grid-area: alert;
+}
+
+@media (max-width: 550px) {
+  .feedback {
+    --feedback-padding: 1.45rem;
+    margin-left: -1rem;
+    margin-right: -1rem;
+  }
+  .form {
+    grid-template-areas: 'message' 'email' 'handle' 'submit';
+  }
+}

@@ -1,15 +1,16 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import SharePost from '../components/SharePost';
 
 import MDX from '../components/MDX';
 import Page from '../components/Page';
 import SEO from '../components/Seo';
+import SharePost from '../components/SharePost';
 import Sidebar from '../components/Sidebar';
 import Content from '../components/Content';
 import MorePosts from '../components/MorePosts';
 import TableOfContents from '../components/TableOfContents';
+import Form from '../components/Form';
 
 import { useMediaQuery } from '../hooks/useMediaQuery';
 
@@ -93,6 +94,7 @@ const BlogPostTemplate = ({ data, location }) => {
         <section>
           <MDX body={body} />
         </section>
+        <Form title={title} />
       </Content>
       <MorePosts data={data.allMdx} />
     </Page>

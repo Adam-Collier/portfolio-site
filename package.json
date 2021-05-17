@@ -30,6 +30,7 @@
     "gatsby-transformer-gitinfo": "^1.1.0",
     "gatsby-transformer-remark": "^2.13.0",
     "gatsby-transformer-sharp": "^2.11.0",
+    "kwesforms": "^2.1.2",
     "nanoid": "^3.1.20",
     "preact": "^10.5.7",
     "preact-render-to-string": "^5.1.12",

@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 import React from 'react';
 import { Link } from 'gatsby';
 
@@ -22,10 +23,10 @@ const LinkType = ({ link, children }) =>
 const ConditionalWrapper = ({ link, children }) =>
   link ? <LinkType link={link}>{children}</LinkType> : children;
 
-const Button = ({ text, link, Icon = '' }) => (
-  <div className={styles.buttonWrapper}>
+const Button = ({ text, link, Icon = '', className, type = 'button' }) => (
+  <div className={`${styles.buttonWrapper} ${className}`}>
     <ConditionalWrapper link={link}>
-      <button className={styles.button} type="button">
+      <button className={styles.button} type={type}>
         {Icon && <Icon className={styles.icon} size={16} />}
         {text}
       </button>

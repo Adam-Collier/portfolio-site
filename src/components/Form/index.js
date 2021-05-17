@@ -1,56 +1,102 @@
-import React from 'react';
-import styles from './form.module.css';
+import React, { useState } from 'react';
 import Button from '../Button';
+import styles from './form.module.css';
+import { ErrorAlert, SuccessAlert } from '../Alert';
+
+const delay = (duration) =>
+  new Promise((resolve) => setTimeout(resolve, duration));
 
 const Form = ({ title }) => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = e.target;
+  const [content, setContent] = useState({
+    subject: `Feedback sent from: ${title}`,
+    email: '',
+    handle: '',
+    message: '',
+    honeypot: '',
+    accessKey: 'ed0981a9-287b-4631-9367-39d40c874490',
+  });
 
-    fetch('https://kwes.io/api/foreign/forms/3xfCu8GGFz1QusZWJUph', {
-      method: 'POST',
-      body: new FormData(form),
-      headers: {
-        Accept: 'application/json',
-      },
-    }).then((response) => {
-      console.log(response);
-    });
+  const [response, setResponse] = useState({
+    type: '',
+    message: '',
+  });
+
+  const handleChange = (e) =>
+    setContent({ ...content, [e.target.name]: e.target.value });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await fetch('https://api.staticforms.xyz/submit', {
+        method: 'POST',
+        body: JSON.stringify(content),
+        headers: { 'Content-Type': 'application/json' },
+      });
+
+      const json = await res.json();
+
+      if (json.success) {
+        setResponse({
+          type: 'success',
+          message: 'Thanks for the feedback! 👍',
+        });
+
+        e.target.reset();
+
+        await delay(5000);
+
+        setResponse({ type: '', message: '' });
+      } else {
+        setResponse({
+          type: 'error',
+          message: json.message,
+        });
+      }
+    } catch (error) {
+      console.log('An error occurred', error);
+      setResponse({
+        type: 'error',
+        message: 'An error occured',
+      });
+    }
   };
 
   return (
     <div className={styles.feedback}>
       <p>
-        Please let me know if anything I wrote was confusing, incorrect or
-        outdated. Write a few words below and I will be sure to amend the
-        content with your suggestions.
+        Please let me know if you found anything I wrote confusing, incorrect or
+        outdated. Write a few words below and I will make any amends you
+        suggest.
       </p>
-      <form
-        action="https://kwes.io/api/foreign/forms/3xfCu8GGFz1QusZWJUph"
-        onSubmit={handleSubmit}
-        className={`kwes-form ${styles.form}`}
-      >
-        <input
-          type="hidden"
-          value={`New comment on: ${title}`}
-          name="subject"
-          readOnly
-        />
-        <label htmlFor="message" className={styles.message}>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <label className={styles.message} htmlFor="message">
           Message
-          <textarea name="message" placeholder="What should I know?" />
+          <textarea
+            name="message"
+            placeholder="What should I know?"
+            onChange={handleChange}
+            required
+          />
         </label>
-        <label htmlFor="email" className={styles.email}>
+        <label className={styles.email} htmlFor="email">
           Your Email (optional)
-          <input type="text" name="email" rules="required|max:255" />
+          <input type="email" name="email" onChange={handleChange} />
         </label>
-        <label htmlFor="handle" className={styles.handle}>
+        <label className={styles.handle} htmlFor="handle">
           Twitter Handle (optional)
-          <input type="text" name="handle" rules="required|max:255" />
+          <input type="text" name="$handle" onChange={handleChange} />
         </label>
-        <Button type="submit" className={styles.submit} text="Send Feedback" />
+        <input type="hidden" name="honeypot" style={{ display: 'none' }} />
+        <Button className={styles.submit} text="Send Feedback" type="submit" />
       </form>
+      {response.type &&
+        (response.type === 'success' ? (
+          <SuccessAlert text={response.message} />
+        ) : (
+          <ErrorAlert text={response.message} />
+        ))}
     </div>
   );
 };
+
 export default Form;

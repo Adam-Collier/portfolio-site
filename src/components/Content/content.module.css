@@ -11,7 +11,7 @@
   margin-top: -80px;
 }
 
-.content > div {
+.content header + div {
   width: 100%;
   margin-left: auto;
   margin-right: auto;

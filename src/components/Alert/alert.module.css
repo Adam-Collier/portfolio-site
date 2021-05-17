@@ -1,0 +1,18 @@
+.success,
+.error {
+  margin-bottom: 0;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 800;
+  border-radius: var(--border-radius);
+}
+
+.success {
+  background: var(--primary-accent);
+  color: var(--primary-background);
+}
+
+.error {
+  background: var(--primary-error);
+  color: var(--primary-background);
+}

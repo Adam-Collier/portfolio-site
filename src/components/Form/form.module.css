@@ -5,8 +5,17 @@
   padding: var(--feedback-padding);
   margin-left: calc(var(--feedback-padding) * -1);
   margin-right: calc(var(--feedback-padding) * -1);
-  border-top: 1px dashed var(--primary-foreground);
-  border-bottom: 1px dashed var(--primary-foreground);
+  border-top: 1px dashed var(--foreground-high);
+  border-bottom: 1px dashed var(--foreground-high);
+}
+
+.feedback > * {
+  margin: 0;
+}
+
+.feedback > * + * {
+  margin: 0;
+  margin-top: 1.45rem;
 }
 
 .form {
@@ -49,9 +58,19 @@
   padding: 0.5rem;
 }
 
+.form textarea {
+  resize: vertical;
+}
+
+.alert {
+  grid-area: alert;
+}
+
 @media (max-width: 550px) {
   .feedback {
-    --feedback-padding: 1rem;
+    --feedback-padding: 1.45rem;
+    margin-left: -1rem;
+    margin-right: -1rem;
   }
   .form {
     grid-template-areas: 'message' 'email' 'handle' 'submit';

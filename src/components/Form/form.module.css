@@ -7,6 +7,7 @@
   margin-right: calc(var(--feedback-padding) * -1);
   border-top: 1px dashed var(--foreground-high);
   border-bottom: 1px dashed var(--foreground-high);
+  margin-top: 2rem;
 }
 
 .feedback > * {

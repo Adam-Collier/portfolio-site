@@ -54,7 +54,11 @@ const Book = ({ node, finished }) => {
       <p className={styles.author}>{creator}</p>
 
       <div className={styles.icon}>
-        {finished ? <Check size={14} /> : <BookOpen size={14} />}
+        {finished ? (
+          <Check size={14} alt="book has been read" />
+        ) : (
+          <BookOpen size={14} alt="currently reading" />
+        )}
       </div>
     </a>
   );

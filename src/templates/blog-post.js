@@ -42,6 +42,22 @@ const BlogPostTemplate = ({ data, location }) => {
         pathname={location.pathname}
         isBlogPost
       />
+      <Content hasTOC>
+        <header>
+          <h1 id="introduction">{title}</h1>
+        </header>
+        {featured && (
+          <GatsbyImage
+            style={{ marginBottom: '1.45rem' }}
+            image={featured.childImageSharp.gatsbyImageData}
+            alt={`${title} featured`}
+          />
+        )}
+        <section>
+          <MDX body={body} />
+        </section>
+        <Form title={title} />
+      </Content>
       <Sidebar
         className={styles.sidebar}
         description={useMediaQuery('(min-width: 768px)') ? description : ''}
@@ -80,22 +96,6 @@ const BlogPostTemplate = ({ data, location }) => {
           </div>
         </div>
       </Sidebar>
-      <Content hasTOC>
-        <header>
-          <h1 id="introduction">{title}</h1>
-        </header>
-        {featured && (
-          <GatsbyImage
-            style={{ marginBottom: '1.45rem' }}
-            image={featured.childImageSharp.gatsbyImageData}
-            alt={`${title} featured`}
-          />
-        )}
-        <section>
-          <MDX body={body} />
-        </section>
-        <Form title={title} />
-      </Content>
       <MorePosts data={data.allMdx} />
     </Page>
   );

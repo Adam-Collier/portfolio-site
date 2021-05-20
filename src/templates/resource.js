@@ -29,6 +29,15 @@ const ResourceTemplate = ({ data, location }) => {
         description={description}
         pathname={location.pathname}
       />
+      <Content>
+        <header>
+          <p style={{ fontSize: '0.875rem', color: 'var(--foreground-high' }}>
+            Updated: {updatedDate}
+          </p>
+          <h1>{title}</h1>
+        </header>
+        <MDX body={body} />
+      </Content>
       <Sidebar
         title="Resources"
         description="This is a group of resources I have either learned something from or thought could become useful in the future."
@@ -39,15 +48,6 @@ const ResourceTemplate = ({ data, location }) => {
         )}
         <Resources posts={searchPosts} id={id} />
       </Sidebar>
-      <Content>
-        <header>
-          <p style={{ fontSize: '0.875rem', color: 'var(--foreground-high' }}>
-            Updated: {updatedDate}
-          </p>
-          <h1>{title}</h1>
-        </header>
-        <MDX body={body} />
-      </Content>
     </Page>
   );
 };

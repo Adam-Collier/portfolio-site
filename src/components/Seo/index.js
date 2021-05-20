@@ -90,7 +90,7 @@ function SEO({
         {/* OpenGraph tags */}
         <meta property="og:url" content={canonical} />
         {isBlogPost && <meta property="og:type" content="article" />}
-        <meta property="og:title" content={title} />
+        <meta property="og:title" content={metaTitle} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={image} />
 

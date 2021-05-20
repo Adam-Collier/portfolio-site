@@ -136,6 +136,14 @@ const BlogPostTemplate = ({ data, location }) => {
           </picture>
         </div>
       </div>
+      <Content hasTOC>
+        <header>
+          <h1 id="introduction">{title}</h1>
+        </header>
+        <section>
+          <MDX body={body} />
+        </section>
+      </Content>
       <Sidebar
         className={styles.sidebar}
         description={useMediaQuery('(min-width: 768px)') ? description : ''}
@@ -174,14 +182,6 @@ const BlogPostTemplate = ({ data, location }) => {
           </div>
         </div>
       </Sidebar>
-      <Content hasTOC>
-        <header>
-          <h1 id="introduction">{title}</h1>
-        </header>
-        <section>
-          <MDX body={body} />
-        </section>
-      </Content>
       <MorePosts data={data.allMdx} />
     </Page>
   );

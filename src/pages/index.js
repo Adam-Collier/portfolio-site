@@ -16,18 +16,18 @@ const IndexPage = ({ location, data }) => {
     <Page containerType="fluid" location={location} noSidebar>
       <SEO
         title=""
-        description="Hey I'm Adam Collier and this is my site. Here you will find useful Snippets, Resources and Blogposts"
+        description="Creative UX Designer Developer from Manchester, UK. Creating content to come back to. Discover useful snippets, resources and blogposts."
         pathname={location.pathname}
       />
       <Content className={styles.content}>
         <section className={styles.intro}>
+          <h1>Hey, I'm Adam Collier</h1>
           <p style={{ fontSize: '1.25rem', lineHeight: '1.7' }}>
-            Hey I’m Adam Collier. A designer and developer from Manchester, UK.
-            Instead of the traditional portfolio site that never gets updated I
-            wanted to make something functional, practical and useful in my day
-            to day. It will exist as an ever growing repository of ideas,
-            productivity helpers and things I enjoy. Something noteworthy I
-            should add?{' '}
+            A designer and developer from Manchester, UK. Instead of the
+            traditional portfolio site that never gets updated I wanted to make
+            something functional, practical and useful in my day to day. It will
+            exist as an ever growing repository of ideas, productivity helpers
+            and things I enjoy. Something noteworthy I should add?{' '}
             <a
               href="https://twitter.com/CollierAdam"
               target="_blank"
@@ -40,7 +40,7 @@ const IndexPage = ({ location, data }) => {
         <section>
           <p>
             Looking for the latest blog post? Here’s the latest four I’ve
-            written! Check out the <Link to="/blog">Blog</Link> for more
+            written! Check out the <Link to="/blog/">Blog</Link> for more
           </p>
           <Blogposts posts={blogposts} />
         </section>

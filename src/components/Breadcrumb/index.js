@@ -32,11 +32,11 @@ const Breadcrumb = ({ location }) => {
 
   return (
     <>
-      <h4 className={styles.breadcrumbs}>{locationName}</h4>
+      <p className={styles.breadcrumbs}>{locationName}</p>
       <div className={styles.shortcut}>
         <span>&#183;</span>
         <div>
-          <h4>⌘{firstLetter}</h4>
+          <p>⌘{firstLetter}</p>
         </div>
       </div>
     </>

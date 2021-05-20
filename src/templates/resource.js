@@ -75,6 +75,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         updatedDate(formatString: "MMMM DD, YYYY")
+        description
       }
     }
     allMdx(

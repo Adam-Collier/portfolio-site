@@ -56,7 +56,12 @@ const BlogPostTemplate = ({ data, location }) => {
         <section>
           <MDX body={body} />
         </section>
-        <Form title={title} />
+        <Form
+          title={title}
+          text="Please let me know if you found anything I wrote confusing, incorrect or
+        outdated. Write a few words below and I will use your suggestions to
+        improve this post."
+        />
       </Content>
       <Sidebar
         className={styles.sidebar}

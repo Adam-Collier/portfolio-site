@@ -6,7 +6,7 @@ import { ErrorAlert, SuccessAlert } from '../Alert';
 const delay = (duration) =>
   new Promise((resolve) => setTimeout(resolve, duration));
 
-const Form = ({ title }) => {
+const Form = ({ title, text }) => {
   const [content, setContent] = useState({
     subject: `Feedback sent from: ${title}`,
     email: '',
@@ -63,11 +63,7 @@ const Form = ({ title }) => {
 
   return (
     <div className={styles.feedback}>
-      <p>
-        Please let me know if you found anything I wrote confusing, incorrect or
-        outdated. Write a few words below and I will use your suggestions to
-        improve this post.
-      </p>
+      <p>{text}</p>
       <form className={styles.form} onSubmit={handleSubmit}>
         <label className={styles.message} htmlFor="message">
           Message

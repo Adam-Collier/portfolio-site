@@ -8,6 +8,7 @@ import Resources from '../components/Resources';
 import Sidebar from '../components/Sidebar';
 import Content from '../components/Content';
 import Search from '../components/Search';
+import Form from '../components/Form';
 
 import { useMediaQuery } from '../hooks/useMediaQuery';
 
@@ -37,6 +38,10 @@ const ResourceTemplate = ({ data, location }) => {
           <h1>{title}</h1>
         </header>
         <MDX body={body} />
+        <Form
+          title={title}
+          text="Do you know a resource that could benefit another reader and is relevent for this page? Let me know by leaving a short message below and I will take a look!"
+        />
       </Content>
       <Sidebar
         title="Resources"

@@ -5,7 +5,7 @@ description: >-
   tweaks to your workflow. Some small changes here or there can make a huge
   difference and you'll never look back.
 published: true
-updatedDate: '2021-05-26T16:19:22.593Z'
+updatedDate: '2021-05-26T16:31:09.075Z'
 ---
 
 This of course will cover a lot of ground but it will mainly focus on any tips or tools which I think improve productivity or workflow.
@@ -20,7 +20,7 @@ This of course will cover a lot of ground but it will mainly focus on any tips o
 
 ## Window Management
 
-[Rectangle](https://rectangleapp.com/) - Spectacle but better - Moving to a widescreen monitor meant I needed to focus a lot more on my window management. It's pretty much Spectacle (RIP Spectacle) but better, written in Swift means it's super quick and you can tweak all of the shortcuts to your preferences.
+[Rectangle](https://rectangleapp.com/) - Spectacle but better - Moving to a widescreen monitor meant I needed to focus a lot more on my window management. Being written in Swift means it's super quick and you can tweak all of the shortcuts to match your own preferences.
 
 ## Sharing files
 

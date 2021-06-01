@@ -4,7 +4,7 @@
   font-style: normal;
   font-named-instance: 'Regular';
   font-display: swap;
-  src: url('../../static/fonts/Inter.woff2') format('woff2');
+  src: url('../../public/fonts/Inter.woff2') format('woff2');
 }
 
 :root {

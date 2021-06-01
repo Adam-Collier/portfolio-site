@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import Link from 'next/link';
 
 import styles from './footer.module.css';
 import GatsbyIcon from '../../icons/gatsby.svg';
@@ -8,9 +8,15 @@ import VercelIcon from '../../icons/vercel.svg';
 const Footer = () => (
   <footer className={styles.footer}>
     <div className={styles.pages}>
-      <Link to="/blog/">Blog</Link>
-      <Link to="/snippets/">Snippets</Link>
-      <Link to="/resources/">Resources</Link>
+      <Link href="/blog/">
+        <a>Blog</a>
+      </Link>
+      <Link href="/snippets/">
+        <a>Snippets</a>
+      </Link>
+      <Link href="/resources/">
+        <a>Resources</a>
+      </Link>
     </div>
     <span className={styles.divider} />
     <div className={styles.social}>

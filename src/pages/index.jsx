@@ -1,5 +1,6 @@
 import React from 'react'
 import { useRouter } from 'next/router';
+import Link from "next/link"
 
 import Page from '../components/Page';
 import SEO from '../components/Seo';
@@ -14,13 +15,16 @@ const IndexPage = ({ location }) => {
   const router = useRouter();
 
   return (
-  <Page containerType="fluid" location={router.pathname} noSidebar>
-    <SEO
-      title=""
-      description="Creative UX Designer Developer from Manchester, UK. Creating content to come back to. Discover useful snippets, resources and blogposts."
-      pathname={router.pathname}
-    />
-    {/* <Content className={styles.content}>
+    <Page containerType="fluid" location={router.pathname} noSidebar>
+      <Link href="/blog">
+        <a>Blog</a>
+      </Link>
+      <SEO
+        title=""
+        description="Creative UX Designer Developer from Manchester, UK. Creating content to come back to. Discover useful snippets, resources and blogposts."
+        pathname={router.pathname}
+      />
+      {/* <Content className={styles.content}>
       <section className={styles.intro}>
         <h1>Hey, I'm Adam Collier</h1>
         <p style={{ fontSize: '1.25rem', lineHeight: '1.7' }}>
@@ -62,8 +66,8 @@ const IndexPage = ({ location }) => {
         <Readng />
       </section>
     </Content> */}
-  </Page>
-);
+    </Page>
+  );
 }
 // export const query = graphql`
 //   {

@@ -1,14 +1,16 @@
+import { useMemo } from 'react';
+import { getMDXComponent } from 'mdx-bundler/client';
 import { getAllContentOfType, getContentBySlug } from '../../lib/blog';
+import { prepareMDX, getComponents } from '../../lib/mdx';
 
-const Post = ({ post }) => {
-  console.log(post, 'this is the post prop');
-  return <>{post.content}</>;
+const Post = ({ post, source }) => {
+  const Component = useMemo(() => getMDXComponent(source), [source]);
+  return <Component />;
 };
 
 export default Post;
 
-export async function getStaticProps({ custom, params }) {
-  console.log(custom, 'these are the params');
+export async function getStaticProps({ params }) {
   const post = getContentBySlug('_posts', params.slug, [
     'title',
     'publishedOn',
@@ -16,13 +18,19 @@ export async function getStaticProps({ custom, params }) {
     'slug',
     'description',
     'content',
+    'name',
   ]);
+
+  const components = await getComponents(`_posts/${post.name}/components`);
+
+  const source = await prepareMDX(post.content, components);
 
   return {
     props: {
       post: {
         ...post,
       },
+      source,
     },
   };
 }

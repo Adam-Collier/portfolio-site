@@ -5,6 +5,8 @@
   "version": "0.1.0",
   "author": "Adam Collier",
   "dependencies": {
+    "date-fns": "^2.22.1",
+    "globby": "^11.0.3",
     "mdx-bundler": "^4.0.0",
     "nanoid": "^3.1.20",
     "next": "^10.2.3",

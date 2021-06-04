@@ -12,7 +12,7 @@ const updateFrontmatter = async () => {
     if (currentFrontmatter.published === true) {
       const updatedFrontmatter = {
         ...currentFrontmatter,
-        updatedDate: new Date().toISOString(),
+        updatedOn: new Date().toISOString(),
       };
       file.data = updatedFrontmatter;
       const updatedFileContent = matter.stringify(file);

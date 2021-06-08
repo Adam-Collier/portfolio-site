@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Button from '../../../../src/components/Button';
+import Button from '../../../src/components/Button';
 
 const FormNoStyles = ({ title }) => {
   const [content, setContent] = useState({

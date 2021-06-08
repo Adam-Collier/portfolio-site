@@ -1,6 +1,6 @@
 /* eslint-disable react/button-has-type */
 import React from 'react';
-import { Link } from 'gatsby';
+import Link from 'next/link';
 
 import styles from './button.module.css';
 
@@ -15,8 +15,8 @@ const LinkType = ({ link, children }) =>
       {children}
     </a>
   ) : (
-    <Link to={link} className={styles.link}>
-      {children}
+    <Link href={link} className={styles.link}>
+      <a>{children}</a>
     </Link>
   );
 

@@ -9,10 +9,6 @@
   color: var(--header-text-color);
 }
 
-:global(.page-wrapper) {
-  background: var(--header-background);
-}
-
 .container {
   --header-padding: 18px;
   max-width: var(--max-layout-width);

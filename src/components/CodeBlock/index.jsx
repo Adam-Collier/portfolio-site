@@ -2,7 +2,7 @@ import React from 'react';
 import Highlight, { Prism } from 'prism-react-renderer';
 import normalize from './normalize';
 import CopyButton from '../CopyButton';
-import './atom-theme.css';
+import atomTheme from './theme';
 
 const getParams = (name = ``) => {
   const [lang, params = ``] = name.split(`:`);
@@ -32,6 +32,8 @@ export default ({
     className
   );
 
+  // console.log(styles, 'these are the styles');
+
   return (
     <div style={{ position: 'relative' }}>
       <Highlight
@@ -39,7 +41,7 @@ export default ({
         Prism={Prism}
         code={content}
         language={language}
-        theme={undefined}
+        theme={atomTheme}
       >
         {({ style, tokens, getLineProps, getTokenProps }) => (
           <div className="gatsby-highlight">

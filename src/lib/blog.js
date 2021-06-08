@@ -7,21 +7,6 @@ import fs from 'fs';
 // get the root directory
 const root = process.cwd();
 
-// export const getPostSlugs = () => {
-//   const allDirs = fs.readdirSync(join(root, '_posts'), { withFileTypes: true });
-
-//   // remove the hidden files, extract the title and turn into a slug
-//   allDirs.flatMap((dir) => {
-//     // if the dir isn't a directory return remove from the array
-//     if (dir.isDirectory()) return [];
-//     const [year, month, day, ...fileName] = dir.name.split('-');
-
-//     const slug = fileName.join('-').toLowerCase();
-
-//     return slug;
-//   });
-// };
-
 // we use the filenames here because our slugs differ from our file names
 export const getContentBySlug = (baseDir, name, fields = []) => {
   // read the mdx file inside the directory
@@ -47,6 +32,7 @@ export const getContentBySlug = (baseDir, name, fields = []) => {
     slug,
     title,
     content,
+    name,
   };
 
   const items = {};

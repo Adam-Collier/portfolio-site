@@ -32,10 +32,8 @@ const MobileMenu = ({ isMobileMenu }) => {
               isClose
               onClick={() => dispatch({ type: 'isMobileMenu' })}
             />
-            <div className={s.navigation}>
-              {/* pass in custom styles and change the font size */}
-              <Nav className={s.nav} size="lg" />
-            </div>
+            {/* pass in custom styles and change the font size */}
+            <Nav className={s.nav} size="lg" />
           </>
         </animated.div>
       )

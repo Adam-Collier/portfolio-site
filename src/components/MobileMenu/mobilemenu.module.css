@@ -16,16 +16,16 @@
   position: relative;
 }
 
-.navigation {
-  display: flex;
+.nav {
   flex-direction: column;
   align-items: flex-start;
-  padding: 0.5rem 0 1.45rem;
+  padding: 0.5rem 1rem 2rem;
 }
 
-.navigation a {
+.nav a {
   color: #fff;
-  font-weight: 500;
-  font-size: 1.625rem;
-  line-height: 1.5;
+}
+
+.nav li + li {
+  margin-top: 1rem;
 }

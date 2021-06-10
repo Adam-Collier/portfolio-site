@@ -1,0 +1,13 @@
+.menuButton {
+  border: none;
+  padding: 0;
+  background: none;
+  line-height: 0;
+  margin-left: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .menuButton {
+    display: none;
+  }
+}

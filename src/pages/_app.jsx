@@ -1,5 +1,6 @@
-import { StateProvider } from '../../src/context';
+import { StateProvider } from '../context';
 import Layout from '../components/Layout';
+import '../styles/reset.css';
 import '../styles/global.css';
 import '../styles/variables.css';
 

@@ -1,43 +1,35 @@
 import React from 'react';
 import Link from 'next/link';
 
-import Navigation from '../Navigation';
+import Text from '../Text';
+import Nav from '../Nav';
 import Toggle from '../Toggle';
-import { useContext } from '../../context';
+import MenuButton from './MenuButton';
 
 import s from './header.module.css';
-import MenuIcon from '../../icons/menu.svg';
-import CloseIcon from '../../icons/close_icon.svg';
 
-const Header = ({ className, isClose }) => {
-  const dispatch = useContext()[1];
-
-  return (
-    <>
-      <header className={`${s.header} ${className || ''}`}>
-        <div className={s.container}>
-          <div className={s.headerLeft}>
-            <Link href="/">
-              <a>Adam Collier</a>
-            </Link>
-          </div>
-          <div className={s.headerRight}>
-            <Navigation className={s.navigation} />
-            <Toggle className={s.toggle} />
-            <button
-              type="button"
-              className={s.menuButton}
-              onClick={() => dispatch({ type: 'isMobileMenu' })}
-              onKeyDown={() => dispatch({ type: 'isMobileMenu' })}
-              aria-label="menu button"
-            >
-              {isClose ? <CloseIcon /> : <MenuIcon />}
-            </button>
-          </div>
+const Header = ({ className, isClose }) => (
+  <>
+    <div className={`${s.wrapper} ${className || ''}`}>
+      <header className={s.header}>
+        <Link href="/">
+          <a
+            style={{
+              textDecoration: 'none',
+              color: 'inherit',
+            }}
+          >
+            <Text lineHeight={1}>Adam Collier</Text>
+          </a>
+        </Link>
+        <div>
+          <Nav className={s.nav} />
+          <Toggle className={s.toggle} />
+          <MenuButton isClose={isClose} />
         </div>
       </header>
-    </>
-  );
-};
+    </div>
+  </>
+);
 
 export default Header;

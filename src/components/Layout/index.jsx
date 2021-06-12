@@ -3,6 +3,7 @@ import { useContext } from '../../context';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import MobileMenu from '../MobileMenu';
 import Header from '../Header';
+import Footer from '../Footer';
 
 const Layout = ({ children }) => {
   const [{ isMobileMenu }] = useContext();
@@ -10,10 +11,11 @@ const Layout = ({ children }) => {
   const isPageMobile = useMediaQuery('(max-width: 767px)');
 
   return (
-    <div className="page-wrapper">
+    <div>
       <Header />
       {isPageMobile && <MobileMenu isMobileMenu={isMobileMenu} />}
       {children}
+      <Footer />
     </div>
   );
 };

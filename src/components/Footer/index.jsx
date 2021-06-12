@@ -1,13 +1,14 @@
 import React from 'react';
 import Link from 'next/link';
+import Stack from '../Stack';
 
-import styles from './footer.module.css';
+import s from './footer.module.css';
 import GatsbyIcon from '../../icons/gatsby.svg';
 import VercelIcon from '../../icons/vercel.svg';
 
 const Footer = () => (
-  <footer className={styles.footer}>
-    <div className={styles.pages}>
+  <Stack as="footer" className={s.footer} maxWidth="lg">
+    <div className={s.pages}>
       <Link href="/blog/">
         <a>Blog</a>
       </Link>
@@ -18,8 +19,8 @@ const Footer = () => (
         <a>Resources</a>
       </Link>
     </div>
-    <span className={styles.divider} />
-    <div className={styles.social}>
+    <span className={s.divider} />
+    <div className={s.social}>
       <p>
         Follow me on{' '}
         <a
@@ -51,17 +52,17 @@ const Footer = () => (
         </a>
       </p>
     </div>
-    <span className={styles.built}>
-      <GatsbyIcon className={styles.gatsbyIcon} />
+    <span className={s.built}>
+      <GatsbyIcon className={s.gatsbyIcon} />
       <p>Built with Gatsby</p>
       <span>&</span>
-      <VercelIcon className={styles.vercelIcon} />
+      <VercelIcon className={s.vercelIcon} />
       <p>Hosted by Vercel</p>
     </span>
-    <small className={styles.copyright}>
+    <small className={s.copyright}>
       © 2021 Adam Collier. All Rights Reserved.
     </small>
-  </footer>
+  </Stack>
 );
 
 export default Footer;

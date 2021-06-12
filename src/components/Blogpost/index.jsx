@@ -9,8 +9,6 @@ import styles from './blogpost.module.css';
 const Blogpost = ({ title, date, slug, description, name }) => {
   const imageUrl = `/_posts/${name}/thumbnail.jpg`;
 
-  console.log(imageUrl);
-
   return (
     <article className={styles.blogpost} key={slug}>
       <Link href={`/blog/${slug}`} aria-label={`blog post: ${title}`}>

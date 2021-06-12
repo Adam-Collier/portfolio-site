@@ -19,11 +19,13 @@ const Header = ({ className, isClose }) => (
               color: 'inherit',
             }}
           >
-            <Text lineHeight={1}>Adam Collier</Text>
+            <Text lineHeight={1} heading>
+              Adam Collier
+            </Text>
           </a>
         </Link>
         <div>
-          <Nav className={s.nav} />
+          <Nav className={s.nav} activeClass={s.active} />
           <Toggle className={s.toggle} />
           <MenuButton isClose={isClose} />
         </div>

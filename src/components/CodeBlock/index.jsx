@@ -20,7 +20,7 @@ const getParams = (name = ``) => {
  * we un-wind it a bit to get the string content
  * but keep it extensible so it can be used with just children (string) and className
  */
-export default ({
+const CodeBlock = ({
   children,
   className = children.props ? children.props.className : ``,
 }) => {
@@ -73,3 +73,5 @@ export default ({
     </div>
   );
 };
+
+export default CodeBlock;

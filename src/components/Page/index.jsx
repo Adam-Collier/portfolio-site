@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './page.module.css';
-import Footer from '../Footer';
 
 const Page = ({ children, containerType, containerClass, noSidebar }) => {
   const containerTypeClass =
@@ -13,7 +12,6 @@ const Page = ({ children, containerType, containerClass, noSidebar }) => {
       } ${containerClass || ''} `}
     >
       {children}
-      <Footer />
     </main>
   );
 };

@@ -6,8 +6,7 @@
   top: 0;
   left: 0%;
   width: 100%;
-  background: var(--header-background);
-  color: var(--header-text-color);
+  background: var(--primary-background);
 }
 
 .header {
@@ -39,6 +38,39 @@
 /* nav item spacing */
 .nav li + li {
   margin-left: 1rem;
+}
+
+.nav a {
+  padding: 0.25rem 0.625rem;
+  border-radius: var(--border-radius);
+}
+
+.nav a:hover,
+.active {
+  background: linear-gradient(
+        to right,
+        var(--corner-color) 2px,
+        transparent 2px
+      )
+      0 0,
+    linear-gradient(to right, var(--corner-color) 2px, transparent 2px) 0 100%,
+    linear-gradient(to left, var(--corner-color) 2px, transparent 2px) 100% 0,
+    linear-gradient(to left, var(--corner-color) 2px, transparent 2px) 100% 100%,
+    linear-gradient(to bottom, var(--corner-color) 2px, transparent 2px) 0 0,
+    linear-gradient(to bottom, var(--corner-color) 2px, transparent 2px) 100% 0,
+    linear-gradient(to top, var(--corner-color) 2px, transparent 2px) 0 100%,
+    linear-gradient(to top, var(--corner-color) 2px, transparent 2px) 100% 100%;
+
+  background-repeat: no-repeat;
+  background-size: 6px 6px;
+}
+
+.nav a:not(.active):hover {
+  --corner-color: var(--foreground-low);
+}
+
+.active {
+  --corner-color: var(--primary-accent);
 }
 
 @media (max-width: 768px) {

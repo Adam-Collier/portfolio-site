@@ -4,11 +4,12 @@
   margin: 0;
 }
 
-.nav li {
+.nav * {
   margin-bottom: 0;
 }
 
 .nav a {
+  display: block;
   text-decoration: none;
   color: inherit;
 }

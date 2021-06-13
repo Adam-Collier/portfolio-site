@@ -18,7 +18,8 @@
     "react-feather": "^2.0.9",
     "react-helmet": "^5.2.1",
     "react-hotkeys-hook": "^2.4.0",
-    "react-spring": "^8.0.27"
+    "react-spring": "^8.0.27",
+    "styled-jsx": "^3.4.4"
   },
   "devDependencies": {
     "@svgr/webpack": "^5.5.0",

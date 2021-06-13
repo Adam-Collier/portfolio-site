@@ -1,7 +1,5 @@
 @font-face {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Inter';
   font-weight: 100 900;
   font-style: normal;
   font-named-instance: 'Regular';
@@ -14,17 +12,15 @@
   background: var(--primary-background);
 }
 
-.page-wrapper {
-  background: var(--header-background);
-}
-
 .dark img,
 .dark video {
   filter: brightness(0.975) contrast(1.05);
 }
 
 html {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
@@ -36,11 +32,11 @@ html {
 }
 
 body {
-  font-family: Inter;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--primary-foreground);
-  font-weight: normal;
+  background: var(--primary-background);
+  font-weight: 450;
   word-wrap: break-word;
   font-kerning: normal;
   -moz-font-feature-settings: 'kern', 'liga', 'clig', 'calt';

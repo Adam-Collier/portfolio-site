@@ -2,14 +2,15 @@ import React from 'react';
 import Link from 'next/link';
 import Stack from '../Stack';
 import Text from '../Text';
+import Row from '../Row';
 
 import s from './footer.module.css';
 import GatsbyIcon from '../../icons/gatsby.svg';
 import VercelIcon from '../../icons/vercel.svg';
-
+// TODO: sort out spacing for built section
 const Footer = () => (
-  <Stack as="footer" className={s.footer} maxWidth="lg">
-    <Stack gap={0.5} style={{ gridArea: 'page' }}>
+  <Row className={s.footer} maxWidth="lg">
+    <Stack gap={0.5} style={{ gridArea: 'pages' }} className={s.links}>
       <Link href="/blog/">
         <a>Blog</a>
       </Link>
@@ -21,7 +22,7 @@ const Footer = () => (
       </Link>
     </Stack>
     <span className={s.divider} />
-    <Stack gap={0.5} style={{ gridArea: 'social' }}>
+    <Stack gap={0.5} style={{ gridArea: 'social' }} className={s.links}>
       <Text>
         Follow me on{' '}
         <a
@@ -53,17 +54,23 @@ const Footer = () => (
         </a>
       </Text>
     </Stack>
-    <span className={s.built}>
+    <Stack
+      direction="row"
+      justify="center"
+      align="center"
+      style={{ gridArea: 'built' }}
+      gap={1}
+    >
       <GatsbyIcon className={s.gatsbyIcon} />
       <p>Built with Gatsby</p>
       <span>&</span>
       <VercelIcon className={s.vercelIcon} />
       <p>Hosted by Vercel</p>
-    </span>
+    </Stack>
     <small className={s.copyright}>
       © 2021 Adam Collier. All Rights Reserved.
     </small>
-  </Stack>
+  </Row>
 );
 
 export default Footer;

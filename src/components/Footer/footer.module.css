@@ -2,8 +2,6 @@
 .footer {
   grid-area: footer;
   position: relative;
-  margin-left: auto;
-  margin-right: auto;
   padding-top: 1rem;
   width: 100%;
   border-top: 1px solid var(--foreground-min);
@@ -13,8 +11,13 @@
     'built built built'
     'copyright copyright copyright';
   grid-template-columns: 1fr 1px 1fr;
+  grid-gap: 1rem;
   justify-items: center;
   align-items: center;
+}
+
+.links {
+  width: fit-content;
 }
 
 .divider {

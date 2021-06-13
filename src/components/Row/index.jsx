@@ -1,3 +1,5 @@
+import s from './row.module.css';
+
 const Row = ({
   as = 'div',
   className,
@@ -10,27 +12,9 @@ const Row = ({
 
   return (
     <DynamicTag
-      className={`${padding ? 'padding' : ''} ${className || ''}`}
-      style={{ ...style }}
+      className={`${s.row} ${padding ? s.padding : ''} ${className || ''}`}
+      style={{ ...style, '--max-width': `var(--width-${maxWidth})` }}
     >
-      <style jsx>{`
-        --width-none: none;
-        --width-sm: 640px;
-        --width-md: 768px;
-        --width-lg: 1024px;
-        --width-xl: 1280px;
-        --width-2xl: 1536px;
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        max-width: var(--width-${maxWidth});
-
-        .padding {
-          padding-left: 1rem;
-          padding-right: 1rem;
-          max-width: calc(var(--width-${maxWidth}) + 2rem);
-        }
-      `}</style>
       {children}
     </DynamicTag>
   );

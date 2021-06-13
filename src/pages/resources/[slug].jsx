@@ -1,36 +1,24 @@
-import { getAllContentOfType, getContentBySlug } from '../../lib/blog';
+import { MDXRemote } from 'next-mdx-remote';
+import { getAllContentOfType } from '../../lib/blog';
+import { prepareMDX } from '../../lib/mdx';
+import { baseComponents } from '../../lib/base-components';
 
-const Post = ({ post }) => {
-  console.log(post, 'this is the post prop');
-  return <>{post.content}</>;
-};
+const Resource = ({ source }) => (
+  <MDXRemote {...source} components={baseComponents} />
+);
 
-export default Post;
+export default Resource;
 
-export async function getStaticProps({ custom, params }) {
-  console.log(custom, 'these are the params');
-  const post = getContentBySlug('_resources', params.slug, [
-    'title',
-    'updatedOn',
-    'slug',
-    'description',
-    'content',
-  ]);
-
-  return {
-    props: {
-      post: {
-        ...post,
-      },
-    },
-  };
+export async function getStaticProps({ params }) {
+  // this returns the source prop
+  return prepareMDX(params, '_resources');
 }
 
 export async function getStaticPaths() {
-  const allPosts = await getAllContentOfType('_resources', ['slug']);
+  const allResources = await getAllContentOfType('_resources', ['slug']);
 
   return {
-    paths: allPosts.map(({ slug }) => ({
+    paths: allResources.map(({ slug }) => ({
       params: {
         slug,
       },

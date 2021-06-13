@@ -52,13 +52,16 @@ const Stack = ({
 }) => {
   const StackStyles = getStackStyles({ direction, justify, align, gap });
 
+  const pageClass = page ? 'page' : '';
+  const paddingClas = padding ? 'padding' : '';
+
   return (
     <Row
       as={as}
       maxWidth={maxWidth}
-      className={`${direction} ${page ? 'page' : ''} ${
-        padding ? 'padding' : ''
-      } ${StackStyles.className} stack ${className || ''}`}
+      className={`stack ${direction} ${pageClass} ${paddingClas} ${
+        StackStyles.className
+      } ${className || ''}`}
       style={{
         ...style,
       }}

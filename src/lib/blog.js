@@ -27,12 +27,13 @@ export const getContentBySlug = (baseDir, name, fields = []) => {
   const title = spacedName.charAt(0).toUpperCase() + spacedName.slice(1);
 
   // bring all of the data together
+  // prioritise frontmatter values so we can overwrite when needed to
   const postData = {
-    ...data,
     slug,
     title,
     content,
     name,
+    ...data,
   };
 
   const items = {};

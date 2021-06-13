@@ -1,35 +1,37 @@
 import React from 'react';
 import { Search } from 'react-feather';
 
-import styles from './search.module.css';
+import s from './search.module.css';
 
-const Index = ({ allPosts, searchedPosts }) => {
+const Index = ({ allData, setState, name }) => {
   const handleChange = (e) => {
     const searchValue = e.target.value.toLowerCase();
 
-    const posts = allPosts.filter(({ node }) => {
+    const filteredData = allData.filter((data) => {
       if (
-        node.frontmatter.title.toLowerCase().includes(searchValue) ||
-        node.rawBody.toLowerCase().includes(searchValue)
+        data.title.toLowerCase().includes(searchValue) ||
+        data.content.toLowerCase().includes(searchValue)
       )
-        return node;
+        return data;
 
       return false;
     });
 
-    searchedPosts(posts);
+    setState(filteredData);
   };
 
   return (
-    <div className={styles.search}>
-      <Search size={16} />
-      <input
-        type="search"
-        name="search posts"
-        id="search"
-        onChange={handleChange}
-        aria-label="search resources"
-      />
+    <div className={s.wrapper}>
+      <div className={s.search}>
+        <Search size={16} />
+        <input
+          type="search"
+          name={`search ${name}`}
+          id="search"
+          onChange={handleChange}
+          aria-label={`search ${name}`}
+        />
+      </div>
     </div>
   );
 };

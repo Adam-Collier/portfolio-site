@@ -1,7 +1,14 @@
 import Blogpost from '../components/Blogpost';
+import Stack from '../components/Stack';
 import { getAllContentOfType } from '../lib/blog';
 
-const Blog = ({ posts }) => posts.map((post) => <Blogpost {...post} />);
+const Blog = ({ posts }) => (
+  <Stack maxWidth="sm" gap={1.45} padding page>
+    {posts.map((post, index) => (
+      <Blogpost {...post} key={index} />
+    ))}
+  </Stack>
+);
 
 export default Blog;
 

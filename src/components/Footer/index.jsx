@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Stack from '../Stack';
+import Text from '../Text';
 
 import s from './footer.module.css';
 import GatsbyIcon from '../../icons/gatsby.svg';
@@ -8,7 +9,7 @@ import VercelIcon from '../../icons/vercel.svg';
 
 const Footer = () => (
   <Stack as="footer" className={s.footer} maxWidth="lg">
-    <div className={s.pages}>
+    <Stack gap={0.5} style={{ gridArea: 'page' }}>
       <Link href="/blog/">
         <a>Blog</a>
       </Link>
@@ -18,10 +19,10 @@ const Footer = () => (
       <Link href="/resources/">
         <a>Resources</a>
       </Link>
-    </div>
+    </Stack>
     <span className={s.divider} />
-    <div className={s.social}>
-      <p>
+    <Stack gap={0.5} style={{ gridArea: 'social' }}>
+      <Text>
         Follow me on{' '}
         <a
           href="https://savee.it/adamcollier/"
@@ -30,8 +31,8 @@ const Footer = () => (
         >
           Savee.it
         </a>
-      </p>
-      <p>
+      </Text>
+      <Text>
         Tweet me at{' '}
         <a
           href="https://twitter.com/CollierAdam"
@@ -40,8 +41,8 @@ const Footer = () => (
         >
           @collieradam
         </a>
-      </p>
-      <p>
+      </Text>
+      <Text>
         Checkout my{' '}
         <a
           href="https://github.com/Adam-Collier"
@@ -50,8 +51,8 @@ const Footer = () => (
         >
           Github
         </a>
-      </p>
-    </div>
+      </Text>
+    </Stack>
     <span className={s.built}>
       <GatsbyIcon className={s.gatsbyIcon} />
       <p>Built with Gatsby</p>

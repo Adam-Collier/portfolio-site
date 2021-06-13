@@ -6,7 +6,7 @@ const Text = ({
   children,
   size = 'base',
   lineHeight = 1.75,
-  weight = 500,
+  weight = 450,
   align,
   truncate,
   color = 'inherit',

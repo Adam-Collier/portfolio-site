@@ -48,16 +48,29 @@ export const getContentBySlug = (baseDir, name, fields = []) => {
   return items;
 };
 
-export const getAllContentOfType = async (contentBaseDir, fields = []) => {
+export const getAllContentOfType = async (
+  contentBaseDir,
+  fields = [],
+  options
+) => {
   // lets grab all of the post directories
   // using withFileTypes returns and array of dirents
   const allPostDirs = fs.readdirSync(join(root, contentBaseDir), {
     withFileTypes: true,
   });
 
+  // TODO: reduce number of posts in array so we don't need to loop over them all
+  let count = 0;
+
   return allPostDirs.flatMap((postDir) => {
     if (postDir.isFile()) return [];
     const contentDirName = postDir.name;
+    count += 1;
+
+    if (options?.limit && count > options.limit) {
+      return [];
+    }
+
     return getContentBySlug(contentBaseDir, contentDirName, fields);
   });
 };

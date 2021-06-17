@@ -9,11 +9,6 @@ const getStackStyles = ({ direction, justify, align, gap }) => css.resolve`
     align-items: ${align};
   }
 
-  .stack :global(> *) {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-
   .row :global(> * + *) {
     margin-left: calc(${gap} * 1rem);
   }

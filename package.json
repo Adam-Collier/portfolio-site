@@ -19,6 +19,8 @@
     "react-helmet": "^5.2.1",
     "react-hotkeys-hook": "^2.4.0",
     "react-spring": "^8.0.27",
+    "remark-autolink-headings": "^6.0.1",
+    "remark-slug": "^6.0.0",
     "styled-jsx": "^3.4.4"
   },
   "devDependencies": {

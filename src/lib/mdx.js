@@ -3,11 +3,14 @@ import { join } from 'path';
 import matter from 'gray-matter';
 import { serialize } from 'next-mdx-remote/serialize';
 
-export const prepareMDX = async (params, baseDir) => {
+import remarkSlug from 'remark-slug';
+import remarkAutolinkHeadings from 'remark-autolink-headings';
+
+export const prepareMDX = async (slug, baseDir) => {
   // get the root directory
   const root = process.cwd();
 
-  const filePath = join(root, baseDir, params.slug, 'index.mdx');
+  const filePath = join(root, baseDir, slug, 'index.mdx');
   const source = fs.readFileSync(filePath);
 
   const { content, data } = matter(source);
@@ -15,7 +18,12 @@ export const prepareMDX = async (params, baseDir) => {
   const mdxSource = await serialize(content, {
     // Optionally pass remark/rehype plugins
     mdxOptions: {
-      remarkPlugins: [],
+      remarkPlugins: [
+        // add slug values as header id's
+        remarkSlug,
+        // add links to the headers
+        remarkAutolinkHeadings,
+      ],
       rehypePlugins: [],
     },
     scope: data,
@@ -23,9 +31,7 @@ export const prepareMDX = async (params, baseDir) => {
 
   // TODO: handle dates here to return JSON
   return {
-    props: {
-      source: mdxSource,
-      frontMatter: data,
-    },
+    source: mdxSource,
+    frontMatter: data,
   };
 };

@@ -7,8 +7,8 @@ description: >-
 tags:
   - react
   - javascript
-publishedOn: '2019-06-08'
-updatedOn: '2021-06-01T17:04:17.224Z'
+publishedOn: "2019-06-08"
+updatedOn: "2021-06-01T17:04:17.224Z"
 ---
 
 Whilst learning react I have heard a lot of talk about Redux and that being the
@@ -34,7 +34,7 @@ Okay so lets start off my creating a `state-context.js` file with the following
 
 ```javascript
 // src/state-context.js
-import React from 'react';
+import React from "react";
 
 const AppStateContext = React.createContext();
 const AppDispatchContext = React.createContext();
@@ -118,26 +118,26 @@ the state.
 
 and then in the root of our application we can do something like
 
-```javascript{8,11,13}
+```javascript
 // src/index.js
 
-import React from "react"
-import ReactDOM from "react-dom"
-import App from "./App"
-import * as serviceWorker from "./serviceWorker"
-import { AppProvider } from "./state-context"
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import * as serviceWorker from "./serviceWorker";
+import { AppProvider } from "./state-context";
 
 ReactDOM.render(
   <AppProvider>
     <App />
   </AppProvider>,
   document.getElementById("root")
-)
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister()
+serviceWorker.unregister();
 ```
 
 Note: This is just a standard Create React App install.
@@ -207,9 +207,9 @@ By adding these functions we can then use it like below
 ```javascript
 // src/Components/Count.js
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import { useAppState, UseAppDispatch } from '../state-context.js';
+import React from "react";
+import PropTypes from "prop-types";
+import { useAppState, UseAppDispatch } from "../state-context.js";
 
 const Count = (props) => {
   const dispatch = useAppDispatch();
@@ -217,7 +217,7 @@ const Count = (props) => {
   return (
     <div>
       <p>you've clicked me {count} times</p>
-      <button onClick={() => dispatch({ type: 'increment' })}>click me</button>
+      <button onClick={() => dispatch({ type: "increment" })}>click me</button>
     </div>
   );
 };

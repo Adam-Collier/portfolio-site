@@ -4,6 +4,8 @@ import normalize from './normalize';
 import CopyButton from '../CopyButton';
 import atomTheme from './theme';
 
+import s from './codeblock.module.css';
+
 const getParams = (name = ``) => {
   const [lang, params = ``] = name.split(`:`);
   return [lang.split(`language-`).pop().split(`{`).shift()].concat(
@@ -35,7 +37,7 @@ const CodeBlock = ({
   // console.log(styles, 'these are the styles');
 
   return (
-    <div style={{ position: 'relative' }}>
+    <div className={s.code}>
       <Highlight
         /* eslint-disable react/jsx-props-no-spreading */
         Prism={Prism}
@@ -44,22 +46,26 @@ const CodeBlock = ({
         theme={atomTheme}
       >
         {({ style, tokens, getLineProps, getTokenProps }) => (
-          <div className="gatsby-highlight">
+          <div>
             {title && (
-              <div className="gatsby-highlight-header">
-                <div className="gatsby-code-title">{title}</div>
+              <div className="highlight-header">
+                <div className="title">{title}</div>
               </div>
             )}
             <pre className={className} style={style}>
               <CopyButton fileName={title} content={content} />
               {tokens.map((line, index) => {
                 const lineProps = getLineProps({ line, key: index });
-                const lineclassname = [lineProps.className]
-                  .concat(highlights[index] && `gatsby-highlight-code-line`)
-                  .filter(Boolean)
-                  .join(` `);
+
                 return (
-                  <div key={index} {...{ ...lineProps, lineclassname }}>
+                  <div
+                    key={index}
+                    {...{ ...lineProps }}
+                    // add code highlights here using className so we can use css modules
+                    className={`${lineProps.className} ${
+                      highlights[index] ? s.highlight : ''
+                    }`}
+                  >
                     {line.map((token, key) => (
                       <span key={key} {...getTokenProps({ token, key })} />
                     ))}

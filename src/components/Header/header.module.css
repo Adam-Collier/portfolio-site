@@ -37,6 +37,8 @@
 
 /* nav item spacing */
 .nav li + li {
+  /* reset the global settings */
+  margin-top: 0;
   margin-left: 1rem;
 }
 

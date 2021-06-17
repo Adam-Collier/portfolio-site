@@ -1,6 +1,7 @@
 import s from './text.module.css';
 
 const Text = ({
+  id,
   as = 'p',
   heading = false,
   children,
@@ -10,12 +11,14 @@ const Text = ({
   align,
   truncate,
   color = 'inherit',
+  style,
 }) => {
   const DynamicTag = `${as}`;
 
   return (
     <DynamicTag
       className={`${s.text} ${truncate ? s.truncate : ''}`}
+      id={id}
       style={{
         '--font-size': `var(--text-${size})`,
         '--font-weight': heading ? 600 : weight,
@@ -23,6 +26,7 @@ const Text = ({
         '--text-align': align,
         '--truncate': truncate,
         '--color': color,
+        ...style,
       }}
     >
       {children}

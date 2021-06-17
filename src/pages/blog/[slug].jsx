@@ -1,5 +1,6 @@
 import { MDXRemote } from 'next-mdx-remote';
 import dynamic from 'next/dynamic';
+import Stack from '../../components/Stack';
 import { prepareMDX } from '../../lib/mdx';
 import { baseComponents } from '../../lib/base-components';
 
@@ -23,13 +24,22 @@ const components = {
   ...baseComponents,
 };
 
-const Post = ({ source }) => <MDXRemote {...source} components={components} />;
+const Post = ({ source }) => (
+  <Stack gap={1.45} maxWidth="sm" page>
+    <MDXRemote {...source} components={components} />
+  </Stack>
+);
 
 export default Post;
 
 export async function getStaticProps({ params }) {
-  // this returns the source prop
-  return prepareMDX(params, '_posts');
+  const mdx = await prepareMDX(params.slug, '_posts');
+
+  return {
+    props: {
+      ...mdx,
+    },
+  };
 }
 
 export async function getStaticPaths() {

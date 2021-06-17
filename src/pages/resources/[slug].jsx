@@ -10,8 +10,13 @@ const Resource = ({ source }) => (
 export default Resource;
 
 export async function getStaticProps({ params }) {
-  // this returns the source prop
-  return prepareMDX(params, '_resources');
+  const mdx = await prepareMDX(params.slug, '_resources');
+
+  return {
+    props: {
+      ...mdx,
+    },
+  };
 }
 
 export async function getStaticPaths() {

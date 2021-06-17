@@ -16,8 +16,8 @@ const Blog = ({ allResources }) => {
       </Text>
       <Search allData={allResources} setState={setResources} name="resources" />
       <Stack gap={0.5}>
-        {resources.map((resource) => (
-          <Resource {...resource} />
+        {resources.map((resource, index) => (
+          <Resource {...resource} key={index} />
         ))}
       </Stack>
     </Stack>

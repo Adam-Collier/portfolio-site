@@ -10,7 +10,7 @@ export default function MyApp({ Component, pageProps }) {
   return (
     <StateProvider>
       <Layout>
-        <Component {...pageProps} />;
+        <Component {...pageProps} />
       </Layout>
     </StateProvider>
   );

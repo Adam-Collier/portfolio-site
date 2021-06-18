@@ -25,7 +25,7 @@ const Text = ({
         '--line-height': heading ? 1.3 : lineHeight,
         '--text-align': align,
         '--truncate': truncate,
-        '--color': color,
+        '--color': `var(--${color})`,
         ...style,
       }}
     >

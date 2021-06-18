@@ -8,8 +8,8 @@ import { getAllContentOfType } from '../lib/blog';
 
 import Page from '../components/Page';
 import SEO from '../components/Seo';
+import Spotify from '../components/Spotify';
 
-// import Spotify from '../components/Spotify';
 // import Content from '../components/Content';
 // import Readng from '../components/Readng';
 
@@ -59,7 +59,7 @@ const IndexPage = ({ posts }) => {
             <Blogpost {...post} key={index} />
           ))}
         </Stack>
-        <Stack>
+        <Stack gap={1.45}>
           <Text>
             Wondering what music I’m loving right now? Here’s my top tracks from
             my{' '}
@@ -68,7 +68,7 @@ const IndexPage = ({ posts }) => {
             </Link>
             , updated regularly.
           </Text>
-          {/* <Spotify /> */}
+          <Spotify />
         </Stack>
         <Stack>
           <Text>

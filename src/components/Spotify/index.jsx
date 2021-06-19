@@ -1,8 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
-import useSWR from 'swr';
+// import useSWR from 'swr';
 import { ArrowUpRight } from 'react-feather';
-import fetcher from '../../lib/fetcher';
+// import fetcher from '../../lib/fetcher';/
 import s from './track.module.css';
 import Stack from '../Stack';
 import Text from '../Text';
@@ -34,20 +34,12 @@ const Track = ({ artist, url, title, image }) => (
   </a>
 );
 
-const TopTracks = () => {
-  const { data } = useSWR('/api/top-tracks', fetcher);
-
-  if (!data) {
-    return null;
-  }
-
-  return (
-    <Stack gap={0}>
-      {data.tracks.map((track) => (
-        <Track key={track.url} {...track} />
-      ))}
-    </Stack>
-  );
-};
+const TopTracks = ({ tracks }) => (
+  <Stack gap={0}>
+    {tracks.map((track) => (
+      <Track key={track.url} {...track} />
+    ))}
+  </Stack>
+);
 
 export default TopTracks;

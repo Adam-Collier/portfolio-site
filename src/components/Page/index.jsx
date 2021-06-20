@@ -1,18 +1,44 @@
 import React from 'react';
-import styles from './page.module.css';
+import s from './page.module.css';
+import Stack from '../Stack';
+import Grid from '../Grid';
 
-const Page = ({ children, containerType, containerClass, noSidebar }) => {
-  const containerTypeClass =
-    containerType === 'fluid' ? styles.containerFluid : styles.container;
+const Page = ({
+  children,
+  layout = 'stack',
+  gap = 1.45,
+  padding,
+  paddingTop = 4.25,
+}) => {
+  const LAYOUT_OPTIONS = {
+    grid: {
+      component: Grid,
+      props: {
+        maxWidth: 'lg',
+        areas: "'sidebar content' 'sidebar footer'",
+        columns: '320px minmax(0, 1fr)',
+      },
+    },
+    stack: {
+      component: Stack,
+      props: {
+        gap,
+        maxWidth: 'sm',
+        padding,
+      },
+    },
+  };
+
+  const { component: Layout, props } = LAYOUT_OPTIONS[layout];
 
   return (
-    <main
-      className={`${containerTypeClass} ${
-        noSidebar ? '' : styles.sidebarLayout
-      } ${containerClass || ''} `}
+    <Layout
+      {...props}
+      className={s.page}
+      style={{ paddingTop: `${paddingTop}rem` }}
     >
       {children}
-    </main>
+    </Layout>
   );
 };
 

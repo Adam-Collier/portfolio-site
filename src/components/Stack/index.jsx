@@ -17,10 +17,6 @@ const getStackStyles = ({ direction, justify, align, gap }) => css.resolve`
     margin-top: calc(${gap} * 1rem);
   }
 
-  .page {
-    padding-top: 68px;
-  }
-
   @media (max-width: 767px) {
     .row :global(> * + *) {
       margin-left: calc(${gap} * 0.75rem);
@@ -43,23 +39,20 @@ const Stack = ({
   gap = 0,
   style,
   padding,
-  page,
 }) => {
   const StackStyles = getStackStyles({ direction, justify, align, gap });
-
-  const pageClass = page ? 'page' : '';
-  const paddingClas = padding ? 'padding' : '';
 
   return (
     <Row
       as={as}
       maxWidth={maxWidth}
-      className={`stack ${direction} ${pageClass} ${paddingClas} ${
-        StackStyles.className
-      } ${className || ''}`}
+      className={`stack ${direction} ${StackStyles.className} ${
+        className || ''
+      }`}
       style={{
         ...style,
       }}
+      padding={padding}
     >
       {StackStyles.styles}
       {children}

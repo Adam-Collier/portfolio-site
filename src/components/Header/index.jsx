@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 
 import Text from '../Text';
+import Row from '../Row';
 import Nav from '../Nav';
 import Toggle from '../Toggle';
 import MenuButton from './MenuButton';
@@ -11,7 +12,7 @@ import s from './header.module.css';
 const Header = ({ className, isClose }) => (
   <>
     <div className={`${s.wrapper} ${className || ''}`}>
-      <header className={s.header}>
+      <Row as="header" maxWidth="xl" className={s.header} padding>
         <Link href="/">
           <a
             style={{
@@ -29,7 +30,7 @@ const Header = ({ className, isClose }) => (
           <Toggle className={s.toggle} />
           <MenuButton isClose={isClose} />
         </div>
-      </header>
+      </Row>
     </div>
   </>
 );

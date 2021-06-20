@@ -20,8 +20,6 @@
   --content-width: 100%;
   --max-content-width: 64ch;
   --max-layout-width: 1200px;
-  --grid-areas: 'sidebar content' 'sidebar footer';
-  --grid-columns: 320px minmax(0, 1fr);
   --grid-gap: 2rem;
   --alt-line-height: 1.45rem;
   --container-padding: 4.5rem;
@@ -54,9 +52,6 @@
 @media (max-width: 767px) {
   :root {
     --content-x-padding: 1rem;
-    --grid-areas: 'sidebar' 'content' 'footer';
-    --grid-columns: 1fr;
-    --grid-gap: 1.45rem;
     --content-spacing-left: 0;
   }
 }

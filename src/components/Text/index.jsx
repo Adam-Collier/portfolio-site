@@ -10,7 +10,7 @@ const Text = ({
   weight = 450,
   align,
   truncate,
-  color = 'inherit',
+  color,
   style,
 }) => {
   const DynamicTag = `${as}`;
@@ -25,7 +25,7 @@ const Text = ({
         '--line-height': heading ? 1.3 : lineHeight,
         '--text-align': align,
         '--truncate': truncate,
-        '--color': `var(--${color})`,
+        '--color': color ? `var(--${color})` : 'inherit',
         ...style,
       }}
     >

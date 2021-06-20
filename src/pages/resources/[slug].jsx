@@ -1,10 +1,13 @@
 import { MDXRemote } from 'next-mdx-remote';
+import Page from '../../components/Page';
 import { getAllContentOfType } from '../../lib/blog';
 import { prepareMDX } from '../../lib/mdx';
 import { baseComponents } from '../../lib/base-components';
 
 const Resource = ({ source }) => (
-  <MDXRemote {...source} components={baseComponents} />
+  <Page padding>
+    <MDXRemote {...source} components={baseComponents} />
+  </Page>
 );
 
 export default Resource;

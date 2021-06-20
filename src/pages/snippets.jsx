@@ -1,16 +1,16 @@
 import { MDXRemote } from 'next-mdx-remote';
-import Stack from '../components/Stack';
+import Page from '../components/Page';
 import { getAllContentOfType } from '../lib/blog';
 import { prepareMDX } from '../lib/mdx';
 
 import { baseComponents } from '../lib/base-components';
 
 const Snippets = ({ allMDX }) => (
-  <Stack maxWidth="sm" page gap={1.45}>
+  <Page padding>
     {allMDX.map(({ source }, index) => (
       <MDXRemote key={index} {...source} components={baseComponents} />
     ))}
-  </Stack>
+  </Page>
 );
 
 export async function getStaticProps() {

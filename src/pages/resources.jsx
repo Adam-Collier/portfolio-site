@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Resource from '../components/Resource';
 import Text from '../components/Text';
+import Page from '../components/Page';
 import Stack from '../components/Stack';
 import Search from '../components/Search';
 import { getAllContentOfType } from '../lib/blog';
@@ -9,7 +10,7 @@ const Blog = ({ allResources }) => {
   const [resources, setResources] = useState(allResources);
 
   return (
-    <Stack maxWidth="sm" gap={2} style={{ marginTop: '3.5rem' }} padding page>
+    <Page paddingTop={8} gap={2} padding>
       <Text size="lg">
         This is a group of resources I have either learned something from or
         thought could become useful in the future.
@@ -20,7 +21,7 @@ const Blog = ({ allResources }) => {
           <Resource {...resource} key={index} />
         ))}
       </Stack>
-    </Stack>
+    </Page>
   );
 };
 

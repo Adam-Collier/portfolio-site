@@ -1,6 +1,7 @@
 import { MDXRemote } from 'next-mdx-remote';
 import dynamic from 'next/dynamic';
 import Stack from '../../components/Stack';
+import Page from '../../components/Page';
 import { prepareMDX } from '../../lib/mdx';
 import { baseComponents } from '../../lib/base-components';
 
@@ -25,9 +26,11 @@ const components = {
 };
 
 const Post = ({ source }) => (
-  <Stack gap={1.45} maxWidth="sm" page>
-    <MDXRemote {...source} components={components} />
-  </Stack>
+  <Page padding layout="grid">
+    <Stack maxWidth="sm" gap={1.45} style={{ gridArea: 'content' }} padding>
+      <MDXRemote {...source} components={components} />
+    </Stack>
+  </Page>
 );
 
 export default Post;

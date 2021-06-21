@@ -2,8 +2,10 @@ import { MDXRemote } from 'next-mdx-remote';
 import dynamic from 'next/dynamic';
 import Stack from '../../components/Stack';
 import Page from '../../components/Page';
+import Text from '../../components/Text';
 import { prepareMDX } from '../../lib/mdx';
 import { baseComponents } from '../../lib/base-components';
+import { toTitleCase } from '../../utils/to-title-case';
 
 import { getAllContentOfType } from '../../lib/blog';
 
@@ -25,9 +27,12 @@ const components = {
   ...baseComponents,
 };
 
-const Post = ({ source }) => (
+const Post = ({ source, title }) => (
   <Page padding layout="grid">
     <Stack maxWidth="sm" gap={1.45} style={{ gridArea: 'content' }} padding>
+      <Text as="h1" size="2xl" heading>
+        {title}
+      </Text>
       <MDXRemote {...source} components={components} />
     </Stack>
   </Page>
@@ -38,9 +43,12 @@ export default Post;
 export async function getStaticProps({ params }) {
   const mdx = await prepareMDX(params.slug, '_posts');
 
+  const title = toTitleCase(params.slug);
+
   return {
     props: {
       ...mdx,
+      title,
     },
   };
 }

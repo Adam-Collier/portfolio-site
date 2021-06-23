@@ -1,45 +1,23 @@
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
 import { Check, BookOpen } from 'react-feather';
+import Text from '../Text';
 import styles from './readng.module.css';
 
-const Readng = () => {
-  const {
-    allFeedReadngRead,
-    feedReadngCurrentlyReading,
-  } = useStaticQuery(graphql`
-    {
-      feedReadngCurrentlyReading {
-        id
-        title
-        creator
-        link
-      }
-      allFeedReadngRead(limit: 3) {
-        edges {
-          node {
-            id
-            title
-            creator
-            link
-          }
-        }
-      }
-    }
-  `);
+const Readng = ({ data }) => {
+  const { reading, read } = data;
 
   return (
-    <>
-      <Book node={feedReadngCurrentlyReading} />
-      {allFeedReadngRead.edges.map(({ node }, index) => (
-        <Book node={node} key={index} finished />
+    <div>
+      <Book data={reading} />
+      {read.map((d, index) => (
+        <Book data={d} key={index} finished />
       ))}
-    </>
+    </div>
   );
 };
 
-const Book = ({ node, finished }) => {
-  const { title, creator, link } = node;
+const Book = ({ data, finished }) => {
+  const { title, creator, link } = data;
 
   const finishedClass = finished ? styles.finished : null;
 
@@ -50,8 +28,10 @@ const Book = ({ node, finished }) => {
       target="__blank"
       rel="noopener noreferrer"
     >
-      <p className={styles.title}>{title}</p>
-      <p className={styles.author}>{creator}</p>
+      <Text>{title}</Text>
+      <Text color="foreground-high" size="sm">
+        {creator}
+      </Text>
 
       <div className={styles.icon}>
         {finished ? (

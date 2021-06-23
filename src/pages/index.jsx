@@ -7,18 +7,19 @@ import Blogpost from '../components/Blogpost';
 
 import { getAllContentOfType } from '../lib/blog';
 import { getTopTracks } from '../lib/spotify';
+import { getReadngContent } from '../lib/readng';
 
 import Page from '../components/Page';
 import SEO from '../components/Seo';
 import Spotify from '../components/Spotify';
+import Readng from '../components/Readng';
 
 // import Content from '../components/Content';
-// import Readng from '../components/Readng';
 
 // import styles from './index.module.css';
 // import Blogposts from '../components/Blogposts';
 
-const IndexPage = ({ posts, tracks }) => {
+const IndexPage = ({ posts, tracks, readng }) => {
   const router = useRouter();
 
   return (
@@ -71,7 +72,7 @@ const IndexPage = ({ posts, tracks }) => {
         </Text>
         <Spotify tracks={tracks} />
       </Stack>
-      <Stack>
+      <Stack gap={1.45}>
         <Text>
           Want to know what I'm reading right now or looking for a new book to
           try? Here's exactly that, taken from my{' '}
@@ -80,6 +81,7 @@ const IndexPage = ({ posts, tracks }) => {
           </Link>
           .
         </Text>
+        <Readng data={readng} />
       </Stack>
       {/*
       <section>
@@ -102,6 +104,8 @@ export async function getStaticProps() {
     { limit: 4 }
   );
 
+  const readng = await getReadngContent();
+
   // get the spotify tracks
   const response = await getTopTracks();
   const { items: toptracks } = await response.json();
@@ -113,7 +117,7 @@ export async function getStaticProps() {
     image: track.album.images[0].url,
   }));
 
-  return { props: { posts, tracks }, revalidate: 60 };
+  return { props: { posts, tracks, readng }, revalidate: 60 };
 }
 
 export default IndexPage;

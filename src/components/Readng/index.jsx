@@ -1,7 +1,7 @@
 import React from 'react';
 import { Check, BookOpen } from 'react-feather';
 import Text from '../Text';
-import styles from './readng.module.css';
+import s from './readng.module.css';
 
 const Readng = ({ data }) => {
   const { reading, read } = data;
@@ -18,13 +18,12 @@ const Readng = ({ data }) => {
 
 const Book = ({ data, finished }) => {
   const { title, creator, link } = data;
-
-  const finishedClass = finished ? styles.finished : null;
+  const Icon = finished ? Check : BookOpen;
 
   return (
     <a
       href={link}
-      className={`${styles.book} ${finishedClass}`}
+      className={s.book}
       target="__blank"
       rel="noopener noreferrer"
     >
@@ -32,13 +31,11 @@ const Book = ({ data, finished }) => {
       <Text color="foreground-high" size="sm">
         {creator}
       </Text>
-
-      <div className={styles.icon}>
-        {finished ? (
-          <Check size={14} alt="book has been read" />
-        ) : (
-          <BookOpen size={14} alt="currently reading" />
-        )}
+      <div className={s.icon}>
+        <Icon
+          size={14}
+          alt={finished ? 'book has been read' : 'currently reading'}
+        />
       </div>
     </a>
   );

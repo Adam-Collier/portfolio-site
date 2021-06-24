@@ -1,7 +1,6 @@
 // Install gray-matter and date-fns
 import matter from 'gray-matter';
 import { join } from 'path';
-// import { parseISO, format } from 'date-fns';
 import fs from 'fs';
 
 // get the root directory
@@ -32,7 +31,6 @@ export const getContentBySlug = (baseDir, name, fields = []) => {
     slug,
     title,
     content,
-    name,
     ...data,
   };
 
@@ -55,17 +53,17 @@ export const getAllContentOfType = async (
 ) => {
   // lets grab all of the post directories
   // using withFileTypes returns and array of dirents
-  const allPostDirs = fs.readdirSync(join(root, contentBaseDir), {
+  const allDirs = fs.readdirSync(join(root, contentBaseDir), {
     withFileTypes: true,
   });
 
   // TODO: reduce number of posts in array so we don't need to loop over them all
   // let count = 0;
 
-  const allContent = allPostDirs
-    .flatMap((postDir) => {
-      if (postDir.isFile()) return [];
-      const contentDirName = postDir.name;
+  const allContent = allDirs
+    .flatMap((dir) => {
+      if (dir.isFile()) return [];
+      const contentDirName = dir.name;
 
       return getContentBySlug(contentBaseDir, contentDirName, fields);
     })

@@ -21,6 +21,7 @@ export async function getStaticProps() {
     'date',
     'slug',
     'description',
+    'publishedOn'
   ]);
 
   return { props: { posts } };

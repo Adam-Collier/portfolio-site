@@ -3,6 +3,8 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { format, parseISO } from 'date-fns';
+
 import Text from '../Text';
 import Stack from '../Stack';
 
@@ -23,7 +25,7 @@ const Blogpost = ({ title, publishedOn, slug, description }) => (
             {title}
           </Text>
           <Text size="sm">{description}</Text>
-          <small>{publishedOn}</small>
+          <small>{format(parseISO(publishedOn), 'MMMM dd, yyyy')}</small>
         </Stack>
       </a>
     </Link>

@@ -76,6 +76,12 @@ ServerName localhost:80
 
 and then it should work!
 
+If you find your site feels a little sluggish compared to using localhost you can speed up the lookup time by adding it as an alias. So in `/etc/hosts`:
+
+```php
+127.0.0.1 localhost your-site.test
+```
+
 ### Altering Site Address and Wordpress Address
 
 When switching to virtual hosts from a localhost setup the site address and wordpress address general settings were causing some issues. You may find you can't access the admin, because its setup for a different url, so here's how to fix that.

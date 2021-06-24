@@ -100,7 +100,7 @@ const IndexPage = ({ posts, tracks, readng }) => {
 export async function getStaticProps() {
   const posts = await getAllContentOfType(
     '_posts',
-    ['title', 'date', 'slug', 'description'],
+    ['title', 'publishedOn', 'slug', 'description'],
     { limit: 4 }
   );
 

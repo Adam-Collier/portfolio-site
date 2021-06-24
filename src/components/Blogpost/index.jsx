@@ -8,7 +8,7 @@ import Stack from '../Stack';
 
 import styles from './blogpost.module.css';
 
-const Blogpost = ({ title, date, slug, description }) => (
+const Blogpost = ({ title, publishedOn, slug, description }) => (
   <article className={styles.blogpost} key={slug}>
     <Link href={`/blog/${slug}`} aria-label={`blog post: ${title}`}>
       <a>
@@ -23,7 +23,7 @@ const Blogpost = ({ title, date, slug, description }) => (
             {title}
           </Text>
           <Text size="sm">{description}</Text>
-          <small>{date}</small>
+          <small>{publishedOn}</small>
         </Stack>
       </a>
     </Link>

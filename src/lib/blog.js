@@ -60,17 +60,19 @@ export const getAllContentOfType = async (
   });
 
   // TODO: reduce number of posts in array so we don't need to loop over them all
-  let count = 0;
+  // let count = 0;
 
-  return allPostDirs.flatMap((postDir) => {
-    if (postDir.isFile()) return [];
-    const contentDirName = postDir.name;
-    count += 1;
+  const allContent = allPostDirs
+    .flatMap((postDir) => {
+      if (postDir.isFile()) return [];
+      const contentDirName = postDir.name;
 
-    if (options?.limit && count > options.limit) {
-      return [];
-    }
+      return getContentBySlug(contentBaseDir, contentDirName, fields);
+    })
+    // sort by date here
+    .sort((a, b) =>
+      new Date(a.publishedOn) > new Date(b.publishedOn) ? -1 : 1
+    );
 
-    return getContentBySlug(contentBaseDir, contentDirName, fields);
-  });
+  return options?.limit ? allContent.slice(0, options.limit) : allContent;
 };

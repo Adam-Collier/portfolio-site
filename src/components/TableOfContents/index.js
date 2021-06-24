@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'gatsby';
+// import { Link } from 'gatsby';
 import { useActiveHash } from './use-active-hash';
 
 import styles from './tableOfContent.module.css';
@@ -8,23 +8,22 @@ import styles from './tableOfContent.module.css';
 // max depth is set via the tableOfContentsDepth field in the frontmatter, all headings will be rendered
 const createItems = (items, location, activeHash) =>
   items &&
-  items.map((item, key) => {
-    const isActive = item.url === `#${activeHash}`;
+  items.map((item, key) => (
+    // const isActive = item.url === `#${activeHash}`;
 
-    return (
-      <li key={key}>
-        {item.url && (
-          <Link
-            className={isActive ? styles.active : ''}
-            to={location.pathname + item.url}
-          >
-            {item.title}
-          </Link>
-        )}
-        {item.items && <ul>{createItems(item.items, location, activeHash)}</ul>}
-      </li>
-    );
-  });
+    <li key={key}>
+      {item.url && (
+        <div />
+        // <Link
+        //   className={isActive ? styles.active : ''}
+        //   to={location.pathname + item.url}
+        // >
+        //   {item.title}
+        // </Link>
+      )}
+      {item.items && <ul>{createItems(item.items, location, activeHash)}</ul>}
+    </li>
+  ));
 
 const TableOfContents = ({ tableOfContents, location, className }) => {
   const getHeadingIds = (toc) => {

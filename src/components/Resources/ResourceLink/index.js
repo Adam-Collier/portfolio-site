@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'gatsby';
 
 import { ArrowRight } from 'react-feather';
 
@@ -11,18 +10,19 @@ const index = ({ node, currentPageId }) => {
   const { slug } = node.fields;
 
   return (
-    <Link
-      to={slug}
-      className={`${styles.resourceLink} ${
-        currentPageId === id ? styles.active : ''
-      }`}
-      aria-label={title}
-    >
-      <article key={slug}>
-        <h3>{title}</h3>
-        {currentPageId === id ? <ArrowRight size={16} /> : null}
-      </article>
-    </Link>
+    <div />
+    // <Link
+    //   to={slug}
+    //   className={`${styles.resourceLink} ${
+    //     currentPageId === id ? styles.active : ''
+    //   }`}
+    //   aria-label={title}
+    // >
+    //   <article key={slug}>
+    //     <h3>{title}</h3>
+    //     {currentPageId === id ? <ArrowRight size={16} /> : null}
+    //   </article>
+    // </Link>
   );
 };
 

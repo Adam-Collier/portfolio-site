@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import Head from 'next/head';
 import config from '../../config';
 
-import SchemaOrg from './schema-org';
+// import SchemaOrg from './schema-org';
 
-function SEO({ description, image, title, pathname, isBlogPost, published }) {
+function SEO({ description, image, title, pathname, isBlogPost }) {
   const { author } = config;
 
   const siteTitle = config.title;
@@ -64,13 +64,11 @@ function SEO({ description, image, title, pathname, isBlogPost, published }) {
 }
 
 SEO.defaultProps = {
-  lang: `en`,
   description: ``,
 };
 
 SEO.propTypes = {
   description: PropTypes.string,
-  lang: PropTypes.string,
   title: PropTypes.string.isRequired,
 };
 

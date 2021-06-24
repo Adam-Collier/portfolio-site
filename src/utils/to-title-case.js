@@ -1,5 +1,3 @@
-// const smallWords = /^(a|an|and|as|at|but|by|en|for|if|in|nor|of|on|or|per|the|to|vs?\.?|via)$/i;
-
 const conjunctions = ['for', 'and', 'nor', 'but', 'or', 'yet', 'so'];
 
 const articles = ['a', 'an', 'the'];

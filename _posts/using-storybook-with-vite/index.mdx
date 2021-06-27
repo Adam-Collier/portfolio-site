@@ -8,8 +8,8 @@ tags:
 description: >-
   Create your first Storybook story using Vite and React. Jump start your UI
   component library.
-publishedOn: '2021-05-15'
-updatedOn: '2021-06-01T17:04:17.231Z'
+publishedOn: "2021-05-15"
+updatedOn: "2021-06-01T17:04:17.231Z"
 ---
 
 I'd be lying if I said I wasn't a little obsessed with Vite at the moment. Every small project or jaunty experiment I find myself installing it, seeing what it's capable of. More than anything it's the experience that excites me. Focusing on blazingly fast (everyone loves this term) starts/builds, the dev experience and the ability to import ES Modules, it's nothing short of sublime. For me, this is everything I want in a development environment and it makes Create React App feel sluggish and bloated in comparison. Not to mention it supports multiple frameworks! (React, Vue, Svelte, Preact and Lit at the time of writing). Evan You has outdone himself here and as a relatively young project, it's only going to get better.
@@ -105,7 +105,7 @@ Now we can run `npm run storybook` to get us up and running. You'll find that it
 
 Here's an example of what's rendered for us:
 
-![storybook default setup](./storybook_vite_1.png)
+![storybook default setup](storybook_vite_1)
 
 ### Custom Component Setup
 
@@ -141,8 +141,8 @@ Now we can strip back our stories folder, create a Text directory and within tha
 Originally I was going to create a story for a really basic component but I thought it made more sense to show a "real case scenario". Therefore, here's a Text component I've pulled from a recent project (this lives in Text > index.jsx)
 
 ```jsx
-import React from 'react';
-import styled, { css } from 'styled-components';
+import React from "react";
+import styled, { css } from "styled-components";
 
 const TextElement = styled.p`
   --text-5xl: 64px;
@@ -166,17 +166,17 @@ const TextElement = styled.p`
   ${(props) =>
     props.heading &&
     css`
-      font-family: 'HelveticaNeue-CondensedBold', 'HelveticaNeueBoldCondensed',
-        'HelveticaNeue-Bold-Condensed', 'Helvetica Neue Bold Condensed',
-        'HelveticaNeueBold', 'HelveticaNeue-Bold', 'Helvetica Neue Bold',
-        'Helvetica Neue', 'Oswald', Arial, sans-serif;
+      font-family: "HelveticaNeue-CondensedBold", "HelveticaNeueBoldCondensed",
+        "HelveticaNeue-Bold-Condensed", "Helvetica Neue Bold Condensed",
+        "HelveticaNeueBold", "HelveticaNeue-Bold", "Helvetica Neue Bold",
+        "Helvetica Neue", "Oswald", Arial, sans-serif;
       font-stretch: condensed;
       text-transform: uppercase;
       letter-spacing: 0.02em;
     `}
 
   & + * {
-    margin-top: ${(props) => props.spacing || '1.45rem'};
+    margin-top: ${(props) => props.spacing || "1.45rem"};
   }
 
   @media (max-width: 767px) {
@@ -223,9 +223,9 @@ export const Text = (props) => {
 };
 
 Text.defaultProps = {
-  element: 'p',
-  size: 'base',
-  align: 'left',
+  element: "p",
+  size: "base",
+  align: "left",
   weight: 500,
   lineHeight: 1.75,
 };
@@ -236,15 +236,15 @@ Text.defaultProps = {
 Ok so now we are ready to create our story in Text > Text.stories.js. First let's add all of the imports we will need, so let's import React and our Text component.
 
 ```jsx
-import React from 'react';
-import { Text } from './index';
+import React from "react";
+import { Text } from "./index";
 ```
 
 Think of the export default object as the stories config. Here we can declare all of the options our story needs to organise itself but also add some custom features. In its simplest form, we can just declare a title and component. The title here can be used to organise our components into different sections. For example, our Text component still sits under the components section.
 
 ```jsx
 export default {
-  title: 'Components/Text',
+  title: "Components/Text",
   component: Text,
 };
 ```
@@ -253,13 +253,13 @@ We can build it out a little more by adding some argTypes. Within these argTypes
 
 ```jsx
 export default {
-  title: 'Components/Text',
+  title: "Components/Text",
   component: Text,
   argTypes: {
     align: {
       control: {
-        type: 'select',
-        options: ['left', 'right', 'center'],
+        type: "select",
+        options: ["left", "right", "center"],
       },
     },
   },
@@ -270,18 +270,18 @@ Next, we can add a boolean control for our heading prop. In our storybook UI, th
 
 ```jsx
 export default {
-  title: 'Components/Text',
+  title: "Components/Text",
   component: Text,
   argTypes: {
     align: {
       control: {
-        type: 'select',
-        options: ['left', 'right', 'center'],
+        type: "select",
+        options: ["left", "right", "center"],
       },
     },
     heading: {
       control: {
-        type: 'boolean',
+        type: "boolean",
       },
     },
   },
@@ -292,35 +292,35 @@ And similar to before we can create another dropdown with all of our size option
 
 ```jsx
 export default {
-  title: 'Components/Text',
+  title: "Components/Text",
   component: Text,
   argTypes: {
     align: {
       control: {
-        type: 'select',
-        options: ['left', 'right', 'center'],
+        type: "select",
+        options: ["left", "right", "center"],
       },
     },
     heading: {
       control: {
-        type: 'boolean',
+        type: "boolean",
       },
     },
     size: {
       control: {
-        type: 'select',
+        type: "select",
         options: [
-          '5xl',
-          '4xl',
-          '3xl',
-          '2xl',
-          'xl',
-          'lg',
-          'md',
-          'base',
-          'sm',
-          'xs',
-          'xxs',
+          "5xl",
+          "4xl",
+          "3xl",
+          "2xl",
+          "xl",
+          "lg",
+          "md",
+          "base",
+          "sm",
+          "xs",
+          "xxs",
         ],
       },
     },
@@ -339,12 +339,12 @@ Now I didn't quite grasp this at first but this is where the reusability comes i
 ```jsx
 export const Primary = Template.bind({});
 Primary.args = {
-  element: 'p',
-  size: 'base',
-  align: 'left',
+  element: "p",
+  size: "base",
+  align: "left",
   weight: 500,
   lineHeight: 1.75,
-  children: 'This is some text',
+  children: "This is some text",
 };
 ```
 
@@ -356,55 +356,55 @@ const Template = (args) => <Text {...args} />;
 export const Body = Template.bind({});
 
 Body.args = {
-  align: 'left',
-  children: 'This is some text',
-  element: 'p',
+  align: "left",
+  children: "This is some text",
+  element: "p",
   lineHeight: 1.75,
-  size: 'base',
+  size: "base",
   weight: 500,
 };
 
 export const Heading = Template.bind({});
 
-Heading.args = { ...Body.args, heading: true, size: 'lg' };
+Heading.args = { ...Body.args, heading: true, size: "lg" };
 ```
 
 Here is all of that together, and with not a lot of code, we have created our first story.
 
 ```jsx
-import React from 'react';
-import { Text } from './index';
+import React from "react";
+import { Text } from "./index";
 
 const props = {
-  title: 'Components/Text',
+  title: "Components/Text",
   component: Text,
   argTypes: {
     align: {
       control: {
-        type: 'select',
-        options: ['left', 'right', 'center'],
+        type: "select",
+        options: ["left", "right", "center"],
       },
     },
     heading: {
       control: {
-        type: 'boolean',
+        type: "boolean",
       },
     },
     size: {
       control: {
-        type: 'select',
+        type: "select",
         options: [
-          '5xl',
-          '4xl',
-          '3xl',
-          '2xl',
-          'xl',
-          'lg',
-          'md',
-          'base',
-          'sm',
-          'xs',
-          'xxs',
+          "5xl",
+          "4xl",
+          "3xl",
+          "2xl",
+          "xl",
+          "lg",
+          "md",
+          "base",
+          "sm",
+          "xs",
+          "xxs",
         ],
       },
     },
@@ -418,31 +418,31 @@ const Template = (args) => <Text {...args} />;
 export const Body = Template.bind({});
 
 Body.args = {
-  align: 'left',
-  children: 'This is some text',
-  element: 'p',
+  align: "left",
+  children: "This is some text",
+  element: "p",
   lineHeight: 1.75,
-  size: 'base',
+  size: "base",
   weight: 500,
 };
 
 export const Heading = Template.bind({});
 
-Heading.args = { ...Body.args, heading: true, size: 'lg' };
+Heading.args = { ...Body.args, heading: true, size: "lg" };
 ```
 
 Once that is saved we should now see our Text component under a Components heading in the sidebar. When we click one of our versions, we can see the rendered component with the props we specified.
 
 If we click through to the `Docs` tab one thing to observe is that there are no descriptions or type definitions for our props.
 
-![missing description and types in doc tab](./storybook_vite_2.png)
+![missing description and types in doc tab](storybook_vite_2)
 
 ### Adding a Description and Types
 
 First, let's create some propTypes for our component. Although it might seem peculiar, these definitions are made within the component file, not our `stories.js` file. In our Text component file let's import `prop-types`
 
 ```jsx
-import proptypes from 'prop-types';
+import proptypes from "prop-types";
 ```
 
 then at the end of our file, we can add
@@ -460,7 +460,7 @@ Button.propTypes = {
   /**
    * How large should the button be?
    */
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
+  size: PropTypes.oneOf(["small", "medium", "large"]),
   /**
    * Button contents
    */
@@ -476,7 +476,7 @@ The main thing to grasp from the above is the comments are extracted for the pro
 
 Now our props have a nice description next to them and anyone looking at the docs can understand what is expected for each prop.
 
-![docs now filled in](./storybook_vite_3.png)
+![docs now filled in](storybook_vite_3)
 
 Obviously, this is just a brief overview of how to use Vite and storybook and I've definitely skimmed over a lot of areas, but from here you can keep building your components and make your library as extensive as you like.
 

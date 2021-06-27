@@ -34,8 +34,6 @@ const CodeBlock = ({
     className
   );
 
-  // console.log(styles, 'these are the styles');
-
   return (
     <div className={s.code}>
       <Highlight

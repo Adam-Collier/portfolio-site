@@ -1,5 +1,8 @@
+/* eslint-disable global-require */
+/* eslint-disable import/no-dynamic-require */
 import { MDXRemote } from 'next-mdx-remote';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import Stack from '../../components/Stack';
 import Page from '../../components/Page';
 import Text from '../../components/Text';
@@ -27,28 +30,42 @@ const components = {
   ...baseComponents,
 };
 
-const Post = ({ source, title }) => (
-  <Page padding layout="grid">
-    <Stack maxWidth="sm" gap={1.45} style={{ gridArea: 'content' }} padding>
-      <Text as="h1" size="2xl" heading>
-        {title}
-      </Text>
-      <MDXRemote {...source} components={components} />
-    </Stack>
-  </Page>
-);
+const Post = ({ source, title, slug }) => {
+  const image = {
+    img: ({ src, alt }) => (
+      <Image
+        src={require(`/_posts/${slug}/images/${src}.jpg`)}
+        alt={alt}
+        placeholder="blur"
+      />
+    ),
+  };
+
+  return (
+    <Page padding layout="grid">
+      <Stack maxWidth="sm" gap={1.45} style={{ gridArea: 'content' }} padding>
+        <Text as="h1" size="2xl" heading>
+          {title}
+        </Text>
+        <MDXRemote {...source} components={{ ...components, ...image }} />
+      </Stack>
+    </Page>
+  );
+};
 
 export default Post;
 
 export async function getStaticProps({ params }) {
-  const mdx = await prepareMDX(params.slug, '_posts');
+  const { slug } = params;
+  const mdx = await prepareMDX(slug, '_posts');
 
-  const title = toTitleCase(params.slug);
+  const title = toTitleCase(slug);
 
   return {
     props: {
       ...mdx,
       title,
+      slug,
     },
   };
 }

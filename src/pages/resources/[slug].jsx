@@ -8,7 +8,6 @@ import { baseComponents } from '../../lib/base-components';
 
 const Resource = ({ source }) => {
   const { scope } = source;
-  console.log(scope);
   return (
     <Page layout="grid" padding>
       <Stack maxWidth="sm" gap={1.45} style={{ gridArea: 'content' }} padding>

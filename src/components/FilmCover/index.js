@@ -1,10 +1,10 @@
 import React from 'react';
-import Image from 'next/image';
+// import Image from 'next/image';
 import styles from './film-cover.module.css';
 
 const FilmCover = ({
-  imagePath,
-  title,
+  // imagePath,
+  // title,
   year,
   genre,
   rating = 1,
@@ -36,12 +36,12 @@ const FilmCover = ({
 
   <div className={`${className} ${styles.cover}`}>
     <div>
-      <Image
-        src={imagePath}
+      {/* <Image
+        src={require(imagePath)}
         className={styles.image}
         alt={`${title} film cover`}
         sizes="(max-width: 600px) 128px, 135px"
-      />
+      /> */}
     </div>
     <p className={styles.genre}>{genre}</p>
     <p className={styles.year}>{year}</p>

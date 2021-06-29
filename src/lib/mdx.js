@@ -1,9 +1,7 @@
 import { bundleMDX } from 'mdx-bundler';
 import path from 'path';
-import { existsSync } from 'fs';
-import { readdir, readFile } from 'fs/promises';
 
-export const prepareMDX = async (source, files) => {
+export const prepareMDX = async (source, options) => {
   if (process.platform === 'win32') {
     process.env.ESBUILD_BINARY_PATH = path.join(
       process.cwd(),
@@ -21,28 +19,11 @@ export const prepareMDX = async (source, files) => {
     );
   }
 
+  const { directory } = options;
+
   const { code } = await bundleMDX(source, {
-    files,
+    cwd: directory,
   });
 
   return code;
-};
-
-export const getComponents = async (directory) => {
-  const components = {};
-
-  if (!existsSync(directory)) return components;
-
-  const files = await readdir(directory);
-
-  console.log(files);
-
-  for (const file of files) {
-    if (file.substr(-3) === 'jsx') {
-      const fileBuffer = await readFile(path.join(directory, file));
-      components[`./components/${file}`] = fileBuffer.toString().trim();
-    }
-  }
-
-  return components;
 };

@@ -8,7 +8,7 @@ const Page = ({
   layout = 'stack',
   gap = 1.45,
   padding,
-  paddingTop = 4.25,
+  paddingTop = 6,
 }) => {
   const LAYOUT_OPTIONS = {
     grid: {

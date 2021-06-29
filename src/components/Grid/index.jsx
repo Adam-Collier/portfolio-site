@@ -11,17 +11,13 @@ const Grid = ({
   padding,
   style,
 }) => (
-  <Row
-    as={as}
-    maxWidth={maxWidth}
-    style={{ ...style }}
-    padding={padding}
-    gap={gap}
-  >
+  <Row as={as} maxWidth={maxWidth} style={{ ...style }} padding={padding}>
     <div>
       <style jsx>{`
         --areas: ${areas};
         --columns: ${columns};
+        --gap: ${gap}rem;
+
         display: grid;
         grid-template-areas: var(--areas);
         grid-template-columns: var(--columns);

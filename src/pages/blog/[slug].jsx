@@ -41,17 +41,9 @@ const Post = ({ source, title, slug }) => {
     ),
   };
 
-  const { scope: frontmatter } = source;
-  const { gap } = frontmatter;
-
   return (
     <Page padding layout="grid">
-      <Stack
-        maxWidth="sm"
-        gap={gap || 1.45}
-        style={{ gridArea: 'content' }}
-        padding
-      >
+      <Stack maxWidth="sm" gap={1.45} style={{ gridArea: 'content' }} padding>
         <Text as="h1" size="2xl" heading>
           {title}
         </Text>

@@ -6,6 +6,10 @@
   grid-column-gap: 1.5rem;
 }
 
+section.film + section.film {
+  margin-top: 2rem;
+}
+
 .title {
   grid-area: title;
 }

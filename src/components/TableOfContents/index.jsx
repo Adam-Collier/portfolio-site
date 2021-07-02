@@ -42,7 +42,7 @@ const TableOfContents = ({ className, source }) => {
       <Text size="md" heading>
         Table of Contents
       </Text>
-      <ul className={`${s.tableOfContents} ${className || ''}`}>
+      <ul className={`${s.toc} ${className || ''}`}>
         {createItems(headings, currentPath, activeHash)}
       </ul>
     </Stack>

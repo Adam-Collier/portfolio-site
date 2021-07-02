@@ -1,9 +1,17 @@
 .sidebar {
   grid-area: sidebar;
+  align-self: flex-start;
   position: relative;
 }
 
-.sticky {
+@media (min-width: 768px) {
+  .sidebar {
+    position: sticky;
+    top: 100px;
+  }
+}
+
+/* .sticky {
   position: sticky;
   top: 72px;
 }
@@ -99,4 +107,4 @@
     grid-area: context;
     margin-bottom: -0.75rem;
   }
-}
+} */

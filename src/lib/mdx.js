@@ -32,6 +32,7 @@ export const prepareMDX = async (slug, baseDir) => {
   // TODO: handle dates here to return JSON
   return {
     source: mdxSource,
-    frontMatter: data,
+    frontmatter: data,
+    rawMDX: content,
   };
 };

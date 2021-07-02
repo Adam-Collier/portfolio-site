@@ -9,6 +9,7 @@ import Page from '../../components/Page';
 import Text from '../../components/Text';
 import Sidebar from '../../components/Sidebar/index.jsx';
 import TableOfContents from '../../components/TableOfContents';
+import SharePost from '../../components/SharePost';
 import { prepareMDX } from '../../lib/mdx';
 import { baseComponents } from '../../lib/base-components';
 import { toTitleCase } from '../../utils/to-title-case';
@@ -52,7 +53,7 @@ const Post = ({ source, title, slug, rawMDX, frontmatter }) => {
         </Text>
         <MDXRemote {...source} components={{ ...components, ...image }} />
       </Stack>
-      <Sidebar>
+      <Sidebar top={12.5}>
         <TableOfContents source={rawMDX} />
         <Stack gap={0.5}>
           <Text size="sm" heading>
@@ -64,12 +65,13 @@ const Post = ({ source, title, slug, rawMDX, frontmatter }) => {
             </Text>
             {frontmatter.updatedOn && (
               <Text size="xs" color="foreground-high">
-                Updated:{' '}
-                {format(parseISO(frontmatter.updatedOn), 'MMMM dd, yyyy')}
+                (Updated:{' '}
+                {format(parseISO(frontmatter.updatedOn), 'MMMM dd, yyyy')})
               </Text>
             )}
           </Stack>
         </Stack>
+        <SharePost />
       </Sidebar>
     </Page>
   );

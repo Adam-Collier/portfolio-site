@@ -1,37 +1,37 @@
-.tableOfContents a {
+.toc a {
   text-decoration: none;
   color: inherit;
 }
 
-.tableOfContents li {
+.toc li {
   list-style-type: none;
 }
 
-.tableOfContents a:hover:not(.active) {
+.toc a:hover:not(.active) {
   color: var(--foreground-hover);
 }
 
-.tableOfContents {
+.toc {
   --list-spacing: 0.75rem;
   list-style-type: none;
   margin-left: 0;
 }
 
-.tableOfContents li > ul {
+.toc li > ul {
   margin-top: var(--list-spacing);
 }
 
-.tableOfContents li + li {
+.toc li + li {
   margin-top: var(--list-spacing);
 }
 
-.tableOfContents .active {
+.toc .active {
   text-decoration: revert;
   color: var(--primary-accent);
 }
 
 @media (min-width: 768px) {
-  .tableOfContents {
+  .toc {
     --list-spacing: 0.5rem;
     /* padding-bottom: 1rem; */
   }

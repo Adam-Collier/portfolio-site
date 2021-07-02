@@ -3,9 +3,12 @@
 import { MDXRemote } from 'next-mdx-remote';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
+import { format, parseISO } from 'date-fns';
 import Stack from '../../components/Stack';
 import Page from '../../components/Page';
 import Text from '../../components/Text';
+import Sidebar from '../../components/Sidebar/index.jsx';
+import TableOfContents from '../../components/TableOfContents';
 import { prepareMDX } from '../../lib/mdx';
 import { baseComponents } from '../../lib/base-components';
 import { toTitleCase } from '../../utils/to-title-case';
@@ -30,7 +33,7 @@ const components = {
   ...baseComponents,
 };
 
-const Post = ({ source, title, slug }) => {
+const Post = ({ source, title, slug, rawMDX, frontmatter }) => {
   const image = {
     img: ({ src, alt }) => (
       <Image
@@ -49,6 +52,25 @@ const Post = ({ source, title, slug }) => {
         </Text>
         <MDXRemote {...source} components={{ ...components, ...image }} />
       </Stack>
+      <Sidebar>
+        <TableOfContents source={rawMDX} />
+        <Stack gap={0.5}>
+          <Text size="sm" heading>
+            Published:
+          </Text>
+          <Stack gap={0.125}>
+            <Text size="xs">
+              {format(parseISO(frontmatter.publishedOn), 'MMMM dd, yyyy')}
+            </Text>
+            {frontmatter.updatedOn && (
+              <Text size="xs" color="foreground-high">
+                Updated:{' '}
+                {format(parseISO(frontmatter.updatedOn), 'MMMM dd, yyyy')}
+              </Text>
+            )}
+          </Stack>
+        </Stack>
+      </Sidebar>
     </Page>
   );
 };

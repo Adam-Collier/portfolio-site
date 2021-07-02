@@ -2,23 +2,23 @@
   grid-area: share;
   display: flex;
   align-items: center;
-  margin-bottom: 1.45rem;
   cursor: pointer;
+  border: 1px solid var(--foreground-low);
+  width: fit-content;
+  border-radius: var(--border-radius);
+  padding: 0.5rem 0.75rem 0.5rem 0.25rem;
+  background: var(--foreground-min);
 }
 
-.share p {
-  margin-bottom: 0;
-  margin-right: 1rem;
-  font-weight: 550;
+.share:hover {
+  background: var(--foreground-low);
 }
 
 .share button {
   padding: 0.5rem;
-  background: var(--primary-foreground);
   border: none;
   outline: none;
-  border-radius: 50%;
-  margin-right: 0.75rem;
+  color: var(--primary-foreground);
 }
 
 .share svg {
@@ -34,10 +34,6 @@
     border-radius: var(--border-radius);
     display: flex;
     justify-content: center;
-  }
-
-  .share:hover {
-    background: var(--foreground-min);
   }
 
   .share button {

@@ -20,16 +20,11 @@ export const getContentBySlug = (baseDir, name, fields = []) => {
 
   // create the slug
   const slug = name.toLowerCase();
-  // replace the dashes with spaces
-  const spacedName = name.replace(/-/g, ' ');
-  // capitalise the first letter
-  const title = spacedName.charAt(0).toUpperCase() + spacedName.slice(1);
 
   // bring all of the data together
   // prioritise frontmatter values so we can overwrite when needed to
   const postData = {
     slug,
-    title,
     content,
     ...data,
   };

@@ -6,7 +6,7 @@ const Sidebar = ({ children, top }) => (
     as="aside"
     gap={1.45}
     className={s.sidebar}
-    style={{ '--top': top ? `${top}rem` : `0` }}
+    style={{ '--top': top ? `${top}vh` : `0` }}
   >
     {children}
   </Stack>

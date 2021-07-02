@@ -53,7 +53,7 @@ const Post = ({ source, title, slug, rawMDX, frontmatter }) => {
         </Text>
         <MDXRemote {...source} components={{ ...components, ...image }} />
       </Stack>
-      <Sidebar top={12.5}>
+      <Sidebar top={20}>
         <TableOfContents source={rawMDX} />
         <Stack gap={0.5}>
           <Text size="sm" heading>

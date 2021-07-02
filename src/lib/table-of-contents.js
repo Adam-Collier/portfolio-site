@@ -8,8 +8,14 @@ export const getHeadings = (source) => {
   // Transform the string '## Some text' into an object
   // with the shape '{ text: 'Some text', level: 2 }'
   return headingLines.map((raw) => {
+    // remove any hashes or non alphanumeric characters
     const title = raw.replace(/^###*\s/, '');
-    const id = title.toLowerCase().replace(/ /g, '-');
+    // make lower case, remove any non alphanumeric characters (apart from spaces)
+    // and then add dashes
+    const id = title
+      .toLowerCase()
+      .replace(/[^\w\s]/gi, '')
+      .replace(/ /g, '-');
     // I only care about h2 and h3.
     // If I wanted more levels, I'd need to count the
     // number of #s.

@@ -8,6 +8,8 @@
   .sidebar {
     position: sticky;
     top: var(--top);
+    max-height: calc(100vh - 6rem);
+    overflow-y: scroll;
   }
 }
 

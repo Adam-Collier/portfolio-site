@@ -29,13 +29,14 @@ const createItems = (items, path, activeHash) =>
 const TableOfContents = ({ className, source }) => {
   const headings = getHeadings(source);
   const router = useRouter();
-  const { route, query } = router;
+  const { asPath } = router;
 
-  const currentPath = `${route.substring(0, route.lastIndexOf('/'))}/${
-    query.slug
-  }`;
+  // the current path without hash
+  const currentPath = asPath.substring(0, asPath.lastIndexOf('#'));
 
   const activeHash = useActiveHash(headings);
+
+  // const activeHash = null;
 
   return (
     <Stack gap={1}>

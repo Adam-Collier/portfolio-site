@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
 import { Link, Check } from 'react-feather';
+import Text from '../Text';
 import styles from './sharepost.module.css';
 
 const delay = (duration) =>
   new Promise((resolve) => setTimeout(resolve, duration));
 
-const SharePost = ({ url }) => {
+const SharePost = () => {
   const [copied, setCopied] = useState(false);
+
+  let url = '';
+
+  if (typeof window !== 'undefined') {
+    [url] = window.location.href.split('?');
+  }
 
   const handleClick = async () => {
     const el = document.createElement(`textarea`);
@@ -35,13 +42,13 @@ const SharePost = ({ url }) => {
       tabIndex={0}
     >
       <button type="button">
-        {copied ? (
-          <Check size={14} color="var(--primary-background)" />
-        ) : (
-          <Link size={14} color="var(--primary-background)" />
-        )}
+        {copied ? <Check size={14} /> : <Link size={14} />}
       </button>
-      {copied ? <p>Copied!</p> : <p>Share this post! </p>}
+      {copied ? (
+        <Text size="sm">Copied!</Text>
+      ) : (
+        <Text size="sm">Share this post!</Text>
+      )}
     </div>
   );
 };

@@ -2,6 +2,7 @@ import { MDXRemote } from 'next-mdx-remote';
 import Page from '../components/Page';
 import Stack from '../components/Stack';
 import Sidebar from '../components/Sidebar/index.jsx';
+import Text from '../components/Text';
 import TableOfContents from '../components/TableOfContents';
 import { getAllContentOfType } from '../lib/blog';
 import { prepareMDX } from '../lib/mdx';
@@ -15,6 +16,15 @@ const Snippets = ({ allMDX }) => {
   return (
     <Page layout="grid" padding>
       <Stack maxWidth="sm" gap={1.45} style={{ gridArea: 'content' }} padding>
+        <Text as="h1" size="2xl" heading>
+          Snippets
+        </Text>
+        <Text>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid
+          veritatis necessitatibus ea veniam, odit quidem amet eius iure aliquam
+          expedita placeat dolores quasi, doloremque numquam? Error earum
+          deleniti natus magnam.
+        </Text>
         {allMDX.map(({ source }, index) => (
           <MDXRemote key={index} {...source} components={baseComponents} />
         ))}

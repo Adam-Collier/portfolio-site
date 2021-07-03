@@ -14,11 +14,6 @@ import SEO from '../components/Seo';
 import Spotify from '../components/Spotify';
 import Readng from '../components/Readng';
 
-// import Content from '../components/Content';
-
-// import styles from './index.module.css';
-// import Blogposts from '../components/Blogposts';
-
 const IndexPage = ({ posts, tracks, readng }) => {
   const router = useRouter();
 

@@ -13,6 +13,7 @@ import s from './toc.module.css';
 const createItems = (items, path, activeHash) =>
   items &&
   items.map((item, key) => {
+    // check if the item id matches the activeHash
     const isActive = item.id === activeHash;
     const { title } = item;
 
@@ -21,22 +22,21 @@ const createItems = (items, path, activeHash) =>
         <Link href={`${path}#${item.id}`}>
           <a className={isActive ? s.active : ''}>{title}</a>
         </Link>
+        {/* use recursion for nested items */}
         {item.items && <ul>{createItems(item.items, path, activeHash)}</ul>}
       </Text>
     );
   });
 
 const TableOfContents = ({ className, source }) => {
-  const headings = getHeadings(source);
+  const { headings, headingsList } = getHeadings(source);
   const router = useRouter();
   const { asPath } = router;
 
   // the current path without hash
   const currentPath = asPath.substring(0, asPath.lastIndexOf('#'));
-
-  const activeHash = useActiveHash(headings);
-
-  // const activeHash = null;
+  // pass in the headingsList so we can loop and observe each id
+  const activeHash = useActiveHash(headingsList);
 
   return (
     <Stack gap={1}>

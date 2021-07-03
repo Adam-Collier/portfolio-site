@@ -2,11 +2,12 @@ import { MDXRemote } from 'next-mdx-remote';
 import Text from '../../components/Text';
 import Page from '../../components/Page';
 import Stack from '../../components/Stack';
+import Form from '../../components/Form';
 import { getAllContentOfType } from '../../lib/blog';
 import { prepareMDX } from '../../lib/mdx';
 import { baseComponents } from '../../lib/base-components';
 
-const Resource = ({ source }) => {
+const Resource = ({ source, title }) => {
   const { scope } = source;
   return (
     <Page layout="grid" padding>
@@ -15,6 +16,10 @@ const Resource = ({ source }) => {
           {scope.title}
         </Text>
         <MDXRemote {...source} components={baseComponents} />
+        <Form
+          title={title}
+          text="Do you know a resource that could benefit another reader and is relevent for this page? Let me know by leaving a short message below and I will take a look!"
+        />
       </Stack>
     </Page>
   );

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Button from '../Button';
-import styles from './form.module.css';
+import Stack from '../Stack';
+import Text from '../Text';
+import s from './form.module.css';
 import { ErrorAlert, SuccessAlert } from '../Alert';
 
 const delay = (duration) =>
@@ -13,7 +15,7 @@ const Form = ({ title, text }) => {
     handle: '',
     message: '',
     honeypot: '',
-    accessKey: process.env.GATSBY_STATICFORM_ACCESS_KEY,
+    accessKey: process.env.NEXT_PUBLIC_STATICFORM_ACCESS_KEY,
   });
 
   const [response, setResponse] = useState({
@@ -34,6 +36,8 @@ const Form = ({ title, text }) => {
       });
 
       const json = await res.json();
+
+      console.log(json);
 
       if (json.success) {
         setResponse({
@@ -62,10 +66,10 @@ const Form = ({ title, text }) => {
   };
 
   return (
-    <div className={styles.feedback}>
-      <p>{text}</p>
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <label className={styles.message} htmlFor="message">
+    <Stack gap={1.45} style={{ width: 'auto' }} className={s.feedback}>
+      <Text>{text}</Text>
+      <form className={s.form} onSubmit={handleSubmit}>
+        <label className={s.message} htmlFor="message">
           Message
           <textarea
             name="message"
@@ -74,16 +78,16 @@ const Form = ({ title, text }) => {
             required
           />
         </label>
-        <label className={styles.email} htmlFor="email">
+        <label className={s.email} htmlFor="email">
           Your Email (optional)
           <input type="email" name="email" onChange={handleChange} />
         </label>
-        <label className={styles.handle} htmlFor="handle">
+        <label className={s.handle} htmlFor="handle">
           Twitter Handle (optional)
           <input type="text" name="$handle" onChange={handleChange} />
         </label>
         <input type="hidden" name="honeypot" style={{ display: 'none' }} />
-        <Button className={styles.submit} text="Send Feedback" type="submit" />
+        <Button className={s.submit} text="Send Feedback" type="submit" />
       </form>
       {response.type &&
         (response.type === 'success' ? (
@@ -91,7 +95,7 @@ const Form = ({ title, text }) => {
         ) : (
           <ErrorAlert text={response.message} />
         ))}
-    </div>
+    </Stack>
   );
 };
 

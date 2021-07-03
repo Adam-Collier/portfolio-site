@@ -7,28 +7,17 @@
   margin-right: calc(var(--feedback-padding) * -1);
   border-top: 1px dashed var(--foreground-high);
   border-bottom: 1px dashed var(--foreground-high);
-  margin-top: 2rem;
-}
-
-.feedback > * {
-  margin: 0;
-}
-
-.feedback > * + * {
-  margin: 0;
-  margin-top: 1.45rem;
 }
 
 .form {
   display: grid;
-  grid-template-areas: 'message message' 'email handle' 'submit submit';
+  grid-template-areas: "message message" "email handle" "submit submit";
   grid-gap: 1rem;
-  margin-bottom: 0;
 }
 
 .message {
-  display: flex;
   grid-area: message;
+  display: flex;
   flex-direction: column;
 }
 
@@ -51,7 +40,6 @@
 
 .form input,
 .form textarea {
-  box-sizing: border-box;
   width: 100%;
   margin-top: 0.25rem;
   border: none;
@@ -74,7 +62,8 @@
     margin-left: -1rem;
     margin-right: -1rem;
   }
+
   .form {
-    grid-template-areas: 'message' 'email' 'handle' 'submit';
+    grid-template-areas: "message" "email" "handle" "submit";
   }
 }

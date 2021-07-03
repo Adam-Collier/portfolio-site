@@ -6,6 +6,7 @@ import Form from '../../components/Form';
 import { getAllContentOfType } from '../../lib/blog';
 import { prepareMDX } from '../../lib/mdx';
 import { baseComponents } from '../../lib/base-components';
+import { toTitleCase } from '../../utils/to-title-case';
 
 const Resource = ({ source, title }) => {
   const { scope } = source;
@@ -28,11 +29,15 @@ const Resource = ({ source, title }) => {
 export default Resource;
 
 export async function getStaticProps({ params }) {
-  const mdx = await prepareMDX(params.slug, '_resources');
+  const { slug } = params;
+  const mdx = await prepareMDX(slug, '_resources');
+
+  const title = toTitleCase(slug);
 
   return {
     props: {
       ...mdx,
+      title,
     },
   };
 }

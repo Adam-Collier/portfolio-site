@@ -4,6 +4,7 @@ import Stack from '../components/Stack';
 import Sidebar from '../components/Sidebar/index.jsx';
 import Text from '../components/Text';
 import TableOfContents from '../components/TableOfContents';
+import Form from '../components/Form';
 import { getAllContentOfType } from '../lib/blog';
 import { prepareMDX } from '../lib/mdx';
 
@@ -28,6 +29,10 @@ const Snippets = ({ allMDX }) => {
         {allMDX.map(({ source }, index) => (
           <MDXRemote key={index} {...source} components={baseComponents} />
         ))}
+        <Form
+          title="Snippets"
+          text="Do you know a great snippet which you think should be added to this page? Send it over and I'll take a look!"
+        />
       </Stack>
       <Sidebar>
         <TableOfContents source={allRawMDX} />

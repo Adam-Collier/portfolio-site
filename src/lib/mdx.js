@@ -2,9 +2,9 @@ import fs from 'fs';
 import { join } from 'path';
 import matter from 'gray-matter';
 import { serialize } from 'next-mdx-remote/serialize';
-
 import remarkSlug from 'remark-slug';
 import remarkAutolinkHeadings from 'remark-autolink-headings';
+import { formatResources } from './format-resources';
 
 export const prepareMDX = async (slug, baseDir) => {
   // get the root directory
@@ -23,6 +23,8 @@ export const prepareMDX = async (slug, baseDir) => {
         remarkSlug,
         // add links to the headers
         remarkAutolinkHeadings,
+        // format the resources
+        formatResources,
       ],
       rehypePlugins: [],
     },

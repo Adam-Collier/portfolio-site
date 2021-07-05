@@ -37,8 +37,6 @@ const Form = ({ title, text }) => {
 
       const json = await res.json();
 
-      console.log(json);
-
       if (json.success) {
         setResponse({
           type: 'success',

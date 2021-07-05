@@ -8,6 +8,7 @@
     "date-fns": "^2.22.1",
     "globby": "^11.0.3",
     "gray-matter": "^4.0.3",
+    "mdast-util-to-string": "^2.0.0",
     "nanoid": "^3.1.20",
     "next": "^11.0.1",
     "next-mdx-remote": "^3.0.2",
@@ -23,7 +24,8 @@
     "remark-slug": "^6.0.0",
     "rss-parser": "^3.12.0",
     "styled-jsx": "^3.4.4",
-    "swr": "^0.5.6"
+    "swr": "^0.5.6",
+    "unist-util-visit": "^2.0.3"
   },
   "devDependencies": {
     "@svgr/webpack": "^5.5.0",

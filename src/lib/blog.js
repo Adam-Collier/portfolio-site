@@ -2,6 +2,7 @@
 import matter from 'gray-matter';
 import { join } from 'path';
 import fs from 'fs';
+import { toTitleCase } from '../utils/to-title-case';
 
 // get the root directory
 const root = process.cwd();
@@ -20,10 +21,13 @@ export const getContentBySlug = (baseDir, name, fields = []) => {
 
   // create the slug
   const slug = name.toLowerCase();
+  // create the title using our util function
+  const title = toTitleCase(slug);
 
   // bring all of the data together
   // prioritise frontmatter values so we can overwrite when needed to
   const postData = {
+    title,
     slug,
     content,
     ...data,

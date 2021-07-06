@@ -7,8 +7,8 @@ tags:
 description: >-
   Avoid issues using Emoji's in our markup by replacing them with the HTML
   entity equivalent. Let's write a script to help us do this.
-publishedOn: '2019-07-20'
-updatedOn: '2021-06-01T17:04:17.225Z'
+publishedOn: "2019-07-20"
+updatedOn: "2021-01-22T17:27:14+00:00"
 ---
 
 This week I came across a case where using an emoji in my code broke a page I
@@ -23,7 +23,7 @@ Lets jump in...
 
 ```js
 let emojiUnicode = (input) => {
-  return emojiUnicode.raw(input).toString('16');
+  return emojiUnicode.raw(input).toString("16");
 };
 
 emojiUnicode.raw = function (input) {

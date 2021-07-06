@@ -8,12 +8,12 @@ tags:
 description: >-
   Want feedback or suggestions on the content you write? Let's create a form so
   you can create a dialogue with your readers.
-publishedOn: '2021-05-25'
-updatedOn: '2021-06-01T17:04:17.232Z'
+publishedOn: "2021-05-25"
+updatedOn: "2021-05-25T17:39:50.273Z"
 ---
 
-import FormNoStyles from './components/FormNoStyles';
-import FormWithStyles from './components/FormWithStyles';
+import FormNoStyles from "./components/FormNoStyles";
+import FormWithStyles from "./components/FormWithStyles";
 
 I've been thinking about this site recently and in particular how in its current setup everything flows in a single direction, from creator to reader. As a rule, static sites are built purely for consumption, because in its simplest form (without a server and database to store content) bilateral communication isn't possible. But, by expanding upon the static foundations we can break that rule. What got me thinking about this was a recent [tweet from Brian Lovin](https://twitter.com/brian_lovin/status/1390702226272710661?s=20) who mentioned how by adding a "small favour form" he gets help with grammar and typos, as well as some occasional positive feedback (which is always nice). By adding that small favour form that one-way flow of information has been broken. It becomes a conversation between the reader and the creator and writing the content becomes a collaborative process rather than a solo endeavour. With all of this in mind, I decided to add something similar to this site. To get started I needed to decide what static form backend I wanted to use.
 
@@ -34,7 +34,7 @@ That's all the information we need to give [staticforms](https://www.staticforms
 Let's create a simple Form component and flesh it out from there:
 
 ```jsx
-import React from 'react';
+import React from "react";
 
 const Form = () => <form />;
 
@@ -44,20 +44,20 @@ export default Form;
 Now we can add the state our component will need for our submission message and handling the response. By setting the subject line here, it will make submissions more identifiable in the emails we receive. Below I have passed in the title of the page so we know which page the submission refers to. This will make it quicker actioning any suggestions or corrections that are submitted.
 
 ```jsx
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const Form = ({ title }) => {
   const [content, setContent] = useState({
     subject: `Feedback sent from: ${title}`,
-    email: '',
-    handle: '',
-    message: '',
-    accessKey: 'your-access-key',
+    email: "",
+    handle: "",
+    message: "",
+    accessKey: "your-access-key",
   });
 
   const [response, setResponse] = useState({
-    type: '',
-    message: '',
+    type: "",
+    message: "",
   });
 
   return <form />;
@@ -71,20 +71,20 @@ export default Form;
 Now we can handle any changes in our form by creating a handleChange function. You might be unfamiliar with the spread syntax used here, essentially we are grabbing the existing form state and "overwriting" the parts which have changed in our form.
 
 ```jsx
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const Form = ({ title }) => {
   const [content, setContent] = useState({
     subject: `Feedback sent from: ${title}`,
-    email: '',
-    handle: '',
-    message: '',
-    accessKey: 'your-access-key',
+    email: "",
+    handle: "",
+    message: "",
+    accessKey: "your-access-key",
   });
 
   const [response, setResponse] = useState({
-    type: '',
-    message: '',
+    type: "",
+    message: "",
   });
 
   const handleChange = (e) =>
@@ -101,21 +101,21 @@ export default Form;
 Now let's add our form content so we can make sure the inputs are working as they should be. If you have the React dev tools installed you should see our state update whenever we type something in our inputs.
 
 ```jsx
-import React, { useState } from 'react';
-import Button from '../Button';
+import React, { useState } from "react";
+import Button from "../Button";
 
 const Form = ({ title }) => {
   const [content, setContent] = useState({
     subject: `Feedback sent from: ${title}`,
-    email: '',
-    handle: '',
-    message: '',
-    accessKey: 'your-access-key',
+    email: "",
+    handle: "",
+    message: "",
+    accessKey: "your-access-key",
   });
 
   const [response, setResponse] = useState({
-    type: '',
-    message: '',
+    type: "",
+    message: "",
   });
 
   const handleChange = (e) =>
@@ -163,22 +163,22 @@ Let's add a hidden `honeypot` field in there to add another layer of security on
 We also need to add honeypot to our state so that staticforms can reject any submissions that have filled it in.
 
 ```jsx
-import React, { useState } from 'react';
-import Button from '../Button';
+import React, { useState } from "react";
+import Button from "../Button";
 
 const Form = ({ title }) => {
   const [content, setContent] = useState({
     subject: `Feedback sent from: ${title}`,
-    email: '',
-    handle: '',
-    message: '',
-    honeypot: '',
-    accessKey: 'your-access-key',
+    email: "",
+    handle: "",
+    message: "",
+    honeypot: "",
+    accessKey: "your-access-key",
   });
 
   const [response, setResponse] = useState({
-    type: '',
-    message: '',
+    type: "",
+    message: "",
   });
 
   const handleChange = (e) =>
@@ -204,7 +204,7 @@ const Form = ({ title }) => {
           Twitter Handle (optional)
           <input type="text" name="handle" onChange={handleChange} />
         </label>
-        <input type="text" name="honeypot" style={{ display: 'none' }} />
+        <input type="text" name="honeypot" style={{ display: "none" }} />
         <Button type="submit" text="Send Feedback" />
       </form>
     </div>
@@ -219,23 +219,23 @@ export default Form;
 As you can see from above our form is a bit of an eyesore at the moment, but we can change that by adding some styles. We are using CSS modules here (as that's what this site uses) and I have included some intro text so readers are aware of the forms intentions and what it expects.
 
 ```jsx
-import React, { useState } from 'react';
-import Button from '../Button';
-import styles from './form.module.css';
+import React, { useState } from "react";
+import Button from "../Button";
+import styles from "./form.module.css";
 
 const Form = ({ title }) => {
   const [content, setContent] = useState({
     subject: `Feedback sent from: ${title}`,
-    email: '',
-    handle: '',
-    message: '',
-    honeypot: '',
-    accessKey: 'your-access-key',
+    email: "",
+    handle: "",
+    message: "",
+    honeypot: "",
+    accessKey: "your-access-key",
   });
 
   const [response, setResponse] = useState({
-    type: '',
-    message: '',
+    type: "",
+    message: "",
   });
 
   const handleChange = (e) =>
@@ -266,7 +266,7 @@ const Form = ({ title }) => {
           Twitter Handle (optional)
           <input type="text" name="handle" onChange={handleChange} />
         </label>
-        <input type="hidden" name="honeypot" style={{ display: 'none' }} />
+        <input type="hidden" name="honeypot" style={{ display: "none" }} />
         <Button className={styles.submit} type="submit" text="Send Feedback" />
       </form>
     </div>
@@ -302,7 +302,7 @@ our css file:
 
 .form {
   display: grid;
-  grid-template-areas: 'message message' 'email handle' 'submit submit';
+  grid-template-areas: "message message" "email handle" "submit submit";
   grid-gap: 1rem;
   margin-bottom: 0;
 }
@@ -356,7 +356,7 @@ our css file:
     margin-right: -1rem;
   }
   .form {
-    grid-template-areas: 'message' 'email' 'handle' 'submit';
+    grid-template-areas: "message" "email" "handle" "submit";
   }
 }
 ```
@@ -373,7 +373,7 @@ const handleSubmit = async (e) => {
 
   try {
   } catch (error) {
-    console.log('An error occurred', error);
+    console.log("An error occurred", error);
   }
 };
 ```
@@ -384,18 +384,18 @@ We are going to be making our requests using the `Axios package so we can instal
 const handleSubmit = async (e) => {
   e.preventDefault();
   try {
-    const res = await fetch('https://api.staticforms.xyz/submit', {
-      method: 'POST',
+    const res = await fetch("https://api.staticforms.xyz/submit", {
+      method: "POST",
       body: JSON.stringify(content),
-      headers: { 'Content-Type': 'application/json' },
+      headers: { "Content-Type": "application/json" },
     });
 
     const json = await res.json();
   } catch (error) {
-    console.log('An error occurred', error);
+    console.log("An error occurred", error);
     setResponse({
-      type: 'error',
-      message: 'An error occured',
+      type: "error",
+      message: "An error occured",
     });
   }
 };
@@ -407,36 +407,36 @@ We have submitted our content but at the moment our Form doesn't know whether it
 const handleSubmit = async (e) => {
   e.preventDefault();
   try {
-    const res = await fetch('https://api.staticforms.xyz/submit', {
-      method: 'POST',
+    const res = await fetch("https://api.staticforms.xyz/submit", {
+      method: "POST",
       body: JSON.stringify(content),
-      headers: { 'Content-Type': 'application/json' },
+      headers: { "Content-Type": "application/json" },
     });
 
     const json = await res.json();
 
     if (json.success) {
       setResponse({
-        type: 'success',
-        message: 'Thanks for the feedback! 👍',
+        type: "success",
+        message: "Thanks for the feedback! 👍",
       });
 
       e.target.reset();
 
       await delay(5000);
 
-      setResponse({ type: '', message: '' });
+      setResponse({ type: "", message: "" });
     } else {
       setResponse({
-        type: 'error',
+        type: "error",
         message: json.message,
       });
     }
   } catch (error) {
-    console.log('An error occurred', error);
+    console.log("An error occurred", error);
     setResponse({
-      type: 'error',
-      message: 'An error occured',
+      type: "error",
+      message: "An error occured",
     });
   }
 };
@@ -449,8 +449,8 @@ Remember that we previously set some default state for the response? What we are
 Since we have now submitted our form and created the response state we need, we now need to handle that in the UI. That being, if the form has been successfully submitted or an error has occurred we let them know via an alert. Otherwise, they could be waiting like lemon, all in the hope that their invaluable suggestion has submitted (one can hope). To tackle this we can create a `SuccessAlert` and `ErrorAlert` component like the below:
 
 ```jsx
-import React from 'react';
-import styles from './alert.module.css';
+import React from "react";
+import styles from "./alert.module.css";
 
 export const SuccessAlert = ({ text }) => (
   <p className={styles.success}>{text}</p>
@@ -485,10 +485,10 @@ and our styles:
 Then we can add some logic for when each alert should be rendered. As a default, there should be nothing rendered when the response state is empty. Then we either show the `SuccessAlert` or `ErrorAlert` depending on the response state once the form has been submitted.
 
 ```jsx
-import React, { useState } from 'react';
-import Button from '../Button';
-import styles from './form.module.css';
-import { ErrorAlert, SuccessAlert } from '../Alert';
+import React, { useState } from "react";
+import Button from "../Button";
+import styles from "./form.module.css";
+import { ErrorAlert, SuccessAlert } from "../Alert";
 
 const delay = (duration) =>
   new Promise((resolve) => setTimeout(resolve, duration));
@@ -496,16 +496,16 @@ const delay = (duration) =>
 const Form = ({ title, text }) => {
   const [content, setContent] = useState({
     subject: `Feedback sent from: ${title}`,
-    email: '',
-    handle: '',
-    message: '',
-    honeypot: '',
-    accessKey: 'your-access-key',
+    email: "",
+    handle: "",
+    message: "",
+    honeypot: "",
+    accessKey: "your-access-key",
   });
 
   const [response, setResponse] = useState({
-    type: '',
-    message: '',
+    type: "",
+    message: "",
   });
 
   const handleChange = (e) =>
@@ -514,36 +514,36 @@ const Form = ({ title, text }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('https://api.staticforms.xyz/submit', {
-        method: 'POST',
+      const res = await fetch("https://api.staticforms.xyz/submit", {
+        method: "POST",
         body: JSON.stringify(content),
-        headers: { 'Content-Type': 'application/json' },
+        headers: { "Content-Type": "application/json" },
       });
 
       const json = await res.json();
 
       if (json.success) {
         setResponse({
-          type: 'success',
-          message: 'Thanks for the feedback! 👍',
+          type: "success",
+          message: "Thanks for the feedback! 👍",
         });
 
         e.target.reset();
 
         await delay(5000);
 
-        setResponse({ type: '', message: '' });
+        setResponse({ type: "", message: "" });
       } else {
         setResponse({
-          type: 'error',
+          type: "error",
           message: json.message,
         });
       }
     } catch (error) {
-      console.log('An error occurred', error);
+      console.log("An error occurred", error);
       setResponse({
-        type: 'error',
-        message: 'An error occured',
+        type: "error",
+        message: "An error occured",
       });
     }
   };
@@ -569,11 +569,11 @@ const Form = ({ title, text }) => {
           Twitter Handle (optional)
           <input type="text" name="$handle" onChange={handleChange} />
         </label>
-        <input type="hidden" name="honeypot" style={{ display: 'none' }} />
+        <input type="hidden" name="honeypot" style={{ display: "none" }} />
         <Button className={styles.submit} text="Send Feedback" type="submit" />
       </form>
       {response.type &&
-        (response.type === 'success' ? (
+        (response.type === "success" ? (
           <SuccessAlert text={response.message} />
         ) : (
           <ErrorAlert text={response.message} />

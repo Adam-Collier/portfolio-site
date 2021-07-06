@@ -8,8 +8,8 @@ description: >-
   Improve your SEO by showing when your posts got last updated. Perfect for
   Gatsby and Next js sites which use Markdown or MDX for their content.
 featured: ./featured-image.jpg
-publishedOn: '2021-02-17'
-updatedOn: '2021-06-01T17:04:17.230Z'
+publishedOn: "2021-02-17"
+updatedOn: "2021-02-17T18:51:01.768Z"
 ---
 
 ## The Problem
@@ -30,8 +30,8 @@ Taking all of this into account, I wrote the below script to satisfy those needs
 
 ```jsx
 /* eslint-disable import/no-extraneous-dependencies */
-const fs = require('fs').promises;
-const matter = require('gray-matter');
+const fs = require("fs").promises;
+const matter = require("gray-matter");
 
 const updateFrontmatter = async () => {
   const [, , ...mdFilePaths] = process.argv;

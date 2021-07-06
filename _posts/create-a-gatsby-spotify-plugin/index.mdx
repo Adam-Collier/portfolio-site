@@ -7,8 +7,8 @@ description: >-
   Take advantage of the Spotify API and build a plugin to add your top tracks
   easily to your site.
 featured: ./featured-image.jpg
-publishedOn: '2021-03-27'
-updatedOn: '2021-06-01T17:04:17.231Z'
+publishedOn: "2021-03-27"
+updatedOn: "2021-03-27T16:15:05.270Z"
 ---
 
 Creating your own Gatsby plugin is a lot easier than you think, but for a while, I'll admit I found it an intimidating endeavour. Today we will be creating our own Spotify plugin so we can add our top tracks to our site. Disclaimer: of course there are already Spotify plugins out there (as with anything ever) but I wanted to create one that catered strictly for my needs without any "bloat".
@@ -80,7 +80,7 @@ Now let's get stuck in:
 
 ```jsx
 const fetch = require(`node-fetch`);
-const querystring = require('querystring');
+const querystring = require("querystring");
 
 exports.sourceNodes = async (
   { actions, createContentDigest, createNodeId },
@@ -89,7 +89,7 @@ exports.sourceNodes = async (
   const { clientId, clientSecret, refreshToken } = pluginOptions;
   const { createNode } = actions;
 
-  const basic = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
+  const basic = Buffer.from(`${clientId}:${clientSecret}`).toString("base64");
   const TOP_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/top/tracks?time_range=short_term`;
   const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
 };
@@ -101,7 +101,7 @@ We can start to build this out more by creating a couple of functions; one to gr
 
 ```jsx
 const fetch = require(`node-fetch`);
-const querystring = require('querystring');
+const querystring = require("querystring");
 
 exports.sourceNodes = async (
   { actions, createContentDigest, createNodeId },
@@ -110,19 +110,19 @@ exports.sourceNodes = async (
   const { clientId, clientSecret, refreshToken } = pluginOptions;
   const { createNode } = actions;
 
-  const basic = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
+  const basic = Buffer.from(`${clientId}:${clientSecret}`).toString("base64");
   const TOP_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/top/tracks?time_range=short_term`;
   const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
 
   const getAccessToken = async () => {
     const response = await fetch(TOKEN_ENDPOINT, {
-      method: 'POST',
+      method: "POST",
       headers: {
         Authorization: `Basic ${basic}`,
-        'Content-Type': 'application/x-www-form-urlencoded',
+        "Content-Type": "application/x-www-form-urlencoded",
       },
       body: querystring.stringify({
-        grant_type: 'refresh_token',
+        grant_type: "refresh_token",
         refresh_token: refreshToken,
       }),
     });
@@ -151,7 +151,7 @@ Now we have fetched all of our data we need to create our nodes:
 
 ```jsx
 const fetch = require(`node-fetch`);
-const querystring = require('querystring');
+const querystring = require("querystring");
 
 exports.sourceNodes = async (
   { actions, createContentDigest, createNodeId },
@@ -160,19 +160,19 @@ exports.sourceNodes = async (
   const { clientId, clientSecret, refreshToken } = pluginOptions;
   const { createNode } = actions;
 
-  const basic = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
+  const basic = Buffer.from(`${clientId}:${clientSecret}`).toString("base64");
   const TOP_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/top/tracks?time_range=short_term`;
   const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
 
   const getAccessToken = async () => {
     const response = await fetch(TOKEN_ENDPOINT, {
-      method: 'POST',
+      method: "POST",
       headers: {
         Authorization: `Basic ${basic}`,
-        'Content-Type': 'application/x-www-form-urlencoded',
+        "Content-Type": "application/x-www-form-urlencoded",
       },
       body: querystring.stringify({
-        grant_type: 'refresh_token',
+        grant_type: "refresh_token",
         refresh_token: refreshToken,
       }),
     });
@@ -225,7 +225,7 @@ This is where the `dotenv` package comes in.
 Note: `dotenv` is already a dependency of Gatsby, so we can just require it at the top of our gatsby-config.js
 
 ```jsx
-require('dotenv').config({
+require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 ```

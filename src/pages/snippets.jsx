@@ -21,10 +21,15 @@ const Snippets = ({ allMDX }) => {
           Snippets
         </Text>
         <Text>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid
-          veritatis necessitatibus ea veniam, odit quidem amet eius iure aliquam
-          expedita placeat dolores quasi, doloremque numquam? Error earum
-          deleniti natus magnam.
+          Developers all share the experience of almost remembering some code
+          they saw on Stackoverflow or blog post once. Sometimes even convincing
+          themselves that it was used in another once of their projects (it
+          wasn't). Scouring their search history for hours to no avail, only to
+          be left in utter despair. Their once hot drink now sitting cold,
+          undrinkable and staring at you... shaming you. That's happened to me
+          far too many times and in a moment of strength I thought (extremely)
+          loudly "THIS SHALL HAPPEN NO MORE!". So, I decided that I'll collate
+          all of the ones I come back to again and again.
         </Text>
         {allMDX.map(({ source }, index) => (
           <MDXRemote key={index} {...source} components={baseComponents} />

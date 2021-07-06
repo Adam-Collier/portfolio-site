@@ -11,9 +11,11 @@ const Blog = ({ posts }) => (
         Blog
       </Text>
       <Text>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed assumenda
-        dicta iusto, provident fuga, nobis, obcaecati voluptates repellendus at
-        ea eius. Iste quos voluptatibus quo aliquam aperiam magnam ab ducimus.
+        This is my attempt at writing blog things. Writing isn't one of my
+        strengths so bear with my poor sentence structures and inevitable typos.
+        However, I'll always try my best (queue anime hero montage)! I'll mostly
+        write content relating to the projects/side projects I'm working on and
+        no doubt there will be some random ones in there too.
       </Text>
       {posts.map((post, index) => (
         <Blogpost {...post} key={index} />

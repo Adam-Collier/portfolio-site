@@ -1,3 +1,12 @@
+.wrapper {
+  grid-area: toc;
+}
+
+.toc {
+  list-style-type: none;
+  margin-left: 0;
+}
+
 .toc a {
   text-decoration: none;
   color: inherit;
@@ -11,18 +20,9 @@
   color: var(--foreground-hover);
 }
 
-.toc {
-  --list-spacing: 0.75rem;
-  list-style-type: none;
-  margin-left: 0;
-}
-
-.toc li > ul {
-  margin-top: var(--list-spacing);
-}
-
-.toc li + li {
-  margin-top: var(--list-spacing);
+.toc * + * {
+  margin-top: 0.25rem;
+  margin-bottom: 0;
 }
 
 .toc .active {
@@ -30,9 +30,8 @@
   color: var(--primary-accent);
 }
 
-@media (min-width: 768px) {
-  .toc {
-    --list-spacing: 0.5rem;
-    /* padding-bottom: 1rem; */
+@media (max-width: 767px) {
+  div.wrapper {
+    display: none;
   }
 }

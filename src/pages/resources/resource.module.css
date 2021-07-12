@@ -1,0 +1,12 @@
+.quickLinks {
+  padding-left: 3rem;
+}
+
+.resource {
+  list-style-type: none;
+}
+
+.resource a {
+  color: var(--foreground-high);
+  text-decoration: none;
+}

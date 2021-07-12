@@ -1,13 +1,12 @@
 import css from 'styled-jsx/css';
 import Row from '../Row';
+import s from './stack.module.css';
 
 const getStackStyles = ({ direction, justify, align, gap }) => css.resolve`
-  .stack {
-    display: flex;
-    flex-direction: ${direction};
-    justify-content: ${justify};
-    align-items: ${align};
-  }
+  display: flex;
+  flex-direction: ${direction};
+  justify-content: ${justify};
+  align-items: ${align};
 
   .row :global(> * + *) {
     margin-left: calc(${gap} * 1rem);
@@ -46,9 +45,7 @@ const Stack = ({
     <Row
       as={as}
       maxWidth={maxWidth}
-      className={`stack ${direction} ${StackStyles.className} ${
-        className || ''
-      }`}
+      className={`${direction} ${StackStyles.className} ${className || ''}`}
       style={{
         ...style,
       }}

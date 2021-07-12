@@ -14,7 +14,6 @@ import SharePost from '../../components/SharePost';
 import { prepareMDX } from '../../lib/mdx';
 import { baseComponents } from '../../lib/base-components';
 import { toTitleCase } from '../../utils/to-title-case';
-
 import { getAllContentOfType } from '../../lib/blog';
 
 const components = {
@@ -48,25 +47,9 @@ const Post = ({ source, title, slug, rawMDX, frontmatter }) => {
 
   return (
     <Page padding layout="grid">
-      <Stack maxWidth="sm" gap={1.45} style={{ gridArea: 'content' }} padding>
-        <Text as="h1" size="2xl" heading>
-          {title}
-        </Text>
-        <MDXRemote {...source} components={{ ...components, ...image }} />
-        <Form
-          title={title}
-          text="Please let me know if you found anything I wrote confusing, incorrect or
-        outdated. Write a few words below and I will use your suggestions to
-        improve this post."
-        />
-      </Stack>
-      <Sidebar top={20}>
-        <TableOfContents source={rawMDX} />
+      <Stack maxWidth="sm" gap={1.45} style={{ gridArea: 'content' }}>
         <Stack gap={0.5}>
-          <Text size="sm" heading>
-            Published:
-          </Text>
-          <Stack gap={0.125}>
+          <Stack gap={0.5} direction="row">
             <Text size="xs">
               {format(parseISO(frontmatter.publishedOn), 'MMMM dd, yyyy')}
             </Text>
@@ -77,7 +60,20 @@ const Post = ({ source, title, slug, rawMDX, frontmatter }) => {
               </Text>
             )}
           </Stack>
+          <Text as="h1" size="2xl" heading>
+            {title}
+          </Text>
         </Stack>
+        <MDXRemote {...source} components={{ ...components, ...image }} />
+        <Form
+          title={title}
+          text="Please let me know if you found anything I wrote confusing, incorrect or
+        outdated. Write a few words below and I will use your suggestions to
+        improve this post."
+        />
+      </Stack>
+      <Sidebar top={20}>
+        <TableOfContents source={rawMDX} />
         <SharePost />
       </Sidebar>
     </Page>

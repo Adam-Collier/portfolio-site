@@ -201,10 +201,6 @@ li > ul {
   margin-top: calc(1.45rem / 2);
 }
 
-li > * {
-  margin-bottom: calc(1.45rem / 2);
-}
-
 code,
 kbd,
 samp {

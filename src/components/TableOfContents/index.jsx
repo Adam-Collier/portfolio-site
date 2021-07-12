@@ -18,7 +18,7 @@ const createItems = (items, path, activeHash) =>
     const { title } = item;
 
     return (
-      <Text as="li" key={key} size="sm" weight={400}>
+      <Text as="li" key={key} size="sm" weight={400} color="foreground-high">
         <Link href={`${path}#${item.id}`}>
           <a className={isActive ? s.active : ''}>{title}</a>
         </Link>
@@ -39,7 +39,7 @@ const TableOfContents = ({ className, source }) => {
   const activeHash = useActiveHash(headingsList);
 
   return (
-    <Stack gap={1}>
+    <Stack gap={1} className={s.wrapper}>
       <Text size="md" heading>
         Table of Contents
       </Text>

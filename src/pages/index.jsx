@@ -78,16 +78,6 @@ const IndexPage = ({ posts, tracks, readng }) => {
         </Text>
         <Readng data={readng} />
       </Stack>
-      {/*
-      <section>
-        <p className={styles.intro}>
-          Want to know what I'm reading right now or looking for a new book to
-          try? Here's exactly that, taken from my{' '}
-          <a href="https://beta.readng.co">Readng</a>.
-        </p>
-        <Readng />
-      </section>
-    </Content> */}
     </Page>
   );
 };

@@ -16,7 +16,7 @@ const Snippets = ({ allMDX }) => {
 
   return (
     <Page layout="grid" padding>
-      <Stack maxWidth="sm" gap={1.45} style={{ gridArea: 'content' }} padding>
+      <Stack maxWidth="sm" gap={1.45} style={{ gridArea: 'content' }}>
         <Text as="h1" size="2xl" heading>
           Snippets
         </Text>

@@ -21,17 +21,15 @@ const Index = ({ allData, setState, name }) => {
   };
 
   return (
-    <div className={s.wrapper}>
-      <div className={s.search}>
-        <Search size={16} />
-        <input
-          type="search"
-          name={`search ${name}`}
-          id="search"
-          onChange={handleChange}
-          aria-label={`search ${name}`}
-        />
-      </div>
+    <div className={s.search}>
+      <Search size={16} />
+      <input
+        type="search"
+        name={`search ${name}`}
+        id="search"
+        onChange={handleChange}
+        aria-label={`search ${name}`}
+      />
     </div>
   );
 };

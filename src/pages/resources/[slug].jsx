@@ -1,13 +1,18 @@
 import { MDXRemote } from 'next-mdx-remote';
 import css from 'styled-jsx/css';
+import Link from 'next/link';
+import { Link as LinkIcon } from 'react-feather';
 import Text from '../../components/Text';
 import Page from '../../components/Page';
 import Stack from '../../components/Stack';
 import Form from '../../components/Form';
+import Sidebar from '../../components/Sidebar/index.jsx';
 import { getAllContentOfType } from '../../lib/blog';
 import { prepareMDX } from '../../lib/mdx';
 import { baseComponents } from '../../lib/base-components';
 import { toTitleCase } from '../../utils/to-title-case';
+
+import s from './resource.module.css';
 
 const resource = css.global`
   .resource {
@@ -49,32 +54,61 @@ const resource = css.global`
   }
 `;
 
-const Resource = ({ source, title }) => {
-  const { scope } = source;
-  return (
-    <Page layout="grid" padding>
-      <Stack maxWidth="sm" gap={1.45} style={{ gridArea: 'content' }} padding>
-        <style jsx global>
-          {resource}
-        </style>
-        <Text as="h1" size="2xl" heading>
-          {scope.title}
+const Resource = ({ source, title, quickLinks }) => (
+  <Page layout="grid" padding>
+    <Stack maxWidth="sm" gap={1.45} style={{ gridArea: 'content' }}>
+      <style jsx global>
+        {resource}
+      </style>
+      <Text as="h1" size="2xl" heading>
+        {title}
+      </Text>
+      <MDXRemote {...source} components={baseComponents} />
+      <Form
+        title={title}
+        text="Do you know a resource that could benefit another reader and is relevent for this page? Let me know by leaving a short message below and I will take a look!"
+      />
+    </Stack>
+    <Sidebar top={23}>
+      <Stack gap={1.45} className={s.quickLinks}>
+        <Text size="md" heading>
+          <LinkIcon size={14} style={{ marginRight: '4px' }} /> Quick Links
         </Text>
-        <MDXRemote {...source} components={baseComponents} />
-        <Form
-          title={title}
-          text="Do you know a resource that could benefit another reader and is relevent for this page? Let me know by leaving a short message below and I will take a look!"
-        />
+        <ul className={s.resource}>
+          {quickLinks.map((link, index) => (
+            <li key={index}>
+              <Link href={`/resources/${link.slug}`}>
+                <a>
+                  <Text size="sm">{link.title}</Text>
+                </a>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </Stack>
-    </Page>
-  );
-};
+    </Sidebar>
+  </Page>
+);
 
 export default Resource;
 
 export async function getStaticProps({ params }) {
   const { slug } = params;
   const mdx = await prepareMDX(slug, '_resources');
+  const allResourceSlugs = await getAllContentOfType('_resources', ['slug']);
+
+  const quickLinks = allResourceSlugs.reduce((acc, curr) => {
+    if (curr.slug === slug) return acc;
+
+    acc.push({
+      slug: curr.slug,
+      title: toTitleCase(curr.slug),
+    });
+
+    return acc;
+  }, []);
+
+  console.log(quickLinks);
 
   const title = toTitleCase(slug);
 
@@ -82,6 +116,7 @@ export async function getStaticProps({ params }) {
     props: {
       ...mdx,
       title,
+      quickLinks,
     },
   };
 }

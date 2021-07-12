@@ -24,7 +24,8 @@ const Grid = ({
         grid-gap: var(--gap);
         @media (max-width: 767px) {
           --columns: 100%;
-          --areas: 'sidebar' 'content' 'footer';
+          --areas: 'content' 'share' 'footer';
+          grid-gap: 1.45rem;
         }
       `}</style>
       {children}

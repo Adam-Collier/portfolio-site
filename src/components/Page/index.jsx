@@ -17,6 +17,7 @@ const Page = ({
         maxWidth: 'lg',
         areas: "'sidebar content' 'sidebar footer'",
         columns: '320px minmax(0, 1fr)',
+        padding,
       },
     },
     stack: {

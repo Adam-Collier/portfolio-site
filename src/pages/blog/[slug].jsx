@@ -21,12 +21,12 @@ const components = {
   Button: dynamic(() => import('../../components/Button')),
   FormNoStyles: dynamic(() =>
     import(
-      '/_posts/add-a-form-to-your-Gatsby-site-using-Staticforms/components/FormNoStyles'
+      '/_posts/add-a-form-to-your-gatsby-site-using-staticforms/components/FormNoStyles'
     )
   ),
   FormWithStyles: dynamic(() =>
     import(
-      '/_posts/add-a-form-to-your-Gatsby-site-using-Staticforms/components/FormWithStyles'
+      '/_posts/add-a-form-to-your-gatsby-site-using-staticforms/components/FormWithStyles'
     )
   ),
   Film: dynamic(() => import('../../components/Film')),

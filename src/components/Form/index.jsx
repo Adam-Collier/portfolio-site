@@ -85,7 +85,7 @@ const Form = ({ title, text }) => {
           <input type="text" name="$handle" onChange={handleChange} />
         </label>
         <input type="hidden" name="honeypot" style={{ display: 'none' }} />
-        <Button className={s.submit} text="Send Feedback" type="submit" />
+        <Button className={s.submit} text="Send Feedback" />
       </form>
       {response.type &&
         (response.type === 'success' ? (

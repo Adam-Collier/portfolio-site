@@ -1,37 +1,58 @@
 /* eslint-disable react/button-has-type */
 import React from 'react';
 import Link from 'next/link';
+import Text from '../Text';
 
-import styles from './button.module.css';
+import s from './button.module.css';
 
-const LinkType = ({ link, children }) =>
+// for external links we should render an a tag
+const ConditionalLink = ({ link, children }) =>
   link.includes('https://') ? (
     <a
       href={link}
-      className={styles.link}
+      className={s.link}
       target="__blank"
       rel="noopener noreferrer"
     >
       {children}
     </a>
   ) : (
-    <Link href={link} className={styles.link}>
+    <Link href={link} className={s.link}>
       <a>{children}</a>
     </Link>
   );
 
-const ConditionalWrapper = ({ link, children }) =>
-  link ? <LinkType link={link}>{children}</LinkType> : children;
+// if there is no link prop we render a button with an onClick handler
+const Wrapper = ({ link, children, className, onClick, onKeyPress }) =>
+  link ? (
+    <ConditionalLink link={link} className={className}>
+      {children}
+    </ConditionalLink>
+  ) : (
+    <button className={className} onClick={onClick} onKeyPress={onKeyPress}>
+      {children}
+    </button>
+  );
 
-const Button = ({ text, link, Icon = '', className, type = 'button' }) => (
-  <div className={`${styles.buttonWrapper} ${className}`}>
-    <ConditionalWrapper link={link}>
-      <button className={styles.button} type={type}>
-        {Icon && <Icon className={styles.icon} size={16} />}
-        {text}
-      </button>
-    </ConditionalWrapper>
-  </div>
+const Button = ({
+  text,
+  link,
+  Icon = '',
+  className = '',
+  onClick,
+  onKeyPress,
+  type = 'primary',
+  layout = 'fit',
+}) => (
+  <Wrapper
+    link={link}
+    className={`${s.button} ${className} ${s[type]} ${s[layout]}`}
+    onClick={onClick}
+    onKeyPress={onKeyPress}
+  >
+    {Icon && <Icon className={s.icon} size={16} />}
+    <Text size="sm">{text}</Text>
+  </Wrapper>
 );
 
 export default Button;

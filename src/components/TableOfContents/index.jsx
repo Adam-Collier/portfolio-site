@@ -32,11 +32,12 @@ const TableOfContents = ({ className, source }) => {
   const { headings, headingsList } = getHeadings(source);
   const router = useRouter();
   const { asPath } = router;
-
   // the current path without hash
   const currentPath = asPath.substring(0, asPath.lastIndexOf('#'));
   // pass in the headingsList so we can loop and observe each id
   const activeHash = useActiveHash(headingsList);
+
+  if (headingsList.length === 0) return null;
 
   return (
     <Stack gap={1} className={s.wrapper}>

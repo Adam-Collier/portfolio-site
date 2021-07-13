@@ -11,7 +11,7 @@ const Resource = ({ title, description, slug }) => (
     <a className={s.resource}>
       <Stack as="article" gap={0.5} aria-label={title}>
         <Stack direction="row" gap={0.5} align="center">
-          <Text as="h3" size="lg" heading>
+          <Text as="h2" size="lg" heading>
             {title}
           </Text>
           <ArrowRight size={16} />

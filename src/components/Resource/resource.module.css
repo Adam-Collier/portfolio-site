@@ -1,0 +1,21 @@
+.resource {
+  text-decoration: none;
+  color: var(--primary-foreground);
+  position: relative;
+  cursor: pointer;
+  display: block;
+  padding: 1rem;
+}
+
+.resource svg {
+  margin-right: 0.5rem;
+  display: none;
+}
+
+.resource:hover {
+  background: var(--foreground-min);
+}
+
+.resource:hover svg {
+  display: block;
+}

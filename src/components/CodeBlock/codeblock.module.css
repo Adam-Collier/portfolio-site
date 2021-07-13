@@ -1,0 +1,12 @@
+.code {
+  position: relative;
+  margin-bottom: 0.216rem;
+}
+
+.highlight {
+  margin-right: -1em;
+  margin-left: -1em;
+  padding-right: 1em;
+  padding-left: 0.75em;
+  border-left: 0.25em solid #f99;
+}

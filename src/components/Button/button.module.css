@@ -1,26 +1,42 @@
-.buttonWrapper {
-  display: inline-block;
-  margin-right: 0.75rem;
-}
-
 .button {
   border: none;
   border-radius: var(--border-radius);
-  padding: 0.5rem 0.75rem;
+  padding: 0.7rem 1rem;
   display: flex;
   align-items: center;
-  background: var(--primary-foreground);
-  color: var(--primary-background);
+  justify-content: center;
   font-size: 0.875rem;
   cursor: pointer;
 }
 
-.link {
-  text-decoration: none;
+.fit {
+  width: fit-content;
 }
 
-.button:hover {
+.fill {
+  width: 100%;
+}
+
+.primary {
+  border: 1px solid var(--primary-foreground);
+  background: var(--primary-foreground);
+  color: var(--primary-background);
+}
+
+.primary:hover {
   background: var(--foreground-max);
+}
+
+.secondary {
+  border: 1px solid var(--foreground-low);
+}
+
+.secondary:hover {
+  background: var(--foreground-low);
+}
+
+.link {
+  text-decoration: none;
 }
 
 .icon {

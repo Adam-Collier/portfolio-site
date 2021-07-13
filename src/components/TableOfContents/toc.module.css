@@ -1,0 +1,37 @@
+.wrapper {
+  grid-area: toc;
+}
+
+.toc {
+  list-style-type: none;
+  margin-left: 0;
+}
+
+.toc a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.toc li {
+  list-style-type: none;
+}
+
+.toc a:hover:not(.active) {
+  color: var(--foreground-hover);
+}
+
+.toc * + * {
+  margin-top: 0.25rem;
+  margin-bottom: 0;
+}
+
+.toc .active {
+  text-decoration: revert;
+  color: var(--primary-accent);
+}
+
+@media (max-width: 767px) {
+  div.wrapper {
+    display: none;
+  }
+}

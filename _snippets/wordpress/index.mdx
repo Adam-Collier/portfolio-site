@@ -1,0 +1,99 @@
+### Install Wordpress locally
+
+[Wordpress's officially documentation](https://codex.wordpress.org/Installing_WordPress_Locally_on_Your_Mac_With_MAMP) is pretty good for this. (I do wish there was a quick and easy CLI solution for this).
+
+### Setting up Virtual Hosts
+
+Go to `MAMP > Preferences > Ports` and set Apache Port to be `80`
+
+Open the hosts file in VS Code:
+
+```bash
+$ cd /etc
+$ code hosts
+```
+
+Add the urls you want to use:
+
+```php
+127.0.0.1 your-site.test
+```
+
+(you may need to sudo save, VS Code makes this easy for you)
+
+Add the virtual hosts to the end of `/Applications/MAMP/conf/apache/extra/httpd-vhosts.conf`:
+
+```html
+<VirtualHost *:80>
+  DocumentRoot "/Applications/MAMP/htdocs" ServerName localhost
+</VirtualHost>
+
+<VirtualHost *:80>
+  ServerName your-site.test DocumentRoot "/Users/username/Sites/directory"
+</VirtualHost>
+```
+
+(notice how we are re-setting up the main localhost first)
+
+And make sure the NameVirtualHost is set to:
+
+```php
+NameVirtualHost *:80
+```
+
+Then in `/Applications/MAMP/conf/apache/httpd.conf`
+
+Uncomment this line:
+
+```php
+# Include /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf
+```
+
+Find this line:
+
+```html
+<Directory />
+    Options Indexes FollowSymLinks
+    AllowOverride None
+</Directory>
+```
+
+and change it from `None` to `All`:
+
+Lastly find these two instances:
+
+```php
+Listen 8888
+ServerName localhost:8888
+```
+
+and change them to:
+
+```php
+Listen 80
+ServerName localhost:80
+```
+
+and then it should work!
+
+If you find your site feels a little sluggish compared to using localhost you can speed up the lookup time by adding it as an alias. So in `/etc/hosts`:
+
+```php
+127.0.0.1 localhost your-site.test
+```
+
+### Altering Site Address and Wordpress Address
+
+When switching to virtual hosts from a localhost setup the site address and wordpress address general settings were causing some issues. You may find you can't access the admin, because its setup for a different url, so here's how to fix that.
+
+Open your projects `wp-config.php` file and after the “define” statements (just before the comment line that says “That’s all, stop editing!”), insert a new line:
+
+```php
+define('RELOCATE',true)
+```
+
+Now if your site is at `http://www.yourdomainname.com` your need to go to `http://www.yourdomainname.com/wp-login.php` (notice how we are manually accessing the wp-login.php file)
+
+Login in as normal and make the changes in `General > Settings`
+
+Make sure to remove `define('RELOCATE',true)` after successfully changing the urls.

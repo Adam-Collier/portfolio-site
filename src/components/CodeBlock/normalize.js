@@ -59,7 +59,7 @@ const getInitialFilter = (className, split) => {
  * alongside a lookup of filtered lines
  * https://github.com/gatsbyjs/gatsby/blob/dad0628f274f1c61853f3177573bb17a79e4a540/packages/gatsby-remark-prismjs/src/directives.js
  */
-export default (content, className = ``) => {
+const normalizedContent = (content, className = ``) => {
   const split = content.split(`\n`);
   let filtered = getInitialFilter(className, split);
 
@@ -151,3 +151,5 @@ export default (content, className = ``) => {
     }, {}),
   ];
 };
+
+export default normalizedContent;

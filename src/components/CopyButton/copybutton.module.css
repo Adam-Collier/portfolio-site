@@ -1,13 +1,9 @@
 .button {
-  color: var(--primary-black);
   background-color: var(--primary-white);
   border: none;
   border-radius: var(--border-radius);
-  font-weight: 500;
-  font-family: 'Inter';
   cursor: pointer;
   padding: 0.375rem 0.75rem;
-  font-size: 0.75rem;
   position: absolute;
   top: 1rem;
   right: 1rem;

@@ -7,29 +7,16 @@
   grid-gap: 1rem;
 }
 
-.track * {
-  margin-bottom: 0;
-}
-
 .track:hover {
   background: var(--foreground-min);
 }
 
-.track:hover .trackName {
-  text-decoration: underline;
+.track:hover .title {
+  text-decoration: revert;
 }
 
 .track:hover .arrow {
   stroke: var(--primary-foreground);
-}
-
-.track img {
-  margin-bottom: 0;
-  border-radius: var(--border-radius);
-}
-
-.image {
-  width: 100%;
 }
 
 .arrow {
@@ -37,23 +24,4 @@
   top: 0.5rem;
   right: 0.5rem;
   stroke: transparent;
-}
-
-.artist {
-  font-size: 0.875rem;
-  color: var(--foreground-high);
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.trackName {
-  font-weight: 500;
-  color: var(--primary-foreground);
-  margin-bottom: 0.125rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }

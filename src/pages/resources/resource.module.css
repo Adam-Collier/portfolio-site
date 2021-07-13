@@ -1,0 +1,23 @@
+.resource {
+  list-style-type: none;
+}
+
+.resource a {
+  color: var(--foreground-high);
+  text-decoration: none;
+}
+
+.resource a:not(.active):hover {
+  text-decoration: revert;
+  color: var(--foreground-max);
+}
+
+a.active {
+  color: var(--primary-accent);
+}
+
+@media (max-width: 767px) {
+  div.quickLinks {
+    display: none;
+  }
+}

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import Text from '../Text';
 
 import styles from './copybutton.module.css';
 
@@ -41,7 +42,7 @@ function Copy({ className, content, duration = 2000, fileName, trim = false }) {
         setCopied(false);
       }}
     >
-      {copied ? `🎉 Copied!` : `Copy`}
+      <Text size="sm">{copied ? `🎉 Copied!` : `Copy`}</Text>
     </button>
   );
 }

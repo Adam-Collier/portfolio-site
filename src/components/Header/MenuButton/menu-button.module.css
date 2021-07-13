@@ -1,0 +1,13 @@
+.menuButton {
+  border: none;
+  padding: 0;
+  background: none;
+  line-height: 0;
+  color: inherit;
+}
+
+@media (min-width: 768px) {
+  .menuButton {
+    display: none;
+  }
+}

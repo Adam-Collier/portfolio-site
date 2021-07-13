@@ -1,13 +1,13 @@
 const theme = {
   plain: {
-    backgroundColor: '#2a2734',
-    color: '#9a86fd',
+    backgroundColor: '#1b1b1b',
+    color: '#abb2bf',
   },
   styles: [
     {
       types: ['comment', 'prolog', 'doctype', 'cdata', 'punctuation'],
       style: {
-        color: '#6c6783',
+        color: '#abb2bf',
       },
     },
     {
@@ -17,15 +17,15 @@ const theme = {
       },
     },
     {
-      types: ['tag', 'operator', 'number'],
+      types: ['tag', 'selector'],
       style: {
-        color: '#e09142',
+        color: '#e06c75',
       },
     },
     {
-      types: ['property', 'function'],
+      types: ['function'],
       style: {
-        color: '#9a86fd',
+        color: '#61afef',
       },
     },
     {
@@ -35,42 +35,52 @@ const theme = {
       },
     },
     {
-      types: ['attr-name'],
+      types: [
+        'attr-name',
+        'boolean',
+        'constant',
+        'deleted',
+        'number',
+        'property',
+        'symbol',
+      ],
       style: {
-        color: '#c4b9fe',
+        color: '#d19a66',
       },
     },
     {
       types: [
-        'boolean',
-        'string',
         'entity',
         'url',
-        'attr-value',
-        'keyword',
         'control',
         'directive',
         'unit',
         'statement',
         'regex',
-        'at-rule',
         'placeholder',
         'variable',
+        'operator',
       ],
       style: {
-        color: '#ffcc99',
+        color: '#56b6c2',
+      },
+    },
+    {
+      types: ['string', 'char', 'inserted', 'builtin', 'attr-value'],
+      style: {
+        color: '#98c379',
+      },
+    },
+    {
+      types: ['at-rule', 'keyword'],
+      style: {
+        color: '#c678dd',
       },
     },
     {
       types: ['deleted'],
       style: {
         textDecorationLine: 'line-through',
-      },
-    },
-    {
-      types: ['inserted'],
-      style: {
-        textDecorationLine: 'underline',
       },
     },
     {

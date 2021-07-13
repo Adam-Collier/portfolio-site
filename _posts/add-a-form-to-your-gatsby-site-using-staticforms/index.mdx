@@ -1,0 +1,588 @@
+---
+thumbnail: ./thumbnail.jpg
+featured: ./featured-image.jpg
+category: Code
+tags:
+  - Gatsby
+  - Form
+description: >-
+  Want feedback or suggestions on the content you write? Let's create a form so
+  you can create a dialogue with your readers.
+publishedOn: "2021-05-25"
+updatedOn: "2021-05-25T17:39:50.273Z"
+---
+
+import FormNoStyles from "./components/FormNoStyles";
+import FormWithStyles from "./components/FormWithStyles";
+
+I've been thinking about this site recently and in particular how in its current setup everything flows in a single direction, from creator to reader. As a rule, static sites are built purely for consumption, because in its simplest form (without a server and database to store content) bilateral communication isn't possible. But, by expanding upon the static foundations we can break that rule. What got me thinking about this was a recent [tweet from Brian Lovin](https://twitter.com/brian_lovin/status/1390702226272710661?s=20) who mentioned how by adding a "small favour form" he gets help with grammar and typos, as well as some occasional positive feedback (which is always nice). By adding that small favour form that one-way flow of information has been broken. It becomes a conversation between the reader and the creator and writing the content becomes a collaborative process rather than a solo endeavour. With all of this in mind, I decided to add something similar to this site. To get started I needed to decide what static form backend I wanted to use.
+
+### Deciding on a service
+
+So after checking out Brians contact form I found out he was using [Formspree](https://formspree.io/). I checked it out and it looks pretty great, but with just getting started I didn't want to be spending money on something that may/may not get used, and 50 submissions felt a little low for the free tier (I may have overestimated the number of submissions I will get in hindsight) but I wanted to see if there were other solutions out there. A lot of static form backend services were pretty similar to [Formspree](https://formspree.io/) in terms of the number of submissions on the free tier and other limitations. I was going to use [Kwes](https://kwes.io/) at one point but I got annoyed when it redirected you to their branded success page after submission. I didn't want to take readers away from the content, a small success/error alert would make for a much better experience.
+
+So there was a couple I came across which I thought would satisfy my needs: [staticforms.xyz](https://www.staticforms.xyz/) and [formsapi](https://formsapi.jabwn.com/). Both take the very simple approach of "give me an email address, I'll give you an access key. Submit a form to our endpoint including the key and we will forward any submissions to the email you provided". No dealing with a separate UI and it's a nice email workflow. They both do some validation on their end and you can also add a honeypot input to add extra security and prevent potential spam.
+
+For this site, though I went with [staticforms.xyz](https://www.staticforms.xyz/), mainly because they have a great [React example](https://github.com/qualascend/staticforms-nextjs-zeit/blob/master/pages/index.js) using React hooks and their documentation was a little clearer.
+
+### Setting up our Form
+
+When you first go onto [staticforms.xyz](https://www.staticforms.xyz/) you will notice it's a very basic, bare-bones site with a few steps for you to follow. But the most important parts for us are the React example and Step 1 - creating our access key. So first things first, add your email to the `Step 1` input and click `Create Access Key`. This will send you an email with your access key, make sure to keep it handy for later.
+
+That's all the information we need to give [staticforms](https://www.staticforms.xyz/)! No need to create an account or confirm your email like your everyday tech enterprise. Now we can focus on creating our Form component.
+
+Let's create a simple Form component and flesh it out from there:
+
+```jsx
+import React from "react";
+
+const Form = () => <form />;
+
+export default Form;
+```
+
+Now we can add the state our component will need for our submission message and handling the response. By setting the subject line here, it will make submissions more identifiable in the emails we receive. Below I have passed in the title of the page so we know which page the submission refers to. This will make it quicker actioning any suggestions or corrections that are submitted.
+
+```jsx
+import React, { useState } from "react";
+
+const Form = ({ title }) => {
+  const [content, setContent] = useState({
+    subject: `Feedback sent from: ${title}`,
+    email: "",
+    handle: "",
+    message: "",
+    accessKey: "your-access-key",
+  });
+
+  const [response, setResponse] = useState({
+    type: "",
+    message: "",
+  });
+
+  return <form />;
+};
+
+export default Form;
+```
+
+### Handling changes
+
+Now we can handle any changes in our form by creating a handleChange function. You might be unfamiliar with the spread syntax used here, essentially we are grabbing the existing form state and "overwriting" the parts which have changed in our form.
+
+```jsx
+import React, { useState } from "react";
+
+const Form = ({ title }) => {
+  const [content, setContent] = useState({
+    subject: `Feedback sent from: ${title}`,
+    email: "",
+    handle: "",
+    message: "",
+    accessKey: "your-access-key",
+  });
+
+  const [response, setResponse] = useState({
+    type: "",
+    message: "",
+  });
+
+  const handleChange = (e) =>
+    setContent({ ...content, [e.target.name]: e.target.value });
+
+  return <form />;
+};
+
+export default Form;
+```
+
+### Adding our Form markup
+
+Now let's add our form content so we can make sure the inputs are working as they should be. If you have the React dev tools installed you should see our state update whenever we type something in our inputs.
+
+```jsx
+import React, { useState } from "react";
+import Button from "../Button";
+
+const Form = ({ title }) => {
+  const [content, setContent] = useState({
+    subject: `Feedback sent from: ${title}`,
+    email: "",
+    handle: "",
+    message: "",
+    accessKey: "your-access-key",
+  });
+
+  const [response, setResponse] = useState({
+    type: "",
+    message: "",
+  });
+
+  const handleChange = (e) =>
+    setContent({ ...content, [e.target.name]: e.target.value });
+
+  return (
+    <div>
+      <form>
+        <label htmlFor="message">
+          Message
+          <textarea
+            name="message"
+            placeholder="What should I know?"
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <label htmlFor="email">
+          Your Email (optional)
+          <input type="email" name="email" onChange={handleChange} />
+        </label>
+        <label htmlFor="handle">
+          Twitter Handle (optional)
+          <input type="text" name="handle" onChange={handleChange} />
+        </label>
+        <Button type="submit" text="Send Feedback" />
+      </form>
+    </div>
+  );
+};
+
+export default Form;
+```
+
+and this is what is rendered:
+
+<FormNoStyles />
+
+Notice how you can type in all of the input fields because we are editing the state on each change.
+
+### Extra security
+
+Let's add a hidden `honeypot` field in there to add another layer of security on top of what staticforms already provides. By adding a honeypot field we can protect ourselves against any spam from bots that jump onto our site, fill in all the inputs and submit the form.
+
+We also need to add honeypot to our state so that staticforms can reject any submissions that have filled it in.
+
+```jsx
+import React, { useState } from "react";
+import Button from "../Button";
+
+const Form = ({ title }) => {
+  const [content, setContent] = useState({
+    subject: `Feedback sent from: ${title}`,
+    email: "",
+    handle: "",
+    message: "",
+    honeypot: "",
+    accessKey: "your-access-key",
+  });
+
+  const [response, setResponse] = useState({
+    type: "",
+    message: "",
+  });
+
+  const handleChange = (e) =>
+    setContent({ ...content, [e.target.name]: e.target.value });
+
+  return (
+    <div>
+      <form>
+        <label htmlFor="message">
+          Message
+          <textarea
+            name="message"
+            placeholder="What should I know?"
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <label htmlFor="email">
+          Your Email (optional)
+          <input type="email" name="email" onChange={handleChange} />
+        </label>
+        <label htmlFor="handle">
+          Twitter Handle (optional)
+          <input type="text" name="handle" onChange={handleChange} />
+        </label>
+        <input type="text" name="honeypot" style={{ display: "none" }} />
+        <Button type="submit" text="Send Feedback" />
+      </form>
+    </div>
+  );
+};
+
+export default Form;
+```
+
+### Styling the form
+
+As you can see from above our form is a bit of an eyesore at the moment, but we can change that by adding some styles. We are using CSS modules here (as that's what this site uses) and I have included some intro text so readers are aware of the forms intentions and what it expects.
+
+```jsx
+import React, { useState } from "react";
+import Button from "../Button";
+import styles from "./form.module.css";
+
+const Form = ({ title }) => {
+  const [content, setContent] = useState({
+    subject: `Feedback sent from: ${title}`,
+    email: "",
+    handle: "",
+    message: "",
+    honeypot: "",
+    accessKey: "your-access-key",
+  });
+
+  const [response, setResponse] = useState({
+    type: "",
+    message: "",
+  });
+
+  const handleChange = (e) =>
+    setContent({ ...content, [e.target.name]: e.target.value });
+
+  return (
+    <div className={styles.feedback}>
+      <p>
+        Please let me know if you found anything I wrote confusing, incorrect or
+        outdated. Write a few words below and I will make sure to amend this
+        blog post with your suggestions.
+      </p>
+      <form className={styles.form}>
+        <label className={styles.message} htmlFor="message">
+          Message
+          <textarea
+            name="message"
+            placeholder="What should I know?"
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <label className={styles.email} htmlFor="email">
+          Your Email (optional)
+          <input type="email" name="email" onChange={handleChange} />
+        </label>
+        <label className={styles.handle} htmlFor="handle">
+          Twitter Handle (optional)
+          <input type="text" name="handle" onChange={handleChange} />
+        </label>
+        <input type="hidden" name="honeypot" style={{ display: "none" }} />
+        <Button className={styles.submit} type="submit" text="Send Feedback" />
+      </form>
+    </div>
+  );
+};
+
+export default Form;
+```
+
+our css file:
+
+```css
+.feedback {
+  --feedback-padding: 1.5rem;
+  background: var(--foreground-min);
+  border-radius: var(--border-radius);
+  padding: var(--feedback-padding);
+  margin-left: calc(var(--feedback-padding) * -1);
+  margin-right: calc(var(--feedback-padding) * -1);
+  border-top: 1px dashed var(--foreground-high);
+  border-bottom: 1px dashed var(--foreground-high);
+  margin-top: 2rem;
+}
+
+.feedback > * {
+  margin: 0;
+}
+
+.feedback > * + * {
+  margin: 0;
+  margin-top: 1.45rem;
+}
+
+.form {
+  display: grid;
+  grid-template-areas: "message message" "email handle" "submit submit";
+  grid-gap: 1rem;
+  margin-bottom: 0;
+}
+
+.message {
+  display: flex;
+  grid-area: message;
+  flex-direction: column;
+}
+
+.email {
+  grid-area: email;
+}
+
+.handle {
+  grid-area: handle;
+}
+
+.submit {
+  grid-area: submit;
+  margin-top: 0.45rem;
+}
+
+.form > * {
+  font-size: 0.875rem;
+}
+
+.form input,
+.form textarea {
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 0.25rem;
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.form textarea {
+  resize: vertical;
+}
+
+.alert {
+  grid-area: alert;
+}
+
+@media (max-width: 550px) {
+  .feedback {
+    --feedback-padding: 1.45rem;
+    margin-left: -1rem;
+    margin-right: -1rem;
+  }
+  .form {
+    grid-template-areas: "message" "email" "handle" "submit";
+  }
+}
+```
+
+<FormWithStyles />
+
+### Handling the submit
+
+Now we can focus on what happens once the user has submitted the form. Our request is going to be async, so let's create an async function, prevent the forms default behaviour and create a try-catch for some error handling.
+
+```jsx
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+  } catch (error) {
+    console.log("An error occurred", error);
+  }
+};
+```
+
+We are going to be making our requests using the `Axios package so we can install that by running `npm i axios`in our terminal. We can then make a post request to staticforms and send along the form content stored in our state. It's essential here that we are stringifying our state and passing the`Content-Type` header.
+
+```jsx
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const res = await fetch("https://api.staticforms.xyz/submit", {
+      method: "POST",
+      body: JSON.stringify(content),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    const json = await res.json();
+  } catch (error) {
+    console.log("An error occurred", error);
+    setResponse({
+      type: "error",
+      message: "An error occured",
+    });
+  }
+};
+```
+
+We have submitted our content but at the moment our Form doesn't know whether it has been successful or not. Therefore, we need to add some logic:
+
+```jsx
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const res = await fetch("https://api.staticforms.xyz/submit", {
+      method: "POST",
+      body: JSON.stringify(content),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    const json = await res.json();
+
+    if (json.success) {
+      setResponse({
+        type: "success",
+        message: "Thanks for the feedback! 👍",
+      });
+
+      e.target.reset();
+
+      await delay(5000);
+
+      setResponse({ type: "", message: "" });
+    } else {
+      setResponse({
+        type: "error",
+        message: json.message,
+      });
+    }
+  } catch (error) {
+    console.log("An error occurred", error);
+    setResponse({
+      type: "error",
+      message: "An error occured",
+    });
+  }
+};
+```
+
+Remember that we previously set some default state for the response? What we are doing here is adjusting that state depending on whether the submission has been successful or not. If that submission IS successful then we reset the form, wait 5 seconds and reset the response state. If the submission responds with an error we update the response state accordingly, but notice how we don't reset anything? We don't want the inputs to reset because we want the user to read the error message, fix their submission and resubmit.
+
+### Adding the Alert
+
+Since we have now submitted our form and created the response state we need, we now need to handle that in the UI. That being, if the form has been successfully submitted or an error has occurred we let them know via an alert. Otherwise, they could be waiting like lemon, all in the hope that their invaluable suggestion has submitted (one can hope). To tackle this we can create a `SuccessAlert` and `ErrorAlert` component like the below:
+
+```jsx
+import React from "react";
+import styles from "./alert.module.css";
+
+export const SuccessAlert = ({ text }) => (
+  <p className={styles.success}>{text}</p>
+);
+
+export const ErrorAlert = ({ text }) => <p className={styles.error}>{text}</p>;
+```
+
+and our styles:
+
+```css
+.success,
+.error {
+  margin-bottom: 0;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 800;
+  border-radius: var(--border-radius);
+}
+
+.success {
+  background: var(--primary-accent);
+  color: var(--primary-background);
+}
+
+.error {
+  background: var(--primary-error);
+  color: var(--primary-background);
+}
+```
+
+Then we can add some logic for when each alert should be rendered. As a default, there should be nothing rendered when the response state is empty. Then we either show the `SuccessAlert` or `ErrorAlert` depending on the response state once the form has been submitted.
+
+```jsx
+import React, { useState } from "react";
+import Button from "../Button";
+import styles from "./form.module.css";
+import { ErrorAlert, SuccessAlert } from "../Alert";
+
+const delay = (duration) =>
+  new Promise((resolve) => setTimeout(resolve, duration));
+
+const Form = ({ title, text }) => {
+  const [content, setContent] = useState({
+    subject: `Feedback sent from: ${title}`,
+    email: "",
+    handle: "",
+    message: "",
+    honeypot: "",
+    accessKey: "your-access-key",
+  });
+
+  const [response, setResponse] = useState({
+    type: "",
+    message: "",
+  });
+
+  const handleChange = (e) =>
+    setContent({ ...content, [e.target.name]: e.target.value });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await fetch("https://api.staticforms.xyz/submit", {
+        method: "POST",
+        body: JSON.stringify(content),
+        headers: { "Content-Type": "application/json" },
+      });
+
+      const json = await res.json();
+
+      if (json.success) {
+        setResponse({
+          type: "success",
+          message: "Thanks for the feedback! 👍",
+        });
+
+        e.target.reset();
+
+        await delay(5000);
+
+        setResponse({ type: "", message: "" });
+      } else {
+        setResponse({
+          type: "error",
+          message: json.message,
+        });
+      }
+    } catch (error) {
+      console.log("An error occurred", error);
+      setResponse({
+        type: "error",
+        message: "An error occured",
+      });
+    }
+  };
+
+  return (
+    <div className={styles.feedback}>
+      <p>{text}</p>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <label className={styles.message} htmlFor="message">
+          Message
+          <textarea
+            name="message"
+            placeholder="What should I know?"
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <label className={styles.email} htmlFor="email">
+          Your Email (optional)
+          <input type="email" name="email" onChange={handleChange} />
+        </label>
+        <label className={styles.handle} htmlFor="handle">
+          Twitter Handle (optional)
+          <input type="text" name="$handle" onChange={handleChange} />
+        </label>
+        <input type="hidden" name="honeypot" style={{ display: "none" }} />
+        <Button className={styles.submit} text="Send Feedback" type="submit" />
+      </form>
+      {response.type &&
+        (response.type === "success" ? (
+          <SuccessAlert text={response.message} />
+        ) : (
+          <ErrorAlert text={response.message} />
+        ))}
+    </div>
+  );
+};
+
+export default Form;
+```
+
+And there we have it! A static form, which you can add to your Gatsby site to start collecting feedback or comments to help you improve your content. It's worth noting that this could also be used in Next.js or any standard React app. You can see the fully working example below, send me a message and try it out!

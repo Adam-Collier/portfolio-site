@@ -1,7 +1,3 @@
-.intro {
-  padding: 0.5rem 0.5rem 0;
-}
-
 .book {
   position: relative;
   display: block;
@@ -12,7 +8,7 @@
 }
 
 .book:hover .title {
-  text-decoration: underline;
+  text-decoration: revert;
 }
 
 .book:hover {
@@ -21,16 +17,6 @@
 
 .book:hover .icon {
   background: var(--primary-background);
-}
-
-.title {
-  margin-bottom: 0.25rem;
-}
-
-.author {
-  color: var(--foreground-high);
-  font-size: 0.875rem;
-  margin-bottom: 0;
 }
 
 .icon {

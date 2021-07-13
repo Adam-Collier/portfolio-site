@@ -1,46 +1,30 @@
+/* TODO: simplify this */
 .footer {
   grid-area: footer;
   position: relative;
-  margin: 1rem auto 0;
+  margin-top: 4rem;
   padding-top: 1rem;
   width: 100%;
   border-top: 1px solid var(--foreground-min);
   display: grid;
   grid-template-areas:
-    'pages divider social'
-    'built built built'
-    'copyright copyright copyright';
+    "pages divider social"
+    "built built built"
+    "copyright copyright copyright";
   grid-template-columns: 1fr 1px 1fr;
+  grid-gap: 1rem;
   justify-items: center;
   align-items: center;
-  font-weight: 500;
-  background: var(--primary-background);
 }
 
-.footer div :is(p, a) {
-  margin-bottom: 1rem;
-}
-
-.pages,
-.social {
-  margin-top: 1.45rem;
-}
-
-.pages {
-  grid-area: pages;
-  display: flex;
-  flex-direction: column;
+.links {
+  width: fit-content;
 }
 
 .divider {
   width: 100%;
   height: 75%;
   background: var(--foreground-min);
-}
-
-.social {
-  grid-area: social;
-  position: relative;
 }
 
 .built {

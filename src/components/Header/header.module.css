@@ -1,89 +1,82 @@
-.header {
+.wrapper {
   position: fixed;
+  display: flex;
+  justify-content: center;
   z-index: 10;
   top: 0;
-  left: 50%;
-  transform: translate(-50%);
+  left: 0%;
   width: 100%;
-  background: var(--header-background);
-  color: var(--header-text-color);
+  background: var(--primary-background);
 }
 
-:global(.page-wrapper) {
-  background: var(--header-background);
-}
-
-.container {
-  --header-padding: 18px;
+.header {
+  --header-padding: 1.125rem 1.5rem;
+  width: 100%;
   max-width: var(--max-layout-width);
-  padding: var(--header-padding) var(--content-x-padding);
-  margin: 0 auto;
+  padding: var(--header-padding);
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
-.header * {
-  font-weight: 600;
-}
-
-.header p {
-  margin-bottom: 0;
-  margin-right: 0.25rem;
-  text-transform: capitalize;
-}
-
-.headerLeft,
-.headerRight {
+.header > * {
   display: flex;
   align-items: center;
 }
 
-.headerLeft a {
-  text-decoration: none;
-  color: var(--header-text-color);
-  margin-right: 1rem;
-  display: flex;
-  align-items: center;
-}
-
-.navigation {
-  padding: 0 2rem;
-}
-
-.menuButton {
-  border: none;
-  padding: 0;
-  background: none;
-  line-height: 0;
-  margin-left: 1.25rem;
+/* spacing between nav and toggle */
+.header > * > * + * {
+  margin-left: 1.5rem;
 }
 
 @media (max-width: 1024px) {
   .header {
-    --header-padding: 0.5rem;
-  }
-  .headerLeft a {
-    font-size: 1.125rem;
+    --header-padding: 1rem 1rem;
   }
 }
 
-@media (max-width: 767px) {
-  .navigation {
+/* nav item spacing */
+.nav li + li {
+  /* reset the global settings */
+  margin-top: 0;
+  margin-left: 1rem;
+}
+
+.nav a {
+  padding: 0.25rem 0.625rem;
+  border-radius: var(--border-radius);
+}
+
+.nav a:hover,
+.active {
+  background: linear-gradient(
+        to right,
+        var(--corner-color) 2px,
+        transparent 2px
+      )
+      0 0,
+    linear-gradient(to right, var(--corner-color) 2px, transparent 2px) 0 100%,
+    linear-gradient(to left, var(--corner-color) 2px, transparent 2px) 100% 0,
+    linear-gradient(to left, var(--corner-color) 2px, transparent 2px) 100% 100%,
+    linear-gradient(to bottom, var(--corner-color) 2px, transparent 2px) 0 0,
+    linear-gradient(to bottom, var(--corner-color) 2px, transparent 2px) 100% 0,
+    linear-gradient(to top, var(--corner-color) 2px, transparent 2px) 0 100%,
+    linear-gradient(to top, var(--corner-color) 2px, transparent 2px) 100% 100%;
+
+  background-repeat: no-repeat;
+  background-size: 6px 6px;
+}
+
+.nav a:not(.active):hover {
+  --corner-color: var(--foreground-low);
+}
+
+.active {
+  --corner-color: var(--primary-accent);
+}
+
+@media (max-width: 768px) {
+  .nav {
     display: none;
-  }
-}
-
-@media (min-width: 768px) {
-  .menuButton {
-    display: none;
-  }
-}
-.menuButton img {
-  margin: 0;
-}
-
-@media (max-width: 1440px) {
-  .navigationAlt a {
-    color: var(--primary-background);
   }
 }

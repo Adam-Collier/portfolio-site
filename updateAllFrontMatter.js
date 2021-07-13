@@ -22,7 +22,7 @@ const updateFrontmatter = async () => {
 
     const updatedFrontmatter = {
       ...currentFrontmatter,
-      updatedDate: gitDateUpdated,
+      updatedOn: gitDateUpdated,
     };
 
     file.data = updatedFrontmatter;

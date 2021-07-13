@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export const useActiveHash = (itemIds, rootMargin = undefined) => {
+export const useActiveHash = (headings, rootMargin = undefined) => {
   const [activeHash, setActiveHash] = useState(``);
 
   useEffect(() => {
@@ -13,18 +13,16 @@ export const useActiveHash = (itemIds, rootMargin = undefined) => {
         });
       },
       {
-        rootMargin: rootMargin || `0% 0% -87% 0%`,
+        rootMargin: rootMargin || `0% 0% -85% 0%`,
       }
     );
 
-    itemIds.forEach((id) => {
+    headings.forEach(({ id }) => {
       observer.observe(document.getElementById(id));
     });
 
     return () => {
-      itemIds.forEach((id) => {
-        observer.unobserve(document.getElementById(id));
-      });
+      observer.disconnect();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

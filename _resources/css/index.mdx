@@ -1,0 +1,109 @@
+---
+title: CSS
+updatedOn: '2020-11-19T15:44:39+00:00'
+description: Articles on the fundamentals and the newer features coming to CSS. Tools that give you confidence in the CSS you write.
+---
+
+The ever evolving styles of the web. With the growing complexity of websites,
+frameworks becoming the norm and bundlers controlling the output of our
+production code there is a heck of a lot to learn and keep up with.
+
+## Twitter
+
+[@argyleink](https://twitter.com/argyleink) - Follow/Read - Adam Argyle is a
+great follow on twitter for anyone interested in CSS snippets, topping up your
+general knowledge and seeing whats on the horizon and being added to browsers.
+
+## Articles
+
+[Sticky CSS Grid Items](https://melanie-richards.com/blog/css-grid-sticky/) - Read - A great article from [@soMelanieSaid](https://twitter.com/soMelanieSaid) on using position sticky with css grid items. This was reference I used when positioning the sidebar content on this site.
+
+[A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) - Read/Bookmark - The ultimate guide guide to flexbox. CSS tricks nailed this one
+and it's one of the best and easiest to understand guides out there
+
+[A Complete Guide to Grid](https://css-tricks.com/snippets/css/complete-guide-grid/) - Read/Bookmark - Another great CSS layouts guide from CSS tricks. I find myself
+referencing this a lot stored some snippets for easy access.
+
+[CSS Animations](https://www.youtube.com/watch?v=8kK-cA99SA0&list=PLqGj3iMvMa4LvJ8VctoXnPI0dtE40wfid) - Watch/Admire - This is where it all started for me and Devtips holds a very dear
+place in my heart. A lot of it may be outdated but I'm leaving it here for the
+memories.
+
+[Pseudo Class Selectors](https://css-tricks.com/pseudo-class-selectors/) - Read - Pseudo classed are incredibly powerful things. I use :after and :before
+all of the time and it often gives a more elegant and readable solution. This
+article will help you learn about that and more.
+
+[Smoother & sharper shadows with layered box-shadows](https://tobiasahlin.com/blog/layered-smooth-box-shadows/) - Read - Create smoother box-shadows with some techniques from Tobias. Philipp
+Brumm also created this [tool](https://brumm.af/shadows) inspired by the
+article. One thing I would love is if it created several box-shadow classes with
+varying sizes and strengths.
+
+[Styling Layout Wrappers In CSS](https://ishadeed.com/article/styling-wrappers-css) - Read - A comprehensive introduction on creating and styling Layout wrappers. I'm
+a big fan of this article because it covers a lot of use cases.
+
+[Everything I Learned About min(), max(), clamp() In CSS](https://ishadeed.com/article/css-min-max-clamp/) - Read - Ahmed has wrote a great post for those wanting to familiarize themselves
+with min(), max() and clamp() CSS functions. I'm excited for this addition to
+the language and it will revolutionize responsive declarations.
+
+## Josh Comeau's CSS in JS
+
+```css
+/* useful width options */
+width: min-content | max-content | fit-content;
+
+/* inherit colours for parent child consistency */
+color: inherit;
+
+/* isolated stacking context (add to the wrapper) */
+isolation: isolate;
+
+/* keep items inline */
+white-space: nowrap;
+
+/* only add styles for mouse/trackpad users */
+@media (hover: hover) and (pointer: fine) {
+  button:hover {
+    text-decoration: underline;
+  }
+}
+```
+
+#### Recommended break points
+
+- 0-550px — Mobile
+- 550-1100px — Tablet
+- 1100-1500px — Laptop
+- 1500+px — Desktop
+
+#### Using Rems instead of pixels for breakpoints
+
+The idea behind this being, as the user increases their default font size the @media scale slides to accomodate those changes. Whereas, with pixels being "static" our layouts would become cramped and unable to adjust, if the user increased their default font size.
+
+```js
+// constants.js
+const BREAKPOINTS = {
+  tabletMin: 550,
+  laptopMin: 1100,
+  desktopMin: 1500,
+}
+
+const QUERIES = {
+  'tabletAndUp': `(min-width: ${BREAKPOINTS.tabletMin / 16}rem)`
+  'laptopAndUp': `(min-width: ${BREAKPOINTS.laptopMin / 16}rem)`
+  'desktopAndUp': `(min-width: ${BREAKPOINTS.desktopMin / 16}rem)`
+}
+```
+
+#### Tools recommended by Josh:
+
+- [CSS Stacking Context Inspector](https://chrome.google.com/webstore/detail/css-stacking-context-insp/apjeljpachdcjkgnamgppgfkmddadcki)
+
+## Tools
+
+[Responsively](https://responsively.app/) - Responsive Design Previewer - Tweeted by none other than [@addyosmani](https://twitter.com/addyosmani) (so
+it's bound to be good). I've got to say it's absolute bliss being able to see
+all of the screens I care about in one space side by side, and it even updates
+if you're using hot reloading.
+
+[1-Line Layouts](https://1linelayouts.glitch.me/) - Useful Layout Snippets - [@Una](https://twitter.com/Una) has collated 10 modern CSS layout and sizing
+techniques which anyone can benefit from. CSS again proving how powerful it can
+be.

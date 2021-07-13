@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { Link, Check } from 'react-feather';
+import { Share, Check } from 'react-feather';
+import Stack from '../Stack';
 import Text from '../Text';
-import styles from './sharepost.module.css';
+import Button from '../Button';
 
 const delay = (duration) =>
   new Promise((resolve) => setTimeout(resolve, duration));
 
-const SharePost = () => {
+const SharePost = ({ text = 'Share this post!', layout }) => {
   const [copied, setCopied] = useState(false);
 
   let url = '';
@@ -34,22 +35,20 @@ const SharePost = () => {
   };
 
   return (
-    <div
-      className={styles.share}
-      onClick={handleClick}
-      role="button"
-      onKeyPress={handleClick}
-      tabIndex={0}
-    >
-      <button type="button">
-        {copied ? <Check size={14} /> : <Link size={14} />}
-      </button>
-      {copied ? (
-        <Text size="sm">Copied!</Text>
-      ) : (
-        <Text size="sm">Share this post!</Text>
-      )}
-    </div>
+    <Stack gap={1.45}>
+      <Text size="sm">
+        If you enjoyed reading this content help spread the word by copying the
+        link and sharing it.
+      </Text>
+      <Button
+        text={copied ? 'Copied the Link!' : text}
+        Icon={copied ? Check : Share}
+        onClick={handleClick}
+        onKeyPress={handleClick}
+        type="secondary"
+        layout={layout}
+      />
+    </Stack>
   );
 };
 

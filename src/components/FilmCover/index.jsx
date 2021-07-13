@@ -14,7 +14,7 @@ const FilmCover = ({ title, year, genre, rating = 1, className, cover }) => {
   return (
     <Stack gap={0.25} className={`${className} ${s.cover}`}>
       <Image
-        src={require(`/_posts/${slug}/covers/${cover}.jpg`)}
+        src={require(`/_posts/${slug}/covers/${cover}.jpg`).default.src}
         className={s.image}
         alt={title ? `${title} film cover` : `film cover`}
         sizes="(max-width: 600px) 128px, 135px"

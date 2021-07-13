@@ -15,10 +15,10 @@ const Blogpost = ({ title, publishedOn, slug, description }) => (
     <Link href={`/blog/${slug}`} aria-label={`blog post: ${title}`}>
       <a>
         <Image
-          src={require(`/_posts/${slug}/thumbnail.jpg`)}
+          src={require(`/_posts/${slug}/thumbnail.jpg`).default.src}
           alt={title}
-          width={80}
-          height={80}
+          width={114}
+          height={114}
         />
         <Stack as="section" gap={0.25}>
           <Text as="h2" size="md" heading>

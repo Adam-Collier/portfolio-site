@@ -11,6 +11,7 @@ import Form from '../../components/Form';
 import Sidebar from '../../components/Sidebar/index.jsx';
 import TableOfContents from '../../components/TableOfContents';
 import SharePost from '../../components/SharePost';
+import SEO from '../../components/Seo';
 import { prepareMDX } from '../../lib/mdx';
 import { baseComponents } from '../../lib/base-components';
 import { toTitleCase } from '../../utils/to-title-case';
@@ -35,18 +36,38 @@ const components = {
 };
 
 const Post = ({ source, title, slug, rawMDX, frontmatter }) => {
-  const image = {
+  const imageComponent = {
     img: ({ src, alt }) => (
       <Image
-        src={require(`/_posts/${slug}/images/${src}.jpg`)}
+        src={require(`/_posts/${slug}/images/${src}.jpg`).default}
         alt={alt}
         placeholder="blur"
       />
     ),
   };
 
+  const { description } = frontmatter;
+
+  let featuredImage;
+
+  try {
+    featuredImage = require(`/_posts/${slug}/featured-image.jpg`).default.src;
+  } catch {
+    featuredImage = null;
+  }
+
   return (
-    <Page padding layout="grid">
+    <Page
+      padding
+      layout={frontmatter.sidebar === false ? 'stack' : 'grid'}
+      areas={{ sm: `"content" "share"` }}
+    >
+      <SEO
+        title={title}
+        description={description}
+        image={featuredImage}
+        pathname={`/blog/${slug}`}
+      />
       <Stack maxWidth="sm" gap={1.45} style={{ gridArea: 'content' }}>
         <Stack gap={0.5}>
           <Stack gap={0.5} direction="row">
@@ -64,7 +85,10 @@ const Post = ({ source, title, slug, rawMDX, frontmatter }) => {
             {title}
           </Text>
         </Stack>
-        <MDXRemote {...source} components={{ ...components, ...image }} />
+        <MDXRemote
+          {...source}
+          components={{ ...components, ...imageComponent }}
+        />
         <Form
           title={title}
           text="Please let me know if you found anything I wrote confusing, incorrect or
@@ -72,9 +96,9 @@ const Post = ({ source, title, slug, rawMDX, frontmatter }) => {
         improve this post."
         />
       </Stack>
-      <Sidebar top={20}>
+      <Sidebar top={12}>
         <TableOfContents source={rawMDX} />
-        <SharePost />
+        <SharePost layout={frontmatter.sidebar === false ? 'fill' : 'fit'} />
       </Sidebar>
     </Page>
   );

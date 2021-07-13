@@ -1,6 +1,5 @@
 import css from 'styled-jsx/css';
 import Row from '../Row';
-import s from './stack.module.css';
 
 const getStackStyles = ({ direction, justify, align, gap }) => css.resolve`
   display: flex;

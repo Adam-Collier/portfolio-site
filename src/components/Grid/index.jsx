@@ -4,8 +4,11 @@ import Row from '../Row';
 const Grid = ({
   as,
   maxWidth,
-  gap,
-  areas,
+  gap = 0,
+  areas = {
+    lg: '',
+    sm: '',
+  },
   columns,
   children,
   padding,
@@ -14,7 +17,7 @@ const Grid = ({
   <Row as={as} maxWidth={maxWidth} style={{ ...style }} padding={padding}>
     <div>
       <style jsx>{`
-        --areas: ${areas};
+        --areas: ${areas?.lg};
         --columns: ${columns};
         --gap: ${gap}rem;
 
@@ -23,9 +26,9 @@ const Grid = ({
         grid-template-columns: var(--columns);
         grid-gap: var(--gap);
         @media (max-width: 767px) {
+          --areas: ${areas?.sm};
           --columns: 100%;
-          --areas: 'content' 'share' 'footer';
-          grid-gap: 1.45rem;
+          --gap: 1.45rem;
         }
       `}</style>
       {children}

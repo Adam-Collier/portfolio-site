@@ -1,21 +1,29 @@
 import { MDXRemote } from 'next-mdx-remote';
+import { useRouter } from 'next/router';
 import Page from '../components/Page';
 import Stack from '../components/Stack';
 import Sidebar from '../components/Sidebar/index.jsx';
 import Text from '../components/Text';
 import TableOfContents from '../components/TableOfContents';
 import Form from '../components/Form';
+import SEO from '../components/Seo';
 import { getAllContentOfType } from '../lib/blog';
 import { prepareMDX } from '../lib/mdx';
 
 import { baseComponents } from '../lib/base-components';
 
 const Snippets = ({ allMDX }) => {
+  const router = useRouter();
   // // create a big ol' string of rawMDX for the table of contents
   const allRawMDX = allMDX.map(({ rawMDX }) => rawMDX).join('');
 
   return (
     <Page layout="grid" padding>
+      <SEO
+        title="Snippets - Adam Collier"
+        description="There's nothing worse than almost remembering a bit of code you saw on stackoverflow on in a blogpost once. So I've collated all of the ones I find most useful."
+        pathname={router.pathname}
+      />
       <Stack maxWidth="sm" gap={1.45} style={{ gridArea: 'content' }}>
         <Text as="h1" size="2xl" heading>
           Snippets

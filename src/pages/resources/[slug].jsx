@@ -8,6 +8,7 @@ import Stack from '../../components/Stack';
 import Form from '../../components/Form';
 import Sidebar from '../../components/Sidebar/index.jsx';
 import SharePost from '../../components/SharePost';
+import SEO from '../../components/Seo';
 import { getAllContentOfType } from '../../lib/blog';
 import { prepareMDX } from '../../lib/mdx';
 import { baseComponents } from '../../lib/base-components';
@@ -38,42 +39,51 @@ const resource = css.global`
   }
 `;
 
-const Resource = ({ slug, source, title, quickLinks }) => (
-  <Page layout="grid" padding>
-    <Stack maxWidth="sm" gap={1.45} style={{ gridArea: 'content' }}>
-      <style jsx global>
-        {resource}
-      </style>
-      <Text as="h1" size="2xl" heading>
-        {title}
-      </Text>
-      <MDXRemote {...source} components={baseComponents} />
-      <Form
-        title={title}
-        text="Do you know a resource that could benefit another reader and is relevent for this page? Let me know by leaving a short message below and I will take a look!"
+const Resource = ({ slug, source, title, frontmatter, quickLinks }) => {
+  const { description } = frontmatter;
+
+  return (
+    <Page layout="grid" padding>
+      <SEO
+        title={`${title} - Adam Collier`}
+        description={description}
+        pathname={`/resources/${slug}`}
       />
-    </Stack>
-    <Sidebar top={10} style={{ gridArea: 'quick-links' }}>
-      <Stack gap={1.45} className={s.quickLinks}>
-        <Text size="md" heading>
-          <LinkIcon size={14} style={{ marginRight: '4px' }} /> Quick Links
+      <Stack maxWidth="sm" gap={1.45} style={{ gridArea: 'content' }}>
+        <style jsx global>
+          {resource}
+        </style>
+        <Text as="h1" size="2xl" heading>
+          {title}
         </Text>
-        <ul className={s.resource}>
-          {quickLinks.map((link, index) => (
-            <li key={index}>
-              <Link href={`/resources/${link.slug}`}>
-                <a className={slug === link.slug ? s.active : ''}>
-                  <Text size="sm">{link.title}</Text>
-                </a>
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <MDXRemote {...source} components={baseComponents} />
+        <Form
+          title={title}
+          text="Do you know a resource that could benefit another reader and is relevent for this page? Let me know by leaving a short message below and I will take a look!"
+        />
       </Stack>
-      <SharePost text="Share this resource!" />
-    </Sidebar>
-  </Page>
-);
+      <Sidebar top={10} style={{ gridArea: 'quick-links' }}>
+        <Stack gap={1.45} className={s.quickLinks}>
+          <Text size="md" heading>
+            <LinkIcon size={14} style={{ marginRight: '4px' }} /> Quick Links
+          </Text>
+          <ul className={s.resource}>
+            {quickLinks.map((link, index) => (
+              <li key={index}>
+                <Link href={`/resources/${link.slug}`}>
+                  <a className={slug === link.slug ? s.active : ''}>
+                    <Text size="sm">{link.title}</Text>
+                  </a>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </Stack>
+        <SharePost text="Share this resource!" />
+      </Sidebar>
+    </Page>
+  );
+};
 
 export default Resource;
 

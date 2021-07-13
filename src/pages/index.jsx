@@ -20,7 +20,7 @@ const IndexPage = ({ posts, tracks, readng }) => {
   return (
     <Page gap={2.5} paddingTop={8} padding>
       <SEO
-        title=""
+        title="Adam Collier"
         description="Creative UX Designer Developer from Manchester, UK. Creating content to come back to. Discover useful snippets, resources and blogposts."
         pathname={router.pathname}
       />

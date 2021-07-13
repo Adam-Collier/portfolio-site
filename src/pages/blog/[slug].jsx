@@ -63,7 +63,7 @@ const Post = ({ source, title, slug, rawMDX, frontmatter }) => {
       areas={{ sm: `"content" "share"` }}
     >
       <SEO
-        title={title}
+        title={`${title} - Adam Collier`}
         description={description}
         image={featuredImage}
         pathname={`/blog/${slug}`}

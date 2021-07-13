@@ -9,15 +9,25 @@ const Page = ({
   gap = 1.45,
   padding,
   paddingTop = 6,
+  areas = {},
 }) => {
+  const defaultAreas = {
+    lg: `'sidebar content' 'sidebar footer'`,
+    sm: `'content'`,
+  };
+
   const LAYOUT_OPTIONS = {
     grid: {
       component: Grid,
       props: {
         maxWidth: 'lg',
-        areas: "'sidebar content' 'sidebar footer'",
-        columns: '320px minmax(0, 1fr)',
+        areas: {
+          ...defaultAreas,
+          ...areas,
+        },
+        columns: '300px minmax(0, 1fr)',
         padding,
+        gap: 2,
       },
     },
     stack: {

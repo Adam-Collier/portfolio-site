@@ -41,8 +41,8 @@ export const formatResources = () => {
 
           node.type = 'html';
           node.children = [];
-          node.value = `
-            <div class="resource">
+          // formatted like this because leaving a new line causes an undefined tag to appear
+          node.value = `<div class="resource">
               <div>
                 <p><a href="${url}" target="_blank" rel="noopener noreferrer">${title}</a></p>
                 <p>${type}</p>

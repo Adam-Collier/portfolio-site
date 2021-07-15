@@ -1,46 +1,41 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Plus, Minus } from 'react-feather';
+import { useAtom } from 'jotai';
+import { atomWithStorage } from 'jotai/utils';
 import Text from '../Text';
 import s from './accordion.module.css';
 
-const Accordion = ({ children, title, initialState = false }) => {
-  const [isOpen, setIsOpen] = useState(initialState);
+const accordionAtom = atomWithStorage(`accordion`, {});
 
-  const Icon = isOpen ? Minus : Plus;
+const Accordion = ({ children, title }) => {
+  const [allAccordians, setAllAccordions] = useAtom(accordionAtom);
+  const [sectionIsOpen, setSectionIsOpen] = useState(false);
+
+  useEffect(() => {
+    setSectionIsOpen(allAccordians[title] || false);
+  }, [allAccordians, title]);
+
+  const Icon = sectionIsOpen ? Minus : Plus;
 
   return (
     <>
       <button
         className={s.accordion}
         type="button"
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() =>
+          setAllAccordions({ ...allAccordians, [title]: !allAccordians[title] })
+        }
       >
         <Icon size={12} />
         <Text size="sm" weight={400}>
           {title}
         </Text>
       </button>
-      {isOpen && children}
+      {sectionIsOpen && children}
     </>
   );
-
-  //   return (
-  //     <details
-  //       open={isOpen}
-  //       onClick={(e) => {
-  //         e.preventDefault();
-  //         setIsOpen(!isOpen);
-  //       }}
-  //     >
-  //       <Text as="summary" size="sm" weight={400} color="foreground-high">
-  //         {title}
-  //       </Text>
-  //       {/* use recursion for nested items */}
-  //       {children}
-  //     </details>
-  //   );
 };
 
 export default Accordion;

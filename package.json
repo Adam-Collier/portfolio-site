@@ -8,6 +8,7 @@
     "date-fns": "^2.22.1",
     "globby": "^11.0.3",
     "gray-matter": "^4.0.3",
+    "jotai": "^1.2.0",
     "mdast-util-to-string": "^2.0.0",
     "nanoid": "^3.1.20",
     "next": "^11.0.1",

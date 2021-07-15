@@ -18,9 +18,10 @@ const createItems = (items, path, activeHash) =>
     const isActive = item.id === activeHash;
     const { title } = item;
 
-    return item.items ? (
-      <li>
-        <Accordion key={key} title={title} initialState={key === 0}>
+    // check if items it empty or the property doesnt exist
+    return item.items?.length ? (
+      <li key={key}>
+        <Accordion title={title}>
           {item.items && <ul>{createItems(item.items, path, activeHash)}</ul>}
         </Accordion>
       </li>

@@ -1,0 +1,8 @@
+.accordion {
+  display: flex;
+  align-items: center;
+}
+
+.accordion svg {
+  margin-right: 0.25rem;
+}

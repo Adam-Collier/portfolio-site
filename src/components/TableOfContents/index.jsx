@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Stack from '../Stack';
 import Text from '../Text';
+import Accordion from '../Accordion';
 import { useActiveHash } from './use-active-hash';
 import { getHeadings } from '../../lib/table-of-contents';
 
@@ -17,7 +18,14 @@ const createItems = (items, path, activeHash) =>
     const isActive = item.id === activeHash;
     const { title } = item;
 
-    return (
+    // check if items it empty or the property doesnt exist
+    return item.items?.length ? (
+      <li key={key}>
+        <Accordion title={title}>
+          {item.items && <ul>{createItems(item.items, path, activeHash)}</ul>}
+        </Accordion>
+      </li>
+    ) : (
       <Text as="li" key={key} size="sm" weight={400} color="foreground-high">
         <Link href={`${path}#${item.id}`}>
           <a className={isActive ? s.active : ''}>{title}</a>

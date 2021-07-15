@@ -1,6 +1,0 @@
-@media (max-width: 767px) {
-  .home {
-    --grid-columns: 1fr;
-    padding: var(--container-padding) 0 0;
-  }
-}

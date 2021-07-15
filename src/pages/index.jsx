@@ -95,7 +95,7 @@ export async function getStaticProps() {
   const response = await getTopTracks();
   const { items: toptracks } = await response.json();
   // get the first 5 tracks and return an array of objects
-  const tracks = toptracks.slice(0, 5).map((track) => ({
+  const tracks = toptracks.map((track) => ({
     artist: track.artists.map((_artist) => _artist.name).join(', '),
     url: track.external_urls.spotify,
     title: track.name,

@@ -20,7 +20,8 @@
   color: var(--foreground-hover);
 }
 
-.toc * + * {
+.toc ul,
+.toc li {
   margin-top: 0.25rem;
   margin-bottom: 0;
 }

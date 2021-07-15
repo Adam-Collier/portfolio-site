@@ -24,7 +24,7 @@ const getAccessToken = async () => {
 };
 
 export const getTopTracks = async () => {
-  const TOP_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/top/tracks?time_range=short_term`;
+  const TOP_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=5`;
   const { access_token: accessToken } = await getAccessToken();
 
   return fetch(TOP_TRACKS_ENDPOINT, {

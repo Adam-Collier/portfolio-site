@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://adamcollier.co.uk/sitemap.xml

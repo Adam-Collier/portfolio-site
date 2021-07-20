@@ -8,10 +8,8 @@ import config from '../../config';
 function SEO({ description, image, title, pathname, isBlogPost }) {
   const { author } = config;
 
-  const siteTitle = config.title;
-
   // if its conditional make it clear it's from the config
-  const seoTitle = title || siteTitle;
+  const seoTitle = title || config.title;
   const seoImage = image || config.openGraph.image;
   const seoDescription = description || config.description;
 
@@ -38,14 +36,14 @@ function SEO({ description, image, title, pathname, isBlogPost }) {
         {isBlogPost && <meta property="og:type" content="article" />}
         <meta property="og:title" content={seoTitle} />
         <meta property="og:description" content={seoDescription} />
-        <meta property="og:image" content={seoImage} />
+        <meta property="og:image" content={`${config.siteUrl}${seoImage}`} />
 
         {/* Twitter Card tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:creator" content={author.name} />
         <meta name="twitter:title" content={seoTitle} />
         <meta name="twitter:description" content={seoDescription} />
-        <meta name="twitter:image" content={seoImage} />
+        <meta name="twitter:image" content={`${config.siteUrl}${seoImage}`} />
       </Head>
       {/* <SchemaOrg
         isBlogPost={isBlogPost}

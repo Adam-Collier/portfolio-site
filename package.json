@@ -6,7 +6,6 @@
   "author": "Adam Collier",
   "dependencies": {
     "date-fns": "^2.22.1",
-    "globby": "^11.0.3",
     "gray-matter": "^4.0.3",
     "jotai": "^1.2.0",
     "mdast-util-to-string": "^2.0.0",
@@ -54,6 +53,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "prebuild": "node scripts/generate-sitemap.js",
     "lint": "eslint src/",
     "lint:fix": "eslint . --fix",
     "lint:staged": "lint-staged --shell --verbose",

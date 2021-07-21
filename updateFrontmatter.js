@@ -7,7 +7,7 @@ const updateFrontmatter = async () => {
   mdFilePaths.forEach(async (path) => {
     const file = matter.read(path);
     const { data: currentFrontmatter } = file;
-    if (currentFrontmatter.publishedOn === true) {
+    if (currentFrontmatter.publishedOn) {
       const updatedFrontmatter = {
         ...currentFrontmatter,
         updatedOn: new Date().toISOString(),

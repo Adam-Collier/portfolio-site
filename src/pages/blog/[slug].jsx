@@ -96,7 +96,7 @@ const Post = ({ source, title, slug, rawMDX, frontmatter }) => {
         improve this post."
         />
       </Stack>
-      <Sidebar top={12}>
+      <Sidebar top={8}>
         <TableOfContents source={rawMDX} />
         <SharePost layout={frontmatter.sidebar === false ? 'fill' : 'fit'} />
       </Sidebar>

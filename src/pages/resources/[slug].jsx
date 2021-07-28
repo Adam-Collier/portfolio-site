@@ -62,7 +62,7 @@ const Resource = ({ slug, source, title, frontmatter, quickLinks }) => {
           text="Do you know a resource that could benefit another reader and is relevent for this page? Let me know by leaving a short message below and I will take a look!"
         />
       </Stack>
-      <Sidebar top={10} style={{ gridArea: 'quick-links' }}>
+      <Sidebar top={6.5} style={{ gridArea: 'quick-links' }}>
         <Stack gap={1.45} className={s.quickLinks}>
           <Text size="md" heading>
             <LinkIcon size={14} style={{ marginRight: '4px' }} /> Quick Links

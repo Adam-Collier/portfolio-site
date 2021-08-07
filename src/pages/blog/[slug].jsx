@@ -16,6 +16,7 @@ import { prepareMDX } from '../../lib/mdx';
 import { baseComponents } from '../../lib/base-components';
 import { toTitleCase } from '../../utils/to-title-case';
 import { getAllContentOfType } from '../../lib/blog';
+import { resource } from '../../styles/global';
 
 const components = {
   Button: dynamic(() => import('../../components/Button')),
@@ -37,13 +38,16 @@ const components = {
 
 const Post = ({ source, title, slug, rawMDX, frontmatter }) => {
   const imageComponent = {
-    img: ({ src, alt }) => (
-      <Image
-        src={require(`/_posts/${slug}/images/${src}.jpg`).default}
-        alt={alt}
-        placeholder="blur"
-      />
-    ),
+    img: ({ src, alt }) =>
+      src.includes('https://') ? (
+        <img src={src} alt={alt} />
+      ) : (
+        <Image
+          src={require(`/_posts/${slug}/images/${src}.jpg`).default}
+          alt={alt}
+          placeholder="blur"
+        />
+      ),
   };
 
   const { description } = frontmatter;
@@ -68,6 +72,9 @@ const Post = ({ source, title, slug, rawMDX, frontmatter }) => {
         image={featuredImage}
         pathname={`/blog/${slug}`}
       />
+      <style jsx global>
+        {resource}
+      </style>
       <Stack maxWidth="sm" gap={1.45} style={{ gridArea: 'content' }}>
         <Stack gap={0.5}>
           <Stack gap={0.5} direction="row">

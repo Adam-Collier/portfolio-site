@@ -1,5 +1,4 @@
 import { MDXRemote } from 'next-mdx-remote';
-import css from 'styled-jsx/css';
 import Link from 'next/link';
 import { Link as LinkIcon } from 'react-feather';
 import Text from '../../components/Text';
@@ -15,29 +14,7 @@ import { baseComponents } from '../../lib/base-components';
 import { toTitleCase } from '../../utils/to-title-case';
 
 import s from './resource.module.css';
-
-const resource = css.global`
-  .resource {
-    --columns: 200px 1fr;
-    --gap: 1.25rem;
-    display: grid;
-    grid-template-columns: var(--columns);
-    grid-gap: var(--gap);
-  }
-  .resource div p + p {
-    margin-top: 0.125rem;
-    color: var(--foreground-high);
-    font-size: 0.875rem;
-  }
-
-  @media (max-width: 767px) {
-    .resource {
-      --columns: 100%;
-      --gap: 0;
-      grid-template-rows: min-content min-content;
-    }
-  }
-`;
+import { resource } from '../../styles/global';
 
 const Resource = ({ slug, source, title, frontmatter, quickLinks }) => {
   const { description } = frontmatter;

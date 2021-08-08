@@ -4,7 +4,7 @@ description: >-
   Take full control of your site stats by switching from Google Analtics to
   Umami and create a safer space for your users.
 publishedOn: '2021-08-07'
-updatedOn: '2021-08-07T22:21:31.102Z'
+updatedOn: '2021-08-08T21:48:46.669Z'
 ---
 
 For any new site, there is always the tendency to reach out and grab Google Analytics as the "go to" method for collecting and analysing stats about your site and users. I, for one, have been guilty of that in the past but with the growing popularity of open source analytics and cheaper options out there, more and more developers are looking elsewhere.
@@ -44,14 +44,14 @@ Note: You could also use Heroku which from what I remember should set up your da
 
 I'd like to tell you that it was a complicated process and only really smart people will be able to accomplish this but in reality, it's one of the easiest, friction-free deployment processes I've experienced. Railway provides you with an Umami starter (along with a lot of other starters worth checking out) which automagically deploys your Postgres database and Next frontend for you. To get started you can click the Railway deployment button below.
 
-Note: this can also be found in the official docs and the blogpost I mentioned before
-
 <div style={{ marginLeft: "auto", marginRight: "auto" }}>
 
 [![Deploy on
   Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https%3A%2F%2Fgithub.com%2Frailwayapp-starters%2Fumami&plugins=postgresql&envs=HASH_SALT&HASH_SALTDesc=Any+random+string+used+to+generate+unique+values+for+your+installation)
 
 </div>
+
+Note: this can also be found in the official docs and the blogpost I mentioned before
 
 1. You will be asked to sign in to your Github and give Railway some permissions. This is so railway can create an Umami repo for you which you can fork and apply any updates in the future.
 2. Give your repo a name and add a random string for your `HASH_SALT` (this can be anything you want) and then click deploy.
@@ -69,14 +69,14 @@ So we have Umami up and running on Railway and everything is starting to come to
 4. I'm using Next.js so in our `_document.jsx` file (you may need to create this if you haven't already) we can add the following
 
 ```jsx
-import Document, { Html, Head, Main, NextScript } from "next/document";
+import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
         <Head>
-          {process.env.NODE_ENV === "production" && (
+          {process.env.NODE_ENV === 'production' && (
             // the tracking script copied from umami
             <script
               async

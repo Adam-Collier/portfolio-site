@@ -29,6 +29,8 @@ const prettier = require('prettier');
                 return `
                         <url>
                             <loc>${`https://adamcollier.co.uk${route}`}</loc>
+                            <changefreq>daily</changefreq>
+                            <priority>0.7</priority>
                         </url>
                     `;
               })

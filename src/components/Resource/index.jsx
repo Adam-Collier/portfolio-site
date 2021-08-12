@@ -6,8 +6,8 @@ import Stack from '../Stack';
 
 import s from './resource.module.css';
 
-const Resource = ({ title, description, slug }) => (
-  <Link href={`/resources/${slug}`}>
+const Resource = ({ title, description, url }) => (
+  <Link href={url}>
     <a className={s.resource}>
       <Stack as="article" gap={0.5} aria-label={title}>
         <Stack direction="row" gap={0.5} align="center">

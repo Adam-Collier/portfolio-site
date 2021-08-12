@@ -1,10 +1,12 @@
 /* eslint-disable camelcase */
 import { useRouter } from 'next/router';
-import { Client } from '@notionhq/client';
+
 import Page from '../components/Page';
 import Text from '../components/Text';
 import SEO from '../components/Seo';
 import Resource from '../components/Resource';
+
+import { getNotionData } from '../lib/get-notion-data';
 
 const Notes = ({ content }) => {
   const router = useRouter();
@@ -31,7 +33,7 @@ const Notes = ({ content }) => {
           key={index}
           title={title}
           description={description}
-          slug={slug}
+          url={`/notes/${slug}`}
         />
       ))}
     </Page>
@@ -41,50 +43,10 @@ const Notes = ({ content }) => {
 export default Notes;
 
 export async function getStaticProps() {
-  const notion = new Client({ auth: process.env.NOTION_API_KEY });
-
-  // probably overcomplicated this but it works for now
-  // checking if the Title is not empty prevents any issues from accidentally created blank rows
-  const productionFilter =
-    process.env.NODE_ENV === 'production'
-      ? {
-          and: [
-            {
-              property: 'PublishedOn',
-              date: {
-                is_not_empty: true,
-              },
-            },
-            {
-              property: 'Title',
-              text: {
-                is_not_empty: true,
-              },
-            },
-          ],
-        }
-      : {
-          property: 'Title',
-          text: {
-            is_not_empty: true,
-          },
-        };
-
-  const response = await notion.databases.query({
-    database_id: process.env.NOTION_NOTES_ID,
-    filter: {
-      ...productionFilter,
-    },
-    sorts: [
-      {
-        property: 'Title',
-        direction: 'ascending',
-      },
-    ],
-  });
+  const response = await getNotionData(process.env.NOTION_NOTES_ID);
 
   // format into everything we need for the blogposts component
-  const content = response.results.map(({ properties }) => {
+  const content = response.map(({ properties }) => {
     const { PublishedOn, Title, Description } = properties;
 
     const title = Title.title[0].plain_text;

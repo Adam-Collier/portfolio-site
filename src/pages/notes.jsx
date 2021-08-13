@@ -22,11 +22,8 @@ const Notes = ({ content }) => {
         Notes
       </Text>
       <Text>
-        This is my attempt at writing blog things. Writing isn't one of my
-        strengths so bear with my poor sentence structures and inevitable typos.
-        However, I'll always try my best! (queue anime hero montage) I'll mostly
-        write content relating to the projects/side projects I'm working on and
-        no doubt there will be some random ones in there too.
+        A space for quick thoughts, ideas and learning references. Powered by
+        the new Notion API and ISR (Incremental Static Regeneration).
       </Text>
       {content.map(({ title, description, slug }, index) => (
         <Resource

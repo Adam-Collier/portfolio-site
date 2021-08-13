@@ -64,7 +64,7 @@ const Nav = ({ className, onClick, size, activeClass }) => (
         activeClass={activeClass}
         onClick={onClick}
       >
-        Resources
+        Notes
       </NavLink>
     </li>
   </ul>

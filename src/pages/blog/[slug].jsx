@@ -17,6 +17,7 @@ import { baseComponents } from '../../lib/base-components';
 import { toTitleCase } from '../../utils/to-title-case';
 import { getAllContentOfType } from '../../lib/blog';
 import { resource } from '../../styles/global';
+import { getHeadings } from '../../lib/table-of-contents';
 
 const components = {
   Button: dynamic(() => import('../../components/Button')),
@@ -59,6 +60,8 @@ const Post = ({ source, title, slug, rawMDX, frontmatter }) => {
   } catch {
     featuredImage = null;
   }
+
+  const { headings } = getHeadings(rawMDX);
 
   return (
     <Page
@@ -104,7 +107,7 @@ const Post = ({ source, title, slug, rawMDX, frontmatter }) => {
         />
       </Stack>
       <Sidebar top={8}>
-        <TableOfContents source={rawMDX} />
+        <TableOfContents headings={headings} />
         <SharePost layout={frontmatter.sidebar === false ? 'fill' : 'fit'} />
       </Sidebar>
     </Page>

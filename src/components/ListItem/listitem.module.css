@@ -1,0 +1,10 @@
+.listItem {
+  list-style-type: none;
+  position: relative;
+}
+
+.listItem svg {
+  position: absolute;
+  left: -20px;
+  top: 6px;
+}

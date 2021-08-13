@@ -5,7 +5,6 @@ import Stack from '../Stack';
 import Text from '../Text';
 import Accordion from '../Accordion';
 import { useActiveHash } from './use-active-hash';
-import { getHeadings } from '../../lib/table-of-contents';
 
 import s from './toc.module.css';
 
@@ -36,13 +35,33 @@ const createItems = (items, path, activeHash) =>
     );
   });
 
-const TableOfContents = ({ className, source }) => {
-  const { headings, headingsList } = getHeadings(source);
+// pass in the headings as we cant guarantee it will come from the same source e.g markdown vs a CMS
+const TableOfContents = ({ className, headings }) => {
   const router = useRouter();
   const { asPath } = router;
   // the current path without hash
   const currentPath = asPath.substring(0, asPath.lastIndexOf('#'));
+
   // pass in the headingsList so we can loop and observe each id
+  const headingsList = [];
+
+  // recursively grab all of the ids so we can pass them into useActiveHash
+  const createHeadingList = (headingsArr) => {
+    // loop through the array
+    headingsArr.forEach((heading) => {
+      // if an id exists push it to the list
+      if (heading.id) {
+        headingsList.push(heading.id);
+      }
+      // if that object has some items take advantage of recursion to grab those ids
+      if (heading.items) {
+        createHeadingList(heading.items);
+      }
+    });
+  };
+
+  createHeadingList(headings);
+
   const activeHash = useActiveHash(headingsList);
 
   if (headingsList.length === 0) return null;

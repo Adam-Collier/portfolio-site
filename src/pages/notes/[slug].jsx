@@ -4,6 +4,7 @@ import Text from '../../components/Text';
 import Stack from '../../components/Stack';
 import Sidebar from '../../components/Sidebar';
 import TableOfContents from '../../components/TableOfContents';
+import SharePost from '../../components/SharePost';
 import { renderBlocks } from '../../lib/notion-api-worker-renderer';
 
 const Note = ({ blocks, page }) => {
@@ -27,12 +28,7 @@ const Note = ({ blocks, page }) => {
   });
 
   return (
-    <Page
-      padding
-      // layout={frontmatter.sidebar === false ? 'stack' : 'grid'}
-      layout="grid"
-      areas={{ sm: `"content" "share"` }}
-    >
+    <Page padding layout="grid" areas={{ sm: `"content" "share"` }}>
       <Stack maxWidth="sm" gap={1.45} style={{ gridArea: 'content' }}>
         <Text as="h1" size="2xl" heading>
           {page.properties.Title.title[0].plain_text}
@@ -41,7 +37,7 @@ const Note = ({ blocks, page }) => {
       </Stack>
       <Sidebar top={8}>
         <TableOfContents headings={headings} />
-        {/* <SharePost layout={frontmatter.sidebar === false ? 'fill' : 'fit'} /> */}
+        <SharePost layout="fit" text="Share the notes!" />
       </Sidebar>
     </Page>
   );

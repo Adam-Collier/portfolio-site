@@ -30,8 +30,13 @@ const Blog = ({ allResources }) => {
       </Stack>
       <Search allData={allResources} setState={setResources} name="resources" />
       <Stack gap={0.5}>
-        {resources.map((resource, index) => (
-          <Resource {...resource} key={index} />
+        {resources.map(({ title, description, slug }, index) => (
+          <Resource
+            title={title}
+            description={description}
+            url={`/resources/${slug}`}
+            key={index}
+          />
         ))}
       </Stack>
     </Page>

@@ -9,6 +9,7 @@ import Form from '../components/Form';
 import SEO from '../components/Seo';
 import { getAllContentOfType } from '../lib/blog';
 import { prepareMDX } from '../lib/mdx';
+import { getHeadings } from '../lib/table-of-contents';
 
 import { baseComponents } from '../lib/base-components';
 
@@ -16,6 +17,8 @@ const Snippets = ({ allMDX }) => {
   const router = useRouter();
   // // create a big ol' string of rawMDX for the table of contents
   const allRawMDX = allMDX.map(({ rawMDX }) => rawMDX).join('');
+
+  const { headings } = getHeadings(allRawMDX);
 
   return (
     <Page layout="grid" padding>
@@ -48,7 +51,7 @@ const Snippets = ({ allMDX }) => {
         />
       </Stack>
       <Sidebar>
-        <TableOfContents source={allRawMDX} />
+        <TableOfContents headings={headings} />
       </Sidebar>
     </Page>
   );

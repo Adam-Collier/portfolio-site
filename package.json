@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Adam Collier",
   "dependencies": {
+    "@notionhq/client": "^0.2.4",
     "date-fns": "^2.22.1",
     "gray-matter": "^4.0.3",
     "jotai": "^1.2.0",

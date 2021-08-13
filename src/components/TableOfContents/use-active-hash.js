@@ -17,7 +17,7 @@ export const useActiveHash = (headings, rootMargin = undefined) => {
       }
     );
 
-    headings.forEach(({ id }) => {
+    headings.forEach((id) => {
       observer.observe(document.getElementById(id));
     });
 

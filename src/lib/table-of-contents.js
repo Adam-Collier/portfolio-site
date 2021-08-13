@@ -7,9 +7,6 @@ export const getHeadings = (source) => {
 
   // an array for creating our nested structure
   const headings = [];
-  // a list of headings for our observer
-  // this saves us having to walk the nested structure we make here
-  const headingsList = [];
 
   let baseLevel;
   // Transform the string '## Some text' into an object
@@ -35,9 +32,7 @@ export const getHeadings = (source) => {
     } else {
       headings[headings.length - 1].items.push({ id, title });
     }
-
-    headingsList.push({ id });
   });
 
-  return { headings, headingsList };
+  return { headings };
 };

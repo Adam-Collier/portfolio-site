@@ -20,7 +20,7 @@ const Resource = ({ slug, source, title, frontmatter, quickLinks }) => {
   const { description } = frontmatter;
 
   return (
-    <Page layout="grid" padding>
+    <Page layout="grid" areas={{ sm: `"content" "share"` }} padding>
       <SEO
         title={`${title} - Adam Collier`}
         description={description}

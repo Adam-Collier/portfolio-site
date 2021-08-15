@@ -16,8 +16,16 @@ export function useMediaQuery(query) {
     const media = window.matchMedia(query);
 
     const handler = () => setMatches(!!media.matches);
-    media.addEventListener('change', handler);
-    return () => media.removeEventListener('change', handler);
+    if (media.addEventListener) {
+      media.addEventListener('change', handler);
+    } else {
+      media.addListener(handler);
+    }
+
+    return () =>
+      media.removeEventListener
+        ? media.removeEventListener('change', handler)
+        : media.removeListener(handler);
   }, [query]);
 
   return matches;

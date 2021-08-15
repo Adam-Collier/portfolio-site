@@ -29,7 +29,7 @@ const Note = ({ blocks, page }) => {
 
   return (
     <Page padding layout="grid" areas={{ sm: `"content" "share"` }}>
-      <Stack maxWidth="sm" gap={1.45} style={{ gridArea: 'content' }}>
+      <Stack gap={1.45} style={{ gridArea: 'content' }} maxWidth="sm">
         <Text as="h1" size="2xl" heading>
           {page.properties.Title.title[0].plain_text}
         </Text>

@@ -31,7 +31,7 @@
   color: var(--primary-accent);
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   div.wrapper {
     display: none;
   }

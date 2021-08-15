@@ -20,7 +20,7 @@ const Sidebar = ({ children, top }) => {
     },
   };
 
-  const layout = useMediaQuery('(max-width: 767px)')
+  const layout = useMediaQuery('(max-width: 768px)')
     ? LAYOUT_OPTIONS.fragment
     : LAYOUT_OPTIONS.stack;
 

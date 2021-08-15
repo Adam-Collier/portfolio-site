@@ -35,7 +35,7 @@ const SharePost = ({ text = 'Share this post!', layout }) => {
   };
 
   return (
-    <Stack gap={1.45}>
+    <Stack gap={1.45} style={{ gridArea: 'share' }} maxWidth="sm">
       <Text size="sm">
         If you enjoyed reading this content help spread the word by copying the
         link and sharing it.

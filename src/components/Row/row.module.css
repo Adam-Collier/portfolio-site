@@ -11,6 +11,12 @@
   max-width: var(--max-width);
 }
 
+@media (max-width: 768px) {
+  .row {
+    --max-width: var(--width-sm);
+  }
+}
+
 .padding {
   padding-left: 1rem;
   padding-right: 1rem;

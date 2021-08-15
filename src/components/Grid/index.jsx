@@ -25,7 +25,7 @@ const Grid = ({
         grid-template-areas: var(--areas);
         grid-template-columns: var(--columns);
         grid-gap: var(--gap);
-        @media (max-width: 767px) {
+        @media (max-width: 768px) {
           --areas: ${areas?.sm};
           --columns: 100%;
           --gap: 1.45rem;

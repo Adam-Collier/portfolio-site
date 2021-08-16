@@ -23,43 +23,6 @@
   text-decoration: none;
 }
 
-.blogpost a > div {
-  padding-top: 100%;
-  height: 0;
-}
-
-.blogpost video {
-  width: 100%;
-}
-
-.blogpost img {
-  margin-bottom: 0;
-}
-
-.blogpost small {
-  font-weight: 400;
-  display: block;
-  line-height: 1;
-  margin-bottom: 0.35rem;
-  color: var(--foreground-high);
-}
-
-.blogpost h2 {
-  line-height: 1.3;
-  font-size: 1rem;
-  margin-bottom: 0.35rem;
-}
-
-.blogpost p {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  line-height: 1.5;
-  font-size: 0.875rem;
-  margin-bottom: 0.5rem;
-}
-
 @media (max-width: 767px) {
   .blogpost article {
     grid-template-columns: 112px 1fr;

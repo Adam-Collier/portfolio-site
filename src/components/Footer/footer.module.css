@@ -3,7 +3,7 @@
   grid-area: footer;
   position: relative;
   margin-top: 4rem;
-  padding-top: 1rem;
+  padding: 1.5rem 0;
   width: 100%;
   border-top: 1px solid var(--foreground-min);
   display: grid;

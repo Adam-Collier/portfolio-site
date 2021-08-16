@@ -28,7 +28,7 @@ const Book = ({ data, finished }) => {
       rel="noopener noreferrer"
     >
       <Text>{title}</Text>
-      <Text color="foreground-high" size="sm">
+      <Text weight={400} color="foreground-max" size="sm">
         {creator}
       </Text>
       <div className={s.icon}>

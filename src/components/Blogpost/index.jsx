@@ -25,7 +25,9 @@ const Blogpost = ({ title, publishedOn, slug, description }) => (
             {title}
           </Text>
           <Text size="sm">{description}</Text>
-          <small>{format(parseISO(publishedOn), 'MMMM dd, yyyy')}</small>
+          <Text size="xs" weight={400}>
+            {format(parseISO(publishedOn), 'MMMM dd, yyyy')}
+          </Text>
         </Stack>
       </a>
     </Link>

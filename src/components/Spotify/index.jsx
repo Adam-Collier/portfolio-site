@@ -16,7 +16,7 @@ const Track = ({ artist, url, title, image }) => (
     rel="noopener noreferrer"
   >
     <ArrowUpRight className={s.arrow} size={18} />
-    <Image src={image} width={72} height={72} />
+    <Image src={image} alt={`${artist}: ${title}`} width={72} height={72} />
     <Stack gap={0.25}>
       <Text
         className={s.title}
@@ -27,7 +27,7 @@ const Track = ({ artist, url, title, image }) => (
       >
         {title}
       </Text>
-      <Text weight={450} size="sm" color="foreground-high">
+      <Text weight={400} size="sm" color="foreground-max">
         {artist}
       </Text>
     </Stack>

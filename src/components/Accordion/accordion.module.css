@@ -1,6 +1,7 @@
 .accordion {
   display: flex;
   align-items: center;
+  color: var(--primary-foreground);
 }
 
 .accordion svg {

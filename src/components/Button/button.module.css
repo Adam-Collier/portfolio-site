@@ -1,4 +1,5 @@
 .button {
+  color: var(--primary-foreground);
   border: none;
   border-radius: var(--border-radius);
   padding: 0.7rem 1rem;

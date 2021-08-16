@@ -5,10 +5,14 @@ import Stack from '../../components/Stack';
 import Sidebar from '../../components/Sidebar';
 import TableOfContents from '../../components/TableOfContents';
 import SharePost from '../../components/SharePost';
+import PublishedAndUpdated from '../../components/PublishedAndUpdated';
 import { renderBlocks } from '../../lib/notion-api-worker-renderer';
 
 const Note = ({ blocks, page }) => {
   const headings = [];
+
+  const { last_edited_time: lastEditedTime, properties } = page;
+  const publishedTime = properties.PublishedOn.date.start;
 
   blocks.forEach((block) => {
     if (block.type === 'sub_header') {
@@ -30,6 +34,10 @@ const Note = ({ blocks, page }) => {
   return (
     <Page padding layout="grid" areas={{ sm: `"content" "share"` }}>
       <Stack gap={1.45} style={{ gridArea: 'content' }} maxWidth="sm">
+        <PublishedAndUpdated
+          updatedOn={lastEditedTime}
+          publishedOn={publishedTime}
+        />
         <Text as="h1" size="2xl" heading>
           {page.properties.Title.title[0].plain_text}
         </Text>

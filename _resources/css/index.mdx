@@ -1,7 +1,7 @@
 ---
 title: CSS
 publishedOn: '2020-05-09'
-updatedOn: '2021-07-22T20:26:33.711Z'
+updatedOn: '2021-08-16T14:36:07.852Z'
 description: >-
   Articles on the fundamentals and the newer features coming to CSS. Tools that
   give you confidence in the CSS you write.
@@ -46,59 +46,6 @@ a big fan of this article because it covers a lot of use cases.
 [Everything I Learned About min(), max(), clamp() In CSS](https://ishadeed.com/article/css-min-max-clamp/) - Read - Ahmed has wrote a great post for those wanting to familiarize themselves
 with min(), max() and clamp() CSS functions. I'm excited for this addition to
 the language and it will revolutionize responsive declarations.
-
-## Josh Comeau's CSS in JS
-
-```css
-/* useful width options */
-width: min-content | max-content | fit-content;
-
-/* inherit colours for parent child consistency */
-color: inherit;
-
-/* isolated stacking context (add to the wrapper) */
-isolation: isolate;
-
-/* keep items inline */
-white-space: nowrap;
-
-/* only add styles for mouse/trackpad users */
-@media (hover: hover) and (pointer: fine) {
-  button:hover {
-    text-decoration: underline;
-  }
-}
-```
-
-#### Recommended break points
-
-- 0-550px — Mobile
-- 550-1100px — Tablet
-- 1100-1500px — Laptop
-- 1500+px — Desktop
-
-#### Using Rems instead of pixels for breakpoints
-
-The idea behind this being, as the user increases their default font size the @media scale slides to accomodate those changes. Whereas, with pixels being "static" our layouts would become cramped and unable to adjust, if the user increased their default font size.
-
-```js
-// constants.js
-const BREAKPOINTS = {
-  tabletMin: 550,
-  laptopMin: 1100,
-  desktopMin: 1500,
-}
-
-const QUERIES = {
-  'tabletAndUp': `(min-width: ${BREAKPOINTS.tabletMin / 16}rem)`
-  'laptopAndUp': `(min-width: ${BREAKPOINTS.laptopMin / 16}rem)`
-  'desktopAndUp': `(min-width: ${BREAKPOINTS.desktopMin / 16}rem)`
-}
-```
-
-#### Tools recommended by Josh:
-
-- [CSS Stacking Context Inspector](https://chrome.google.com/webstore/detail/css-stacking-context-insp/apjeljpachdcjkgnamgppgfkmddadcki)
 
 ## Tools
 

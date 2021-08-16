@@ -3,7 +3,7 @@
 import { MDXRemote } from 'next-mdx-remote';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { format, parseISO } from 'date-fns';
+import PublishedAndUpdated from '../../components/PublishedAndUpdated';
 import Stack from '../../components/Stack';
 import Page from '../../components/Page';
 import Text from '../../components/Text';
@@ -80,17 +80,10 @@ const Post = ({ source, title, slug, rawMDX, frontmatter }) => {
       </style>
       <Stack maxWidth="sm" gap={1.45} style={{ gridArea: 'content' }}>
         <Stack gap={0.5}>
-          <Stack gap={0.5} direction="row">
-            <Text size="xs">
-              {format(parseISO(frontmatter.publishedOn), 'MMMM dd, yyyy')}
-            </Text>
-            {frontmatter.updatedOn && (
-              <Text size="xs" color="foreground-high">
-                (Updated:{' '}
-                {format(parseISO(frontmatter.updatedOn), 'MMMM dd, yyyy')})
-              </Text>
-            )}
-          </Stack>
+          <PublishedAndUpdated
+            updatedOn={frontmatter.publishedOn}
+            publishedOn={frontmatter.updatedOn}
+          />
           <Text as="h1" size="2xl" heading>
             {title}
           </Text>

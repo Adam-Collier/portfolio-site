@@ -57,16 +57,6 @@ const Footer = () => (
     <Stack gap={0.5} style={{ gridArea: 'meta' }} align="center">
       <Stack direction="row" justify="center" align="center" gap={1}>
         <GatsbyIcon className={s.gatsbyIcon} />
-<<<<<<< HEAD
-        <p>Built with Gatsby</p>
-        <span>&</span>
-        <VercelIcon className={s.vercelIcon} />
-        <p>Hosted by Vercel</p>
-      </Stack>
-      <small className={s.copyright}>
-        © 2021 Adam Collier. All Rights Reserved.
-      </small>
-=======
         <Text>Built with Gatsby</Text>
         <span>&</span>
         <VercelIcon className={s.vercelIcon} />
@@ -75,7 +65,6 @@ const Footer = () => (
       <Text size="sm" color="foreground-max">
         © 2021 Adam Collier. All Rights Reserved.
       </Text>
->>>>>>> 10259ff6bb23ad2581e8605661d0243b055815c8
     </Stack>
   </Row>
 );

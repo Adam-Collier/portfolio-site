@@ -13,8 +13,6 @@ class MyDocument extends Document {
               src="https://umami-production-7v-m.up.railway.app/umami.js"
             />
           )}
-        </Head>
-        <Head>
           <link
             rel="apple-touch-icon"
             sizes="180x180"

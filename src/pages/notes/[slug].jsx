@@ -14,8 +14,6 @@ const Note = ({ blocks, page }) => {
   const { last_edited_time: lastEditedTime, properties } = page;
   const publishedTime = properties.PublishedOn.date.start;
 
-  console.log(page);
-
   blocks.forEach((block) => {
     if (block.type === 'sub_header') {
       const title = block.properties.title[0][0];

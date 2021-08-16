@@ -6,6 +6,7 @@ import Sidebar from '../../components/Sidebar';
 import TableOfContents from '../../components/TableOfContents';
 import SharePost from '../../components/SharePost';
 import PublishedAndUpdated from '../../components/PublishedAndUpdated';
+import SEO from '../../components/Seo';
 import { renderBlocks } from '../../lib/notion-api-worker-renderer';
 
 const Note = ({ blocks, page }) => {
@@ -13,26 +14,34 @@ const Note = ({ blocks, page }) => {
 
   const { last_edited_time: lastEditedTime, properties } = page;
   const publishedTime = properties.PublishedOn.date.start;
+  const title = properties.Title.title[0].plain_text;
+  const description = properties.Description.rich_text[0].plain_text;
+  const slug = title.toLowerCase().replace(/ /g, '-');
 
   blocks.forEach((block) => {
     if (block.type === 'sub_header') {
-      const title = block.properties.title[0][0];
-      const id = title.toLowerCase().replace(/ /g, '-');
-      headings.push({ id, title, items: [] });
+      const subHeaderTitle = block.properties.title[0][0];
+      const id = subHeaderTitle.toLowerCase().replace(/ /g, '-');
+      headings.push({ id, title: subHeaderTitle, items: [] });
     }
 
     if (block.type === 'sub_sub_header') {
-      const title = block.properties.title[0][0];
-      const id = title.toLowerCase().replace(/ /g, '-');
+      const subSubHeaderTitle = block.properties.title[0][0];
+      const id = subSubHeaderTitle.toLowerCase().replace(/ /g, '-');
       headings[headings.length - 1].items.push({
         id,
-        title,
+        title: subSubHeaderTitle,
       });
     }
   });
 
   return (
     <Page padding layout="grid" areas={{ sm: `"content" "share"` }}>
+      <SEO
+        title={`${title} Notes - Adam Collier`}
+        description={description}
+        pathname={`/notes/${slug}`}
+      />
       <Stack gap={1.45} style={{ gridArea: 'content' }} maxWidth="sm">
         <PublishedAndUpdated
           updatedOn={lastEditedTime}

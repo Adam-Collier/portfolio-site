@@ -8,10 +8,10 @@ import { format, parseISO } from 'date-fns';
 import Text from '../Text';
 import Stack from '../Stack';
 
-import styles from './blogpost.module.css';
+import s from './blogpost.module.css';
 
 const Blogpost = ({ title, publishedOn, slug, description }) => (
-  <article className={styles.blogpost} key={slug}>
+  <article className={s.blogpost} key={slug}>
     <Link href={`/blog/${slug}`} aria-label={`blog post: ${title}`}>
       <a>
         <Image
@@ -24,7 +24,9 @@ const Blogpost = ({ title, publishedOn, slug, description }) => (
           <Text as="h2" size="md" heading>
             {title}
           </Text>
-          <Text size="sm">{description}</Text>
+          <Text size="sm" truncate={2}>
+            {description}
+          </Text>
           <Text size="xs" weight={400}>
             {format(parseISO(publishedOn), 'MMMM dd, yyyy')}
           </Text>

@@ -78,7 +78,7 @@ const IndexPage = ({ posts, tracks, readng, letterboxd }) => (
     <Stack gap={1.45}>
       <Text>
         Struggling for what film to watch next? Below is my latest five and you
-        can find more on my
+        can find more on my{' '}
         <Link href="https://letterboxd.com/mistapolnareff/">
           <a>Letterboxd</a>
         </Link>

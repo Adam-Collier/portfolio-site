@@ -8,6 +8,6 @@ module.exports = {
     return config;
   },
   images: {
-    domains: ['i.scdn.co'],
+    domains: ['i.scdn.co', 'a.ltrbxd.com'],
   },
 };

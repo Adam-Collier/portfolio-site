@@ -7,13 +7,15 @@ import Blogpost from '../components/Blogpost';
 import { getAllContentOfType } from '../lib/blog';
 import { getTopTracks } from '../lib/spotify';
 import { getReadngContent } from '../lib/readng';
+import { getLatestFilms } from '../lib/letterboxd';
 
 import Page from '../components/Page';
 import SEO from '../components/Seo';
 import Spotify from '../components/Spotify';
 import Readng from '../components/Readng';
+import Letterboxd from '../components/Letterboxd';
 
-const IndexPage = ({ posts, tracks, readng }) => (
+const IndexPage = ({ posts, tracks, readng, letterboxd }) => (
   <Page gap={2.5} paddingTop={8} padding>
     <SEO
       title="Adam Collier"
@@ -73,6 +75,17 @@ const IndexPage = ({ posts, tracks, readng }) => (
       </Text>
       <Readng data={readng} />
     </Stack>
+    <Stack gap={1.45}>
+      <Text>
+        Struggling to find a film to watch? Here are the last five I have logged
+        or find more on{' '}
+        <Link href="https://letterboxd.com/mistapolnareff/">
+          <a>Letterboxd</a>
+        </Link>
+        .
+      </Text>
+      <Letterboxd data={letterboxd} />
+    </Stack>
   </Page>
 );
 
@@ -84,6 +97,7 @@ export async function getStaticProps() {
   );
 
   const readng = await getReadngContent();
+  const letterboxd = await getLatestFilms();
 
   // get the spotify tracks
   const response = await getTopTracks();
@@ -96,7 +110,7 @@ export async function getStaticProps() {
     image: track.album.images[0].url,
   }));
 
-  return { props: { posts, tracks, readng }, revalidate: 60 };
+  return { props: { posts, tracks, readng, letterboxd }, revalidate: 60 };
 }
 
 export default IndexPage;

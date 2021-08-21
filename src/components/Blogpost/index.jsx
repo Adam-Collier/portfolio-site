@@ -10,12 +10,15 @@ import Stack from '../Stack';
 
 import s from './blogpost.module.css';
 
-const Blogpost = ({ title, publishedOn, slug, description }) => (
+const Blogpost = ({ title, publishedOn, slug, description, thumbnail }) => (
   <article className={s.blogpost} key={slug}>
     <Link href={`/blog/${slug}`} aria-label={`blog post: ${title}`}>
       <a>
         <Image
-          src={require(`/_posts/${slug}/thumbnail.jpg`).default.src}
+          // Add this conditional here until we move over to Notion
+          src={
+            thumbnail || require(`/_posts/${slug}/thumbnail.jpg`).default.src
+          }
           alt={title}
           width={114}
           height={114}

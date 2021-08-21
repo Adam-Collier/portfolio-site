@@ -2,7 +2,6 @@
   padding: 0.5rem;
   text-decoration: none;
   flex: 0 1 130px;
-  scroll-snap-align: start end;
 }
 
 .film:hover {
@@ -16,14 +15,17 @@
 
 @media (max-width: 550px) {
   .film {
-    flex-shrink: 0;
+    flex: 0 0 30vw;
+  }
+
+  .letterboxd {
+    margin-left: -1rem;
+    margin-right: -1rem;
+    width: 100vw;
   }
 
   .wrapper {
-    margin-left: -1rem;
-    margin-right: -1rem;
-    padding: 0 0.5rem;
-    width: 100vw;
+    padding: 0 1rem;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     /* Firefox */

@@ -4,7 +4,6 @@ import Text from '../components/Text';
 import Stack from '../components/Stack';
 import Blogpost from '../components/Blogpost';
 
-import { getAllContentOfType } from '../lib/blog';
 import { getTopTracks } from '../lib/spotify';
 import { getReadngContent } from '../lib/readng';
 import { getLatestFilms } from '../lib/letterboxd';
@@ -14,6 +13,8 @@ import SEO from '../components/Seo';
 import Spotify from '../components/Spotify';
 import Readng from '../components/Readng';
 import Letterboxd from '../components/Letterboxd';
+
+import { toSlug } from '../utils/to-slug';
 
 const IndexPage = ({ posts, tracks, readng, letterboxd }) => (
   <Page gap={2.5} paddingTop={8} padding>
@@ -90,11 +91,24 @@ const IndexPage = ({ posts, tracks, readng, letterboxd }) => (
 );
 
 export async function getStaticProps() {
-  const posts = await getAllContentOfType(
-    '_posts',
-    ['title', 'publishedOn', 'slug', 'description'],
-    { limit: 4 }
-  );
+  const postsResponse = await fetch(
+    `https://notion-api.splitbee.io/v1/table/${process.env.NOTION_POSTS_ID}`
+  ).then((res) => res.json());
+
+  // only grab the first 4 posts
+  // they should be pre sorted by date in Notion
+  const posts = postsResponse.slice(0, 4).flatMap((post) => {
+    // dont include any incomplete blog posts;
+    if (post.Status !== 'Completed') return [];
+
+    return {
+      title: post.Title,
+      thumbnail: post.Thumbnail[0]?.url,
+      slug: toSlug(post.Title),
+      description: post.Description,
+      publishedOn: post.PublishedOn,
+    };
+  });
 
   const readng = await getReadngContent();
   const letterboxd = await getLatestFilms();

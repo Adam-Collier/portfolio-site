@@ -1,0 +1,16 @@
+.note {
+  text-decoration: none;
+  color: var(--primary-foreground);
+  position: relative;
+  cursor: pointer;
+  display: block;
+  padding: 1rem;
+}
+
+.note svg {
+  margin-right: 0.5rem;
+}
+
+.note:hover {
+  background: var(--foreground-min);
+}

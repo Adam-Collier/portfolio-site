@@ -1,4 +1,3 @@
-import { Divide } from 'react-feather';
 import Text from '../components/Text';
 import CodeBlock from '../components/CodeBlock';
 import ListItem from '../components/ListItem';
@@ -104,12 +103,12 @@ export const renderBlocks = (value, index) => {
         description.unshift([restOfText]);
 
         return (
-          <div className="resource">
+          <div className="resource" key={index}>
             <div>
-              <NotionText key={index} as="p" text={[title]} />
+              <NotionText as="p" text={[title]} />
               <p>{resourceType}</p>
             </div>
-            <NotionText key={index} as="p" text={description} />
+            <NotionText as="p" text={description} />
           </div>
         );
       }

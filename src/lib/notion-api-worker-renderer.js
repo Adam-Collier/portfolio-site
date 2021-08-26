@@ -1,6 +1,8 @@
+import { Divide } from 'react-feather';
 import Text from '../components/Text';
 import CodeBlock from '../components/CodeBlock';
 import ListItem from '../components/ListItem';
+import { toSlug } from '../utils/to-slug';
 
 export const NotionText = ({ text, as = 'p', heading, size }) => {
   if (!text) {
@@ -9,7 +11,7 @@ export const NotionText = ({ text, as = 'p', heading, size }) => {
 
   return (
     <Text
-      id={heading ? text[0][0].toLowerCase().replace(/ /g, '-') : ''}
+      id={heading ? toSlug(text[0][0]) : ''}
       as={as}
       heading={heading}
       size={size}
@@ -89,6 +91,29 @@ export const renderBlocks = (value, index) => {
       if (!value.properties) {
         return;
       }
+
+      if (properties.title[1] && properties.title[1][0].startsWith(' - ')) {
+        const [title, textWithType, ...description] = properties.title;
+
+        // get the type, all other text in the string is stored in restOfText
+        const [resourceType, ...restOfText] = textWithType[0]
+          .split(' - ')
+          .filter(Boolean);
+
+        // the resource may have more text inc links and other elements so we prepend restOfText
+        description.unshift([restOfText]);
+
+        return (
+          <div className="resource">
+            <div>
+              <NotionText key={index} as="p" text={[title]} />
+              <p>{resourceType}</p>
+            </div>
+            <NotionText key={index} as="p" text={description} />
+          </div>
+        );
+      }
+
       return <NotionText key={index} as="p" text={properties.title} />;
 
     // we need to use parens here to keep the lexical scope

@@ -1,4 +1,3 @@
-import { MDXRemote } from 'next-mdx-remote';
 import Link from 'next/link';
 import { Link as LinkIcon } from 'react-feather';
 import Text from '../../components/Text';
@@ -8,16 +7,18 @@ import Form from '../../components/Form';
 import Sidebar from '../../components/Sidebar/index.jsx';
 import SharePost from '../../components/SharePost';
 import SEO from '../../components/Seo';
-import { getAllContentOfType } from '../../lib/blog';
-import { prepareMDX } from '../../lib/mdx';
-import { baseComponents } from '../../lib/base-components';
-import { toTitleCase } from '../../utils/to-title-case';
+
+import { getBlockMap } from '../../lib/get-block-map';
+import { toSlug } from '../../utils/to-slug';
 
 import s from './resource.module.css';
 import { resource } from '../../styles/global';
+import { renderBlocks } from '../../lib/notion-api-worker-renderer';
 
-const Resource = ({ slug, source, title, frontmatter, quickLinks }) => {
-  const { description } = frontmatter;
+const Resource = ({ blocks, page, quickLinks }) => {
+  const { Description: description, Title: title } = page;
+
+  const slug = toSlug(title);
 
   return (
     <Page layout="grid" areas={{ sm: `"content" "share"` }} padding>
@@ -33,7 +34,7 @@ const Resource = ({ slug, source, title, frontmatter, quickLinks }) => {
         <Text as="h1" size="2xl" heading>
           {title}
         </Text>
-        <MDXRemote {...source} components={baseComponents} />
+        {blocks.map((block, index) => renderBlocks(block, index))}
         <Form
           title={title}
           text="Do you know a resource that could benefit another reader and is relevent for this page? Let me know by leaving a short message below and I will take a look!"
@@ -66,35 +67,41 @@ export default Resource;
 
 export async function getStaticProps({ params }) {
   const { slug } = params;
-  const mdx = await prepareMDX(slug, '_resources');
-  const allResourceSlugs = await getAllContentOfType('_resources', ['slug']);
 
-  const quickLinks = allResourceSlugs.map((resourceSlug) => ({
-    slug: resourceSlug.slug,
-    title: toTitleCase(resourceSlug.slug),
+  const { blocks, page, table } = await getBlockMap(
+    process.env.NOTION_RESOURCES_ID,
+    slug
+  );
+
+  const quickLinks = table.map((row) => ({
+    slug: toSlug(row.Title),
+    title: row.Title,
   }));
-
-  const title = toTitleCase(slug);
 
   return {
     props: {
-      slug,
-      ...mdx,
-      title,
+      blocks,
+      page,
       quickLinks,
     },
+    revalidate: 1,
   };
 }
 
 export async function getStaticPaths() {
-  const allResources = await getAllContentOfType('_resources', ['slug']);
+  const response = await fetch(
+    `https://notion-api.splitbee.io/v1/table/${process.env.NOTION_RESOURCES_ID}`
+  ).then((res) => res.json());
 
   return {
-    paths: allResources.map(({ slug }) => ({
-      params: {
-        slug,
-      },
-    })),
+    paths: response.map((post) => {
+      const { Title } = post;
+      return {
+        params: {
+          slug: toSlug(Title),
+        },
+      };
+    }),
     fallback: false,
   };
 }

@@ -101,12 +101,14 @@ export async function getStaticProps() {
     // dont include any incomplete blog posts;
     if (post.Status !== 'Completed') return [];
 
+    const { Title, Thumbnail, Description, PublishedOn } = post;
+
     return {
-      title: post.Title,
-      thumbnail: post.Thumbnail[0]?.url,
-      slug: toSlug(post.Title),
-      description: post.Description,
-      publishedOn: post.PublishedOn,
+      title: Title,
+      thumbnail: Thumbnail[0]?.url,
+      slug: toSlug(Title),
+      description: Description,
+      publishedOn: PublishedOn,
     };
   });
 

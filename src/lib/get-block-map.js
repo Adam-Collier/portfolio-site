@@ -18,7 +18,9 @@ export const getBlockMap = async (id, slug) => {
   ).then((res) => res.json());
 
   // response needs to be turned into an array
-  const [{ value }, ...pageBlocks] = Object.values(blocksResponse);
+  const [, pageMeta, ...pageBlocks] = Object.values(blocksResponse);
+
+  const { value } = pageMeta;
 
   const { last_edited_time: lastEditedTime } = value;
   // convert from milliseconds to ISO and assign to the currentPage object

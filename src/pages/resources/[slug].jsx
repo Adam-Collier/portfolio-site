@@ -84,6 +84,7 @@ export async function getStaticProps({ params }) {
       page,
       quickLinks,
     },
+    revalidate: 1,
   };
 }
 

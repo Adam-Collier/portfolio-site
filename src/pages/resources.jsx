@@ -6,7 +6,8 @@ import Page from '../components/Page';
 import Stack from '../components/Stack';
 import Search from '../components/Search';
 import SEO from '../components/Seo';
-import { getAllContentOfType } from '../lib/blog';
+
+import { toSlug } from '../utils/to-slug';
 
 const Blog = ({ allResources }) => {
   const router = useRouter();
@@ -46,12 +47,19 @@ const Blog = ({ allResources }) => {
 export default Blog;
 
 export async function getStaticProps() {
-  const allResources = await getAllContentOfType('_resources', [
-    'title',
-    'slug',
-    'description',
-    'content',
-  ]);
+  const response = await fetch(
+    `https://notion-api.splitbee.io/v1/table/${process.env.NOTION_RESOURCES_ID}`
+  ).then((res) => res.json());
+
+  const allResources = response.map((post) => {
+    const { Title, Description } = post;
+
+    return {
+      title: Title,
+      slug: toSlug(Title),
+      description: Description,
+    };
+  });
 
   return { props: { allResources } };
 }

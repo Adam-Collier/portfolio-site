@@ -46,7 +46,7 @@ export const getBlockMap = async (id, slug) => {
         });
       } else {
         // otherwise add to the last group
-        arr[arr.length - 1].value.properties.push(block);
+        arr[arr.length - 1].value.properties.push(value);
       }
       return arr;
     }

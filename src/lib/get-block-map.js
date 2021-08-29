@@ -20,29 +20,33 @@ export const getBlockMap = async (id, slug) => {
   // response needs to be turned into an array
   const [, pageMeta, ...pageBlocks] = Object.values(blocksResponse);
 
-  const { value } = pageMeta;
+  const { value: timeValue } = pageMeta;
 
-  const { last_edited_time: lastEditedTime } = value;
+  const { last_edited_time: lastEditedTime } = timeValue;
   // convert from milliseconds to ISO and assign to the currentPage object
   currentPage.lastEditedTime = new Date(lastEditedTime).toISOString();
 
   // group ordered lists and unordered list in their own group type
-  const blocks = pageBlocks.reduce((arr, { value: block }) => {
+  const blocks = pageBlocks.reduce((arr, block) => {
+    const { value } = block;
     const listTypes = ['bulleted_list', 'numbered_list'];
     // check if block type is bullet or numbered
-    if (listTypes.includes(block.type)) {
+    if (listTypes.includes(value.type)) {
       // create bullet/numbered_list_group type
-      const groupType = `${block.type}_group`;
+      const groupType = `${value.type}_group`;
       // if a group doesnt exist, add one
-      if (arr.length === 0 || arr[arr.length - 1].type !== groupType) {
+      if (arr.length === 0 || arr[arr.length - 1].value.type !== groupType) {
         // create the group and add the group
         arr.push({
-          type: groupType,
-          properties: [{ ...block }],
+          ...block,
+          value: {
+            type: groupType,
+            properties: [{ ...value }],
+          },
         });
       } else {
         // otherwise add to the last group
-        arr[arr.length - 1].properties.push(block);
+        arr[arr.length - 1].value.properties.push(block);
       }
       return arr;
     }

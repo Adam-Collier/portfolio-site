@@ -1,4 +1,7 @@
+// disable camel case here because notion-api-worker identifiers are snake case
+/* eslint-disable camelcase */
 import Text from '../components/Text';
+import Stack from '../components/Stack';
 import CodeBlock from '../components/CodeBlock';
 import ListItem from '../components/ListItem';
 import { toSlug } from '../utils/to-slug';
@@ -49,7 +52,8 @@ export const NotionText = ({ text, as = 'p', heading, size }) => {
   );
 };
 
-export const renderBlocks = (value, index) => {
+export const renderBlocks = (block, index) => {
+  const { value } = block;
   const { properties, type } = value;
 
   switch (type) {
@@ -148,6 +152,56 @@ export const renderBlocks = (value, index) => {
           ))}
         </ol>
       );
+
+    case 'collection_view': {
+      if (!value) return null;
+
+      const collectionView = block?.collection?.types[0];
+
+      return (
+        <Stack gap={1.45} key={index}>
+          <NotionText
+            as="h2"
+            size="xl"
+            text={block.collection?.title}
+            heading
+          />
+          {collectionView?.type === 'table' && (
+            <table>
+              <thead>
+                <tr>
+                  {collectionView.format?.table_properties
+                    ?.filter((p) => p.visible)
+                    .map((gp, i) => (
+                      <th key={i}>
+                        {block.collection?.schema[gp.property]?.name}
+                      </th>
+                    ))}
+                </tr>
+              </thead>
+
+              <tbody>
+                {block?.collection?.data.map((row, i) => (
+                  <tr key={i}>
+                    {collectionView.format?.table_properties
+                      ?.filter((p) => p.visible)
+                      .map((gp, ind) => (
+                        <td key={ind}>
+                          <NotionText
+                            text={
+                              row[block.collection?.schema[gp.property]?.name]
+                            }
+                          />
+                        </td>
+                      ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </Stack>
+      );
+    }
 
     default:
       console.log(type, 'is not supported');

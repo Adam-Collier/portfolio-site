@@ -3,7 +3,8 @@
 import Text from '../components/Text';
 import Stack from '../components/Stack';
 import CodeBlock from '../components/CodeBlock';
-import ListItem from '../components/ListItem';
+import { BulletedListItem, NumberedListItem } from '../components/ListItem';
+import { Track } from '../components/Spotify';
 import { toSlug } from '../utils/to-slug';
 
 export const NotionText = ({ text, as = 'p', heading, size }) => {
@@ -135,9 +136,9 @@ export const renderBlocks = (block, index) => {
       return (
         <ul key={index}>
           {properties.map((item, i) => (
-            <ListItem key={i}>
+            <BulletedListItem key={i}>
               <NotionText text={item.properties.title} />
-            </ListItem>
+            </BulletedListItem>
           ))}
         </ul>
       );
@@ -201,6 +202,49 @@ export const renderBlocks = (block, index) => {
           )}
         </Stack>
       );
+    }
+
+    case 'bookmark': {
+      const { link } = value.properties;
+      const title = value.properties.title ?? link;
+      const { description } = value.properties;
+      const cover = value.format?.bookmark_cover;
+
+      const [intro, , year, songs] = description[0][0].split(' · ');
+      const [, artist] = intro.split('. ');
+      const text = `${artist} · ${year} · ${songs.slice(0, -1)}`;
+
+      return <Track url={link} image={cover} artist={text} title={title} />;
+    }
+
+    case 'bookmark_group': {
+      return value.properties.map((item, i) => {
+        const { link } = item.properties;
+        const title = item.properties.title ?? link;
+        const { description } = item.properties;
+        const cover = item.format?.bookmark_cover;
+
+        let text;
+
+        if (link[0][0].includes('https://open.spotify.com/playlist')) {
+          const descriptionText = description[0][0];
+          text = descriptionText;
+        } else {
+          const [intro, , year, songs] = description[0][0].split(' · ');
+          const [, artist] = intro.split('. ');
+          text = `${artist} · ${year} · ${songs.slice(0, -1)}`;
+        }
+
+        return (
+          <Track
+            key={index}
+            url={link}
+            image={cover}
+            artist={text}
+            title={title}
+          />
+        );
+      });
     }
 
     default:

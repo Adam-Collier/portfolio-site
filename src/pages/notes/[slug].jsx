@@ -17,14 +17,24 @@ import { getHeadings } from '../../lib/get-headings';
 const Note = ({ blocks, page }) => {
   const headings = getHeadings(blocks);
 
-  const { lastEditedTime, PublishedOn, Title, Description } = page;
+  const {
+    lastEditedTime,
+    PublishedOn,
+    Title,
+    Description,
+    Sidebar: sidebar,
+  } = page;
   const publishedTime = PublishedOn;
   const title = Title;
   const description = Description;
   const slug = toSlug(Title);
 
   return (
-    <Page padding layout="grid" areas={{ sm: `"content" "share"` }}>
+    <Page
+      padding
+      layout={sidebar ? 'grid' : 'stack'}
+      areas={{ sm: `"content" "share"` }}
+    >
       <SEO
         title={`${title} Notes - Adam Collier`}
         description={description}
@@ -42,7 +52,7 @@ const Note = ({ blocks, page }) => {
       </Stack>
       <Sidebar top={8}>
         <TableOfContents headings={headings} />
-        <SharePost layout="fit" text="Share the notes!" />
+        <SharePost layout="fit" text="Share this note!" />
       </Sidebar>
     </Page>
   );

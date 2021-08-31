@@ -29,7 +29,7 @@ export const getBlockMap = async (id, slug) => {
   // group ordered lists and unordered list in their own group type
   const blocks = pageBlocks.reduce((arr, block) => {
     const { value } = block;
-    const listTypes = ['bulleted_list', 'numbered_list'];
+    const listTypes = ['bulleted_list', 'numbered_list', 'bookmark'];
     // check if block type is bullet or numbered
     if (listTypes.includes(value.type)) {
       // create bullet/numbered_list_group type

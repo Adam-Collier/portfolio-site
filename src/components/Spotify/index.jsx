@@ -1,13 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
-// import useSWR from 'swr';
 import { ArrowUpRight } from 'react-feather';
-// import fetcher from '../../lib/fetcher';/
 import s from './track.module.css';
 import Stack from '../Stack';
 import Text from '../Text';
 
-const Track = ({ artist, url, title, image }) => (
+export const Track = ({ artist, url, title, image }) => (
   <a
     className={s.track}
     key={url}
@@ -27,7 +25,7 @@ const Track = ({ artist, url, title, image }) => (
       >
         {title}
       </Text>
-      <Text weight={400} size="sm" color="foreground-max">
+      <Text weight={400} size="sm" color="foreground-max" truncate={2}>
         {artist}
       </Text>
     </Stack>

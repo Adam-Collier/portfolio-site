@@ -227,8 +227,9 @@ export const renderBlocks = (block, index) => {
         let text;
 
         if (link[0][0].includes('https://open.spotify.com/playlist')) {
-          const descriptionText = description[0][0];
-          text = descriptionText;
+          const descriptionText = description[0][0].split(': ')[1];
+          const withoutCoverText = descriptionText.split('Cover')[0];
+          text = withoutCoverText;
         } else {
           const [intro, , year, songs] = description[0][0].split(' · ');
           const [, artist] = intro.split('. ');

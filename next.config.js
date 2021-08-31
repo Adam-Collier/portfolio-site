@@ -8,6 +8,6 @@ module.exports = {
     return config;
   },
   images: {
-    domains: ['i.scdn.co', 'a.ltrbxd.com', 'www.notion.so'],
+    domains: ['i.scdn.co', 'a.ltrbxd.com', 'www.notion.so', 'mosaic.scdn.co'],
   },
 };

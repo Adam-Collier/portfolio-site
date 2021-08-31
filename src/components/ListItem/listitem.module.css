@@ -3,7 +3,7 @@
   position: relative;
 }
 
-.listItem svg {
+.marker {
   position: absolute;
   left: -20px;
   top: 6px;

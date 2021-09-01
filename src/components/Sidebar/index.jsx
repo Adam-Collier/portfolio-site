@@ -2,6 +2,7 @@ import { Fragment } from 'react';
 import Stack from '../Stack';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import s from './sidebar.module.css';
+import BuyCoffee from '../BuyCoffee';
 
 const Sidebar = ({ children, top }) => {
   const LAYOUT_OPTIONS = {
@@ -26,7 +27,11 @@ const Sidebar = ({ children, top }) => {
 
   const { component: Layout, props } = layout;
 
-  return <Layout {...props}>{children}</Layout>;
+  return (
+    <Layout {...props}>
+      {children} <BuyCoffee />
+    </Layout>
+  );
 };
 
 export default Sidebar;

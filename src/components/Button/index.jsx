@@ -6,18 +6,13 @@ import Text from '../Text';
 import s from './button.module.css';
 
 // for external links we should render an a tag
-const ConditionalLink = ({ link, children }) =>
+const ConditionalLink = ({ link, className, children }) =>
   link.includes('https://') ? (
-    <a
-      href={link}
-      className={s.link}
-      target="__blank"
-      rel="noopener noreferrer"
-    >
+    <a href={link} className={`${s.link} ${className}`}>
       {children}
     </a>
   ) : (
-    <Link href={link} className={s.link}>
+    <Link href={link} className={`${s.link} ${className}`}>
       <a>{children}</a>
     </Link>
   );

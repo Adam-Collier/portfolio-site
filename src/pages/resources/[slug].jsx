@@ -5,7 +5,6 @@ import Page from '../../components/Page';
 import Stack from '../../components/Stack';
 import Form from '../../components/Form';
 import Sidebar from '../../components/Sidebar/index.jsx';
-import SharePost from '../../components/SharePost';
 import SEO from '../../components/Seo';
 
 import { getBlockMap } from '../../lib/get-block-map';
@@ -21,7 +20,7 @@ const Resource = ({ blocks, page, quickLinks }) => {
   const slug = toSlug(title);
 
   return (
-    <Page layout="grid" areas={{ sm: `"content" "share"` }} padding>
+    <Page layout="grid" areas={{ sm: `"content" "coffee"` }} padding>
       <SEO
         title={`${title} - Adam Collier`}
         description={description}
@@ -57,7 +56,6 @@ const Resource = ({ blocks, page, quickLinks }) => {
             ))}
           </ul>
         </Stack>
-        <SharePost text="Share this resource!" />
       </Sidebar>
     </Page>
   );

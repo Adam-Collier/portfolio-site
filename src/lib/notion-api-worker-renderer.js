@@ -147,9 +147,9 @@ export const renderBlocks = (block, index) => {
       return (
         <ol key={index}>
           {properties.map((item, i) => (
-            <li key={i}>
+            <NumberedListItem key={i} index={i + 1}>
               <NotionText text={item.properties.title} />
-            </li>
+            </NumberedListItem>
           ))}
         </ol>
       );
@@ -218,7 +218,7 @@ export const renderBlocks = (block, index) => {
     }
 
     case 'bookmark_group': {
-      return value.properties.map((item, i) => {
+      return value.properties.map((item) => {
         const { link } = item.properties;
         const title = item.properties.title ?? link;
         const { description } = item.properties;

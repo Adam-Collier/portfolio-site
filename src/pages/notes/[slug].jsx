@@ -5,7 +5,6 @@ import Text from '../../components/Text';
 import Stack from '../../components/Stack';
 import Sidebar from '../../components/Sidebar';
 import TableOfContents from '../../components/TableOfContents';
-import SharePost from '../../components/SharePost';
 import PublishedAndUpdated from '../../components/PublishedAndUpdated';
 import SEO from '../../components/Seo';
 
@@ -33,7 +32,7 @@ const Note = ({ blocks, page }) => {
     <Page
       padding
       layout={sidebar ? 'grid' : 'stack'}
-      areas={{ sm: `"content" "share"` }}
+      areas={{ sm: `"content" "coffee"` }}
     >
       <SEO
         title={`${title} Notes - Adam Collier`}
@@ -52,7 +51,6 @@ const Note = ({ blocks, page }) => {
       </Stack>
       <Sidebar top={8}>
         <TableOfContents headings={headings} />
-        <SharePost layout="fit" text="Share this note!" />
       </Sidebar>
     </Page>
   );

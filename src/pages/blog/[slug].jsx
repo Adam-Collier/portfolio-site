@@ -10,7 +10,6 @@ import Text from '../../components/Text';
 import Form from '../../components/Form';
 import Sidebar from '../../components/Sidebar/index.jsx';
 import TableOfContents from '../../components/TableOfContents';
-import SharePost from '../../components/SharePost';
 import SEO from '../../components/Seo';
 import { prepareMDX } from '../../lib/mdx';
 import { baseComponents } from '../../lib/base-components';
@@ -67,7 +66,7 @@ const Post = ({ source, title, slug, rawMDX, frontmatter }) => {
     <Page
       padding
       layout={frontmatter.sidebar === false ? 'stack' : 'grid'}
-      areas={{ sm: `"content" "share"` }}
+      areas={{ sm: `"content" "coffee"` }}
     >
       <SEO
         title={`${title} - Adam Collier`}
@@ -101,7 +100,6 @@ const Post = ({ source, title, slug, rawMDX, frontmatter }) => {
       </Stack>
       <Sidebar top={8}>
         <TableOfContents headings={headings} />
-        <SharePost layout={frontmatter.sidebar === false ? 'fill' : 'fit'} />
       </Sidebar>
     </Page>
   );

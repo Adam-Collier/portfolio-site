@@ -20,7 +20,7 @@ const IndexPage = ({ posts, tracks, readng, letterboxd }) => (
   <Page gap={2.5} paddingTop={8} padding>
     <SEO
       title="Adam Collier"
-      description="Creative UX Designer Developer from Manchester, UK. Creating content to come back to. Discover useful snippets, resources and blogposts."
+      description="Adam Collier is a Creative UX Designer Developer from Manchester, UK. Creating content to come back to. Discover useful snippets, resources and blogposts."
       pathname="/"
     />
     <Stack gap={1.45}>

@@ -95,12 +95,12 @@ export async function getStaticProps() {
     `https://notion-api.splitbee.io/v1/table/${process.env.NOTION_POSTS_ID}`
   ).then((res) => res.json());
 
-  // only grab the first 4 posts
-  // they should be pre sorted by date in Notion
-  const posts = postsResponse.slice(0, 4).flatMap((post) => {
-    // dont include any incomplete blog posts;
-    if (post.Status !== 'Completed') return [];
+  const sortedPostsResponse = postsResponse
+    .filter((post) => post.PublishedOn)
+    .sort((a, b) => new Date(b.PublishedOn) - new Date(a.PublishedOn));
 
+  // only grab the first 4 posts
+  const posts = sortedPostsResponse.slice(0, 4).flatMap((post) => {
     const { Title, Thumbnail, Description, PublishedOn } = post;
 
     return {
@@ -126,7 +126,7 @@ export async function getStaticProps() {
     image: track.album.images[0].url,
   }));
 
-  return { props: { posts, tracks, readng, letterboxd }, revalidate: 60 };
+  return { props: { posts, tracks, readng, letterboxd }, revalidate: 1 };
 }
 
 export default IndexPage;

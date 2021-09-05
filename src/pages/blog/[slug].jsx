@@ -80,8 +80,8 @@ const Post = ({ source, title, slug, rawMDX, frontmatter }) => {
       <Stack maxWidth="sm" gap={1.45} style={{ gridArea: 'content' }}>
         <Stack gap={0.5}>
           <PublishedAndUpdated
-            updatedOn={frontmatter.publishedOn}
-            publishedOn={frontmatter.updatedOn}
+            updatedOn={frontmatter.updatedOn}
+            publishedOn={frontmatter.publishedOn}
           />
           <Text as="h1" size="2xl" heading>
             {title}

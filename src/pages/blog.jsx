@@ -19,11 +19,8 @@ const Blog = ({ posts }) => {
         Blog
       </Text>
       <Text>
-        This is my attempt at writing blog things. Writing isn't one of my
-        strengths so bear with my poor sentence structures and inevitable typos.
-        However, I'll always try my best! (queue anime hero montage) I'll mostly
-        write content relating to the projects/side projects I'm working on and
-        no doubt there will be some random ones in there too.
+        Writing content leaning towards but not limited to development and
+        design. A space to learn, rethink ideas and discover something new.
       </Text>
       {posts.map((post, index) => (
         <Blogpost {...post} key={index} />

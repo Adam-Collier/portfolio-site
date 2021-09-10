@@ -1,8 +1,10 @@
 // disable camel case here because notion-api-worker identifiers are snake case
 /* eslint-disable camelcase */
+import Image from 'next/image';
 import Text from '../components/Text';
 import Stack from '../components/Stack';
 import CodeBlock from '../components/CodeBlock';
+import Callout from '../components/Callout';
 import { BulletedListItem, NumberedListItem } from '../components/ListItem';
 import { Track } from '../components/Spotify';
 import { toSlug } from '../utils/to-slug';
@@ -123,7 +125,11 @@ export const renderBlocks = (block, index) => {
     // we need to use parens here to keep the lexical scope
     case 'code': {
       const content = properties.title[0][0];
-      const language = properties.language[0][0].toLowerCase();
+      const defaultLanguage = 'jsx';
+      const editorLanguage = properties.language[0][0].toLowerCase();
+
+      const language =
+        editorLanguage === 'plain text' ? defaultLanguage : editorLanguage;
 
       return (
         <CodeBlock className={language} key={index}>
@@ -249,6 +255,38 @@ export const renderBlocks = (block, index) => {
           />
         );
       });
+    }
+
+    case 'callout':
+      return <Callout key={index} text={properties.title[0][0]} />;
+
+    case 'image': {
+      const image = properties.source[0][0];
+
+      // taken from https://github.com/splitbee/react-notion/blob/master/src/utils.ts#L46-L62
+      const url = new URL(
+        `https://www.notion.so${
+          image.startsWith('/image')
+            ? image
+            : `/image/${encodeURIComponent(image)}`
+        }`
+      );
+
+      if (block && !image.includes('/images/page-cover/')) {
+        const table =
+          block.value.parent_table === 'space'
+            ? 'block'
+            : block.value.parent_table;
+        url.searchParams.set('table', table);
+        url.searchParams.set('id', block.value.id);
+        url.searchParams.set('cache', 'v2');
+      }
+
+      return (
+        <div>
+          <Image key={index} src={url.toString()} width={640} height={344} />
+        </div>
+      );
     }
 
     default:

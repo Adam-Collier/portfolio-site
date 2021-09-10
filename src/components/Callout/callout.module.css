@@ -1,0 +1,19 @@
+.callout {
+  background: var(--foreground-min);
+  padding: 1rem;
+  position: relative;
+}
+
+.icon {
+  display: block;
+  position: absolute;
+  left: -12px;
+  top: -12px;
+  background: var(--primary-background);
+  border-radius: 30px;
+  border: 4px var(--primary-background) solid;
+}
+
+.icon svg {
+  display: block;
+}

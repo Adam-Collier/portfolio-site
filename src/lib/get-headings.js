@@ -11,6 +11,11 @@ export const getHeadings = (blocks) => {
     if (block.value.type === 'sub_sub_header') {
       const subSubHeaderTitle = block.value.properties.title[0][0];
       const id = subSubHeaderTitle.toLowerCase().replace(/ /g, '-');
+
+      if (!headings[headings.length - 1]) {
+        throw new Error('getHeadings expects the content to contain a H2.');
+      }
+
       headings[headings.length - 1].items.push({
         id,
         title: subSubHeaderTitle,

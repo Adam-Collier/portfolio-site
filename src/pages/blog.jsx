@@ -3,7 +3,7 @@ import Blogpost from '../components/Blogpost';
 import Page from '../components/Page';
 import Text from '../components/Text';
 import SEO from '../components/Seo';
-import { getAllContentOfType } from '../lib/blog';
+import { toSlug } from '../utils/to-slug';
 
 const Blog = ({ posts }) => {
   const router = useRouter();
@@ -32,13 +32,25 @@ const Blog = ({ posts }) => {
 export default Blog;
 
 export async function getStaticProps() {
-  const posts = await getAllContentOfType('_posts', [
-    'title',
-    'date',
-    'slug',
-    'description',
-    'publishedOn',
-  ]);
+  const postsResponse = await fetch(
+    `https://notion-api.splitbee.io/v1/table/${process.env.NOTION_POSTS_ID}`
+  ).then((res) => res.json());
+
+  const sortedPostsResponse = postsResponse
+    .filter((post) => post.PublishedOn)
+    .sort((a, b) => new Date(b.PublishedOn) - new Date(a.PublishedOn));
+
+  const posts = sortedPostsResponse.map((post) => {
+    const { Title, Thumbnail, Description, PublishedOn } = post;
+
+    return {
+      title: Title,
+      thumbnail: Thumbnail[0]?.url,
+      slug: toSlug(Title),
+      description: Description,
+      publishedOn: PublishedOn,
+    };
+  });
 
   return { props: { posts } };
 }

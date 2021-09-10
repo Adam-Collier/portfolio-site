@@ -92,7 +92,9 @@ export async function getStaticPaths() {
   ).then((res) => res.json());
 
   return {
-    paths: response.map((post) => {
+    paths: response.flatMap((post) => {
+      if (!post.PublishedOn) return [];
+
       const { Title } = post;
       return {
         params: {

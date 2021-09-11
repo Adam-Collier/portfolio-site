@@ -1,13 +1,15 @@
 // disable camel case here because notion-api-worker identifiers are snake case
 /* eslint-disable camelcase */
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import NotionText from '../components/Text/NotionText';
 import FormattedText from '../components/Text/FormattedText';
 import Stack from '../components/Stack';
-import CodeBlock from '../components/CodeBlock';
 import Callout from '../components/Callout';
 import { BulletedListItem, NumberedListItem } from '../components/ListItem';
 import { Track } from '../components/Spotify';
+
+const CodeBlock = dynamic(() => import('../components/CodeBlock'));
 
 export const renderBlocks = (block, index) => {
   const { value } = block;

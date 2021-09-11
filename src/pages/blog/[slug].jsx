@@ -10,7 +10,6 @@ import TableOfContents from '../../components/TableOfContents';
 import SEO from '../../components/Seo';
 import { renderBlocks } from '../../lib/notion-api-worker-renderer';
 import { getBlockMap } from '../../lib/get-block-map';
-import { resource } from '../../styles/global';
 import { getHeadings } from '../../lib/get-headings';
 import { toSlug } from '../../utils/to-slug';
 
@@ -41,9 +40,6 @@ const Post = ({ blocks, page }) => {
         image={null}
         pathname={`/blog/${slug}`}
       />
-      <style jsx global>
-        {resource}
-      </style>
       <Stack maxWidth="sm" gap={1.45} style={{ gridArea: 'content' }}>
         <Stack gap={0.5}>
           <PublishedAndUpdated
@@ -75,8 +71,6 @@ export async function getStaticProps({ params }) {
   const { slug } = params;
 
   const { blocks, page } = await getBlockMap(process.env.NOTION_POSTS_ID, slug);
-
-  console.log(blocks);
 
   return {
     props: {

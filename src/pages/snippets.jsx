@@ -21,7 +21,7 @@ const Snippets = ({ allMDX }) => {
   const { headings } = getHeadings(allRawMDX);
 
   return (
-    <Page layout="grid" padding>
+    <Page layout="grid" padding areas={{ sm: `"content" "coffee"` }}>
       <SEO
         title="Snippets - Adam Collier"
         description="There's nothing worse than almost remembering a bit of code you saw on stackoverflow on in a blogpost once. So I've collated all of the ones I find most useful."

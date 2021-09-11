@@ -6,16 +6,21 @@ import Stack from '../../components/Stack';
 import Form from '../../components/Form';
 import Sidebar from '../../components/Sidebar/index.jsx';
 import SEO from '../../components/Seo';
+import PublishedAndUpdated from '../../components/PublishedAndUpdated';
 
 import { getBlockMap } from '../../lib/get-block-map';
 import { toSlug } from '../../utils/to-slug';
 
 import s from './resource.module.css';
-import { resource } from '../../styles/global';
 import { renderBlocks } from '../../lib/notion-api-worker-renderer';
 
 const Resource = ({ blocks, page, quickLinks }) => {
-  const { Description: description, Title: title } = page;
+  const {
+    Description: description,
+    Title: title,
+    lastEditedTime,
+    PublishedOn: publishedOn,
+  } = page;
 
   const slug = toSlug(title);
 
@@ -27,9 +32,10 @@ const Resource = ({ blocks, page, quickLinks }) => {
         pathname={`/resources/${slug}`}
       />
       <Stack maxWidth="sm" gap={1.45} style={{ gridArea: 'content' }}>
-        <style jsx global>
-          {resource}
-        </style>
+        <PublishedAndUpdated
+          publishedOn={publishedOn}
+          updatedOn={lastEditedTime}
+        />
         <Text as="h1" size="2xl" heading>
           {title}
         </Text>

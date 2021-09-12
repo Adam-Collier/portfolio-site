@@ -23,7 +23,7 @@ const Note = ({ blocks, page }) => {
     Description,
     Sidebar: sidebar,
   } = page;
-  const publishedTime = PublishedOn;
+  const publishedOn = PublishedOn;
   const title = Title;
   const description = Description;
   const slug = toSlug(Title);
@@ -42,7 +42,7 @@ const Note = ({ blocks, page }) => {
       <Stack gap={1.45} style={{ gridArea: 'content' }} maxWidth="sm">
         <PublishedAndUpdated
           updatedOn={lastEditedTime}
-          publishedOn={publishedTime}
+          publishedOn={publishedOn}
         />
         <Text as="h1" size="2xl" heading>
           {title}

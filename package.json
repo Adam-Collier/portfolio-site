@@ -29,6 +29,7 @@
     "unist-util-visit": "^2.0.3"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^11.1.2",
     "@svgr/webpack": "^5.5.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.16.0",
@@ -54,7 +55,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "prebuild": "node scripts/generate-sitemap.js",
+    "analyze": "ANALYZE=true next build",
     "lint": "eslint src/",
     "lint:fix": "eslint . --fix",
     "lint:staged": "lint-staged --shell --verbose",

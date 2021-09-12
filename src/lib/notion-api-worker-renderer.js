@@ -1,57 +1,15 @@
 // disable camel case here because notion-api-worker identifiers are snake case
 /* eslint-disable camelcase */
-import Text from '../components/Text';
+import dynamic from 'next/dynamic';
+import Image from 'next/image';
+import NotionText from '../components/Text/NotionText';
+import FormattedText from '../components/Text/FormattedText';
 import Stack from '../components/Stack';
-import CodeBlock from '../components/CodeBlock';
+import Callout from '../components/Callout';
 import { BulletedListItem, NumberedListItem } from '../components/ListItem';
 import { Track } from '../components/Spotify';
-import { toSlug } from '../utils/to-slug';
 
-export const NotionText = ({ text, as = 'p', heading, size }) => {
-  if (!text) {
-    return null;
-  }
-
-  return (
-    <Text
-      id={heading ? toSlug(text[0][0]) : ''}
-      as={as}
-      heading={heading}
-      size={size}
-      style={heading ? { scrollMargin: '80px' } : {}}
-    >
-      {text.map(([content, decorations], i) => {
-        if (!decorations) {
-          return content;
-        }
-
-        return decorations.reduceRight((element, decorator) => {
-          switch (decorator[0]) {
-            case 'h':
-              return <span key={i}>{element}</span>;
-            case 'c':
-              return <code key={i}>{element}</code>;
-            case 'b':
-              return <b key={i}>{element}</b>;
-            case 'i':
-              return <em key={i}>{element}</em>;
-            case 's':
-              return <s key={i}>{element}</s>;
-            case 'a':
-              return (
-                <a href={decorator[1]} key={i}>
-                  {element}
-                </a>
-              );
-
-            default:
-              return <Text key={i}>{element}</Text>;
-          }
-        }, <>{content}</>);
-      })}
-    </Text>
-  );
-};
+const CodeBlock = dynamic(() => import('../components/CodeBlock'));
 
 export const renderBlocks = (block, index) => {
   const { value } = block;
@@ -97,25 +55,7 @@ export const renderBlocks = (block, index) => {
       }
 
       if (properties.title[1] && properties.title[1][0].startsWith(' - ')) {
-        const [title, textWithType, ...description] = properties.title;
-
-        // get the type, all other text in the string is stored in restOfText
-        const [resourceType, ...restOfText] = textWithType[0]
-          .split(' - ')
-          .filter(Boolean);
-
-        // the resource may have more text inc links and other elements so we prepend restOfText
-        description.unshift([restOfText]);
-
-        return (
-          <div className="resource" key={index}>
-            <div>
-              <NotionText as="p" text={[title]} />
-              <p>{resourceType}</p>
-            </div>
-            <NotionText as="p" text={description} />
-          </div>
-        );
+        return <FormattedText properties={properties} index={index} />;
       }
 
       return <NotionText key={index} as="p" text={properties.title} />;
@@ -123,7 +63,11 @@ export const renderBlocks = (block, index) => {
     // we need to use parens here to keep the lexical scope
     case 'code': {
       const content = properties.title[0][0];
-      const language = properties.language[0][0].toLowerCase();
+      const defaultLanguage = 'jsx';
+      const editorLanguage = properties.language[0][0].toLowerCase();
+
+      const language =
+        editorLanguage === 'plain text' ? defaultLanguage : editorLanguage;
 
       return (
         <CodeBlock className={language} key={index}>
@@ -249,6 +193,38 @@ export const renderBlocks = (block, index) => {
           />
         );
       });
+    }
+
+    case 'callout':
+      return <Callout key={index} text={properties.title[0][0]} />;
+
+    case 'image': {
+      const image = properties.source[0][0];
+
+      // taken from https://github.com/splitbee/react-notion/blob/master/src/utils.ts#L46-L62
+      const url = new URL(
+        `https://www.notion.so${
+          image.startsWith('/image')
+            ? image
+            : `/image/${encodeURIComponent(image)}`
+        }`
+      );
+
+      if (block && !image.includes('/images/page-cover/')) {
+        const table =
+          block.value.parent_table === 'space'
+            ? 'block'
+            : block.value.parent_table;
+        url.searchParams.set('table', table);
+        url.searchParams.set('id', block.value.id);
+        url.searchParams.set('cache', 'v2');
+      }
+
+      return (
+        <div>
+          <Image key={index} src={url.toString()} width={640} height={344} />
+        </div>
+      );
     }
 
     default:

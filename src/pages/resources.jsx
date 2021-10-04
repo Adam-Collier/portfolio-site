@@ -61,5 +61,5 @@ export async function getStaticProps() {
     };
   });
 
-  return { props: { allResources } };
+  return { props: { allResources }, revalidate: 60 };
 }

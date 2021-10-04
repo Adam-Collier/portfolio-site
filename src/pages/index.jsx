@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { Code } from 'react-feather';
 import Text from '../components/Text';
 import Stack from '../components/Stack';
 import Blogpost from '../components/Blogpost';
@@ -7,16 +8,18 @@ import Blogpost from '../components/Blogpost';
 import { getTopTracks } from '../lib/spotify';
 import { getReadngContent } from '../lib/readng';
 import { getLatestFilms } from '../lib/letterboxd';
+import { getLatestSnippets } from '../lib/get-latest-snippets';
 
 import Page from '../components/Page';
 import SEO from '../components/Seo';
 import Spotify from '../components/Spotify';
 import Readng from '../components/Readng';
 import Letterboxd from '../components/Letterboxd';
+import Note from '../components/Note';
 
 import { toSlug } from '../utils/to-slug';
 
-const IndexPage = ({ posts, tracks, readng, letterboxd }) => (
+const IndexPage = ({ posts, tracks, readng, letterboxd, snippets }) => (
   <Page gap={2.5} paddingTop={8} padding>
     <SEO
       title="Adam Collier - Designer & Developer"
@@ -54,6 +57,32 @@ const IndexPage = ({ posts, tracks, readng, letterboxd }) => (
       {posts.map((post, index) => (
         <Blogpost {...post} key={index} />
       ))}
+    </Stack>
+    <Stack gap={1.45}>
+      <Text>
+        Trying to find the latest snippets I've found useful? Here's what's just
+        been added. Find the whole collection in{' '}
+        <Link href="/snippets">
+          <a>Snippets</a>
+        </Link>{' '}
+      </Text>
+      <Stack gap={0.5}>
+        {snippets.map((snippet, index) => {
+          const { value } = snippet;
+          const { created_time: publishedOn } = value;
+          const title = value.properties.title[0][0];
+          const slug = toSlug(title);
+          return (
+            <Note
+              key={index}
+              title={title}
+              publishedOn={new Date(publishedOn).toISOString()}
+              url={`/snippets#${slug}`}
+              Icon={Code}
+            />
+          );
+        })}
+      </Stack>
     </Stack>
     <Stack gap={1.45}>
       <Text>
@@ -114,6 +143,7 @@ export async function getStaticProps() {
 
   const readng = await getReadngContent();
   const letterboxd = await getLatestFilms();
+  const snippets = await getLatestSnippets();
 
   // get the spotify tracks
   const response = await getTopTracks();
@@ -126,7 +156,10 @@ export async function getStaticProps() {
     image: track.album.images[0].url,
   }));
 
-  return { props: { posts, tracks, readng, letterboxd }, revalidate: 1 };
+  return {
+    props: { posts, tracks, readng, letterboxd, snippets },
+    revalidate: 1,
+  };
 }
 
 export default IndexPage;

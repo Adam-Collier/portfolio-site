@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 import { useRouter } from 'next/router';
 
+import { Edit3 } from 'react-feather';
 import Page from '../components/Page';
 import Text from '../components/Text';
 import SEO from '../components/Seo';
@@ -34,6 +35,7 @@ const Notes = ({ content }) => {
             publishedOn={publishedOn}
             updatedOn={updatedOn}
             url={`/notes/${slug}`}
+            Icon={Edit3}
           />
         ))}
       </Stack>

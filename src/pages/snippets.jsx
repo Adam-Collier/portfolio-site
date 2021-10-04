@@ -1,4 +1,3 @@
-import { MDXRemote } from 'next-mdx-remote';
 import { useRouter } from 'next/router';
 import Page from '../components/Page';
 import Stack from '../components/Stack';
@@ -7,18 +6,16 @@ import Text from '../components/Text';
 import TableOfContents from '../components/TableOfContents';
 import Form from '../components/Form';
 import SEO from '../components/Seo';
-import { getAllContentOfType } from '../lib/blog';
-import { prepareMDX } from '../lib/mdx';
-import { getHeadings } from '../lib/table-of-contents';
+import { renderBlocks } from '../lib/notion-api-worker-renderer';
+import { getBlockMap } from '../lib/get-block-map';
+import { getHeadings } from '../lib/get-headings';
+import { toSlug } from '../utils/to-slug';
 
-import { baseComponents } from '../lib/base-components';
-
-const Snippets = ({ allMDX }) => {
+const Snippets = ({ allBlocks }) => {
   const router = useRouter();
-  // // create a big ol' string of rawMDX for the table of contents
-  const allRawMDX = allMDX.map(({ rawMDX }) => rawMDX).join('');
 
-  const { headings } = getHeadings(allRawMDX);
+  const flattenedBlocks = allBlocks.map(({ blocks }) => blocks).flat();
+  const headings = getHeadings(flattenedBlocks);
 
   return (
     <Page layout="grid" padding areas={{ sm: `"content" "coffee"` }}>
@@ -42,9 +39,9 @@ const Snippets = ({ allMDX }) => {
           loudly "THIS SHALL HAPPEN NO MORE!". So, I decided that I'll collate
           all of the ones I come back to again and again.
         </Text>
-        {allMDX.map(({ source }, index) => (
-          <MDXRemote key={index} {...source} components={baseComponents} />
-        ))}
+        {allBlocks.map(({ blocks }) =>
+          blocks.map((block, index) => renderBlocks(block, index))
+        )}
         <Form
           title="Snippets"
           text="Do you know a great snippet which you think should be added to this page? Send it over and I'll take a look!"
@@ -58,20 +55,43 @@ const Snippets = ({ allMDX }) => {
 };
 
 export async function getStaticProps() {
-  const allSnippets = await getAllContentOfType('_snippets', ['slug']);
+  const response = await fetch(
+    `https://notion-api.splitbee.io/v1/table/${process.env.NOTION_SNIPPETS_ID}`
+  ).then((res) => res.json());
 
-  const allMDX = await Promise.all(
-    allSnippets.map(async (snippet) => {
-      // this returns the source prop
-      const mdx = await prepareMDX(snippet.slug, '_snippets');
-      return mdx;
+  const allBlocks = await Promise.all(
+    // get the blockmap for each snippet category
+    response.map(async (row) => {
+      const { blocks } = await getBlockMap(
+        process.env.NOTION_SNIPPETS_ID,
+        toSlug(row.Title)
+      );
+
+      // create a sub header for each snippet category
+      const blocksWithHeading = [
+        {
+          value: {
+            type: 'sub_header',
+            properties: {
+              title: [[row.Title]],
+            },
+          },
+        },
+        ...blocks,
+      ];
+
+      return {
+        blocks: blocksWithHeading,
+        title: toSlug(row.Title),
+      };
     })
   );
 
   return {
     props: {
-      allMDX,
+      allBlocks,
     },
+    revalidate: 10,
   };
 }
 

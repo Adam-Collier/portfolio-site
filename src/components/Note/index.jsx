@@ -1,4 +1,3 @@
-import { Edit3 } from 'react-feather';
 import Link from 'next/dist/client/link';
 import Stack from '../Stack';
 import Text from '../Text';
@@ -6,7 +5,7 @@ import PublishedAndUpdated from '../PublishedAndUpdated';
 
 import s from './note.module.css';
 
-const Note = ({ title, updatedOn, publishedOn, url }) => (
+const Note = ({ title, updatedOn, publishedOn, url, Icon }) => (
   <Link href={url}>
     <a className={s.note}>
       <Stack
@@ -16,7 +15,9 @@ const Note = ({ title, updatedOn, publishedOn, url }) => (
         gap={0.5}
         aria-label={title}
       >
-        <Edit3 size={18} />
+        <div className={s.icon}>
+          <Icon size={14} />
+        </div>
         <Stack direction="column" gap={0.25}>
           <PublishedAndUpdated
             updatedOn={updatedOn}

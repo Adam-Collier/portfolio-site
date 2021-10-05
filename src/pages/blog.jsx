@@ -52,5 +52,5 @@ export async function getStaticProps() {
     };
   });
 
-  return { props: { posts } };
+  return { props: { posts }, revalidate: 60 };
 }

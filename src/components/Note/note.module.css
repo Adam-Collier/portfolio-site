@@ -7,10 +7,23 @@
   padding: 1rem;
 }
 
-.note svg {
+.note:hover {
+  background: var(--foreground-min);
+}
+
+.note:hover .icon {
+  background: var(--primary-background);
+}
+
+.icon {
+  padding: 0.5rem;
+  border-radius: 50%;
+  background: var(--foreground-min);
   margin-right: 0.5rem;
 }
 
-.note:hover {
-  background: var(--foreground-min);
+.icon svg {
+  display: block;
+  padding: 0;
+  margin-bottom: 0;
 }

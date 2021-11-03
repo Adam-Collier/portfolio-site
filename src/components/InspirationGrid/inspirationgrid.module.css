@@ -14,8 +14,6 @@
 .nav {
   position: sticky;
   bottom: 8vh;
-  left: 50%;
-  transform: translateX(-50%);
   list-style-type: none;
   display: flex;
   text-transform: capitalize;
@@ -25,6 +23,7 @@
   box-shadow: var(--box-shadow-large);
   z-index: 500;
   width: max-content;
+  margin: 0 auto;
 }
 
 .nav li {

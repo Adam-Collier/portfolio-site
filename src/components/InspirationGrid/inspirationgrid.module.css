@@ -1,0 +1,57 @@
+.masonry {
+  display: grid;
+  grid-gap: 8px;
+  grid-template-columns: repeat(auto-fit, minmax(275px, 0.5fr));
+  grid-auto-rows: 0;
+  padding: 68px 0.5rem 0;
+}
+
+.masonryItem {
+  overflow: hidden;
+  grid-row-end: var(--row-span, span 40);
+}
+
+.nav {
+  position: sticky;
+  bottom: 8vh;
+  left: 50%;
+  transform: translateX(-50%);
+  list-style-type: none;
+  display: flex;
+  text-transform: capitalize;
+  background: var(--primary-background);
+  padding: 0.75rem;
+  border-radius: 50px;
+  box-shadow: var(--box-shadow-large);
+  z-index: 500;
+  width: max-content;
+}
+
+.nav li {
+  padding: 0.375rem 1rem;
+  border-radius: 30px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: var(--primary-foreground);
+}
+
+.nav li + li {
+  margin: 0;
+  margin-left: 0.25rem;
+}
+
+.nav li:hover:not(.active) {
+  background: var(--foreground-min);
+}
+
+.active {
+  background: var(--foreground-low);
+}
+
+@media (max-width: 800px) {
+  .masonry {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}

@@ -53,6 +53,6 @@
   .masonry {
     grid-template-columns: 1fr 1fr;
     grid-gap: 0;
-    padding: 68px 0 0;
+    padding: 56px 0 0;
   }
 }

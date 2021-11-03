@@ -50,6 +50,10 @@
 }
 
 @media (max-width: 800px) {
+  .nav {
+    bottom: 2rem;
+  }
+
   .masonry {
     grid-template-columns: 1fr 1fr;
     grid-gap: 0;

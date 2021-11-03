@@ -12,13 +12,10 @@ const positionGridItems = (grid) => {
   const rowGap = parseInt(
     window.getComputedStyle(grid).getPropertyValue('grid-row-gap')
   );
-  console.log(rowGap);
 
   const rowHeight = parseInt(
     window.getComputedStyle(grid).getPropertyValue('grid-auto-rows')
   );
-
-  console.log(rowHeight);
 
   gridItems.forEach((item) => {
     const rowSpan = Math.ceil(
@@ -70,7 +67,7 @@ const InspirationGrid = ({ images, boards, slug }) => {
         <li className={router.asPath === '/inspiration' ? s.active : ''}>
           <Link href="/inspiration">
             <a>
-              <Text size="md" weight={500}>
+              <Text size="base" weight={500}>
                 All
               </Text>
             </a>
@@ -80,7 +77,7 @@ const InspirationGrid = ({ images, boards, slug }) => {
           <li key={index} className={board === slug ? s.active : ''}>
             <Link href={`/inspiration/${board}`}>
               <a>
-                <Text size="md" weight={500}>
+                <Text size="base" weight={500}>
                   {board}
                 </Text>
               </a>

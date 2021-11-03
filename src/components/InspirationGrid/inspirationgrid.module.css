@@ -2,7 +2,7 @@
   display: grid;
   grid-gap: 8px;
   grid-template-columns: repeat(auto-fit, minmax(275px, 0.5fr));
-  grid-auto-rows: 0;
+  grid-auto-rows: 1px;
   padding: 68px 0.5rem 0;
 }
 
@@ -51,6 +51,8 @@
 
 @media (max-width: 800px) {
   .masonry {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 0;
+    padding: 68px 0 0;
   }
 }

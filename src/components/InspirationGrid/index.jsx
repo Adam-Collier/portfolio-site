@@ -12,10 +12,13 @@ const positionGridItems = (grid) => {
   const rowGap = parseInt(
     window.getComputedStyle(grid).getPropertyValue('grid-row-gap')
   );
+  console.log(rowGap);
 
   const rowHeight = parseInt(
     window.getComputedStyle(grid).getPropertyValue('grid-auto-rows')
   );
+
+  console.log(rowHeight);
 
   gridItems.forEach((item) => {
     const rowSpan = Math.ceil(

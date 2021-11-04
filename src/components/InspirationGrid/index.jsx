@@ -2,6 +2,7 @@ import Image from 'next/dist/client/image';
 import { useEffect, useRef } from 'react';
 import Link from 'next/dist/client/link';
 import { useRouter } from 'next/dist/client/router';
+import { ArrowUpRight } from 'react-feather';
 import Text from '../Text';
 import s from './inspirationgrid.module.css';
 
@@ -30,6 +31,7 @@ const ImageWrapper = ({ pageURL, children, ...props }) =>
   pageURL ? (
     <a href={pageURL} rel="noopener noreferrer" target="_blank" {...props}>
       {children}
+      <ArrowUpRight className={s.arrow} size={16} />
     </a>
   ) : (
     <div {...props}>{children}</div>
@@ -53,8 +55,13 @@ const InspirationGrid = ({ images, boards, slug }) => {
   return (
     <div>
       <div className={s.masonry} ref={masonry}>
-        {images.map(({ image, pageURL }, index) => (
-          <ImageWrapper pageURL={pageURL} className={s.masonryItem} key={index}>
+        {images.map(({ image, pageURL, color }, index) => (
+          <ImageWrapper
+            pageURL={pageURL}
+            className={s.masonryItem}
+            key={index}
+            style={{ background: color }}
+          >
             <Image
               src={image.thumbnail}
               height={image.height}

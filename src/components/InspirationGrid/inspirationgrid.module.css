@@ -7,8 +7,18 @@
 }
 
 .masonryItem {
+  position: relative;
   overflow: hidden;
   grid-row-end: var(--row-span, span 40);
+}
+
+.arrow {
+  position: absolute;
+  top: 0.25rem;
+  right: 0.25rem;
+  color: var(--primary-background);
+  background: var(--primary-foreground);
+  padding: 0.125rem;
 }
 
 .nav {

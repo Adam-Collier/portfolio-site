@@ -1,17 +1,13 @@
 import InspirationGrid from '../components/InspirationGrid';
+import { saveeBoards } from '../config';
 
 const Inspiration = ({ images, boards }) => (
   <InspirationGrid images={images} boards={boards} />
 );
 
 export async function getStaticProps() {
-  const boards = {
-    desktop: '5fb3c9cbf7c86a3ed1019f85',
-    print: '5b17bb66ef494b6aa2686140',
-  };
-
   const allData = await Promise.all(
-    Object.values(boards).map(async (id) => {
+    Object.values(saveeBoards).map(async (id) => {
       const response = await fetch(
         `https://api.savee.it/user/adamcollier/boards/${id}/items/`
       );
@@ -31,7 +27,7 @@ export async function getStaticProps() {
   return {
     props: {
       images: sortedByDate,
-      boards,
+      boards: saveeBoards,
     },
     revalidate: 1,
   };

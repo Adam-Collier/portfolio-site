@@ -15,3 +15,9 @@ export default {
     image: '/images/meta-image.jpg',
   },
 };
+
+export const saveeBoards = {
+  desktop: '5fb3c9cbf7c86a3ed1019f85',
+  print: '5b17bb66ef494b6aa2686140',
+  '3D': '5fb44c7eb074713f1d2189e1',
+};

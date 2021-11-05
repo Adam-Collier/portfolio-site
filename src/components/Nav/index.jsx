@@ -67,6 +67,16 @@ const Nav = ({ className, onClick, size, activeClass }) => (
         Notes
       </NavLink>
     </li>
+    <li>
+      <NavLink
+        href="/inspiration"
+        size={size}
+        activeClass={activeClass}
+        onClick={onClick}
+      >
+        Inspiration
+      </NavLink>
+    </li>
   </ul>
 );
 

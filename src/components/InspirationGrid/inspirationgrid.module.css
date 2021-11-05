@@ -36,14 +36,12 @@
   margin: 0 auto;
 }
 
-.nav li {
-  padding: 0.375rem 1rem;
-  border-radius: 30px;
-}
-
 .nav a {
+  display: block;
   text-decoration: none;
   color: var(--primary-foreground);
+  padding: 0.375rem 1rem;
+  border-radius: 30px;
 }
 
 .nav li + li {
@@ -51,11 +49,11 @@
   margin-left: 0.25rem;
 }
 
-.nav li:hover:not(.active) {
+.nav a:hover:not(.active a) {
   background: var(--foreground-min);
 }
 
-.active {
+.active a {
   background: var(--foreground-low);
 }
 

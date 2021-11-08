@@ -1,4 +1,4 @@
-import config from '../config';
+import config, { saveeBoards } from '../config';
 import { toSlug } from '../utils/to-slug';
 
 const Sitemap = () => {};
@@ -22,7 +22,18 @@ const createSitemap = (allContentUrls) => {
 };
 
 export const getServerSideProps = async ({ res }) => {
-  const staticPageRoutes = ['/', '/blog', '/resources', '/snippets', '/notes'];
+  const staticPageRoutes = [
+    '/',
+    '/blog',
+    '/resources',
+    '/snippets',
+    '/notes',
+    '/inspiration',
+  ];
+
+  const inspirationUrls = Object.keys(saveeBoards).map(
+    (board) => `/inspiration/${board}`
+  );
 
   const notionContentUrls = [
     { route: 'blog', notionID: process.env.NOTION_POSTS_ID },
@@ -51,7 +62,11 @@ export const getServerSideProps = async ({ res }) => {
     })
   );
 
-  const allContentUrls = [...staticPageRoutes, ...allNotionUrls].flat();
+  const allContentUrls = [
+    ...staticPageRoutes,
+    ...allNotionUrls,
+    ...inspirationUrls,
+  ].flat();
 
   const siteMapContent = createSitemap(allContentUrls);
 

@@ -6,25 +6,40 @@ import { ArrowUpRight } from 'react-feather';
 import Text from '../Text';
 import s from './inspirationgrid.module.css';
 
-const positionGridItems = (grid) => {
-  if (!grid) return;
-  const gridItems = grid.childNodes;
+// solution taken from https://css-tricks.com/a-lightweight-masonry-solution/
+const positionGridItems = (grid, numberOfColumns, setNumberOfColumns) => {
+  if (grid && getComputedStyle(grid).gridTemplateRows !== 'masonry') {
+    const gridItems = [...grid.childNodes];
+    const rowGap = parseInt(window.getComputedStyle(grid).gridRowGap);
 
-  const rowGap = parseInt(
-    window.getComputedStyle(grid).getPropertyValue('grid-row-gap')
-  );
+    // window.getComputedStyle(grid).gridTemplateColumns returns the rendered grid-template-columns values
+    // e.g grid-template-columns: 200px 200px 200px 200px is rendered and we return 200px 200px 200px 200px
+    // we then split by the spaces and get the length
+    const computedNumberOfColumns = window
+      .getComputedStyle(grid)
+      .gridTemplateColumns.split(' ').length;
 
-  const rowHeight = parseInt(
-    window.getComputedStyle(grid).getPropertyValue('grid-auto-rows')
-  );
+    if (computedNumberOfColumns !== numberOfColumns) {
+      setNumberOfColumns(computedNumberOfColumns);
 
-  gridItems.forEach((item) => {
-    const rowSpan = Math.ceil(
-      item.children[0].offsetHeight / (rowHeight + rowGap)
-    );
+      // revert to initial positioning, remove margin
+      gridItems.forEach((item) => item.style.removeProperty('margin-top'));
 
-    item.style.setProperty('--row-span', `span ${rowSpan}`);
-  });
+      if (computedNumberOfColumns > 1) {
+        gridItems.slice(computedNumberOfColumns).forEach((item, index) => {
+          console.log(item);
+          const imgAboveBottomPosition = gridItems[
+            index
+          ].getBoundingClientRect().bottom;
+          const topOfCurrentImage = item.getBoundingClientRect().top;
+
+          item.style.marginTop = `${
+            imgAboveBottomPosition + rowGap - topOfCurrentImage
+          }px`;
+        });
+      }
+    }
+  }
 };
 
 const ImageWrapper = ({ pageURL, children, ...props }) =>
@@ -41,12 +56,32 @@ const InspirationGrid = ({ images, boards, slug }) => {
   const router = useRouter();
   const masonry = useRef(null);
 
+  // store the current number of columns here in a useRef
+  const numberOfColumns = useRef(0);
+
+  // create a function we can call to update the number of columns
+  const setNumberOfColumns = (updatedNumberOfColumns) => {
+    numberOfColumns.current = updatedNumberOfColumns;
+  };
+
   useEffect(() => {
-    positionGridItems(masonry.current);
+    // when the route has changed reset the number of columns so the positionGridItems function runs
+    setNumberOfColumns(0);
+
+    positionGridItems(
+      masonry.current,
+      numberOfColumns.current,
+      setNumberOfColumns
+    );
   }, [router.asPath]);
 
   useEffect(() => {
-    const handleResize = () => positionGridItems(masonry.current);
+    const handleResize = () =>
+      positionGridItems(
+        masonry.current,
+        numberOfColumns.current,
+        setNumberOfColumns
+      );
     window.addEventListener('resize', handleResize);
 
     return () => window.removeEventListener('resize', handleResize);

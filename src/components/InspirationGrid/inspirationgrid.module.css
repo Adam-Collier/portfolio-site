@@ -2,14 +2,20 @@
   display: grid;
   grid-gap: 8px;
   grid-template-columns: repeat(auto-fit, minmax(275px, 0.5fr));
-  grid-auto-rows: 1px;
   padding: 68px 0.5rem 0;
+}
+
+@supports (grid-template-rows: masonry) {
+  .masonry {
+    grid-template-rows: masonry;
+  }
 }
 
 .masonryItem {
   position: relative;
   overflow: hidden;
-  grid-row-end: var(--row-span, span 40);
+  font-size: 0;
+  align-self: start;
 }
 
 .arrow {

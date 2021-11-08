@@ -27,7 +27,6 @@ const positionGridItems = (grid, numberOfColumns, setNumberOfColumns) => {
 
       if (computedNumberOfColumns > 1) {
         gridItems.slice(computedNumberOfColumns).forEach((item, index) => {
-          console.log(item);
           const imgAboveBottomPosition = gridItems[
             index
           ].getBoundingClientRect().bottom;

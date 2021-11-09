@@ -94,13 +94,12 @@ const InspirationGrid = ({ images, boards, slug }) => {
             pageURL={pageURL}
             className={s.masonryItem}
             key={index}
-            style={{ background: color }}
+            style={{
+              background: color,
+              paddingTop: `${(image.height / image.width) * 100}%`,
+            }}
           >
-            <Image
-              src={image.thumbnail}
-              height={image.height}
-              width={image.width}
-            />
+            <img src={image.thumbnail} alt="" />
           </ImageWrapper>
         ))}
       </div>

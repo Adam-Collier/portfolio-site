@@ -1,9 +1,22 @@
+import { useRouter } from 'next/dist/client/router';
+import SEO from '../components/Seo';
 import InspirationGrid from '../components/InspirationGrid';
 import { saveeBoards } from '../config';
 
-const Inspiration = ({ images, boards }) => (
-  <InspirationGrid images={images} boards={boards} />
-);
+const Inspiration = ({ images, boards }) => {
+  const router = useRouter();
+
+  return (
+    <>
+      <SEO
+        title="Inspiration - Adam Collier"
+        description="A space for visual references and quickly exploring exciting imagery and websites."
+        pathname={router.pathname}
+      />
+      <InspirationGrid images={images} boards={boards} />
+    </>
+  );
+};
 
 export async function getStaticProps() {
   const allData = await Promise.all(

@@ -1,8 +1,17 @@
 import InspirationGrid from '../../components/InspirationGrid';
+import SEO from '../../components/Seo';
 import { saveeBoards } from '../../config';
+import { toTitleCase } from '../../utils/to-title-case';
 
 const Inspiration = ({ images, boards, slug }) => (
-  <InspirationGrid images={images} boards={boards} slug={slug} />
+  <>
+    <SEO
+      title={`${toTitleCase(slug)} Inspiration - Adam Collier`}
+      description="A space for visual references and quickly exploring exciting imagery and websites."
+      pathname={`/inspiration/${slug}`}
+    />
+    <InspirationGrid images={images} boards={boards} slug={slug} />
+  </>
 );
 
 export async function getStaticProps({ params }) {

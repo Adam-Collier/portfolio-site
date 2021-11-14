@@ -12,7 +12,7 @@ const NotionText = ({ text, as = 'p', heading, size }) => {
       as={as}
       heading={heading}
       size={size}
-      style={heading ? { scrollMargin: '80px' } : {}}
+      scrollMargin={heading ? '80px' : null}
     >
       {text.map(([content, decorations], i) => {
         if (!decorations) {

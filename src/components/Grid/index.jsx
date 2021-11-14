@@ -1,39 +1,74 @@
 import React from 'react';
-import styled from 'styled-components';
+import { styled } from 'goober';
 import Stack from '../Stack';
+import { queries } from '../../config';
 
-const GridWrapper = styled.div`
-  --areas: ${(props) => props.areas.lg};
-  --columns: ${(props) => props.columns};
-  --gap: ${(props) => props.gap}
+const responsiveProps = (propValue, cssPropertyName) => {
+  if (!propValue) return;
 
-  display: grid;
-  grid-template-areas: var(--areas);
-  grid-template-columns: var(--columns);
-  grid-gap: var(--gap);
+  if (typeof propValue === 'string') return `${cssPropertyName}: ${propValue};`;
 
-  @media (max-width: 768px) {
-    --areas: ${(props) => props.areas.sm}
-    --columns: 100%;
-    --gap: 1.45rem;
+  // check if the value is an object
+  // taken from https://stackoverflow.com/questions/8511281/check-if-a-value-is-an-object-in-javascript/8511350#8511350
+  if (
+    typeof propValue === 'object' &&
+    !Array.isArray(propValue) &&
+    propValue !== null
+  ) {
+    const css = {};
+
+    const sizesSortedAlphabetically = Object.entries(propValue).sort((a, b) =>
+      // sort the sized alphabetically so the media queries are in the correct order
+      a[0].localeCompare(b[0])
+    );
+
+    for (const [size, value] of sizesSortedAlphabetically) {
+      if (size === 'default') {
+        css[cssPropertyName] = value;
+      } else {
+        css[`@media ${queries[size]}`] = {
+          [cssPropertyName]: value,
+        };
+      }
+    }
+
+    return css;
   }
+};
+
+const GridWrapper = styled('div')`
+  display: grid;
+  justify-items: ${(props) => props.$justify};
+  align-content: ${(props) => props.$align};
+
+  /* for some reason the order of these matter */
+  /* columns must be set first to fix a bug with the order of the media queries */
+  ${(props) => responsiveProps(props.$columns, 'grid-template-columns')}
+  ${(props) => responsiveProps(props.$areas, 'grid-template-areas')}
+  ${(props) => responsiveProps(props.$gap, 'gap')}
 `;
 
 const Grid = ({
   as,
+  align = 'stretch',
   maxWidth,
-  gap = 0,
-  areas = {
-    lg: '',
-    sm: '',
-  },
+  gap,
+  areas,
   columns,
   children,
-  padding,
+  className,
+  justify = 'center',
   style,
 }) => (
-  <Stack as={as} maxWidth={maxWidth} style={{ ...style }} padding={padding}>
-    <GridWrapper areas={areas} columns={columns} gap={gap}>
+  <Stack as={as} maxWidth={maxWidth} style={{ ...style }}>
+    <GridWrapper
+      className={className}
+      $align={align}
+      $areas={areas}
+      $columns={columns}
+      $gap={gap}
+      $justify={justify}
+    >
       {children}
     </GridWrapper>
   </Stack>

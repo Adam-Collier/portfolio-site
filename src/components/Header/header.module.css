@@ -12,7 +12,7 @@
 .header {
   --header-padding: 1.125rem 1.5rem;
   width: 100%;
-  max-width: var(--max-layout-width);
+  max-width: 1200px;
   padding: var(--header-padding);
   display: flex;
   justify-content: space-between;

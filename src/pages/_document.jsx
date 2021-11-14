@@ -1,10 +1,24 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
+import { extractCss } from 'goober';
 
 class MyDocument extends Document {
+  static getInitialProps({ renderPage }) {
+    const page = renderPage();
+
+    // Extract the css for each page render
+    const css = extractCss();
+    return { ...page, css };
+  }
+
   render() {
     return (
       <Html lang="en">
         <Head>
+          <style
+            id="_goober"
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{ __html: ` ${this.props.css}` }}
+          />
           {process.env.NODE_ENV === 'production' && (
             <script
               async

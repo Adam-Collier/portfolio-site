@@ -1,4 +1,5 @@
 .track {
+  color: var(--primary-foreground);
   display: grid;
   position: relative;
   grid-template-columns: 72px 1fr;

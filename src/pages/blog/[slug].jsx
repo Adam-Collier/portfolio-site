@@ -30,9 +30,9 @@ const Post = ({ blocks, page }) => {
 
   return (
     <Page
-      padding
-      layout={sidebar === false ? 'stack' : 'grid'}
       areas={{ sm: `"content" "coffee"` }}
+      layout={sidebar === false ? 'stack' : 'grid'}
+      padding
     >
       <SEO
         title={`${title} - Adam Collier`}

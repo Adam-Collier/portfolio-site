@@ -16,13 +16,7 @@ export const Track = ({ artist, url, title, image }) => (
     <ArrowUpRight className={s.arrow} size={18} />
     <Image src={image} alt={`${artist}: ${title}`} width={72} height={72} />
     <Stack gap={0.25}>
-      <Text
-        className={s.title}
-        weight={500}
-        truncate={1}
-        lineHeight={1.3}
-        color="primary-foreground"
-      >
+      <Text className={s.title} weight={500} truncate={1} lineHeight={1.3}>
         {title}
       </Text>
       <Text weight={400} size="sm" color="foreground-max" truncate={2}>

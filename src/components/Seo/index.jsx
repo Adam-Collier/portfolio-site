@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Head from 'next/head';
 import config from '../../config';
 
@@ -60,14 +59,5 @@ function SEO({ description, image, title, pathname, isBlogPost }) {
     </>
   );
 }
-
-SEO.defaultProps = {
-  description: ``,
-};
-
-SEO.propTypes = {
-  description: PropTypes.string,
-  title: PropTypes.string.isRequired,
-};
 
 export default SEO;

@@ -16,9 +16,7 @@ const Blogpost = ({ title, publishedOn, slug, description, thumbnail }) => (
       <a>
         <Image
           // Add this conditional here until we move over to Notion
-          src={
-            thumbnail || require(`/_posts/${slug}/thumbnail.jpg`).default.src
-          }
+          src={thumbnail}
           alt={title}
           width={114}
           height={114}
@@ -38,4 +36,5 @@ const Blogpost = ({ title, publishedOn, slug, description, thumbnail }) => (
     </Link>
   </article>
 );
+
 export default React.memo(Blogpost);

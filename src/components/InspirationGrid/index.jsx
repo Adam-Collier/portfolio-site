@@ -1,4 +1,3 @@
-import Image from 'next/dist/client/image';
 import { useEffect, useRef } from 'react';
 import Link from 'next/dist/client/link';
 import { useRouter } from 'next/dist/client/router';
@@ -99,6 +98,7 @@ const InspirationGrid = ({ images, boards, slug }) => {
               paddingTop: `${(image.height / image.width) * 100}%`,
             }}
           >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={image.thumbnail} alt="" />
           </ImageWrapper>
         ))}

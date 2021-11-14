@@ -2,6 +2,7 @@
   padding: 0.5rem;
   text-decoration: none;
   flex: 0 1 130px;
+  color: var(--primary-foreground);
 }
 
 .film:hover {

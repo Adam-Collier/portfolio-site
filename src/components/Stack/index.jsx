@@ -1,59 +1,76 @@
-import css from 'styled-jsx/css';
-import Row from '../Row';
+import React from 'react';
+import { styled } from 'goober';
+import { queries } from '../../config';
 
-const getStackStyles = ({ direction, justify, align, gap }) => css.resolve`
+const StackWrapper = styled('div')`
   display: flex;
-  flex-direction: ${direction};
-  justify-content: ${justify};
-  align-items: ${align};
+  flex-direction: ${(props) => props.$direction};
+  justify-content: ${(props) => props.$justify};
+  align-items: ${(props) => props.$align};
 
-  .row :global(> * + *) {
-    margin-left: calc(${gap} * 1rem);
+  > * {
+    margin-top: 0;
+    margin-bottom: 0;
   }
 
-  .column :global(> * + *) {
-    margin-top: calc(${gap} * 1rem);
-  }
+  ${(props) =>
+    props.$direction === 'row' &&
+    `
+      > * + * {
+        margin-left: calc(${props.$gap} * 1rem);
 
-  @media (max-width: 767px) {
-    .row :global(> * + *) {
-      margin-left: calc(${gap} * 0.75rem);
-    }
+        @media ${queries.sm} {
+          margin-left: calc(${props.$gap} * 0.75rem);
+        }
+      }
+  `}
 
-    .column :global(> * + *) {
-      margin-top: calc(${gap} * 0.75rem);
-    }
-  }
+  ${(props) =>
+    props.$direction === 'column' &&
+    `
+      > * + * {
+        margin-top: calc(${props.$gap} * 1rem);
+
+        @media ${queries.sm} {
+          margin-top: calc(${props.$gap} * 0.75rem);
+        }
+      }
+  `}
+
+  ${(props) =>
+    props.$maxWidth &&
+    `
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: var(--width-${props.$maxWidth});
+    `}
 `;
 
 const Stack = ({
-  children,
-  as = 'div',
-  maxWidth = 'none',
-  className,
-  justify = 'flex-start',
   align = 'stretch',
+  as = 'div',
+  children,
+  className,
   direction = 'column',
-  gap = 0,
+  gap,
+  justify = 'flex-start',
+  maxWidth,
   style,
-  padding,
-}) => {
-  const StackStyles = getStackStyles({ direction, justify, align, gap });
-
-  return (
-    <Row
-      as={as}
-      maxWidth={maxWidth}
-      className={`${direction} ${StackStyles.className} ${className || ''}`}
-      style={{
-        ...style,
-      }}
-      padding={padding}
-    >
-      {StackStyles.styles}
-      {children}
-    </Row>
-  );
-};
+}) => (
+  <StackWrapper
+    as={as}
+    style={style}
+    className={className}
+    $align={align}
+    $className={className}
+    $direction={direction}
+    $gap={gap}
+    $justify={justify}
+    $maxWidth={maxWidth}
+  >
+    {children}
+  </StackWrapper>
+);
 
 export default Stack;

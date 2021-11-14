@@ -8,7 +8,7 @@ const PublishedAndUpdated = ({ publishedOn, updatedOn }) => (
       <Text size="xs">{format(parseISO(publishedOn), 'MMMM dd, yyyy')}</Text>
     )}
     {updatedOn && (
-      <Text size="xs" color="foreground-high">
+      <Text size="xs" color="var(--foreground-high)">
         (Updated: {format(parseISO(updatedOn), 'MMMM dd, yyyy')})
       </Text>
     )}

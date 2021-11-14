@@ -28,7 +28,7 @@ const IndexPage = ({ posts, tracks, readng, letterboxd, snippets }) => (
     />
     <Stack gap={1.45}>
       <Text as="h1" heading size="2xl">
-        Hey, I'm Adam Collier
+        Hey, I&apos;m Adam Collier
       </Text>
       <Text size="lg">
         A designer and developer from Manchester, UK. Instead of the traditional

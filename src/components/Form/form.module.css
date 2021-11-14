@@ -3,15 +3,13 @@
   background: var(--foreground-min);
   border-radius: var(--border-radius);
   padding: var(--feedback-padding);
-  margin-left: calc(var(--feedback-padding) * -1);
-  margin-right: calc(var(--feedback-padding) * -1);
   border-top: 1px dashed var(--foreground-high);
   border-bottom: 1px dashed var(--foreground-high);
 }
 
 .form {
   display: grid;
-  grid-template-areas: "message message" "email handle" "submit submit";
+  grid-template-areas: 'message message' 'email handle' 'submit submit';
   grid-gap: 1rem;
 }
 
@@ -56,6 +54,13 @@
   grid-area: alert;
 }
 
+@media (min-width: 1100px) {
+  .feedback {
+    margin-left: calc(var(--feedback-padding) * -1);
+    margin-right: calc(var(--feedback-padding) * -1);
+  }
+}
+
 @media (max-width: 550px) {
   .feedback {
     --feedback-padding: 1.45rem;
@@ -64,6 +69,6 @@
   }
 
   .form {
-    grid-template-areas: "message" "email" "handle" "submit";
+    grid-template-areas: 'message' 'email' 'handle' 'submit';
   }
 }

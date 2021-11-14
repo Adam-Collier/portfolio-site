@@ -1,39 +1,77 @@
 import React from 'react';
-import Row from '../Row';
+import { styled } from 'goober';
+import Stack from '../Stack';
+import { queries } from '../../config';
+
+const responsiveProps = (propValue, cssPropertyName) => {
+  if (!propValue) return;
+
+  if (typeof propValue === 'string') return `${cssPropertyName}: ${propValue};`;
+
+  // check if the value is an object
+  // taken from https://stackoverflow.com/questions/8511281/check-if-a-value-is-an-object-in-javascript/8511350#8511350
+  if (
+    typeof propValue === 'object' &&
+    !Array.isArray(propValue) &&
+    propValue !== null
+  ) {
+    const css = {};
+
+    const sizesSortedAlphabetically = Object.entries(propValue).sort((a, b) =>
+      // sort the sized alphabetically so the media queries are in the correct order
+      a[0].localeCompare(b[0])
+    );
+
+    for (const [size, value] of sizesSortedAlphabetically) {
+      if (size === 'default') {
+        css[cssPropertyName] = value;
+      } else {
+        css[`@media ${queries[size]}`] = {
+          [cssPropertyName]: value,
+        };
+      }
+    }
+
+    return css;
+  }
+};
+
+const GridWrapper = styled('div')`
+  display: grid;
+  justify-items: ${(props) => props.$justify};
+  align-content: ${(props) => props.$align};
+
+  /* for some reason the order of these matter */
+  /* columns must be set first to fix a bug with the order of the media queries */
+  ${(props) => responsiveProps(props.$columns, 'grid-template-columns')}
+  ${(props) => responsiveProps(props.$areas, 'grid-template-areas')}
+  ${(props) => responsiveProps(props.$gap, 'gap')}
+`;
 
 const Grid = ({
   as,
+  align = 'stretch',
   maxWidth,
-  gap = 0,
-  areas = {
-    lg: '',
-    sm: '',
-  },
+  gap,
+  areas,
   columns,
   children,
-  padding,
+  className,
+  justify = 'center',
   style,
 }) => (
-  <Row as={as} maxWidth={maxWidth} style={{ ...style }} padding={padding}>
-    <div>
-      <style jsx>{`
-        --areas: ${areas?.lg};
-        --columns: ${columns};
-        --gap: ${gap}rem;
-
-        display: grid;
-        grid-template-areas: var(--areas);
-        grid-template-columns: var(--columns);
-        grid-gap: var(--gap);
-        @media (max-width: 768px) {
-          --areas: ${areas?.sm};
-          --columns: 100%;
-          --gap: 1.45rem;
-        }
-      `}</style>
+  <Stack as={as} maxWidth={maxWidth} style={{ ...style }}>
+    <GridWrapper
+      className={className}
+      $align={align}
+      $areas={areas}
+      $columns={columns}
+      $gap={gap}
+      $justify={justify}
+    >
       {children}
-    </div>
-  </Row>
+    </GridWrapper>
+  </Stack>
 );
 
 export default Grid;

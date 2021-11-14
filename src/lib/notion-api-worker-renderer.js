@@ -55,7 +55,7 @@ export const renderBlocks = (block, index) => {
       }
 
       if (properties.title[1] && properties.title[1][0].startsWith(' - ')) {
-        return <FormattedText properties={properties} index={index} />;
+        return <FormattedText properties={properties} key={index} />;
       }
 
       return <NotionText key={index} as="p" text={properties.title} />;
@@ -200,6 +200,7 @@ export const renderBlocks = (block, index) => {
 
     case 'image': {
       const image = properties.source[0][0];
+      const alt = properties.caption[0][0];
 
       // taken from https://github.com/splitbee/react-notion/blob/master/src/utils.ts#L46-L62
       const url = new URL(
@@ -222,7 +223,7 @@ export const renderBlocks = (block, index) => {
 
       return (
         <div>
-          <Image key={index} src={url.toString()} width={640} height={344} />
+          <Image key={index} src={url.toString()} width={640} height={344} alt={alt}/>
         </div>
       );
     }

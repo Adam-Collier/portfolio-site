@@ -1,37 +1,61 @@
-import s from './text.module.css';
+import { styled } from 'goober';
+
+const TextWrapper = styled('p')`
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  font-size: ${(props) => `var(--text-${props.$size})`};
+  line-height: ${(props) => (props.$heading ? 1.3 : props.$lineHeight)};
+  font-weight: ${(props) => (props.$heading ? 600 : props.$weight)};
+  color: ${(props) => (props.$color ? props.$color : 'inherit')};
+
+  ${(props) =>
+    props.$truncate &&
+    `
+    display: -webkit-box;
+    -webkit-line-clamp: ${props.$truncate};
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  `}
+
+  ${(props) =>
+    props.$scrollMargin &&
+    `
+    scroll-margin: ${props.$scrollMargin};
+  `}
+`;
 
 const Text = ({
-  id,
-  as = 'p',
-  heading = false,
-  children,
-  size = 'base',
-  lineHeight = 1.75,
-  weight = 450,
   align,
-  truncate,
+  as = 'p',
+  children,
+  className,
   color,
+  heading = false,
+  id,
+  lineHeight = 1.75,
+  size = 'base',
   style,
-}) => {
-  const DynamicTag = `${as}`;
-
-  return (
-    <DynamicTag
-      className={`${s.text} ${truncate ? s.truncate : ''}`}
-      id={id}
-      style={{
-        '--font-size': `var(--text-${size})`,
-        '--font-weight': heading ? 600 : weight,
-        '--line-height': heading ? 1.3 : lineHeight,
-        '--text-align': align,
-        '--truncate': truncate,
-        '--color': color ? `var(--${color})` : 'inherit',
-        ...style,
-      }}
-    >
-      {children}
-    </DynamicTag>
-  );
-};
+  truncate,
+  weight = 450,
+  scrollMargin,
+}) => (
+  <TextWrapper
+    as={as}
+    id={id}
+    className={className}
+    style={style}
+    $align={align}
+    $color={color}
+    $heading={heading}
+    $lineHeight={lineHeight}
+    $scrollMargin={scrollMargin}
+    $size={size}
+    $truncate={truncate}
+    $weight={weight}
+  >
+    {children}
+  </TextWrapper>
+);
 
 export default Text;

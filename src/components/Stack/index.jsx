@@ -1,11 +1,12 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import { styled } from 'goober';
+import { queries } from '../../config';
 
-const StackElement = styled.div`
+const StackWrapper = styled('div')`
   display: flex;
-  flex-direction: ${(props) => props.direction};
-  justify-content: ${(props) => props.justify};
-  align-items: ${(props) => props.align};
+  flex-direction: ${(props) => props.$direction};
+  justify-content: ${(props) => props.$justify};
+  align-items: ${(props) => props.$align};
 
   > * {
     margin-top: 0;
@@ -13,49 +14,36 @@ const StackElement = styled.div`
   }
 
   ${(props) =>
-    props.direction === 'column' &&
-    css`
+    props.$direction === 'row' &&
+    `
       > * + * {
-        margin-top: calc(${props.gap} * 1rem);
+        margin-left: calc(${props.$gap} * 1rem);
 
-        @media (max-width: 767px) {
-          margin-top: calc(${props.gap} * 0.75rem);
+        @media ${queries.sm} {
+          margin-left: calc(${props.$gap} * 0.75rem);
         }
       }
-    `}
+  `}
 
   ${(props) =>
-    props.direction === 'row' &&
-    css`
+    props.$direction === 'column' &&
+    `
       > * + * {
-        margin-left: calc(${props.gap} * 1rem);
+        margin-top: calc(${props.$gap} * 1rem);
 
-        @media (max-width: 767px) {
-          margin-left: calc(${props.gap} * 0.75rem);
+        @media ${queries.sm} {
+          margin-top: calc(${props.$gap} * 0.75rem);
         }
       }
-    `}
+  `}
 
-    ${(props) =>
-    props.maxWidth &&
-    css`
-      --width-sm: 640px;
-      --width-md: 768px;
-      --width-lg: 1024px;
-      --width-xl: 1280px;
-      --width-2xl: 1536px;
-
+  ${(props) =>
+    props.$maxWidth &&
+    `
       width: 100%;
       margin-left: auto;
       margin-right: auto;
-      max-width: var(--width-${props.maxWidth});
-    `}
-
-    ${(props) =>
-    props.padding &&
-    css`
-      padding-left: ${props.padding}rem;
-      padding-right: ${props.padding}rem;
+      max-width: var(--width-${props.$maxWidth});
     `}
 `;
 
@@ -65,25 +53,24 @@ const Stack = ({
   children,
   className,
   direction = 'column',
-  gap = 0,
+  gap,
   justify = 'flex-start',
   maxWidth,
-  padding,
   style,
 }) => (
-  <StackElement
-    align={align}
+  <StackWrapper
     as={as}
+    style={style}
     className={className}
-    direction={direction}
-    gap={gap}
-    justify={justify}
-    padding={padding}
-    maxWidth={maxWidth}
-    style={{ ...style }}
+    $align={align}
+    $className={className}
+    $direction={direction}
+    $gap={gap}
+    $justify={justify}
+    $maxWidth={maxWidth}
   >
     {children}
-  </StackElement>
+  </StackWrapper>
 );
 
 export default Stack;

@@ -1,4 +1,3 @@
-import Image from 'next/dist/client/image';
 import { useEffect, useRef } from 'react';
 import Link from 'next/dist/client/link';
 import { useRouter } from 'next/dist/client/router';

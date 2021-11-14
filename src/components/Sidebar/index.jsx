@@ -1,36 +1,47 @@
-import { Fragment } from 'react';
+import React, { Fragment } from 'react';
+import { styled } from 'goober';
 import Stack from '../Stack';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
-import s from './sidebar.module.css';
 import BuyCoffee from '../BuyCoffee';
+import { queries } from '../../config';
+
+const SidebarWrapper = styled(Stack)`
+  grid-area: sidebar;
+  align-self: flex-start;
+  position: sticky;
+  top: ${(props) => (props.$top ? `${props.$top}rem` : '6rem')};
+  max-height: calc(100vh - 6rem);
+  overflow-y: scroll;
+
+  @media ${queries.sm} {
+    position: relative;
+    max-height: revert;
+    overflow-y: revert;
+    top: revert;
+  }
+`;
+
+// taken from https://blog.hackages.io/conditionally-wrap-an-element-in-react-a8b9a47fab2
+const ConditionalWrapper = ({ condition, wrapper, children }) =>
+  condition ? wrapper(children) : children;
 
 const Sidebar = ({ children, top }) => {
-  const LAYOUT_OPTIONS = {
-    stack: {
-      component: Stack,
-      props: {
-        as: 'aside',
-        gap: 1.45,
-        className: s.sidebar,
-        style: { '--top': top ? `${top}rem` : `6rem` },
-      },
-    },
-    fragment: {
-      component: Fragment,
-      props: {},
-    },
-  };
+  const isMobile = useMediaQuery(queries.sm);
 
-  const layout = useMediaQuery('(max-width: 768px)')
-    ? LAYOUT_OPTIONS.fragment
-    : LAYOUT_OPTIONS.stack;
-
-  const { component: Layout, props } = layout;
-
+  // if the viewport is bigger than mobile
+  // render the SidebarWrapper
   return (
-    <Layout {...props}>
-      {children} <BuyCoffee />
-    </Layout>
+    <ConditionalWrapper
+      condition={!isMobile}
+      wrapper={(c) => (
+        <SidebarWrapper gap={1.45} $top={top}>
+          {c}
+        </SidebarWrapper>
+      )}
+    >
+      {children}
+      <BuyCoffee />
+    </ConditionalWrapper>
   );
 };
 

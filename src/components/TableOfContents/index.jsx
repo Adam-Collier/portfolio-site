@@ -1,12 +1,53 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { styled } from 'goober';
 import Stack from '../Stack';
 import Text from '../Text';
 import Accordion from '../Accordion';
-import { useActiveHash } from './use-active-hash';
 
-import s from './toc.module.css';
+import { useActiveHash } from './use-active-hash';
+import { queries } from '../../config';
+
+const Wrapper = styled(Stack)`
+  grid-area: toc;
+
+  > ul {
+    list-style-type: none;
+    margin-left: 0;
+
+    ul {
+      margin-top: 0.25rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    a:hover:not(.active) {
+      color: var(--foreground-hover);
+    }
+
+    li {
+      list-style-type: none;
+    }
+
+    li + li {
+      margin-top: 0.25rem;
+      margin-bottom: 0;
+    }
+
+    .active {
+      text-decoration: revert;
+      color: var(--primary-accent);
+    }
+  }
+
+  @media ${queries.sm} {
+    display: none;
+  }
+`;
 
 // depth and maxDepth are used to figure out how many bullets deep to render in the ToC sidebar, if no
 // max depth is set via the tableOfContentsDepth field in the frontmatter, all headings will be rendered
@@ -25,18 +66,22 @@ const createItems = (items, path, activeHash) =>
         </Accordion>
       </li>
     ) : (
-      <Text as="li" key={key} size="sm" weight={400} color="foreground-high">
+      <Text
+        as="li"
+        key={key}
+        size="sm"
+        weight={400}
+        color="var(--foreground-high)"
+      >
         <Link href={`${path}#${item.id}`}>
-          <a className={isActive ? s.active : ''}>{title}</a>
+          <a className={isActive ? 'active' : ''}>{title}</a>
         </Link>
-        {/* use recursion for nested items */}
-        {item.items && <ul>{createItems(item.items, path, activeHash)}</ul>}
       </Text>
     );
   });
 
 // pass in the headings as we cant guarantee it will come from the same source e.g markdown vs a CMS
-const TableOfContents = ({ className, headings }) => {
+const TableOfContents = ({ headings }) => {
   const router = useRouter();
   const { asPath } = router;
   // the current path without hash
@@ -67,14 +112,12 @@ const TableOfContents = ({ className, headings }) => {
   if (headingsList.length === 0) return null;
 
   return (
-    <Stack gap={1} className={s.wrapper}>
+    <Wrapper gap={1.45}>
       <Text size="md" heading>
         Table of Contents
       </Text>
-      <ul className={`${s.toc} ${className || ''}`}>
-        {createItems(headings, currentPath, activeHash)}
-      </ul>
-    </Stack>
+      <ul>{createItems(headings, currentPath, activeHash)}</ul>
+    </Wrapper>
   );
 };
 

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { styled } from 'goober';
 import Stack from '../Stack';
 import { useMediaQuery } from '../../hooks/useMediaQuery';

@@ -1,58 +1,80 @@
 :root {
+  /* PRIMARY COLOURS */
+  /* keep static black and white in case they don't need to change between light and dark mode */
   --primary-black: #1f2937;
   --primary-white: #f9fafb;
+  --primary-accent: #6d28d9;
+
+  /* these will dynamically change between light an dark mode */
   --primary-foreground: #1f2937;
   --primary-background: #f9fafb;
-  --foreground-hover: #b6b6b6;
-  --foreground-max: #374151;
-  --foreground-high: #9ca3af;
-  --foreground-low: #e6e6e6;
-  --foreground-min: #f3f3f3;
-  --primary-accent: #6d28d9;
-  --primary-error: #c50000;
+
+  /* ACCENT COLOURS */
   /* in contrast to the foreground */
   --accent-max: #292442;
   --accent-high: #5b43c4;
   --accent-low: #e6e1fd;
   --accent-min: #f5f3ff;
+
+  /* GREYS */
+  --foreground-hover: #b6b6b6;
+  --foreground-max: #374151;
+  --foreground-high: #9ca3af;
+  --foreground-low: #e6e6e6;
+  --foreground-min: #f3f3f3;
+
+  /* ERROR */
+  --primary-error: #c50000;
+
+  /* BORDER RADIUS */
   --border-radius: 2px;
-  --sidebar-width: 300px;
-  --content-width: 100%;
-  --max-content-width: 64ch;
-  --max-layout-width: 1200px;
-  --grid-gap: 2rem;
-  --alt-line-height: 1.45rem;
-  --container-padding: 4.5rem;
-  --content-x-padding: 1.5rem;
-  --content-spacing-left: 10%;
+
+  /* BOX SHADOW */
   --box-shadow-large: 0 2.8px 2.2px rgba(0, 0, 0, 0.02),
     0 6.7px 5.3px rgba(0, 0, 0, 0.028), 0 12.5px 10px rgba(0, 0, 0, 0.035),
     0 22.3px 17.9px rgba(0, 0, 0, 0.042), 0 41.8px 33.4px rgba(0, 0, 0, 0.05),
     0 100px 80px rgba(0, 0, 0, 0.07);
-  --icon-fill: var(--primary-foreground);
-  --list-spacing: 0.25rem;
+
+  /* TEXT SIZES */
+  --text-5xl: calc(64 / 16 * 1rem);
+  --text-4xl: calc(48 / 16 * 1rem);
+  --text-3xl: calc(36 / 16 * 1rem);
+  --text-2xl: calc(30 / 16 * 1rem);
+  --text-xl: calc(24 / 16 * 1rem);
+  --text-lg: calc(20 / 16 * 1rem);
+  --text-md: calc(18 / 16 * 1rem);
+  --text-base: calc(16 / 16 * 1rem);
+  --text-sm: calc(14 / 16 * 1rem);
+  --text-xs: calc(12 / 16 * 1rem);
+  --text-xxs: calc(10 / 16 * 1rem);
+
+  /* MAX WIDTHS */
+  --width-sm: 640px;
+  --width-md: 768px;
+  --width-lg: 1024px;
+  --width-xl: 1280px;
+  --width-2xl: 1536px;
 }
 
+/* append the dark class and change the CSS variables for the dark mode alternative */
 :root.dark {
+  /* PRIMARY COLOURS */
   --primary-foreground: #eee;
   --primary-background: #151515;
   --primary-accent: #8b5cf6;
+
+  /* ACCENTS */
   --accent-low: #5b21b6;
   --accent-min: #4c1d95;
   --accent-max: #ede9fe;
   --accent-high: #a78bfa;
   --accent-low: #382f62;
   --accent-min: #1f1c2f;
+
+  /* GREYS */
   --foreground-hover: #868686;
   --foreground-max: #d8d8d8;
   --foreground-high: #9ca3af;
   --foreground-low: #2b2b2b;
   --foreground-min: #262626;
-}
-
-@media (max-width: 767px) {
-  :root {
-    --content-x-padding: 1rem;
-    --content-spacing-left: 0;
-  }
 }

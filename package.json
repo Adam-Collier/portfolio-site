@@ -47,12 +47,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "analyze": "ANALYZE=true next build",
-    "lint": "eslint src/",
-    "lint:fix": "eslint . --fix",
-    "lint:staged": "lint-staged --shell --verbose",
-    "postinstall": "husky install"
+    "start": "next start"
   },
   "repository": {
     "type": "git",

@@ -98,6 +98,7 @@ const InspirationGrid = ({ images, boards, slug }) => {
               paddingTop: `${(image.height / image.width) * 100}%`,
             }}
           >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={image.thumbnail} alt="" />
           </ImageWrapper>
         ))}

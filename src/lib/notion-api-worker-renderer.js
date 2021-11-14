@@ -55,7 +55,7 @@ export const renderBlocks = (block, index) => {
       }
 
       if (properties.title[1] && properties.title[1][0].startsWith(' - ')) {
-        return <FormattedText properties={properties} index={index} />;
+        return <FormattedText properties={properties} key={index} />;
       }
 
       return <NotionText key={index} as="p" text={properties.title} />;

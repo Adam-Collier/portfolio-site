@@ -6,7 +6,6 @@ import Grid from '../Grid';
 
 import s from './footer.module.css';
 import NextIcon from '../../icons/nextjs.svg';
-import VercelIcon from '../../icons/vercel.svg';
 // TODO: sort out spacing for built section
 const Footer = () => (
   <Grid

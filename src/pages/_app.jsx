@@ -4,6 +4,7 @@ import { shouldForwardProp } from 'goober/should-forward-prop';
 import { prefix } from 'goober/prefixer';
 import { StateProvider } from '../context';
 import Layout from '../components/Layout';
+import { Provider } from "next-auth/client";
 
 import '../styles/reset.css';
 import '../styles/global.css';
@@ -26,10 +27,12 @@ setup(
 export default function MyApp({ Component, pageProps }) {
   // eslint-disable-next-line react/jsx-props-no-spreading
   return (
-    <StateProvider>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </StateProvider>
+    <Provider session={pageProps.session}>
+      <StateProvider>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </StateProvider>
+    </Provider>
   );
 }

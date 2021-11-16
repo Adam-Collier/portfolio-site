@@ -46,7 +46,7 @@ const Button = ({
     onKeyPress={onKeyPress}
   >
     {Icon && <Icon className={s.icon} size={16} />}
-    <Text size="sm">{text}</Text>
+    <Text size="sm" lineHeight={1}>{text}</Text>
   </Wrapper>
 );
 

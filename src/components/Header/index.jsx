@@ -6,10 +6,15 @@ import Stack from '../Stack';
 import Nav from '../Nav';
 import Toggle from '../Toggle';
 import MenuButton from './MenuButton';
+import Button from '../Button';
 
 import s from './header.module.css';
+import { signOut, useSession } from 'next-auth/client';
 
-const Header = ({ className, isClose }) => (
+const Header = ({ className, isClose }) => {
+  const [session] = useSession();
+
+  return (
   <>
     <div className={`${s.wrapper} ${className || ''}`}>
       <Stack as="header" direction="row" maxWidth="xl" className={s.header}>
@@ -28,11 +33,12 @@ const Header = ({ className, isClose }) => (
         <div>
           <Nav className={s.nav} activeClass={s.active} />
           <Toggle className={s.toggle} />
+          {session && <Button onClick={signOut} text="Sign Out" type="secondary" className={isClose ? s.signout : ""}/>}
           <MenuButton isClose={isClose} />
         </div>
       </Stack>
     </div>
   </>
-);
+)};
 
 export default Header;

@@ -1,8 +1,8 @@
 .button {
   color: var(--primary-foreground);
   border: none;
-  border-radius: var(--border-radius);
-  padding: 0.7rem 1rem;
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -29,7 +29,7 @@
 }
 
 .secondary {
-  border: 1px solid var(--foreground-low);
+  border: 1px solid var(--foreground-high);
 }
 
 .secondary:hover {

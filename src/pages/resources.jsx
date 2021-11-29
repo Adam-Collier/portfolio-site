@@ -1,17 +1,16 @@
-import { useState } from 'react';
 import { useRouter } from 'next/router';
-import Resource from '../components/Resource';
 import Text from '../components/Text';
+import ResourceCollection from '../components/ResourceCollection';
 import Page from '../components/Page';
 import Stack from '../components/Stack';
-import Search from '../components/Search';
 import SEO from '../components/Seo';
 
 import { toSlug } from '../utils/to-slug';
+import prisma from '../lib/prisma';
 
-const Blog = ({ allResources }) => {
+const Resources = ({ allResourceCollections }) => {
   const router = useRouter();
-  const [resources, setResources] = useState(allResources);
+  // const [resources, setResources] = useState(allResources);
 
   return (
     <Page paddingTop={8} gap={2} padding>
@@ -29,14 +28,14 @@ const Blog = ({ allResources }) => {
           thought could become useful in the future.
         </Text>
       </Stack>
-      <Search allData={allResources} setState={setResources} name="resources" />
+      {/* <Search allData={allResources} setState={setResources} name="resources" /> */}
       <Stack gap={0.5}>
-        {resources.map(({ title, description, slug }, index) => (
-          <Resource
-            title={title}
-            description={description}
-            url={`/resources/${slug}`}
-            key={index}
+        {allResourceCollections.map(({ id, name, description, excerpt }) => (
+          <ResourceCollection
+            title={name}
+            description={excerpt || description}
+            url={`/resources/${toSlug(name)}`}
+            key={id}
           />
         ))}
       </Stack>
@@ -44,22 +43,12 @@ const Blog = ({ allResources }) => {
   );
 };
 
-export default Blog;
+export default Resources;
 
 export async function getStaticProps() {
-  const response = await fetch(
-    `https://notion-api.splitbee.io/v1/table/${process.env.NOTION_RESOURCES_ID}`
-  ).then((res) => res.json());
-
-  const allResources = response.map((post) => {
-    const { Title, Description } = post;
-
-    return {
-      title: Title,
-      slug: toSlug(Title),
-      description: Description,
-    };
+  const allResourceCollections = await prisma.resourceCollection.findMany({
+    select: { id: true, name: true, excerpt: true, description: true },
   });
 
-  return { props: { allResources }, revalidate: 60 };
+  return { props: { allResourceCollections }, revalidate: 60 };
 }

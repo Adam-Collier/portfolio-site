@@ -1,18 +1,28 @@
 import { useState } from 'react';
-import Form from "./base";
+import Form from './base';
 import Stack from '../Stack';
 import Text from '../Text';
 import Button from '../Button';
+import { mutate } from 'swr';
 
-const ResourceForm = ({ id, collectionId, link, title, summary, description, section, edit }) => {
+const ResourceForm = ({
+  id,
+  collectionId,
+  link,
+  title,
+  summary,
+  description,
+  section,
+  edit,
+}) => {
   const [state, setState] = useState({
     collectionId,
-    id: id || "",
-    link: link || "",
-    title: title || "",
-    summary: summary || "",
-    description: description || "",
-    section: section || "",
+    id: id || '',
+    link: link || '',
+    title: title || '',
+    summary: summary || '',
+    description: description || '',
+    section: section || '',
   });
 
   const handleChange = ({ target }) => {
@@ -26,14 +36,23 @@ const ResourceForm = ({ id, collectionId, link, title, summary, description, sec
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('/api/resource', {
+      let response = await fetch('/api/resource', {
         method: edit ? 'PUT' : 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(state),
       });
 
-      const data = await res.json();
-      console.log(data);
+      let json = await response.json();
+
+      mutate(
+        '/api/resource' + json.id,
+        (prevData) => ({
+            ...prevData,
+            ...json,
+        }),
+        // Disable revalidation
+        false
+      );
     } catch (error) {
       console.error(error);
     }

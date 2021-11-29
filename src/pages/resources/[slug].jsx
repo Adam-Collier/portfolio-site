@@ -21,11 +21,26 @@ import Button from '../../components/Button';
 import { useSession } from 'next-auth/client';
 import ResourceForm from '../../components/Form/ResourceForm';
 import Dialog from '../../components/Dialog';
+import useSWR from 'swr';
+import { fetcher } from '../../lib/fetcher';
 
 const Resource = ({ blocks, page, quickLinks }) => {
-  const { name, description, resources, createdAt, updatedAt, id } = page;
-
   const [session] = useSession();
+
+  const { data, error } = useSWR('/api/resource' + page.id, fetcher, {
+    fallbackData: page,
+    revalidateOnMount: false,
+    revalidateOnFocus: false,
+  });
+
+  const {
+    name,
+    description,
+    resources,
+    createdAt,
+    updatedAt,
+    id: collectionId,
+  } = data;
 
   return (
     <Page layout="grid" areas={{ sm: `"content" "coffee"` }} padding>
@@ -38,9 +53,9 @@ const Resource = ({ blocks, page, quickLinks }) => {
         {session && (
           <Dialog
             headerText="Create Resource"
-            trigger={<Button text="Add a Resource" variation="secondary"/>}
+            trigger={<Button text="Add a Resource" variation="secondary" />}
           >
-            <ResourceForm collectionId={id} />
+            <ResourceForm collectionId={collectionId} />
           </Dialog>
         )}
 
@@ -53,6 +68,7 @@ const Resource = ({ blocks, page, quickLinks }) => {
           <ResourceItem
             key={id}
             id={id}
+            collectionId={collectionId}
             link={link}
             title={title}
             summary={summary}

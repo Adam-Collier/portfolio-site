@@ -13,7 +13,7 @@ export default async function handle(req, res) {
   const { collectionId, title, summary, description, link, section } = body;
 
   if (method === 'POST') {
-    const response = await prisma.resource.create({
+    await prisma.resource.create({
       data: {
         resourceCollectionId: collectionId,
         title,
@@ -23,9 +23,18 @@ export default async function handle(req, res) {
         section,
       },
     });
+
+    // return the updated 
+    let response = await prisma.resourceCollection.findUnique({
+      where: { id: collectionId },
+      include: {
+        resources: true,
+      },
+    });
+
     res.status(200).json(response);
   } else if (method === 'PUT') {
-    const response = await prisma.resource.update({
+    await prisma.resource.update({
       where: {
         id: body.id,
       },
@@ -37,6 +46,15 @@ export default async function handle(req, res) {
         section,
       },
     });
+
+    // return the updated
+    let response = await prisma.resourceCollection.findUnique({
+      where: { id: collectionId },
+      include: {
+        resources: true,
+      },
+    });
+    
     res.status(200).json(response);
   } else {
     res.setHeader('Allow', ['POST', 'PUT']);

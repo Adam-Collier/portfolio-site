@@ -1,0 +1,56 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
+  shadowDatabaseUrl    = env("SHADOW_DATABASE_URL")
+  referentialIntegrity = "prisma"
+}
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+model ResourceCollection {
+  id          Int        @id @default(autoincrement())
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  name        String     @unique
+  description String     @db.VarChar(250)
+  excerpt     String?    @db.VarChar(250)
+  resources   Resource[]
+}
+
+model Resource {
+  id                   Int                @id @default(autoincrement())
+  createdAt            DateTime           @default(now())
+  updatedAt            DateTime           @updatedAt
+  link                 String
+  title                String
+  summary              String             @db.VarChar(250)
+  description          String
+  ResourceCollection   ResourceCollection @relation(fields: [resourceCollectionId], references: [id])
+  resourceCollectionId Int
+  section              String
+}
+
+model SnippetCollection {
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  name      String    @unique
+  snippets  Snippet[]
+}
+
+model Snippet {
+  id                  Int                @id @default(autoincrement())
+  createdAt           DateTime           @default(now())
+  updatedAt           DateTime           @updatedAt
+  SnippetCollection   SnippetCollection? @relation(fields: [snippetCollectionId], references: [id])
+  snippetCollectionId Int?
+  title               String
+  description         String?            @db.VarChar(250)
+  code                String             @db.VarChar(250)
+}

@@ -4,7 +4,7 @@ import PublishedAndUpdated from '../../components/PublishedAndUpdated';
 import Stack from '../../components/Stack';
 import Page from '../../components/Page';
 import Text from '../../components/Text';
-import Form from '../../components/Form';
+import CommentForm from '../../components/CommentForm';
 import Sidebar from '../../components/Sidebar/index.jsx';
 import TableOfContents from '../../components/TableOfContents';
 import SEO from '../../components/Seo';
@@ -51,7 +51,7 @@ const Post = ({ blocks, page }) => {
           </Text>
         </Stack>
         {blocks.map((block, index) => renderBlocks(block, index))}
-        <Form
+        <CommentForm
           title={title}
           text="Please let me know if you found anything I wrote confusing, incorrect or
         outdated. Write a few words below and I will use your suggestions to

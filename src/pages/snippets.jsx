@@ -4,7 +4,7 @@ import Stack from '../components/Stack';
 import Sidebar from '../components/Sidebar/index.jsx';
 import Text from '../components/Text';
 import TableOfContents from '../components/TableOfContents';
-import Form from '../components/Form';
+import CommentForm from '../components/CommentForm';
 import SEO from '../components/Seo';
 import { renderBlocks } from '../lib/notion-api-worker-renderer';
 import { getBlockMap } from '../lib/get-block-map';
@@ -42,7 +42,7 @@ const Snippets = ({ allBlocks }) => {
         {allBlocks.map(({ blocks }) =>
           blocks.map((block, index) => renderBlocks(block, index))
         )}
-        <Form
+        <CommentForm
           title="Snippets"
           text="Do you know a great snippet which you think should be added to this page? Send it over and I'll take a look!"
         />

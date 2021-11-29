@@ -6,8 +6,9 @@
   "author": "Adam Collier",
   "dependencies": {
     "@notionhq/client": "^0.2.4",
+    "@prisma/client": "^3.5.0",
     "date-fns": "^2.22.1",
-    "goober": "^2.0.43",
+    "goober": "^2.0.45",
     "goober-autoprefixer": "^1.2.1",
     "jotai": "^1.2.0",
     "mdast-util-to-string": "^2.0.0",
@@ -40,7 +41,8 @@
     "eslint-plugin-prettier": "^3.3.0",
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "prettier": "^2.2.1"
+    "prettier": "^2.2.1",
+    "prisma": "^3.5.0"
   },
   "keywords": [
     "gatsby"
@@ -50,7 +52,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "db:prod": "pscale connect adamcollier main --port 3309",
+    "db:dev": "pscale connect adamcollier dev --port 3309",
+    "db:shadow": "pscale connect adamcollier shadow --port 3310"
   },
   "repository": {
     "type": "git",

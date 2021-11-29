@@ -36,17 +36,19 @@ const Button = ({
   className = '',
   onClick,
   onKeyPress,
-  type = 'primary',
+  variation = 'primary',
   layout = 'fit',
 }) => (
   <Wrapper
     link={link}
-    className={`${s.button} ${className} ${s[type]} ${s[layout]}`}
+    className={`${s.button} ${className} ${s[variation]} ${s[layout]}`}
     onClick={onClick}
     onKeyPress={onKeyPress}
   >
     {Icon && <Icon className={s.icon} size={16} />}
-    <Text size="sm" lineHeight={1}>{text}</Text>
+    <Text size="sm" lineHeight={1}>
+      {text}
+    </Text>
   </Wrapper>
 );
 

@@ -1,8 +1,8 @@
 import { styled } from 'goober';
 import Text from '../Text';
-import { useSession } from 'next-auth/client';
 import ResourceForm from '../Form/ResourceForm';
 import EditToolbar from '../EditToolbar';
+import useSession from '../../lib/useSession';
 
 const Wrapper = styled('div')`
   --columns: 200px 1fr;
@@ -34,11 +34,11 @@ const Resource = ({
   description,
   section,
 }) => {
-  const [session] = useSession();
+  const { admin } = useSession();
 
   return (
     <Wrapper>
-      {session && (
+      {admin?.isLoggedIn && (
         <EditToolbar
           form={
             <ResourceForm

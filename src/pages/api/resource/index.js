@@ -1,8 +1,6 @@
-import { getSession } from 'next-auth/client';
 import prisma from '../../../lib/prisma';
 
 export default async function handle(req, res) {
-  const session = await getSession({ req });
 
   if (!session)
     return res
@@ -54,7 +52,7 @@ export default async function handle(req, res) {
         resources: true,
       },
     });
-    
+
     res.status(200).json(response);
   } else {
     res.setHeader('Allow', ['POST', 'PUT']);

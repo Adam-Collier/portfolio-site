@@ -18,14 +18,15 @@ import s from './resource.module.css';
 import { renderBlocks } from '../../lib/notion-api-worker-renderer';
 import prisma from '../../lib/prisma';
 import Button from '../../components/Button';
-import { useSession } from 'next-auth/client';
 import ResourceForm from '../../components/Form/ResourceForm';
 import Dialog from '../../components/Dialog';
 import useSWR from 'swr';
 import { fetcher } from '../../lib/fetcher';
+import useSession from '../../lib/useSession';
 
 const Resource = ({ blocks, page, quickLinks }) => {
-  const [session] = useSession();
+  // const [session] = useSession();
+  const { admin } = useSession();
 
   const { data, error } = useSWR('/api/resource' + page.id, fetcher, {
     fallbackData: page,
@@ -50,7 +51,7 @@ const Resource = ({ blocks, page, quickLinks }) => {
         pathname={`/resources/${toSlug(name)}`}
       />
       <Stack maxWidth="sm" gap={1.45} style={{ gridArea: 'content' }}>
-        {session && (
+        {admin?.isLoggedIn && (
           <Dialog
             headerText="Create Resource"
             trigger={<Button text="Add a Resource" variation="secondary" />}

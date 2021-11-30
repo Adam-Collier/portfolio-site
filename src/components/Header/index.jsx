@@ -9,36 +9,53 @@ import MenuButton from './MenuButton';
 import Button from '../Button';
 
 import s from './header.module.css';
-import { signOut, useSession } from 'next-auth/client';
+import useSession from '../../lib/useSession';
 
 const Header = ({ className, isClose }) => {
-  const [session] = useSession();
+  const { admin, mutateAdmin } = useSession();
 
   return (
-  <>
-    <div className={`${s.wrapper} ${className || ''}`}>
-      <Stack as="header" direction="row" maxWidth="xl" className={s.header}>
-        <Link href="/">
-          <a
-            style={{
-              textDecoration: 'none',
-              color: 'inherit',
-            }}
-          >
-            <Text lineHeight={1} heading>
-              Adam Collier
-            </Text>
-          </a>
-        </Link>
-        <div>
-          <Nav className={s.nav} activeClass={s.active} />
-          <Toggle className={s.toggle} />
-          {session && <Button onClick={signOut} text="Sign Out" type="secondary" className={isClose ? s.signout : ""}/>}
-          <MenuButton isClose={isClose} />
-        </div>
-      </Stack>
-    </div>
-  </>
-)};
+    <>
+      <div className={`${s.wrapper} ${className || ''}`}>
+        <Stack as="header" direction="row" maxWidth="xl" className={s.header}>
+          <Link href="/">
+            <a
+              style={{
+                textDecoration: 'none',
+                color: 'inherit',
+              }}
+            >
+              <Text lineHeight={1} heading>
+                Adam Collier
+              </Text>
+            </a>
+          </Link>
+          <div>
+            <Nav className={s.nav} activeClass={s.active} />
+            <Toggle className={s.toggle} />
+            {admin?.isLoggedIn && (
+              <Button
+                onClick={async (e) => {
+                  e.preventDefault();
+                  mutateAdmin(
+                    await fetch('/api/logout', {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                    }),
+                    false
+                  );
+                }}
+                text="Sign Out"
+                type="secondary"
+                className={isClose ? s.signout : ''}
+              />
+            )}
+            <MenuButton isClose={isClose} />
+          </div>
+        </Stack>
+      </div>
+    </>
+  );
+};
 
 export default Header;

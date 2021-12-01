@@ -1,6 +1,7 @@
 import { styled } from 'goober';
+import { mutate } from 'swr';
 
-const Form = styled('form')`
+export const Form = styled('form')`
   > * + * {
     margin-top: 1rem;
   }
@@ -28,4 +29,31 @@ const Form = styled('form')`
   }
 `;
 
-export default Form;
+export const handleSubmit = async (event, {
+  apiRoute,
+  method,
+  state,
+}) => {
+  event.preventDefault();
+  try {
+    let response = await fetch(apiRoute, {
+      method,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(state),
+    });
+
+    let newData = await response.json();
+
+    mutate(
+      apiRoute + newData.id,
+      (prevData) => ({
+        ...prevData,
+        ...newData,
+      }),
+      // Disable revalidation
+      false
+    );
+  } catch (error) {
+    console.error(error);
+  }
+};

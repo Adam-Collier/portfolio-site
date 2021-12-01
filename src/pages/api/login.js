@@ -8,7 +8,7 @@ export default withSession(async (req, res) => {
       username === process.env.IRON_SESSION_USERNAME &&
       password === process.env.IRON_SESSION_PASSWORD
     ) {
-      req.session.set('isAuthenticated', true);
+      req.session.isAuthenticated = true;
       await req.session.save();
       res.redirect(307, '/');
     } else {

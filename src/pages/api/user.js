@@ -1,9 +1,7 @@
 import withSession from '../../lib/session';
 
-export default withSession(async (req, res) => {
-  const authenticated = req.session.get('isAuthenticated');
-  
-  if (authenticated) {
+export default withSession(async (req, res) => {  
+  if (req.session.isAuthenticated) {
     res.json({
       isLoggedIn: true,
     });

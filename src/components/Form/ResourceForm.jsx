@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import Form from './base';
+import { Form, handleSubmit } from './base';
 import Stack from '../Stack';
 import Text from '../Text';
 import Button from '../Button';
-import { mutate } from 'swr';
 
 const ResourceForm = ({
   id,
@@ -33,33 +32,12 @@ const ResourceForm = ({
     });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      let response = await fetch('/api/resource', {
-        method: edit ? 'PUT' : 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(state),
-      });
-
-      let json = await response.json();
-
-      mutate(
-        '/api/resource' + json.id,
-        (prevData) => ({
-            ...prevData,
-            ...json,
-        }),
-        // Disable revalidation
-        false
-      );
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={e => handleSubmit(e , {
+      apiRoute: "/api/resource",
+      method: edit ? "PUT" : "POST",
+      state, 
+    })}>
       <Stack gap={0.5}>
         <label>
           <Text size="sm">Link</Text>
@@ -114,7 +92,7 @@ const ResourceForm = ({
           />
         </label>
       </Stack>
-      <Button text="Create Resource" variation="secondary" />
+      <Button text={edit ? "Save Changes" : "Create Resource"} variation="secondary" />
     </Form>
   );
 };

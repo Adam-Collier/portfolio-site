@@ -10,12 +10,10 @@ import Sidebar from '../../components/Sidebar/index.jsx';
 import SEO from '../../components/Seo';
 import PublishedAndUpdated from '../../components/PublishedAndUpdated';
 
-import { getBlockMap } from '../../lib/get-block-map';
 import { toSlug } from '../../utils/to-slug';
 import { toTitleCase } from '../../utils/to-title-case';
 
 import s from './resource.module.css';
-import { renderBlocks } from '../../lib/notion-api-worker-renderer';
 import prisma from '../../lib/prisma';
 import Button from '../../components/Button';
 import ResourceForm from '../../components/Form/ResourceForm';
@@ -23,12 +21,14 @@ import Dialog from '../../components/Dialog';
 import useSWR from 'swr';
 import { fetcher } from '../../lib/fetcher';
 import useSession from '../../lib/useSession';
+import EditToolbar from '../../components/EditToolbar';
 
 const Resource = ({ blocks, page, quickLinks }) => {
-  // const [session] = useSession();
   const { admin } = useSession();
 
-  const { data, error } = useSWR('/api/resource' + page.id, fetcher, {
+  let pageId = page.id;
+
+  const { data, error } = useSWR('/api/resource' + pageId, fetcher, {
     fallbackData: page,
     revalidateOnMount: false,
     revalidateOnFocus: false,
@@ -56,7 +56,7 @@ const Resource = ({ blocks, page, quickLinks }) => {
             headerText="Create Resource"
             trigger={<Button text="Add a Resource" variation="secondary" />}
           >
-            <ResourceForm collectionId={collectionId} />
+            <ResourceForm collectionId={collectionId} pageId={pageId} />
           </Dialog>
         )}
 
@@ -65,18 +65,39 @@ const Resource = ({ blocks, page, quickLinks }) => {
           {name}
         </Text>
         <Text>{description}</Text>
-        {resources.map(({ id, link, title, summary, description, section }) => (
-          <ResourceItem
-            key={id}
-            id={id}
-            collectionId={collectionId}
-            link={link}
-            title={title}
-            summary={summary}
-            description={description}
-            section={section}
-          />
-        ))}
+        {resources.map(
+          ({ id: itemId, link, title, summary, description, section }) => (
+            <ResourceItem
+              key={itemId}
+              link={link}
+              title={title}
+              summary={summary}
+              description={description}
+              section={section}
+            >
+              {admin?.isLoggedIn && (
+                <EditToolbar
+                  form={
+                    <ResourceForm
+                      collectionId={collectionId}
+                      itemId={itemId}
+                      pageId={pageId}
+                      link={link}
+                      title={title}
+                      summary={summary}
+                      description={description}
+                      section={section}
+                      edit
+                    />
+                  }
+                  itemId={itemId}
+                  pageId={pageId}
+                  apiRoute="/api/resource"
+                />
+              )}
+            </ResourceItem>
+          )
+        )}
 
         {/* <CommentForm
           title={title}

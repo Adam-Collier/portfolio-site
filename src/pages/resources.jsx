@@ -4,13 +4,30 @@ import ResourceCollection from '../components/ResourceCollection';
 import Page from '../components/Page';
 import Stack from '../components/Stack';
 import SEO from '../components/Seo';
+import Dialog from '../components/Dialog';
+import Button from '../components/Button';
+import ResourceCollectionForm from '../components/Form/ResourceCollectionForm';
+import useSession from '../lib/useSession';
+import useSWR from 'swr';
+import { fetcher } from '../lib/fetcher';
+import EditToolbar from '../components/EditToolbar';
 
 import { toSlug } from '../utils/to-slug';
 import prisma from '../lib/prisma';
 
 const Resources = ({ allResourceCollections }) => {
   const router = useRouter();
-  // const [resources, setResources] = useState(allResources);
+  const { admin } = useSession();
+
+  // a random ID generated from https://nanoid.dev/
+  let pageId = '547rhC799';
+  let apiRoute = '/api/resource-collection';
+
+  const { data } = useSWR(apiRoute + pageId, fetcher, {
+    fallbackData: allResourceCollections,
+    revalidateOnMount: false,
+    revalidateOnFocus: false,
+  });
 
   return (
     <Page paddingTop={8} gap={2} padding>
@@ -19,6 +36,14 @@ const Resources = ({ allResourceCollections }) => {
         description="This is a group of resources I have either learned something from or thought could become useful in the future."
         pathname={router.pathname}
       />
+      {admin?.isLoggedIn && (
+        <Dialog
+          headerText="Add a Collection"
+          trigger={<Button text="Add a Collection" variation="secondary" />}
+        >
+          <ResourceCollectionForm apiRoute={apiRoute} pageId={pageId} />
+        </Dialog>
+      )}
       <Stack gap={1.45}>
         <Text as="h1" size="2xl" heading>
           Resources
@@ -28,15 +53,34 @@ const Resources = ({ allResourceCollections }) => {
           thought could become useful in the future.
         </Text>
       </Stack>
-      {/* <Search allData={allResources} setState={setResources} name="resources" /> */}
       <Stack gap={0.5}>
-        {allResourceCollections.map(({ id, name, description, excerpt }) => (
+        {data.map(({ id: itemId, name, description, excerpt }) => (
           <ResourceCollection
+            key={itemId}
             title={name}
             description={excerpt || description}
             url={`/resources/${toSlug(name)}`}
-            key={id}
-          />
+          >
+            <EditToolbar
+              // 1. we need the itemId so prisma knows which item to update
+              // 2. we need pageId so the swr id matches the cached one about
+              form={
+                <ResourceCollectionForm
+                  itemId={itemId}
+                  apiRoute={apiRoute}
+                  pageId={pageId}
+                  name={name}
+                  description={description}
+                  excerpt={excerpt}
+                  edit
+                />
+              }
+              apiRoute={apiRoute}
+              // these are needed for deleting the item and updating the page
+              itemId={itemId}
+              pageId={pageId}
+            />
+          </ResourceCollection>
         ))}
       </Stack>
     </Page>

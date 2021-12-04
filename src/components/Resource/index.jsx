@@ -1,8 +1,5 @@
 import { styled } from 'goober';
 import Text from '../Text';
-import ResourceForm from '../Form/ResourceForm';
-import EditToolbar from '../EditToolbar';
-import useSession from '../../lib/useSession';
 
 const Wrapper = styled('div')`
   --columns: 200px 1fr;
@@ -26,37 +23,15 @@ const Wrapper = styled('div')`
 `;
 
 const Resource = ({
-  collectionId,
-  id,
+  children,
   link,
   title,
   summary,
   description,
-  section,
 }) => {
-  const { admin } = useSession();
-
   return (
     <Wrapper>
-      {admin?.isLoggedIn && (
-        <EditToolbar
-          form={
-            <ResourceForm
-              collectionId={collectionId}
-              id={id}
-              link={link}
-              title={title}
-              summary={summary}
-              description={description}
-              section={section}
-              edit
-            />
-          }
-          resourceId={id}
-          collectionId={collectionId}
-          type="resource"
-        />
-      )}
+      {children}
       <div>
         <a href={link} target="_blank" rel="noopener noreferrer">
           <Text>{title}</Text>

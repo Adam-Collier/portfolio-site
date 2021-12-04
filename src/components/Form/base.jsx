@@ -32,24 +32,26 @@ export const Form = styled('form')`
 export const handleSubmit = async (event, {
   apiRoute,
   method,
-  state,
+  body,
+  pageId
 }) => {
   event.preventDefault();
   try {
     let response = await fetch(apiRoute, {
       method,
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(state),
+      body: JSON.stringify(body),
     });
 
     let newData = await response.json();
 
     mutate(
-      apiRoute + newData.id,
-      (prevData) => ({
-        ...prevData,
-        ...newData,
-      }),
+      apiRoute + pageId,
+      // we can access prevData in this function if we need to
+      // but tbh we are grabbing all of the new data anyway
+      () => {
+        return newData;
+      },
       // Disable revalidation
       false
     );

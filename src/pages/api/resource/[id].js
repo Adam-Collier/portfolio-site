@@ -1,16 +1,19 @@
 import prisma from '../../../lib/prisma';
 
 export default async function handle(req, res) {
-  const postId = req.query.id;
-  const { collectionId } = req.body;
+  const resourceId = req.query.id;
 
   if (req.method === 'DELETE') {
-    await prisma.resource.delete({
-      where: { id: Number(postId) },
+    let deletedResponse = await prisma.resource.delete({
+      where: { id: Number(resourceId) },
     });
 
+    // from the prisma response we can grab the collectionId
+    let { resourceCollectionId } = deletedResponse;
+
+    // we can then return the updated resourceCollection in the response
     let response = await prisma.resourceCollection.findUnique({
-      where: { id: collectionId },
+      where: { id: resourceCollectionId },
       include: {
         resources: true,
       },

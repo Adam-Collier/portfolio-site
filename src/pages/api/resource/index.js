@@ -8,8 +8,11 @@ export default withSession(async (req, res) => {
       .json({ error: 'You need to be signed in to use this route' });
 
   const { body, method } = req;
-  const { collectionId, title, summary, description, link, section } = body;
+  // collectionId and itemId are from the props
+  // the rest are from our forms state
+  const { collectionId, itemId, title, summary, description, link, section } = body;
 
+  // when we have made our changes we need to grab our updated content
   let getUpdatedContent = async () =>
     await prisma.resourceCollection.findUnique({
       where: { id: collectionId },
@@ -19,9 +22,12 @@ export default withSession(async (req, res) => {
     });
 
   if (method === 'POST') {
+    // here we create our new resource
     await prisma.resource.create({
       data: {
+        // we need our resourceCollectionId so the resource is associated with the correct page/collection
         resourceCollectionId: collectionId,
+        // the rest is the state from our inputs
         title,
         summary,
         description,
@@ -31,12 +37,15 @@ export default withSession(async (req, res) => {
     });
 
     let updatedJson = await getUpdatedContent();
+    // send our updated content
     res.status(200).json(updatedJson);
   } else if (method === 'PUT') {
     await prisma.resource.update({
+      // find the correct resource to edit
       where: {
-        id: body.id,
+        id: itemId,
       },
+      // apply our updates from our state
       data: {
         title,
         summary,
@@ -46,7 +55,7 @@ export default withSession(async (req, res) => {
       },
     });
 
-    // return the updated
+    // return the updated content
     let updatedJson = await getUpdatedContent();
     res.status(200).json(updatedJson);
   } else {

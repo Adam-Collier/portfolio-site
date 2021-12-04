@@ -4,7 +4,7 @@ import Dialog from '../Dialog';
 import { mutate } from 'swr';
 import { Trash, Edit } from 'react-feather';
 
-const EditToolbar = ({ form, resourceId, collectionId, type }) => {
+const EditToolbar = ({ form, itemId, pageId, apiRoute }) => {
   const Wrapper = styled(Stack)`
     position: absolute;
     top: 0;
@@ -21,19 +21,16 @@ const EditToolbar = ({ form, resourceId, collectionId, type }) => {
   `;
 
   const handleDelete = async () => {
-    let response = await fetch(`/api/${type}/${resourceId}`, {
+    let response = await fetch(`${apiRoute}/${itemId}`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ collectionId }),
     });
 
-    let json = await response.json();
+    let newData = await response.json();
 
     mutate(
-      `/api/${type}` + collectionId,
-      () => ({
-        ...json
-      }),
+      apiRoute + pageId,
+      () => newData,
       // Disable revalidation
       false
     );

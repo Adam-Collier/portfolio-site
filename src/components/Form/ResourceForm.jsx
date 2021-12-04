@@ -5,8 +5,14 @@ import Text from '../Text';
 import Button from '../Button';
 
 const ResourceForm = ({
-  id,
+  // id of the page the form sits on
+  pageId,
+  // id for the resource collection
   collectionId,
+  // id for editing each resource item
+  itemId,
+  // what we can pass in to set the default state
+  // we use this when editing content
   link,
   title,
   summary,
@@ -15,8 +21,6 @@ const ResourceForm = ({
   edit,
 }) => {
   const [state, setState] = useState({
-    collectionId,
-    id: id || '',
     link: link || '',
     title: title || '',
     summary: summary || '',
@@ -33,11 +37,16 @@ const ResourceForm = ({
   };
 
   return (
-    <Form onSubmit={e => handleSubmit(e , {
-      apiRoute: "/api/resource",
-      method: edit ? "PUT" : "POST",
-      state, 
-    })}>
+    <Form
+      onSubmit={(e) =>
+        handleSubmit(e, {
+          apiRoute: '/api/resource',
+          method: edit ? 'PUT' : 'POST',
+          body: { ...state, itemId, collectionId },
+          pageId,
+        })
+      }
+    >
       <Stack gap={0.5}>
         <label>
           <Text size="sm">Link</Text>
@@ -92,7 +101,10 @@ const ResourceForm = ({
           />
         </label>
       </Stack>
-      <Button text={edit ? "Save Changes" : "Create Resource"} variation="secondary" />
+      <Button
+        text={edit ? 'Save Changes' : 'Create Resource'}
+        variation="secondary"
+      />
     </Form>
   );
 };

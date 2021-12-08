@@ -61,25 +61,27 @@ const Resources = ({ allResourceCollections }) => {
             description={excerpt || description}
             url={`/resources/${toSlug(name)}`}
           >
-            <EditToolbar
-              // 1. we need the itemId so prisma knows which item to update
-              // 2. we need pageId so the swr id matches the cached one about
-              form={
-                <ResourceCollectionForm
-                  itemId={itemId}
-                  apiRoute={apiRoute}
-                  pageId={pageId}
-                  name={name}
-                  description={description}
-                  excerpt={excerpt}
-                  edit
-                />
-              }
-              apiRoute={apiRoute}
-              // these are needed for deleting the item and updating the page
-              itemId={itemId}
-              pageId={pageId}
-            />
+            {admin?.isLoggedIn && (
+              <EditToolbar
+                // 1. we need the itemId so prisma knows which item to update
+                // 2. we need pageId so the swr id matches the cached one about
+                form={
+                  <ResourceCollectionForm
+                    itemId={itemId}
+                    apiRoute={apiRoute}
+                    pageId={pageId}
+                    name={name}
+                    description={description}
+                    excerpt={excerpt}
+                    edit
+                  />
+                }
+                apiRoute={apiRoute}
+                // these are needed for deleting the item and updating the page
+                itemId={itemId}
+                pageId={pageId}
+              />
+            )}
           </ResourceCollection>
         ))}
       </Stack>
@@ -94,5 +96,5 @@ export async function getStaticProps() {
     select: { id: true, name: true, excerpt: true, description: true },
   });
 
-  return { props: { allResourceCollections }, revalidate: 60 };
+  return { props: { allResourceCollections }, revalidate: 1 };
 }

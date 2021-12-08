@@ -18,7 +18,7 @@ model ResourceCollection {
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
   name        String     @unique
-  description String     @db.VarChar(250)
+  description String     @db.MediumText
   excerpt     String?    @db.VarChar(250)
   resources   Resource[]
 }
@@ -30,7 +30,7 @@ model Resource {
   link                 String
   title                String
   summary              String             @db.VarChar(250)
-  description          String
+  description          String             @db.VarChar(250)
   ResourceCollection   ResourceCollection @relation(fields: [resourceCollectionId], references: [id])
   resourceCollectionId Int
   section              String
@@ -52,5 +52,5 @@ model Snippet {
   snippetCollectionId Int?
   title               String
   description         String?            @db.VarChar(250)
-  code                String             @db.VarChar(250)
+  code                String             @db.LongText
 }

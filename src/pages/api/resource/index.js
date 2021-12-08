@@ -10,14 +10,28 @@ export default withSession(async (req, res) => {
   const { body, method } = req;
   // collectionId and itemId are from the props
   // the rest are from our forms state
-  const { collectionId, itemId, title, summary, description, link, section } = body;
+  const {
+    collectionId,
+    itemId,
+    title,
+    summary,
+    description,
+    link,
+    section,
+  } = body;
 
   // when we have made our changes we need to grab our updated content
   let getUpdatedContent = async () =>
     await prisma.resourceCollection.findUnique({
       where: { id: collectionId },
       include: {
-        resources: true,
+        resources: {
+          orderBy: [
+            {
+              section: 'asc',
+            },
+          ],
+        },
       },
     });
 

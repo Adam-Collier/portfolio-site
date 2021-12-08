@@ -43,6 +43,9 @@ const Resource = ({ blocks, page, quickLinks }) => {
     id: collectionId,
   } = data;
 
+  // store the section name to reference in our resource items loop
+  let sectionName = '';
+
   return (
     <Page layout="grid" areas={{ sm: `"content" "coffee"` }} padding>
       <SEO
@@ -65,38 +68,51 @@ const Resource = ({ blocks, page, quickLinks }) => {
           {name}
         </Text>
         <Text>{description}</Text>
-        {resources.map(
-          ({ id: itemId, link, title, summary, description, section }) => (
-            <ResourceItem
-              key={itemId}
-              link={link}
-              title={title}
-              summary={summary}
-              description={description}
-              section={section}
-            >
-              {admin?.isLoggedIn && (
-                <EditToolbar
-                  form={
-                    <ResourceForm
-                      collectionId={collectionId}
+        {resources.length > 0 && resources.map(
+          ({ id: itemId, link, title, summary, description, section }) => {
+            let resourceItem = (
+              <>
+                {sectionName !== section && (
+                  <Text as="h1" size="xl" heading>
+                    {section}
+                  </Text>
+                )}
+                <ResourceItem
+                  key={itemId}
+                  link={link}
+                  title={title}
+                  summary={summary}
+                  description={description}
+                  section={section}
+                >
+                  {admin?.isLoggedIn && (
+                    <EditToolbar
+                      form={
+                        <ResourceForm
+                          collectionId={collectionId}
+                          itemId={itemId}
+                          pageId={pageId}
+                          link={link}
+                          title={title}
+                          summary={summary}
+                          description={description}
+                          section={section}
+                          edit
+                        />
+                      }
                       itemId={itemId}
                       pageId={pageId}
-                      link={link}
-                      title={title}
-                      summary={summary}
-                      description={description}
-                      section={section}
-                      edit
+                      apiRoute="/api/resource"
                     />
-                  }
-                  itemId={itemId}
-                  pageId={pageId}
-                  apiRoute="/api/resource"
-                />
-              )}
-            </ResourceItem>
-          )
+                  )}
+                </ResourceItem>
+              </>
+            );
+            // update sectionName with the current section name
+            sectionName = section;
+            // 
+            return resourceItem;
+          }
         )}
 
         {/* <CommentForm
@@ -135,7 +151,13 @@ export async function getStaticProps({ params }) {
   const response = await prisma.resourceCollection.findUnique({
     where: { name: toTitleCase(slug) },
     include: {
-      resources: true,
+      resources: {
+        orderBy: [
+          {
+            section: 'asc',
+          },
+        ],
+      },
     },
   });
   const page = JSON.parse(JSON.stringify(response));
@@ -168,6 +190,6 @@ export async function getStaticPaths() {
         },
       };
     }),
-    fallback: false,
+    fallback: "blocking",
   };
 }

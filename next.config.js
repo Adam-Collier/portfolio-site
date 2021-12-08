@@ -1,8 +1,4 @@
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-});
-
-module.exports = withBundleAnalyzer({
+module.exports = {
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
@@ -11,6 +7,7 @@ module.exports = withBundleAnalyzer({
 
     return config;
   },
+  swcMinify: true,
   images: {
     domains: [
       'i.scdn.co',
@@ -20,4 +17,4 @@ module.exports = withBundleAnalyzer({
       'dr.savee-cdn.com',
     ],
   },
-});
+};

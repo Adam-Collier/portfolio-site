@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Form, handleSubmit } from './base';
 import Stack from '../Stack';
 import Text from '../Text';
+import TextArea from '../TextArea';
 import Button from '../Button';
 
 const ResourceFormCollection = ({ pageId, itemId, apiRoute, name, description, excerpt, edit }) => {
@@ -25,8 +26,8 @@ const ResourceFormCollection = ({ pageId, itemId, apiRoute, name, description, e
         handleSubmit(e, {
           apiRoute,
           method: edit ? 'PUT' : 'POST',
-          body: {...state, itemId},
-          pageId
+          body: { ...state, itemId },
+          pageId,
         })
       }
     >
@@ -43,21 +44,23 @@ const ResourceFormCollection = ({ pageId, itemId, apiRoute, name, description, e
         </label>
         <label>
           <Text size="sm">Description</Text>
-          <textarea
-            type="text"
+          <TextArea
             name="description"
-            onChange={handleChange}
             value={state.description}
+            handleChange={handleChange}
+            maxChar={250}
+            rows={4}
             required
           />
         </label>
         <label>
           <Text size="sm">Excerpt</Text>
-          <textarea
-            type="text"
+          <TextArea
             name="excerpt"
-            onChange={handleChange}
             value={state.excerpt}
+            handleChange={handleChange}
+            maxChar={200}
+            rows={2}
             required
           />
         </label>

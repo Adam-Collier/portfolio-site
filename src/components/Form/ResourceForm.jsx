@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Form, handleSubmit } from './base';
 import Stack from '../Stack';
 import Text from '../Text';
+import TextArea from "../TextArea";
 import Button from '../Button';
 
 const ResourceForm = ({
@@ -82,10 +83,9 @@ const ResourceForm = ({
         </Stack>
         <label>
           <Text size="sm">Description</Text>
-          <textarea
-            type="text"
+          <TextArea
             name="description"
-            onChange={handleChange}
+            handleChange={handleChange}
             value={state.description}
             required
           />

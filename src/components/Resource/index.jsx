@@ -1,5 +1,6 @@
 import { styled } from 'goober';
 import Text from '../Text';
+import { parseMarkdown } from "../../lib/parseMarkdown";
 
 const Wrapper = styled('div')`
   --columns: 200px 1fr;
@@ -40,7 +41,11 @@ const Resource = ({
           {summary}
         </Text>
       </div>
-      <div>{description}</div>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: parseMarkdown(description),
+        }}
+      />
     </Wrapper>
   );
 };

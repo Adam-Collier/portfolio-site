@@ -2,7 +2,6 @@ import React from 'react';
 import { styled } from 'goober';
 import Stack from '../Stack';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
-import BuyCoffee from '../BuyCoffee';
 import { queries } from '../../config';
 
 const SidebarWrapper = styled(Stack)`
@@ -11,6 +10,7 @@ const SidebarWrapper = styled(Stack)`
   position: sticky;
   top: ${(props) => (props.$top ? `${props.$top}rem` : '6rem')};
   max-height: calc(100vh - 6rem);
+  width: 100%;
   overflow-y: scroll;
 
   @media ${queries.sm} {
@@ -40,7 +40,6 @@ const Sidebar = ({ children, top }) => {
       )}
     >
       {children}
-      <BuyCoffee />
     </ConditionalWrapper>
   );
 };

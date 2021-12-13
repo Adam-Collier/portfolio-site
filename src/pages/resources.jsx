@@ -39,7 +39,7 @@ const Resources = ({ allResourceCollections }) => {
       {admin?.isLoggedIn && (
         <Dialog
           headerText="Add a Collection"
-          trigger={<Button text="Add a Collection" variation="secondary" />}
+          trigger={<Button variant="secondary">Add a Collection</Button>}
         >
           <ResourceCollectionForm apiRoute={apiRoute} pageId={pageId} />
         </Dialog>

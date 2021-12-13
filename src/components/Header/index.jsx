@@ -45,10 +45,10 @@ const Header = ({ className, isClose }) => {
                     false
                   );
                 }}
-                text="Sign Out"
-                type="secondary"
-                className={isClose ? s.signout : ''}
-              />
+                variant="secondary"
+              >
+                Sign Out
+                </Button>
             )}
             <MenuButton isClose={isClose} />
           </div>

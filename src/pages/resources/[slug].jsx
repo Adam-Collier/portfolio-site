@@ -57,7 +57,7 @@ const Resource = ({ blocks, page, quickLinks }) => {
         {admin?.isLoggedIn && (
           <Dialog
             headerText="Create Resource"
-            trigger={<Button text="Add a Resource" variation="secondary" />}
+            trigger={<Button variant="secondary">Add a Resource</Button>}
           >
             <ResourceForm collectionId={collectionId} pageId={pageId} />
           </Dialog>
@@ -68,52 +68,53 @@ const Resource = ({ blocks, page, quickLinks }) => {
           {name}
         </Text>
         <Text>{description}</Text>
-        {resources.length > 0 && resources.map(
-          ({ id: itemId, link, title, summary, description, section }) => {
-            let resourceItem = (
-              <>
-                {sectionName !== section && (
-                  <Text as="h1" size="xl" heading>
-                    {section}
-                  </Text>
-                )}
-                <ResourceItem
-                  key={itemId}
-                  link={link}
-                  title={title}
-                  summary={summary}
-                  description={description}
-                  section={section}
-                >
-                  {admin?.isLoggedIn && (
-                    <EditToolbar
-                      form={
-                        <ResourceForm
-                          collectionId={collectionId}
-                          itemId={itemId}
-                          pageId={pageId}
-                          link={link}
-                          title={title}
-                          summary={summary}
-                          description={description}
-                          section={section}
-                          edit
-                        />
-                      }
-                      itemId={itemId}
-                      pageId={pageId}
-                      apiRoute="/api/resource"
-                    />
+        {resources.length > 0 &&
+          resources.map(
+            ({ id: itemId, link, title, summary, description, section }) => {
+              let resourceItem = (
+                <>
+                  {sectionName !== section && (
+                    <Text as="h1" size="xl" heading>
+                      {section}
+                    </Text>
                   )}
-                </ResourceItem>
-              </>
-            );
-            // update sectionName with the current section name
-            sectionName = section;
-            // 
-            return resourceItem;
-          }
-        )}
+                  <ResourceItem
+                    key={itemId}
+                    link={link}
+                    title={title}
+                    summary={summary}
+                    description={description}
+                    section={section}
+                  >
+                    {admin?.isLoggedIn && (
+                      <EditToolbar
+                        form={
+                          <ResourceForm
+                            collectionId={collectionId}
+                            itemId={itemId}
+                            pageId={pageId}
+                            link={link}
+                            title={title}
+                            summary={summary}
+                            description={description}
+                            section={section}
+                            edit
+                          />
+                        }
+                        itemId={itemId}
+                        pageId={pageId}
+                        apiRoute="/api/resource"
+                      />
+                    )}
+                  </ResourceItem>
+                </>
+              );
+              // update sectionName with the current section name
+              sectionName = section;
+              //
+              return resourceItem;
+            }
+          )}
 
         {/* <CommentForm
           title={title}

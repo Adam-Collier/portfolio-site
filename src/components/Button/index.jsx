@@ -1,55 +1,107 @@
 /* eslint-disable react/button-has-type */
 import React from 'react';
 import Link from 'next/link';
-import Text from '../Text';
+import { styled } from 'goober';
+import { LoadingSpinner } from '../LoadingSpinner';
 
-import s from './button.module.css';
+const StyledButton = styled('button')`
+  color: var(--primary-foreground);
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-sm);
+  cursor: pointer;
+  position: relative;
 
-// for external links we should render an a tag
-const ConditionalLink = ({ link, className, children }) =>
-  link.includes('https://') ? (
-    <a href={link} className={`${s.link} ${className}`}>
-      {children}
-    </a>
-  ) : (
-    <Link href={link} className={`${s.link} ${className}`}>
-      <a>{children}</a>
-    </Link>
-  );
+  /* if there are more than one child elements add some spacing */
+  > * + * {
+    margin-left: 0.5rem;
+  }
 
-// if there is no link prop we render a button with an onClick handler
-const Wrapper = ({ link, children, className, onClick, onKeyPress }) =>
-  link ? (
-    <ConditionalLink link={link} className={className}>
-      {children}
-    </ConditionalLink>
-  ) : (
-    <button className={className} onClick={onClick} onKeyPress={onKeyPress}>
-      {children}
-    </button>
-  );
+  /* change the width depending on the layout prop */
+  ${(props) =>
+    props.$fill &&
+    `
+      width: 100%;
+    `}
+
+  ${(props) =>
+    props.$variant === 'primary' &&
+    `
+    border: 1px solid var(--primary-foreground);
+    background: var(--primary-foreground);
+    color: var(--primary-background);
+
+    &:hover {
+      background: var(--foreground-max);
+    }
+  `}
+
+  ${(props) =>
+    props.$variant === 'secondary' &&
+    `
+    border: 1px solid var(--foreground-high);
+
+    &:hover {
+      background: var(--foreground-low);
+    }
+  `}
+
+  ${props => props.$loading && `
+    >:not(svg) {
+      visibility: hidden;
+    }
+  `}
+`;
+
+const Spinner = styled(LoadingSpinner)`
+  position: absolute;
+`
 
 const Button = ({
-  text,
   link,
-  Icon = '',
-  className = '',
   onClick,
   onKeyPress,
-  variation = 'primary',
-  layout = 'fit',
-}) => (
-  <Wrapper
-    link={link}
-    className={`${s.button} ${className} ${s[variation]} ${s[layout]}`}
-    onClick={onClick}
-    onKeyPress={onKeyPress}
-  >
-    {Icon && <Icon className={s.icon} size={16} />}
-    <Text size="sm" lineHeight={1}>
-      {text}
-    </Text>
-  </Wrapper>
-);
+  children,
+  variant = 'primary',
+  fill,
+  loading
+}) => {
+  // pass these to the styled component easily and add more if we need to
+  const rest = { $variant: variant, $fill: fill };
+  // if an internal links render the Next Link component
+  if (link && link.startsWith('/')) {
+    return (
+      <Link href={link} passHref>
+        <StyledButton as="a" {...rest}>
+          {children}
+        </StyledButton>
+      </Link>
+    );
+  }
+
+  if (link) {
+    return (
+      <StyledButton as="a" href={link} {...rest}>
+        {children}
+      </StyledButton>
+    );
+  }
+
+  return (
+    <StyledButton
+      onClick={onClick}
+      onKeyPress={onKeyPress}
+      $loading={loading}
+      {...rest}
+    >
+      <p>{children}</p>
+      {loading && <Spinner />}
+    </StyledButton>
+  );
+};
 
 export default Button;

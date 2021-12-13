@@ -5,7 +5,15 @@ import Text from '../Text';
 import TextArea from '../TextArea';
 import Button from '../Button';
 
-const ResourceFormCollection = ({ pageId, itemId, apiRoute, name, description, excerpt, edit }) => {
+const ResourceFormCollection = ({
+  pageId,
+  itemId,
+  apiRoute,
+  name,
+  description,
+  excerpt,
+  edit,
+}) => {
   const [state, setState] = useState({
     name: name || '',
     description: description || '',
@@ -22,14 +30,13 @@ const ResourceFormCollection = ({ pageId, itemId, apiRoute, name, description, e
 
   return (
     <Form
-      onSubmit={(e) =>
-        handleSubmit(e, {
-          apiRoute,
-          method: edit ? 'PUT' : 'POST',
-          body: { ...state, itemId },
-          pageId,
-        })
-      }
+      config={{
+        apiRoute,
+        method: edit ? 'PUT' : 'POST',
+        body: { ...state, itemId },
+        pageId,
+      }}
+      buttonText={edit ? 'Save Changes' : 'Create Resource'}
     >
       <Stack gap={0.5}>
         <label>
@@ -65,10 +72,6 @@ const ResourceFormCollection = ({ pageId, itemId, apiRoute, name, description, e
           />
         </label>
       </Stack>
-      <Button
-        text={edit ? 'Save Changes' : 'Create Resource'}
-        variation="secondary"
-      />
     </Form>
   );
 };

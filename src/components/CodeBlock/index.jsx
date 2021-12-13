@@ -26,6 +26,9 @@ const CodeBlock = ({
   children,
   className = children.props ? children.props.className : ``,
 }) => {
+  if(Array.isArray(children)) {
+    children = children[0];
+  }
   const [language, { title = `` }] = getParams(className);
   const [content, highlights] = normalize(
     children.props && children.props.children

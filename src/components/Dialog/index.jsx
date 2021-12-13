@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import Button from '../Button';
 import { styled } from 'goober';
 import Text from '../Text';
 import Stack from '../Stack';

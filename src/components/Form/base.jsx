@@ -1,7 +1,9 @@
 import { styled } from 'goober';
+import { useState } from 'react';
 import { mutate } from 'swr';
+import Button from '../Button';
 
-export const Form = styled('form')`
+const FormWrapper = styled('form')`
   > * + * {
     margin-top: 1rem;
   }
@@ -29,12 +31,28 @@ export const Form = styled('form')`
   }
 `;
 
-export const handleSubmit = async (event, {
-  apiRoute,
-  method,
-  body,
-  pageId
-}) => {
+export const Form = ({ children, buttonText, config }) => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  let submitForm = (e) => {
+    handleSubmit(e, config);
+    setIsLoading(true);
+  }
+
+  return (
+    <FormWrapper onSubmit={submitForm}>
+      {children}
+      <Button variant="secondary" loading={isLoading}>
+        {buttonText}
+      </Button>
+    </FormWrapper>
+  );
+};
+
+export const handleSubmit = async (
+  event,
+  { apiRoute, method, body, pageId }
+) => {
   event.preventDefault();
   try {
     let response = await fetch(apiRoute, {

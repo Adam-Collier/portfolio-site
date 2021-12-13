@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { Form, handleSubmit } from './base';
 import Stack from '../Stack';
 import Text from '../Text';
-import TextArea from "../TextArea";
+import TextArea from '../TextArea';
 import Button from '../Button';
+import { LoadingSpinner } from '../LoadingSpinner';
 
 const ResourceForm = ({
   // id of the page the form sits on
@@ -39,14 +40,13 @@ const ResourceForm = ({
 
   return (
     <Form
-      onSubmit={(e) =>
-        handleSubmit(e, {
-          apiRoute: '/api/resource',
-          method: edit ? 'PUT' : 'POST',
-          body: { ...state, itemId, collectionId },
-          pageId,
-        })
-      }
+      config={{
+        apiRoute: '/api/resource',
+        method: edit ? 'PUT' : 'POST',
+        body: { ...state, itemId, collectionId },
+        pageId,
+      }}
+      buttonText={edit ? 'Save Changes' : 'Create Resource'}
     >
       <Stack gap={0.5}>
         <label>
@@ -101,10 +101,6 @@ const ResourceForm = ({
           />
         </label>
       </Stack>
-      <Button
-        text={edit ? 'Save Changes' : 'Create Resource'}
-        variation="secondary"
-      />
     </Form>
   );
 };
